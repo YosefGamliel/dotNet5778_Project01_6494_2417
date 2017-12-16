@@ -11,6 +11,6 @@ namespace BE
         //seif z
         //seif h
         //seif yud
-        private string special;//Remarks or Requirements
+        private string Note;//Remarks or Requirements
     }
 }
