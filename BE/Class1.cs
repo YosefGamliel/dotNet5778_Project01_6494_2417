@@ -8,5 +8,6 @@ namespace BE
         //shlomiw
         int y = 6;
         int z;
+        float a;
     }
 }
