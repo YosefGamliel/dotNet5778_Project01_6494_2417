@@ -10,6 +10,9 @@ namespace BE
         float sachar;
         int hour;
         int yosef;
+        int jojo;
+        int bayb;
+        int kate;
  
     }
 }
