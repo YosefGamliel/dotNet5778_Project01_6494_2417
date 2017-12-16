@@ -4,14 +4,9 @@ using System.Text;
 
 namespace BE
 {
-    class Nanny
+    class Nanny:Person
     {
-        private int ID;
-        private string lastName;
-        private string firstName;
         private DateTime birthday;
-        private int phoneNumber;
-        string address;
 
     }
 }
