@@ -9,7 +9,7 @@ namespace BE
         int age;
         float sachar;
         int hour;
-        int shlomi;
+        int yosef;
  
     }
 }
