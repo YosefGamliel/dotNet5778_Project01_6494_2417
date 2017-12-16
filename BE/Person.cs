@@ -12,4 +12,5 @@ namespace BE
         private int phone;
         private string address;
     }
+
 }
