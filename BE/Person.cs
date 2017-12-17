@@ -7,9 +7,9 @@ namespace BE
     class Person
     {
         private int id;
-        private string LastName;
-        private string FirstName;
-        private int phone;
+        private string lastName;
+        private string firstName;
+        private int phoneNumber;
         private string address;
     }
 
