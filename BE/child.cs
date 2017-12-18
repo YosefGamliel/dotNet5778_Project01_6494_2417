@@ -4,15 +4,15 @@ using System.Text;
 
 namespace BE
 {
-    class child : Person
+    class Child : Person
     {
-        int motherId;
-        bool special;
-        string information;//include note about the problem of the child
-        /*
-         * 1.תגיד לי אם אתה יכול לקרוא את זה
-         * 2. הוא אמר שצריך להוסיף פרטים
-         * */
-
-          }
+        //fields:
+        private int motherId;
+        private bool specialNeeds;
+        private string infoSpecialNeeds; //include note about the problems of the child
+        //properties:
+        public int MotheId { get { return motherId; } set { motherId = value; } }
+        public bool SpecialNeeds { get { return specialNeeds; } set { specialNeeds = value; } }
+        public string InfoSpecialNeeds { get { return infoSpecialNeeds; } set { infoSpecialNeeds = value; } }
+    }
 }
