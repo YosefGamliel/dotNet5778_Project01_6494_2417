@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    class child
+    class child : Person
     {
         int motherId;
         bool special;

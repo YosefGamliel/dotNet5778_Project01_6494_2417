@@ -16,6 +16,8 @@ namespace BE
         private bool hourlyRate;
         private float hourSalary;
         private float monthSalary;
+        private bool[] workDays = new bool[5];
+        private DayOfWeek[][] workHours = new DayOfWeek[5][];
         private bool vacationDaysITE; //if it's true - she gets her vacation days according to ITE (Ministry
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
