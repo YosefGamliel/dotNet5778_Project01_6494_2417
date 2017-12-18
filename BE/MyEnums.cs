@@ -6,4 +6,5 @@ namespace BE
 {
     public enum DaysOfWeek { Sunday = 1, Monday, Tuesday, Wednesday, thursday, friday, saturday }
     public enum Hours { startHour, endHour }
+
 }
