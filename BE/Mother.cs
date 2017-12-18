@@ -9,17 +9,10 @@ namespace BE
 
         private string areaBabysitter;//where the mother search baby sitter
         private bool[] needbabysitter = new bool[7];   //need the baby sitter
-        /*
-        DayOfWeek[][] WorkHour = new DayOfWeek[6][]
-        {
-        new Hours[2]{ , },
-        new Hours[2]{, },
-        new Hours[2]{, },
-        new Hours[2]{, },
-        new Hours[2]{, },
-        new Hours[2]{, };
+        DayOfWeek[][] WorkHour = new DayOfWeek[6][];//ככה
+        private string Note;//Remarks or Requirements
 
-    }*/
-    private string Note;//Remarks or Requirements
+
+    }
 }
-}
+
