@@ -14,6 +14,7 @@ namespace BE
         public string AreaBabysitter { get { return areaBabysitter;} set { areaBabysitter = value; } }
         public bool[] NeedBabysitter { get { return needBabysitter; } set { needBabysitter = value; } }
         private string Note { get { return note; } set { note = value; } }
+    
     }
 }
 
