@@ -11,6 +11,8 @@ namespace BE
         private string firstName;
         private int phoneNumber;
         private string address;
+        private DateTime birthday;//move the birthday to person because nanny and child need birthday.
+
     }
 
 }

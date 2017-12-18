@@ -6,7 +6,6 @@ namespace BE
 {
     class Nanny:Person
     {
-        private DateTime birthday;
         private bool elevator;
         private int floorBuilding;
         private int experienceYears;
