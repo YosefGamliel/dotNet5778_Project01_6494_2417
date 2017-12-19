@@ -8,19 +8,32 @@ namespace BE
     {
         //fields:
         #region
-        private string areaBabysitter;//where the mother search baby sitter
-        private bool[] needBabysitter;   //need the baby sitter
-        private int[,] workHour;
-        private string note;//Remarks or Requirements
+        private string areaNanny;//where the mother search nanny
+        private bool[] needNanny;
+        private int[,] workHours;
+        private string notes;//Remarks or Requirements
         #endregion
         //properties:
         #region
-        public string AreaBabysitter { get { return areaBabysitter; } set { areaBabysitter = value; } }
-        public bool[] NeedBabysitter { get { return needBabysitter; } set { needBabysitter = value; } }
-        public string Note { get { return note; } set { note = value; } }
-        public int[,] WorkHour { get { return workHour; } set { workHour = value; } }
+        public string AreaNanny { get { return areaNanny; } set { areaNanny = value; } }
+        public bool[] NeedNanny { get { return needNanny; } set { needNanny = value; } }
+        public string Notes { get { return notes; } set { notes = value; } }
+        public int[,] WorkHours { get { return workHours; } set { workHours = value; } }
         #endregion
         //functions:
+        #region
+        public Mother(string area,bool[] need, int[,] hours,string nt)
+        {
+            areaNanny = area;
+            needNanny = need;
+            workHours = hours;
+            notes = nt;
+        }
+        public override string ToString()
+        {
+            return ;
+        }
+        #endregion
     }
 }
 
