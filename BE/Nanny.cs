@@ -17,8 +17,8 @@ namespace BE
         private bool hourlyRate;
         private float hourSalary;
         private float monthSalary;
-        private bool[] workDays = new bool[5];
-        private DaysOfWeek[][] workHours = new DaysOfWeek[5][];
+        private bool[] workDays;
+        private int[,] workHours;
         private bool vacationDaysITE; //if it's true - she gets her vacation days according to ITE (Ministry
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
@@ -34,6 +34,8 @@ namespace BE
         public bool HourlyRate { get { return hourlyRate; } set { hourlyRate = value; } }
         public float HourSalary { get { return hourSalary; } set { hourSalary = value; } }
         public float MonthSalary { get { return monthSalary; } set { monthSalary = value; } }
+        public bool[] WorkDays { get { return workDays; } set { workDays = value; } }
+        public int[,] WorkHours { get { return WorkHours; } set { workHours = value; } }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         #endregion
