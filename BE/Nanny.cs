@@ -7,6 +7,7 @@ namespace BE
     class Nanny : Person
     {
         //fields:
+        #region
         private bool elevator;
         private int floorBuilding;
         private int experienceYears;
@@ -21,7 +22,9 @@ namespace BE
         private bool vacationDaysITE; //if it's true - she gets her vacation days according to ITE (Ministry
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
+        #endregion
         //properties:
+        #region
         public bool Elevator { get { return elevator; } set { elevator = value; } }
         public int FloorBuilding { get { return floorBuilding; } set { floorBuilding = value; } }
         public int ExperienceYears { get { return experienceYears; } set { experienceYears = value; } }
@@ -33,7 +36,7 @@ namespace BE
         public float MonthSalary { get { return monthSalary; } set { monthSalary = value; } }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
-
+        #endregion
     }
 
 }
