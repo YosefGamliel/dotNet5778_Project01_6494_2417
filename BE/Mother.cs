@@ -8,25 +8,14 @@ namespace BE
     {
         //fields:
         private string areaBabysitter;//where the mother search baby sitter
-        private bool[] needBabysitter = new bool[5];   //need the baby sitter
-        private DaysOfWeek[][] workHour = new DaysOfWeek[5][];
+        private bool[] needBabysitter;   //need the baby sitter
+        private int[,] workHour;
         private string note;//Remarks or Requirements
         //properties:
         public string AreaBabysitter { get { return areaBabysitter; } set { areaBabysitter = value; } }
         public bool[] NeedBabysitter { get { return needBabysitter; } set { needBabysitter = value; } }
         public string Note { get { return note; } set { note = value; } }
-        public DaysOfWeek[][] WorkHour
-        {
-            get { return workHour; }
-            set
-            {
-                for (int i = 0; i < 5; ++i)
-                {
-                    workHour[i] = value[i];//מאתחל את השעות שבכל יום
-                }
-
-            }
-        }
+        public int[,] WorkHour { get { return workHour; } set { workHour = value; } }
         //functions:
     }
 }
