@@ -19,6 +19,7 @@ namespace BE
         public bool[] NeedBabysitter { get { return needBabysitter; } set { needBabysitter = value; } }
         public string Note { get { return note; } set { note = value; } }
         public int[,] WorkHour { get { return workHour; } set { workHour = value; } }
+        #endregion
         //functions:
     }
 }

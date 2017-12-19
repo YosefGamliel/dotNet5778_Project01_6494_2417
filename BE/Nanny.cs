@@ -40,5 +40,4 @@ namespace BE
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         #endregion
     }
-
 }
