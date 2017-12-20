@@ -8,6 +8,7 @@ namespace BE
     {
         //fields:
         #region
+        private DateTime birthday;
         private bool elevator;
         private int floorBuilding;
         private int experienceYears;
@@ -25,6 +26,7 @@ namespace BE
         #endregion
         //properties:
         #region
+        public DateTime Birthday { get { return birthday; } set { birthday = value; } }
         public bool Elevator { get { return elevator; } set { elevator = value; } }
         public int FloorBuilding { get { return floorBuilding; } set { floorBuilding = value; } }
         public int ExperienceYears { get { return experienceYears; } set { experienceYears = value; } }
