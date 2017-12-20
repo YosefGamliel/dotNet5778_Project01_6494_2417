@@ -4,10 +4,15 @@ using System.Text;
 
 namespace BE
 {
-    class Mother : Person
+    class Mother
     {
         //fields:
         #region
+        private int id;
+        private string lastName;
+        private string firstName;
+        private int phoneNumber;
+        private string address;
         private string areaNanny;//where the mother search nanny
         private bool[] needNanny;
         private int[,] workHours;
@@ -15,6 +20,11 @@ namespace BE
         #endregion
         //properties:
         #region
+        public int Id { get { return id; } set { id = value; } }
+        public string LastName { get { return lastName; } set { lastName = value; } }
+        public string FirstName { get { return firstName; } set { firstName = value; } }
+        public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
+        public string Address { get { return address; } set { address = value; } }
         public string AreaNanny { get { return areaNanny; } set { areaNanny = value; } }
         public bool[] NeedNanny { get { return needNanny; } set { needNanny = value; } }
         public string Notes { get { return notes; } set { notes = value; } }
@@ -22,8 +32,13 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Mother(string area, bool[] need, int[,] hours, string nt)
+        public Mother(int ID, string LN, string FN, int PN, string addr, string area, bool[] need, int[,] hours, string nt)
         {
+            id = ID;
+            lastName = LN;
+            firstName = FN;
+            phoneNumber = PN;
+            address = addr;
             areaNanny = area;
             needNanny = need;
             workHours = new int[6, 2];
