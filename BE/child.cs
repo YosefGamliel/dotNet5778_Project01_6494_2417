@@ -34,6 +34,7 @@ namespace BE
                     throw new Exception();
 
                 if (FN) ;
+
                 id = ID;
                 firstName = FN;
                 motherId = MID;
