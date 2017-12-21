@@ -28,17 +28,20 @@ namespace BE
         #region
         public Child(string ID, string FN, int MID, DateTime birth, bool SN, string ISN)
         {
-            id = ID;
             try
             {
-                if (!CheckIDNo(ID)) throw;
+                if (!CheckIDNo(ID))
+                    throw new Exception();
 
+                if (FN) ;
+                id = ID;
+                firstName = FN;
+                motherId = MID;
+                birthday = birth;
+                specialNeeds = SN;
+                infoSpecialNeeds = ISN;
             }
-            firstName = FN;
-            motherId = MID;
-            birthday = birth;
-            specialNeeds = SN;
-            infoSpecialNeeds = ISN;
+            
         }
         public override string ToString()
         {
@@ -50,7 +53,7 @@ namespace BE
             return "Id: " + id + "\nFirst name: " + firstName + "\nMother id: " + motherId +
                 "\nBirthday: " + birthday + "\nSpecial needs: " + str1 + str2;
         }
-        static bool CheckIDNo(String strID)
+        public bool CheckIDNo(String strID)
         {
             int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
             int count = 0;

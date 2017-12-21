@@ -34,6 +34,7 @@ namespace BE
         #region
         public Mother(string ID, string LN, string FN, int PN, string addr, string area, bool[] need, int[,] hours, string nt)
         {
+            
             id = ID;
             lastName = LN;
             firstName = FN;
