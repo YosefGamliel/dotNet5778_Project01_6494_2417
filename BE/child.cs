@@ -29,6 +29,10 @@ namespace BE
         public Child(string ID, string FN, int MID, DateTime birth, bool SN, string ISN)
         {
             id = ID;
+            try
+            {
+
+            }
             firstName = FN;
             motherId = MID;
             birthday = birth;
