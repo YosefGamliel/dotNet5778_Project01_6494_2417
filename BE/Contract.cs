@@ -8,9 +8,9 @@ namespace BE
     {
         //fields:
         #region
-        private int contractID;
-        private readonly int babySitterID;
-        private readonly int childID;
+        private string contractID;
+        private readonly string babySitterID;
+        private readonly string childID;
         private readonly bool firsMeating;
         private bool signed;
         private float salaryPerHour;
@@ -21,9 +21,9 @@ namespace BE
         #endregion
         //properties:
         #region
-        public int ContractID { get { return contractID; } set { contractID = value; } }
-        public int BabySitterID { get { return babySitterID; } }
-        public int ChildID { get { return childID; } }
+        public string ContractID { get { return contractID; } set { contractID = value; } }
+        public string BabySitterID { get { return babySitterID; } }
+        public string ChildID { get { return childID; } }
         public bool FirsMeating { get { return firsMeating; } }
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
@@ -34,7 +34,7 @@ namespace BE
         #endregion
         //finction:
         #region
-        public Contract(int ConID, int BID, int ChID, bool FM, bool S, float SPH, float SPM, string T, DateTime St, DateTime E)
+        public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM, string T, DateTime St, DateTime E)
         {
             contractID = ConID;
             babySitterID = BID;

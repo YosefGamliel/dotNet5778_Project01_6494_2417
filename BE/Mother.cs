@@ -8,7 +8,7 @@ namespace BE
     {
         //fields:
         #region
-        private readonly int id;
+        private readonly string id;
         private string lastName;
         private string firstName;
         private int phoneNumber;
@@ -20,7 +20,7 @@ namespace BE
         #endregion
         //properties:
         #region
-        public int Id { get { return id; } }
+        public string Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
@@ -32,7 +32,7 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Mother(int ID, string LN, string FN, int PN, string addr, string area, bool[] need, int[,] hours, string nt)
+        public Mother(string ID, string LN, string FN, int PN, string addr, string area, bool[] need, int[,] hours, string nt)
         {
             id = ID;
             lastName = LN;

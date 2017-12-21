@@ -8,7 +8,7 @@ namespace BE
     {
         //fields:
         #region
-        private readonly int id;
+        private readonly string id;
         private string firstName;
         private readonly int motherId;
         private readonly DateTime birthday;
@@ -17,7 +17,7 @@ namespace BE
         #endregion
         //properties:
         #region
-        public int Id { get { return id; } }
+        public string Id { get { return id; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public int MotheId { get { return motherId; } }
         public DateTime Birthday { get { return birthday; } }
@@ -26,7 +26,7 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Child(int ID, string FN, int MID, DateTime birth, bool SN, string ISN)
+        public Child(string ID, string FN, int MID, DateTime birth, bool SN, string ISN)
         {
             id = ID;
             firstName = FN;

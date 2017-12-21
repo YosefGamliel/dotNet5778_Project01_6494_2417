@@ -8,7 +8,7 @@ namespace BE
     {
         //fields:
         #region
-        private readonly int id;
+        private readonly string id;
         private string lastName;
         private string firstName;
         private int phoneNumber;
@@ -31,7 +31,7 @@ namespace BE
         #endregion
         //properties:
         #region
-        public int Id { get { return id; } }
+        public string Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
@@ -53,7 +53,7 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Nanny(int ID, string LN, string FN,int PN,string addr, DateTime birth,bool elev,int FB,int EY,int MK,
+        public Nanny(string ID, string LN, string FN,int PN,string addr, DateTime birth,bool elev,int FB,int EY,int MK,
             int MinA,int MaxA,bool HR,float HS,float MS,bool[] WD,int[,] WH,bool VD,string recomm)
         {
             id = ID;
