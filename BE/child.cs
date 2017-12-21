@@ -8,19 +8,19 @@ namespace BE
     {
         //fields:
         #region
-        private int id;
+        private readonly int id;
         private string firstName;
-        private int motherId;
-        private DateTime birthday;
+        private readonly int motherId;
+        private readonly DateTime birthday;
         private bool specialNeeds;
         private string infoSpecialNeeds; //include note about the problems of the child
         #endregion
         //properties:
         #region
-        public int Id { get { return id; } set { id = value; } }
+        public int Id { get { return id; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
-        public int MotheId { get { return motherId; } set { motherId = value; } }
-        public DateTime Birthday { get { return birthday; } set { birthday = value; } }
+        public int MotheId { get { return motherId; } }
+        public DateTime Birthday { get { return birthday; } }
         public bool SpecialNeeds { get { return specialNeeds; } set { specialNeeds = value; } }
         public string InfoSpecialNeeds { get { return infoSpecialNeeds; } set { infoSpecialNeeds = value; } }
         #endregion

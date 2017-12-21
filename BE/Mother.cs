@@ -8,7 +8,7 @@ namespace BE
     {
         //fields:
         #region
-        private int id;
+        private readonly int id;
         private string lastName;
         private string firstName;
         private int phoneNumber;
@@ -20,7 +20,7 @@ namespace BE
         #endregion
         //properties:
         #region
-        public int Id { get { return id; } set { id = value; } }
+        public int Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
         public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }

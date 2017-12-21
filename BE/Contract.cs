@@ -9,9 +9,9 @@ namespace BE
         //fields:
         #region
         private int contractID;
-        private int babySitterID;
-        private int childID;
-        private bool firsMeating;
+        private readonly int babySitterID;
+        private readonly int childID;
+        private readonly bool firsMeating;
         private bool signed;
         private float salaryPerHour;
         private float salaryPerMonth;
@@ -22,9 +22,9 @@ namespace BE
         //properties:
         #region
         public int ContractID { get { return contractID; } set { contractID = value; } }
-        public int BabySitterID { get { return babySitterID; } set { babySitterID = value; } }
-        public int ChildID { get { return childID; } set { childID = value; } }
-        public bool FirsMeating { get { return firsMeating; } set { firsMeating = value; } }
+        public int BabySitterID { get { return babySitterID; } }
+        public int ChildID { get { return childID; } }
+        public bool FirsMeating { get { return firsMeating; } }
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
         public float SalaryPerMonth { get { return salaryPerMonth; } set { salaryPerMonth = value; } }
