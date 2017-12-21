@@ -9,5 +9,6 @@ namespace DAL
         void add(object obj);
         void remove(object obj);
         void update(object obj);
+        void getList(object obj);
     }
 }
