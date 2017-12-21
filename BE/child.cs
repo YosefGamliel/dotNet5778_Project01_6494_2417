@@ -56,7 +56,7 @@ namespace BE
         public bool CheckIDNo(String strID)
         {
             int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
-            int count = 0;
+            int count = 0; 
 
             if (strID == null)
                 return false;
