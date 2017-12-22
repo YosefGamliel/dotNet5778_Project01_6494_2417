@@ -15,7 +15,7 @@ namespace BE
         private bool signed;
         private float salaryPerHour;
         private float salaryPerMonth;
-        private string type;
+        private string salaryType;
         private DateTime start;
         private DateTime end;
         #endregion
@@ -28,7 +28,7 @@ namespace BE
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
         public float SalaryPerMonth { get { return salaryPerMonth; } set { salaryPerMonth = value; } }
-        public string Type { get { return type; } set { type = value; } }
+        public string SalaryType { get { return salaryType; } set { salaryType = value; } }
         public DateTime Start { get { return start; } set { start = value; } }
         public DateTime End { get { return end; } set { end = value; } }
         #endregion
@@ -47,7 +47,7 @@ namespace BE
                 signed = S;
                 salaryPerHour = SPH;
                 salaryPerMonth = SPM;
-                type = T;
+                salaryType = T;
                 start = St;
                 end = E;
             }
