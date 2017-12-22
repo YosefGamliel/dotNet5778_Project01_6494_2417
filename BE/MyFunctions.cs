@@ -48,5 +48,19 @@ namespace BE
         {
             return (date < DateTime.Now);
         }
+        public static bool CheckCoIDandDate(string strID, DateTime E, DateTime St)
+        {
+            bool flag = true;
+            if (strID.Length != 8)
+                return false;
+            foreach (char ch in strID)
+            {
+                if (ch < '0' || ch > '9')
+                    flag = false;
+            }
+            return ((flag) &&((E > St) && (E >= DateTime.Now))) ;
+        }
+       
+       
     }
 }

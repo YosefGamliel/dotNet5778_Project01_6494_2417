@@ -36,16 +36,21 @@ namespace BE
         #region
         public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM, string T, DateTime St, DateTime E)
         {
-            contractID = ConID;
-            babySitterID = BID;
-            childID = ChID;
-            firsMeating = FM;
-            signed = S;
-            salaryPerHour = SPH;
-            salaryPerMonth = SPM;
-            type = T;
-            start = St;
-            end = E;
+            try
+            {
+                if(!MyFunctions.CheckCoIDandDate(contractID,E,St)|| !MyFunctions.CheckID(BID)|| !MyFunctions.CheckID(ChID))
+                    throw new Exception();
+                contractID = ConID;
+                babySitterID = BID;
+                childID = ChID;
+                firsMeating = FM;
+                signed = S;
+                salaryPerHour = SPH;
+                salaryPerMonth = SPM;
+                type = T;
+                start = St;
+                end = E;
+            }
         }
         public override string ToString()
         {
