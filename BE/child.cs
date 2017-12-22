@@ -30,11 +30,9 @@ namespace BE
         {
             try
             {
-              //  if (!CheckIDNo(ID))
-               //     throw new Exception();
-
-              //  if (FN) ;
-                ID = ID.Trim();//DELETE spare space
+                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(FN) || !MyFunctions.CheckID(MID) ||
+                    !MyFunctions.CheckDatePast(birth))
+                    throw new Exception();
                 id = ID;
                 firstName = FN.Trim();//DELETE spare space
                 motherId = MID;
@@ -43,7 +41,8 @@ namespace BE
                 ISN = ISN.Trim();//DELETE spare space
                 infoSpecialNeeds = ISN;
             }
-            
+
+
         }
         public override string ToString()
         {
