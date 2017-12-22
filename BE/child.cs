@@ -28,12 +28,7 @@ namespace BE
         #region
         public Child(string ID, string FN, int MID, DateTime birth, bool SN, string ISN)
         {
-            try
-            {
-                if (!CheckIDNo(ID))
-                    throw new Exception();
-
-                if (FN) ;
+           
                 ID = ID.Trim();//DELETE spare space
                 id = ID;
                 FN = FN.Trim();//DELETE spare space
@@ -43,8 +38,6 @@ namespace BE
                 specialNeeds = SN;
                 ISN = ISN.Trim();//DELETE spare space
                 infoSpecialNeeds = ISN;
-            }
-            
         }
         public override string ToString()
         {
