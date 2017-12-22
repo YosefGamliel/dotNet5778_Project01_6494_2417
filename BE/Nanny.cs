@@ -53,34 +53,40 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Nanny(string ID, string LN, string FN,int PN,string addr, DateTime birth,bool elev,int FB,int EY,int MK,
+        public Nanny(string ID, string LN, string FN,string PN,string addr, DateTime birth,bool elev,int FB,int EY,int MK,
             int MinA,int MaxA,bool HR,float HS,float MS,bool[] WD,int[,] WH,bool VD,string recomm)
         {
-            ID = ID.Trim();//DELETE spare space
-            id = ID;
-            LN = LN.Trim();//DELETE spare space
-            lastName = LN;
-            FN = FN.Trim();//DELETE spare space
-            firstName = FN;
-            phoneNumber = PN;
-            addr = addr.Trim();//DELETE spare space
-            address = addr;
-            birthday = birth;
-            elevator = elev;
-            floorBuilding = FB;
-            experienceYears = EY;
-            maxKids = MK;
-            minAge = MinA;
-            maxAge = MaxA;
-            hourlyRate = HR;
-            hourSalary = HS;
-            monthSalary = MS;
-            workDays = WD;
-            workHours = new int[6, 2];
-            workHours = WH;
-            vacationDaysITE = VD;
-            recomm = recomm.Trim();//DELETE spare space
-            recommendations = recomm;
+            try
+            {
+                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) || !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) ||
+                    !MyFunctions.CheckDatePast(birth) || !MyFunctions.CheckExperienceYears(birth, EY))
+                    throw new Exception();
+                ID = ID.Trim();//DELETE spare space
+                id = ID;
+                LN = LN.Trim();//DELETE spare space
+                lastName = LN;
+                FN = FN.Trim();//DELETE spare space
+                firstName = FN;
+                phoneNumber = PN;
+                addr = addr.Trim();//DELETE spare space
+                address = addr;
+                birthday = birth;
+                elevator = elev;
+                floorBuilding = FB;
+                experienceYears = EY;
+                maxKids = MK;
+                minAge = MinA;
+                maxAge = MaxA;
+                hourlyRate = HR;
+                hourSalary = HS;
+                monthSalary = MS;
+                workDays = WD;
+                workHours = new int[6, 2];
+                workHours = WH;
+                vacationDaysITE = VD;
+                recomm = recomm.Trim();//DELETE spare space
+                recommendations = recomm;
+            }
         }
         public override string ToString()
         {
@@ -110,4 +116,5 @@ namespace BE
         }
         #endregion
     }
+    
 }

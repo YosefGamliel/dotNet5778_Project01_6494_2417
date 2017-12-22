@@ -76,5 +76,12 @@ namespace BE
         {
             return (address.))
         }
+        public static bool CheckExperienceYears(DateTime BD, int EY)
+        {
+            if ((DateTime.Now.Year - BD.Year) - 18 < EY)//כי היא יכולה לעבוד מגיל 18
+                return false;//יותר שנות ניסיון ממה שהיא יכולה
+
+            return true;
+        }
     }
 }
