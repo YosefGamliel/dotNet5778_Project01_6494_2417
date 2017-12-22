@@ -30,10 +30,10 @@ namespace BE
         {
             try
             {
-                if (!CheckIDNo(ID))
-                    throw new Exception();
+              //  if (!CheckIDNo(ID))
+               //     throw new Exception();
 
-                if (FN) ;
+              //  if (FN) ;
                 ID = ID.Trim();//DELETE spare space
                 id = ID;
                 firstName = FN.Trim();//DELETE spare space
