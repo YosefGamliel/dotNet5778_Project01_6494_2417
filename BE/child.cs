@@ -34,12 +34,14 @@ namespace BE
                     throw new Exception();
 
                 if (FN) ;
-
+                ID = ID.Trim();//DELETE spare space
                 id = ID;
+                FN = FN.Trim();//DELETE spare space
                 firstName = FN;
                 motherId = MID;
                 birthday = birth;
                 specialNeeds = SN;
+                ISN = ISN.Trim();//DELETE spare space
                 infoSpecialNeeds = ISN;
             }
             

@@ -34,9 +34,11 @@ namespace BE
         #region
         public Mother(string ID, string LN, string FN, int PN, string addr, string area, bool[] need, int[,] hours, string nt)
         {
-            
+            ID = ID.Trim();//DELETE spare space
             id = ID;
+            LN = LN.Trim();//DELETE spare space
             lastName = LN;
+            FN = FN.Trim();//DELETE spare space
             firstName = FN;
             phoneNumber = PN;
             address = addr;
