@@ -15,7 +15,7 @@ namespace BE
         private bool signed;
         private float salaryPerHour;
         private float salaryPerMonth;
-        private string type;
+        private string typeSalary;
         private DateTime start;
         private DateTime end;
         #endregion
@@ -28,13 +28,14 @@ namespace BE
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
         public float SalaryPerMonth { get { return salaryPerMonth; } set { salaryPerMonth = value; } }
-        public string Type { get { return type; } set { type = value; } }
+        public string TypeSalary { get { return typeSalary; } set { typeSalary = value; } }
         public DateTime Start { get { return start; } set { start = value; } }
         public DateTime End { get { return end; } set { end = value; } }
         #endregion
         //finction:
         #region
-        public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM, string T, DateTime St, DateTime E)
+        public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM,
+            string T, DateTime St, DateTime E)
         {
             contractID = ConID;
             babySitterID = BID;
@@ -43,7 +44,7 @@ namespace BE
             signed = S;
             salaryPerHour = SPH;
             salaryPerMonth = SPM;
-            type = T;
+            typeSalary = T;
             start = St;
             end = E;
         }
@@ -54,10 +55,10 @@ namespace BE
             else str1 = "No";
             if (signed) str2 = "Yes";
             else str2 = "No";
-            return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " + childID +
-                "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 + "\nContract type: " + type
-                + "\nSalary per hour: " + salaryPerHour +"\nSalary per month: " + salaryPerMonth + "\nStarted to work in: " + start
-                + "\nFinshed to work in: " + end;
+            return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " +
+                childID + "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 +
+                "\nContract type: " + typeSalary + "\nSalary per hour: " + salaryPerHour + "\nSalary per month: "
+                + salaryPerMonth + "\nStarted to work in: " + start + "\nFinshed to work in: " + end;
         }
         #endregion
 

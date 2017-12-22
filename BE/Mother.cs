@@ -11,7 +11,7 @@ namespace BE
         private readonly string id;
         private string lastName;
         private string firstName;
-        private int phoneNumber;
+        private string phoneNumber;
         private string address;
         private string areaNanny;//where the mother search nanny
         private bool[] needNanny;
@@ -23,7 +23,7 @@ namespace BE
         public string Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
-        public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
+        public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
         public string Address { get { return address; } set { address = value; } }
         public string AreaNanny { get { return areaNanny; } set { areaNanny = value; } }
         public bool[] NeedNanny { get { return needNanny; } set { needNanny = value; } }
@@ -32,15 +32,12 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Mother(string ID, string LN, string FN, int PN, string addr, string area, bool[] need, int[,] hours, string nt)
+        public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need, int[,] hours, string nt)
         {
-            ID = ID.Trim();//DELETE spare space
-            id = ID;
-            LN = LN.Trim();//DELETE spare space
-            lastName = LN;
-            FN = FN.Trim();//DELETE spare space
-            firstName = FN;
-            phoneNumber = PN;
+            id = ID.Trim();//DELETE spare space
+            lastName = LN.Trim();//DELETE spare space
+            firstName = FN.Trim();//DELETE spare space
+            phoneNumber = PN.Trim();
             address = addr;
             areaNanny = area;
             needNanny = need;
@@ -66,6 +63,7 @@ namespace BE
                 + "\n" + NEED + "\n" + WH + "\nNotes: " + notes;
         }
         #endregion
+        public static 
     }
 }
 

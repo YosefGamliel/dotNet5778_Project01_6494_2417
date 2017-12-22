@@ -41,8 +41,6 @@ namespace BE
                 ISN = ISN.Trim();//DELETE spare space
                 infoSpecialNeeds = ISN;
             }
-
-
         }
         public override string ToString()
         {
