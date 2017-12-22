@@ -34,11 +34,13 @@ namespace BE
         #endregion
         //finction:
         #region
-        public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM, string T, DateTime St, DateTime E)
+        public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM, 
+            string T, DateTime St, DateTime E)
         {
             try
             {
-                if(!MyFunctions.CheckCoIDandDate(contractID,E,St)|| !MyFunctions.CheckID(BID)|| !MyFunctions.CheckID(ChID))
+                if(!MyFunctions.CheckCoIDandDate(contractID,E,St)|| !MyFunctions.CheckID(BID)|| 
+                    !MyFunctions.CheckID(ChID))
                     throw new Exception();
                 contractID = ConID;
                 babySitterID = BID;
@@ -59,10 +61,10 @@ namespace BE
             else str1 = "No";
             if (signed) str2 = "Yes";
             else str2 = "No";
-            return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " + childID +
-                "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 + "\nContract type: " + type
-                + "\nSalary per hour: " + salaryPerHour +"\nSalary per month: " + salaryPerMonth + "\nStarted to work in: " + start
-                + "\nFinshed to work in: " + end;
+            return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " +
+                childID + "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 +
+                "\nContract type: " + salaryType + "\nSalary per hour: " + salaryPerHour + "\nSalary per month: " +
+                salaryPerMonth + "\nStarted to work in: " + start + "\nFinshed to work in: " + end;
         }
         #endregion
 
