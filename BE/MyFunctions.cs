@@ -48,7 +48,7 @@ namespace BE
         {
             return (date < DateTime.Now);
         }
-        public static bool CheckCoIDandDate(string strID, DateTime E, DateTime St)
+        public static bool CheckContract(string strID, DateTime end, DateTime start)
         {
             bool flag = true;
             if (strID.Length != 8)
@@ -58,9 +58,23 @@ namespace BE
                 if (ch < '0' || ch > '9')
                     flag = false;
             }
-            return ((flag) &&((E > St) && (E >= DateTime.Now))) ;
+            return ((flag) &&(end > start) && (start >= DateTime.Now)) ;
         }
-       
-       
+        public static bool CheckPhoneNumber(string phoneNumber)
+        {
+            bool flag = true;
+            if (phoneNumber.Length != 10)
+                return false;
+            foreach (char digit in phoneNumber)
+            {
+                if (digit < '0' || digit > '9')
+                    flag = false;
+            }
+            return flag;
+        }
+        public static bool CheckAddress(string address)
+        {
+            return (address.))
+        }
     }
 }

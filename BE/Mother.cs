@@ -62,8 +62,7 @@ namespace BE
                 PhoneNumber + "\nAddress: " + Address + "\nAddress of area where she search a nanny: " + areaNanny
                 + "\n" + NEED + "\n" + WH + "\nNotes: " + notes;
         }
-        #endregion
-        public static 
+        #endregion 
     }
 }
 
