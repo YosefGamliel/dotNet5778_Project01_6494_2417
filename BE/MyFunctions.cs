@@ -6,18 +6,8 @@ namespace BE
 {
     class MyFunctions
     {
-        public static bool CheckID(string strID)
-        {
-            if (strID.Length != 9)
-                return false;
-            foreach (char ch in strID)
-            {
-                if (ch < '0' || ch > '9')
-                    return false;
-            }
-            return CheckIDNo(strID);
-        }
-        private static bool CheckIDNo(String strID)
+
+        public static bool CheckIDNo(String strID)
         {
             int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
             int count = 0;
@@ -33,6 +23,18 @@ namespace BE
             }
             return (count % 10 == 0);
         }
-
+        public static bool CheckName(string Name)
+        {
+            bool flag = true;
+            foreach (char item in Name)
+            {
+                if (!(item < 'z' && item > 'a') || (item < 'Z' && item > 'A') || (item ==' '))
+                {
+                    flag = false;
+                }
+                     
+            }
+            return flag;
+        }
     }
 }

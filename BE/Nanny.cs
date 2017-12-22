@@ -56,10 +56,14 @@ namespace BE
         public Nanny(string ID, string LN, string FN,int PN,string addr, DateTime birth,bool elev,int FB,int EY,int MK,
             int MinA,int MaxA,bool HR,float HS,float MS,bool[] WD,int[,] WH,bool VD,string recomm)
         {
+            ID = ID.Trim();//DELETE spare space
             id = ID;
+            LN = LN.Trim();//DELETE spare space
             lastName = LN;
+            FN = FN.Trim();//DELETE spare space
             firstName = FN;
             phoneNumber = PN;
+            addr = addr.Trim();//DELETE spare space
             address = addr;
             birthday = birth;
             elevator = elev;
@@ -75,6 +79,7 @@ namespace BE
             workHours = new int[6, 2];
             workHours = WH;
             vacationDaysITE = VD;
+            recomm = recomm.Trim();//DELETE spare space
             recommendations = recomm;
         }
         public override string ToString()
