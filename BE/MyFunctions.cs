@@ -44,5 +44,9 @@ namespace BE
             }
             return flag;
         }
+        public static bool CheckDatePast(DateTime date)
+        {
+            return (date < DateTime.Now);
+        }
     }
 }
