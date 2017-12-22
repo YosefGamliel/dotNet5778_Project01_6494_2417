@@ -30,7 +30,7 @@ namespace BE
         {
             try
             {
-                if (!CheckIDNo(ID))
+                if (!MyFunctions.CheckID(ID)||)
                     throw new Exception();
 
                 if (FN) ;
