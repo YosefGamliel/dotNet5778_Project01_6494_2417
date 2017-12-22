@@ -10,7 +10,7 @@ namespace BE
         #region
         private readonly string id;
         private string firstName;
-        private readonly int motherId;
+        private readonly string motherId;
         private readonly DateTime birthday;
         private bool specialNeeds;
         private string infoSpecialNeeds; //include note about the problems of the child
@@ -19,25 +19,31 @@ namespace BE
         #region
         public string Id { get { return id; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
-        public int MotheId { get { return motherId; } }
+        public string MotheId { get { return motherId; } }
         public DateTime Birthday { get { return birthday; } }
         public bool SpecialNeeds { get { return specialNeeds; } set { specialNeeds = value; } }
         public string InfoSpecialNeeds { get { return infoSpecialNeeds; } set { infoSpecialNeeds = value; } }
         #endregion
         //functions:
         #region
-        public Child(string ID, string FN, int MID, DateTime birth, bool SN, string ISN)
+        public Child(string ID, string FN, string MID, DateTime birth, bool SN, string ISN)
         {
-           
+            try
+            {
+                if (!CheckIDNo(ID))
+                    throw new Exception();
+
+                if (FN) ;
                 ID = ID.Trim();//DELETE spare space
                 id = ID;
-                FN = FN.Trim();//DELETE spare space
-                firstName = FN;
+                firstName = FN.Trim();//DELETE spare space
                 motherId = MID;
                 birthday = birth;
                 specialNeeds = SN;
                 ISN = ISN.Trim();//DELETE spare space
                 infoSpecialNeeds = ISN;
+            }
+            
         }
         public override string ToString()
         {
@@ -49,7 +55,7 @@ namespace BE
             return "Id: " + id + "\nFirst name: " + firstName + "\nMother id: " + motherId +
                 "\nBirthday: " + birthday + "\nSpecial needs: " + str1 + str2;
         }
-        
+
         #endregion
     }
 }
