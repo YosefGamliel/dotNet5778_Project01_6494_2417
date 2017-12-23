@@ -74,7 +74,17 @@ namespace BE
         }
         public static bool CheckAddress(string address)
         {
-            return (address.))
+            int count = 0;
+            foreach (char ch in address)
+            {
+                if (ch == ',')
+                    count++;
+            }
+            return (count == 2);
+        }
+        public static bool CheckArraySize(int[,] workHours, bool[] workDays)
+        {
+            return (workHours.GetLength(0) != 6 || workHours.GetLength(1) != 2 || workDays.GetLength(0) != 6);
         }
         public static bool CheckNanny(DateTime birhday, int experienceYears,int maxKids,int minAge,int maxAge,float hourSalary,float monthSalary)
         {
