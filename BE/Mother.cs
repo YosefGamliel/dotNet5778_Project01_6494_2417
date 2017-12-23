@@ -32,18 +32,26 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need, int[,] hours, string nt)
+        public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need, 
+            int[,] hours, string nt)
         {
-            id = ID.Trim();//DELETE spare space
-            lastName = LN.Trim();//DELETE spare space
-            firstName = FN.Trim();//DELETE spare space
-            phoneNumber = PN.Trim();
-            address = addr;
-            areaNanny = area;
-            needNanny = need;
-            workHours = new int[6, 2];
-            workHours = hours;
-            notes = nt;
+            try
+            {
+                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) || 
+                    !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckAddress(area) 
+                    || !MyFunctions.CheckArraySize(hours, need))
+                    throw new Exception();
+                id = ID.Trim();//DELETE spare space
+                lastName = LN.Trim();//DELETE spare space
+                firstName = FN.Trim();//DELETE spare space
+                phoneNumber = PN.Trim();
+                address = addr;
+                areaNanny = area;
+                needNanny = need;
+                workHours = new int[6, 2];
+                workHours = hours;
+                notes = nt;
+            }
         }
         public override string ToString()
         {
