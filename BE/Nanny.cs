@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    class Nanny
+    public class Nanny
     {
         //fields:
         #region

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DAL
 {
-    interface Idal
+    public interface Idal
     {
         void add(object obj);
         void remove(object obj);
