@@ -6,6 +6,6 @@ namespace DAL
 {
     class Dal_imp : Idal
     {
-        
+        void add()
     }
 }
