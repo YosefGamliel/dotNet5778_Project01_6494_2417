@@ -78,7 +78,7 @@ namespace BE
         }
         public static bool CheckNanny(DateTime birhday, int experienceYears,int maxKids,int minAge,int maxAge,float hourSalary,float monthSalary)
         {
-            if ((DateTime.Now.Year - birhday.Year) - 18 < experienceYears)//כי היא יכולה לעבוד מגיל 18
+            if ((DateTime.Now.Year - birhday.Year - 18) < experienceYears||maxKids)//כי היא יכולה לעבוד מגיל 18
                 return false;//יותר שנות ניסיון ממה שהיא יכולה
 
             return true;
