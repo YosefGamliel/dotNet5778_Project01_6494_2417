@@ -58,7 +58,7 @@ namespace BE
                 if (ch < '0' || ch > '9')
                     flag = false;
             }
-            return ((flag) &&(end > start) && (start >= DateTime.Now)) ;
+            return ((flag) && (end > start) && (start >= DateTime.Now));
         }
         public static bool CheckPhoneNumber(string phoneNumber)
         {
@@ -84,13 +84,14 @@ namespace BE
         }
         public static bool CheckArraySize(int[,] workHours, bool[] workDays)
         {
-            return (workHours.GetLength(0) != 6 || workHours.GetLength(1) != 2 || workDays.GetLength(0) != 6);
+            return (workHours.GetLength(0) == 6 && workHours.GetLength(1) == 2 && workDays.GetLength(0) == 6);
         }
-        public static bool CheckNanny(DateTime birhday, int experienceYears,int maxKids,int minAge,int maxAge,float hourSalary,float monthSalary)
+        public static bool CheckNanny(DateTime birhday, int experienceYears, int maxKids, int minAge, int maxAge, 
+            float hourSalary, float monthSalary)
         {
-            if ((DateTime.Now.Year - birhday.Year - 18) < experienceYears||maxKids<1||minAge<3||minAge>maxAge|| hourSalary<0||hourSalary<0)//כי היא יכולה לעבוד מגיל 18
+            if ((DateTime.Now.Year - birhday.Year - 18) < experienceYears || maxKids < 1 || minAge < 3 || minAge > maxAge 
+                || hourSalary < 0 || hourSalary < 0)//כי היא יכולה לעבוד מגיל 18
                 return false;//יותר שנות ניסיון ממה שהיא יכולה
-
             return true;
         }
     }
