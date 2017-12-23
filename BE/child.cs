@@ -52,7 +52,6 @@ namespace BE
             return "Id: " + id + "\nFirst name: " + firstName + "\nMother id: " + motherId +
                 "\nBirthday: " + birthday + "\nSpecial needs: " + str1 + str2;
         }
-
         #endregion
     }
 }
