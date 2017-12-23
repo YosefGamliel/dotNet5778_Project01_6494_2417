@@ -76,9 +76,9 @@ namespace BE
         {
             return (address.))
         }
-        public static bool CheckExperienceYears(DateTime BD, int EY)
+        public static bool CheckNanny(DateTime birhday, int experienceYears,int maxKids,int minAge,int maxAge,float hourSalary,float monthSalary)
         {
-            if ((DateTime.Now.Year - BD.Year) - 18 < EY)//כי היא יכולה לעבוד מגיל 18
+            if ((DateTime.Now.Year - birhday.Year) - 18 < experienceYears)//כי היא יכולה לעבוד מגיל 18
                 return false;//יותר שנות ניסיון ממה שהיא יכולה
 
             return true;

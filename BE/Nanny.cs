@@ -11,7 +11,7 @@ namespace BE
         private readonly string id;
         private string lastName;
         private string firstName;
-        private int phoneNumber;
+        private string phoneNumber;
         private string address;
         private readonly DateTime birthday;
         private bool elevator;
@@ -34,7 +34,7 @@ namespace BE
         public string Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
-        public int PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
+        public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
         public string Address { get { return address; } set { address = value; } }
         public DateTime Birthday { get { return birthday; } }
         public bool Elevator { get { return elevator; } set { elevator = value; } }
@@ -53,13 +53,14 @@ namespace BE
         #endregion
         //functions:
         #region
-        public Nanny(string ID, string LN, string FN,string PN,string addr, DateTime birth,bool elev,int FB,int EY,int MK,
-            int MinA,int MaxA,bool HR,float HS,float MS,bool[] WD,int[,] WH,bool VD,string recomm)
+        public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
+            int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, int[,] WH, bool VD, string recomm)
         {
             try
             {
-                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) || !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) ||
-                    !MyFunctions.CheckDatePast(birth) || !MyFunctions.CheckExperienceYears(birth, EY))
+                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
+                    !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckDatePast(birth)
+                    || !MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS))
                     throw new Exception();
                 ID = ID.Trim();//DELETE spare space
                 id = ID;
@@ -90,7 +91,7 @@ namespace BE
         }
         public override string ToString()
         {
-            string str1 = null, str2 = null,str3=null, WH = "The hours she works each day:", WORK = "Days when she works: ";
+            string str1 = null, str2 = null, str3 = null, WH = "The hours she works each day:", WORK = "Days when she works: ";
             if (elevator) str1 = "Yes";
             else str1 = "No";
             if (hourlyRate) str2 = "Yes";
@@ -116,5 +117,5 @@ namespace BE
         }
         #endregion
     }
-    
+
 }
