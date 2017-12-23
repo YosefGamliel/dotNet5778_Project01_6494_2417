@@ -4,8 +4,8 @@ using System.Text;
 
 namespace DAL
 {
-    class Dal_imp
+    class Dal_imp : Idal
     {
-
+        
     }
 }
