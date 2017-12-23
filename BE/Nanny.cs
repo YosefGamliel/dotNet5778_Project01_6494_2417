@@ -60,7 +60,7 @@ namespace BE
             {
                 if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
                     !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckDatePast(birth)
-                    || !MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS))
+                    || !MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS)|| !MyFunctions.CheckArraySize(WH, WD))
                     throw new Exception();
                 ID = ID.Trim();//DELETE spare space
                 id = ID;
