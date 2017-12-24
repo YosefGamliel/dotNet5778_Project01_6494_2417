@@ -9,6 +9,16 @@ namespace DAL
 {
     class Dal_imp : Idal
     {
-        void add()
+        public void add(Nanny nanny)
+        {
+            foreach (Nanny item in getList())
+            {
+
+            }
+        }
+        public List<Nanny> getList()
+        {
+            return DataSource.NannyList;
+        }
     }
 }
