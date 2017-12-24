@@ -49,6 +49,5 @@ namespace DAL
         List<Child> getChildList();
         #endregion
 
-
-    }
+   }
 }
