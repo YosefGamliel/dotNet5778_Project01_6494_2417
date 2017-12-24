@@ -34,15 +34,14 @@ namespace BE
         #endregion
         //finction:
         #region
-        public Contract(string ConID, string BID, string ChID, bool FM, bool S, float SPH, float SPM, 
+        public Contract(string BID, string ChID, bool FM, bool S, float SPH, float SPM, 
             string T, DateTime St, DateTime E)
         {
             try
             {
-                if (!MyFunctions.CheckContract(contractID, E, St) || !MyFunctions.CheckID(BID) ||
+                if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
                     !MyFunctions.CheckID(ChID))
                     throw new Exception();
-                contractID = ConID;
                 babySitterID = BID;
                 childID = ChID;
                 firsMeating = FM;

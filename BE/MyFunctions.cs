@@ -48,17 +48,11 @@ namespace BE
         {
             return (date < DateTime.Now);
         }
-        public static bool CheckContract(string strID, DateTime end, DateTime start)
+        public static bool CheckContract(DateTime end, DateTime start)
         {
-            bool flag = true;
-            if (strID.Length != 8)
-                return false;
-            foreach (char ch in strID)
-            {
-                if (ch < '0' || ch > '9')
-                    flag = false;
-            }
-            return ((flag) && (end > start) && (start >= DateTime.Now));
+            
+         
+            return ((end > start) && (start >= DateTime.Now));
         }
         public static bool CheckPhoneNumber(string phoneNumber)
         {
