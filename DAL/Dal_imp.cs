@@ -11,14 +11,23 @@ namespace DAL
     {
         public void add(Nanny nanny)
         {
-            foreach (Nanny item in getList())
+            try
             {
-
+                foreach (Nanny item in getList())
+                {
+                    if (item.Id == nanny.Id)
+                        throw new Exception();
+                }
+                getList().Add(nanny);
             }
         }
         public List<Nanny> getList()
         {
             return DataSource.NannyList;
+        }
+        public List<Contract> getList()
+        {
+
         }
     }
 }
