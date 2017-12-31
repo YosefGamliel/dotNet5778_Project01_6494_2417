@@ -121,19 +121,19 @@ namespace DAL
             try
             {
                 bool flag = true;
-                foreach (Child item in getChildList())
+                foreach (Child item in DataSource.ChildList)
                 {
                     if (item.Id == child.Id)
                         throw new Exception();
                 }
                 foreach (Mother item in getMotherList())
                 {
-                    if (item.Id == child.MotheId)
+                    if (item.Id == child.MotherId)
                         flag = false;
                 }
                 if (flag)
                     throw new Exception();
-                getChildList().Add(child);
+                DataSource.ChildList.Add(child);
             }
         }
         public List<Child> getChildList(Mother mother)
@@ -186,7 +186,7 @@ namespace DAL
             try
             {
                 bool flag = true;
-                foreach (Child item in getChildList())
+                foreach (Mother item in getMotherList())
                 {
                     if (item.Id==contract.ChildID)
                         flag=false;
