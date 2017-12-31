@@ -185,11 +185,17 @@ namespace DAL
         {
             try
             {
+                string motherID = null;
                 bool flag = true;
+                foreach (Child item in DataSource.ChildList)
+                {
+                    if (item.Id == contract.ChildID)
+                        motherID = item.MotherId;
+                }
                 foreach (Mother item in getMotherList())
                 {
-                    if (item.Id==contract.ChildID)
-                        flag=false;
+                    if (item.Id == motherID)
+                        flag = false;
                 }
                 if (flag)
                     throw new Exception();
