@@ -19,7 +19,7 @@ namespace BE
         #region
         public string Id { get { return id; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
-        public string MotheId { get { return motherId; } }
+        public string MotherId { get { return motherId; } }
         public DateTime Birthday { get { return birthday; } }
         public bool SpecialNeeds { get { return specialNeeds; } set { specialNeeds = value; } }
         public string InfoSpecialNeeds { get { return infoSpecialNeeds; } set { infoSpecialNeeds = value; } }

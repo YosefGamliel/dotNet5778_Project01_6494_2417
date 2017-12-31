@@ -13,7 +13,5 @@ namespace DS
         public static List<Nanny> NannyList;
         public static List<Contract> ContractList;
         public static List<Mother> MotherList;
-       
-
     }
 }

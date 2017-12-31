@@ -10,10 +10,7 @@ namespace DAL
     class Dal_imp : Idal
     {
         private static int contratNumber = 10000000;
-        /// <summary>
-        /// Nanny function
-        /// </summary>
-        /// <param name="nanny"></param>
+        // Nanny function
         #region
         public void addNanny(Nanny nanny)
         {
@@ -65,10 +62,7 @@ namespace DAL
 
         }
         #endregion
-        /// <summary>
-        /// Mother function
-        /// </summary>
-        /// <param name="mother"></param>
+        // Mother function
         #region
         public void addMother(Mother mother)
         {
@@ -142,23 +136,29 @@ namespace DAL
                 getChildList().Add(child);
             }
         }
-        public List<Child> getChildList()
+        public List<Child> getChildList(Mother mother)
         {
-            return DataSource.ChildList;
+            List<Child> childList = new List<Child>();
+            foreach (Child item in DataSource.ChildList)
+            {
+                if (item.MotherId == mother.Id)
+                    childList.Add(item);
+            }
+            return childList;
         }
         public void removeChild(Child child)
         {
             bool flag = true;
             try
             {
-                foreach (Child item in getChildList())
+                foreach (Child item in DataSource.ChildList)
                 {
                     if (item.Id == child.Id)//if find id to delete
                         flag = false;
                 }
                 if (flag)//id to delete not found throw Exception
                     throw new Exception();
-                getChildList().Remove(child);
+                DataSource.ChildList.Remove(child);
             }
         }
         void updateChild(Child child)
@@ -166,7 +166,7 @@ namespace DAL
             bool flag = true;
             try
             {
-                foreach (Child item in getChildList())
+                foreach (Child item in DataSource.ChildList)
                 {
                     if (item.Id == child.Id)//if find id to update
                         flag = false;
@@ -243,6 +243,5 @@ namespace DAL
 
         }
         #endregion
-
     }
 }
