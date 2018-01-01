@@ -18,9 +18,17 @@ namespace BL
 
         public void addContract(Contract contract)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
 
+                foreach (Child item in getChildList())
+                {
+                    if)
+                }
+                dal.addContract(contract);
+
+            }
+}
         public void addMother(Mother mom)
         {
             throw new NotImplementedException();
@@ -33,10 +41,10 @@ namespace BL
                 //בודק את גיל המטפלת
                 if (nanny.Birthday.Year - DateTime.Now.Year < 18)//שנים
                     throw new Exception("");
-                if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month < 0)//חודשים
+                if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month > 0)//חודשים
                     throw new Exception("");
                 if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month == 0)//ימים
-                    if (nanny.Birthday.Day - DateTime.Now.Day<0)
+                    if (nanny.Birthday.Day - DateTime.Now.Day > 0)
                         throw new Exception("");
 
                 dal.addNanny(nanny);
