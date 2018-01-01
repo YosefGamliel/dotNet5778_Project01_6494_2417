@@ -7,7 +7,7 @@ using DS;
 using BE;
 namespace DAL
 {
-    class Dal_imp : Idal
+    public class Dal_imp : Idal
     {
         private static int contratNumber = 10000000;
         // Nanny function
