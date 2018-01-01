@@ -28,8 +28,19 @@ namespace BL
 
         public void addNanny(Nanny nanny)
         {
-            if(nanny.Birthday.Year==)
-            dal.addNanny(nanny);
+            try
+            {
+                //בודק את גיל המטפלת
+                if (nanny.Birthday.Year - DateTime.Now.Year < 18)//שנים
+                    throw new Exception("");
+                if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month < 0)//חודשים
+                    throw new Exception("");
+                if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month == 0)//ימים
+                    if (nanny.Birthday.Day - DateTime.Now.Day<0)
+                        throw new Exception("");
+
+                dal.addNanny(nanny);
+            }
         }
 
         public List<Child> getChildList(Mother mother)
