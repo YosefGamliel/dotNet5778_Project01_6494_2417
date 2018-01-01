@@ -43,7 +43,7 @@ namespace DAL
                 getNannyList().Remove(nanny);
             }
         }
-        void updateNanny(Nanny nanny)
+        public void updateNanny(Nanny nanny)
         {
             bool flag = true;
             try
@@ -95,7 +95,7 @@ namespace DAL
                 getMotherList().Remove(mother);
             }
         }
-        void updateMother(Mother mother)
+        public void updateMother(Mother mother)
         {
             bool flag = true;
             try
@@ -161,7 +161,7 @@ namespace DAL
                 DataSource.ChildList.Remove(child);
             }
         }
-        void updateChild(Child child)
+        public void updateChild(Child child)
         {
             bool flag = true;
             try
@@ -231,7 +231,7 @@ namespace DAL
                 getContractList().Remove(contract);
             }
         }
-        void updateContract(Contract contract)
+        public void updateContract(Contract contract)
         {
             bool flag = true;
             try
