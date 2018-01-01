@@ -22,36 +22,23 @@ namespace BL
                 if (contract.BabySitterID == item.Id)
                 {
                     NannyWorkHour = item.WorkHours;//מוצא את העוזרת המדוברת
-                    break;
                 }
             }
             foreach (var item in MotherL)
             {
-                if (FindMother(contract.ChildID).id == item.Id)
+                if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)
                 {
                     MotherWorkHour = item.WorkHours;//מוצא את העוזרת המדוברת
-                    break;
                 }
             }
             for (int i = 0; i < 6; i++)
             {
-                commonWorkHour[i, 0] = max(MotherWorkHour[i, 0], NannyWorkHour[i, 0]);
+                commonWorkHour[i, 0] = MyFunctions.max(MotherWorkHour[i, 0], NannyWorkHour[i, 0]);
+                commonWorkHour[i, 1] = MyFunctions.min(MotherWorkHour[i, 1], NannyWorkHour[i, 1]);
             }
+            float A = 1.12;
+            A.
             
-        }
-        public float max(float a, float b)
-        {
-            if (a >= b)
-                return a;
-            else
-                return b;
-        }
-        public float min(float a, float b)
-        {
-            if (a <= b)
-                return a;
-            else
-                return b;
         }
     }
    
