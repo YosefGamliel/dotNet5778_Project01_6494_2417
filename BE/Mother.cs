@@ -15,7 +15,7 @@ namespace BE
         private string address;
         private string areaNanny;//where the mother search nanny
         private bool[] needNanny;
-        private int[,] workHours;
+        private float[,] workHours;
         private string notes;//Remarks or Requirements
         #endregion
         //properties:
@@ -28,12 +28,12 @@ namespace BE
         public string AreaNanny { get { return areaNanny; } set { areaNanny = value; } }
         public bool[] NeedNanny { get { return needNanny; } set { needNanny = value; } }
         public string Notes { get { return notes; } set { notes = value; } }
-        public int[,] WorkHours { get { return workHours; } set { workHours = value; } }
+        public float[,] WorkHours { get { return workHours; } set { workHours = value; } }
         #endregion
         //functions:
         #region
         public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need, 
-            int[,] hours, string nt)
+            float[,] hours, string nt)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace BE
                 address = addr;
                 areaNanny = area;
                 needNanny = need;
-                workHours = new int[6, 2];
+                workHours = new float[6, 2];
                 workHours = hours;
                 notes = nt;
             }

@@ -15,7 +15,7 @@ namespace BE
         private bool signed;
         private float salaryPerHour;
         private float salaryPerMonth;
-        private string salaryType;
+        private bool salaryType;//true perhour false per month
         private DateTime start;
         private DateTime end;
         #endregion
@@ -28,14 +28,14 @@ namespace BE
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
         public float SalaryPerMonth { get { return salaryPerMonth; } set { salaryPerMonth = value; } }
-        public string SalaryType { get { return salaryType; } set { salaryType = value; } }
+        public bool SalaryType { get { return salaryType; } set { salaryType = value; } }
         public DateTime Start { get { return start; } set { start = value; } }
         public DateTime End { get { return end; } set { end = value; } }
         #endregion
         //finction:
         #region
         public Contract(string BID, string ChID, bool FM, bool S, float SPH, float SPM, 
-            string T, DateTime St, DateTime E)
+            bool T, DateTime St, DateTime E)
         {
             try
             {

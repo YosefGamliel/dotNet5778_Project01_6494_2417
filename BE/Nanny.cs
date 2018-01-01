@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BE
 {
-    public class Nanny
+    public class Nanny 
     {
         //fields:
         #region
@@ -20,11 +20,11 @@ namespace BE
         private int maxKids;
         private int minAge;
         private int maxAge;
-        private bool hourlyRate;
+        private bool hourlyRate;//האם מאפשרת תעריף לפי שעה 
         private float hourSalary;
         private float monthSalary;
         private bool[] workDays;
-        private int[,] workHours;
+        private float[,] workHours;
         private bool vacationDaysITE; //if it's true - she gets her vacation days according to ITE (Ministry
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
@@ -47,14 +47,15 @@ namespace BE
         public float HourSalary { get { return hourSalary; } set { hourSalary = value; } }
         public float MonthSalary { get { return monthSalary; } set { monthSalary = value; } }
         public bool[] WorkDays { get { return workDays; } set { workDays = value; } }
-        public int[,] WorkHours { get { return WorkHours; } set { workHours = value; } }
+        public float[,] WorkHours { get { return WorkHours; } set { workHours = value; } }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         #endregion
         //functions:
         #region
+
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
-            int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, int[,] WH, bool VD, string recomm)
+            int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, float[,] WH, bool VD, string recomm)
         {
             try
             {
@@ -82,7 +83,7 @@ namespace BE
                 hourSalary = HS;
                 monthSalary = MS;
                 workDays = WD;
-                workHours = new int[6, 2];
+                workHours = new float[6, 2];
                 workHours = WH;
                 vacationDaysITE = VD;
                 recomm = recomm.Trim();//DELETE spare space
