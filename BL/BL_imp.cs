@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DAL;
+using DS;
 namespace BL
 {
     class BL_imp : IBL
@@ -21,10 +22,11 @@ namespace BL
             try
             {
 
-                foreach (Child item in getChildList())
+                foreach (Child item in DataSource.ChildList)
                 {
-                    if (item.Id==contract.ChildID)
-                        if (item.Birthday) 
+                    if (item.Id == contract.ChildID)
+                        if (DateTime < 3)
+                            throw new Exception();
                 }
                 dal.addContract(contract);
 
