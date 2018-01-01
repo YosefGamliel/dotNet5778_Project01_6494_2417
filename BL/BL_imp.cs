@@ -24,7 +24,7 @@ namespace BL
                 foreach (Child item in getChildList())
                 {
                     if (item.Id==contract.ChildID)
-                        if (item.Birthday)
+                        if (item.Birthday) 
                 }
                 dal.addContract(contract);
 
