@@ -21,12 +21,17 @@ namespace BL
         {
             try
             {
-
+                int countContracts = 0;
                 foreach (Child item in DataSource.ChildList)
                 {
                     if (item.Id == contract.ChildID)
-                        if (DateTime < 3)
+                        if (DateTime.Now.Month - item.Birthday.Month + (DateTime.Now.Year - item.Birthday.Year) * 12 < 3)
                             throw new Exception();
+                }
+                foreach (Contract item in getContractList())
+                {
+                    if (item.BabySitterID == contract.BabySitterID)
+                        countContracts++;
                 }
                 dal.addContract(contract);
 
