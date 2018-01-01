@@ -18,6 +18,7 @@ namespace BL
                 if (item.Id == childID)
                     motherID = item.MotherId;
             }
+
             foreach (Mother item in getMotherList())
             {
                 if (item.Id == motherID)
