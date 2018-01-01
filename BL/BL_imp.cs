@@ -23,7 +23,8 @@ namespace BL
 
                 foreach (Child item in getChildList())
                 {
-                    if)
+                    if (item.Id==contract.ChildID)
+                        if (item.Birthday)
                 }
                 dal.addContract(contract);
 
