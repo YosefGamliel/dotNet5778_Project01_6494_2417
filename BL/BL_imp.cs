@@ -36,6 +36,12 @@ namespace BL
         #region
         public void addContract(Contract contract)
         {
+            float[] sumOfHourinWeek = new float[6];
+            float sumOfHourinMonth = 0;
+            float[,] NannyWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
+            float[,] MotherWorkHour = new float[6, 2];//לשמור את השעות עבודה של האמא
+            float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
+            int sumOfChild = 0;
             int countContracts = 0;
             foreach (Child item in DataSource.ChildList)
             {
@@ -50,11 +56,45 @@ namespace BL
             }
             foreach (Nanny item in getNannyList())
             {
-                if (item.Id == contract.BabySitterID && )
+                if (item.Id == contract.BabySitterID && countContracts + 1 > item.MaxKids)
+                    throw new Exception();
             }
-            if (countContracts + 1 >)
-                dal.addContract(contract);
-
+            //calculating the payment
+            #region
+            foreach (var item in getMotherList()) //find the mother
+            {
+                if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)
+                {
+                    MotherWorkHour = item.WorkHours;//מוצא את העוזרת המדוברת
+                    sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
+                }
+            }
+            if (contract.SalaryType) //per hour
+            {
+                foreach (var item in getNannyList())
+                {
+                    if (contract.BabySitterID == item.Id)
+                    {
+                        NannyWorkHour = item.WorkHours;//מוצא את העוזרת המדוברת
+                    }
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    commonWorkHour[i, 0] = MyFunctions.max(MotherWorkHour[i, 0], NannyWorkHour[i, 0]);
+                    commonWorkHour[i, 1] = MyFunctions.min(MotherWorkHour[i, 1], NannyWorkHour[i, 1]);
+                    sumOfHourinWeek[i] = MyFunctions.dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
+                }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
+                for (int i = 0; i < 6; i++) //מחשב את המשכורת ע"י סכימה של שעות העבודה 
+                    sumOfHourinMonth = MyFunctions.sum(sumOfHourinMonth, sumOfHourinWeek[i]);
+                if (sumOfChild == 1)//no brothers-no discount
+                    contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour;
+                else
+                    contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour * (1 - 0.02 * (sumOfChild - 1));
+            }
+            else
+                contract.Payment = contract.SalaryPerMonth * (1 - 0.02 * (sumOfChild - 1));
+            #endregion
+            dal.addContract(contract);
         }
         public void removeContract(Contract contract)
         {
