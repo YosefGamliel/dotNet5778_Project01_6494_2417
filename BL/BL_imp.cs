@@ -74,16 +74,14 @@ namespace BL
             try
             {
                 //בודק את גיל המטפלת
-                if (nanny.Birthday.Year - DateTime.Now.Year < 18)//שנים
+                if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
                     throw new Exception("");
-                if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month > 0)//חודשים
+                else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
                     throw new Exception("");
-                if (nanny.Birthday.Year - DateTime.Now.Year == 18 && nanny.Birthday.Month - DateTime.Now.Month == 0)//ימים
-                    if (nanny.Birthday.Day - DateTime.Now.Day > 0)
-                        throw new Exception("");
-
+                else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0 
+                    && DateTime.Now.Day - nanny.Birthday.Day < 0)//ימים
+                    throw new Exception("");
                 dal.addNanny(nanny);
-
             }
         }
         public void removeNanny(Nanny nanny)
@@ -107,7 +105,7 @@ namespace BL
         }
         public void removeChild(Child child)
         {
-            
+
         }
         public void updateChild(Child child)
         {
