@@ -18,12 +18,16 @@ namespace BL
                 if (item.Id == childID)
                     motherID = item.MotherId;
             }
-            foreach (Mother item in getMotherList())
+            foreach (Mother item in DataSource.MotherList)
             {
                 if (item.Id == motherID)
                     return item;
             }
             return null;
+        }
+        public Nanny getNannyByChild(Child child)
+        {
+
         }
         public static float max(float a, float b)
         {
@@ -39,7 +43,7 @@ namespace BL
             else
                 return b;
         }
-        private static float sum(float beg, float end)
+        public static float sum(float beg, float end)
         {
             float _sum = (int)end + (int)beg;
             float min = end + beg - _sum;
@@ -52,7 +56,7 @@ namespace BL
 
             return _sum;
         }
-        private static float dif(float beg, float end)
+        public static float dif(float beg, float end)
         {
             float _dif = (int)end - (int)beg;
             float min = end -beg - _dif;
