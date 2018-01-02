@@ -11,13 +11,29 @@ namespace BL
     class BL_imp : IBL
     {
         Dal_imp dal = new Dal_imp();
-
-        
-        public void addChild(Child child)
+        // Mother function
+        #region
+        public void addMother(Mother mom)
         {
-            dal.addChild(child);
+            dal.addMother(mom);
         }
-
+        public void removeMother(Mother mom)
+        {
+            dal.removeMother(mom);
+            foreach (Child item in dal.getChildList(mom))
+                removeChild(item);
+        }
+        public void updateMother(Mother mom)
+        {
+            dal.updateMother(mom);
+        }
+        public List<Mother> getMotherList()
+        {
+            return dal.getMotherList();
+        }
+        #endregion
+        // Contract function
+        #region
         public void addContract(Contract contract)
         {
             try
@@ -37,12 +53,22 @@ namespace BL
                 dal.addContract(contract);
 
             }
-}
-        public void addMother(Mother mom)
+        }
+        public void removeContract(Contract contract)
         {
             throw new NotImplementedException();
         }
-
+        public void updateContract(Contract contract)
+        {
+            throw new NotImplementedException();
+        }
+        public List<Contract> getContractList()
+        {
+            return dal.getContractList();
+        }
+        #endregion
+        // Nanny function
+        #region
         public void addNanny(Nanny nanny)
         {
             try
@@ -60,65 +86,37 @@ namespace BL
 
             }
         }
-
-        public List<Child> getChildList(Mother mother)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Contract> getContractList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Mother> getMotherList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Nanny> getNannyList()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void removeChild(Child child)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void removeContract(Contract contract)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void removeMother(Mother mom)
-        {
-            throw new NotImplementedException();
-        }
-
         public void removeNanny(Nanny nanny)
         {
             throw new NotImplementedException();
         }
-
-        public void updateChild(Child child)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void updateContract(Contract contract)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void updateMother(Mother mom)
-        {
-            throw new NotImplementedException();
-        }
-
         public void updateNanny(Nanny nanny)
         {
             throw new NotImplementedException();
         }
+        public List<Nanny> getNannyList()
+        {
+            return dal.getNannyList();
+        }
+        #endregion
+        // child function
+        #region
+        public void addChild(Child child)
+        {
+            dal.addChild(child);
+        }
+        public void removeChild(Child child)
+        {
+            
+        }
+        public void updateChild(Child child)
+        {
+            dal.updateChild(child);
+        }
+        public List<Child> getChildList(Mother mother)
+        {
+            return dal.getChildList(mother);
+        }
+        #endregion
     }
 }
