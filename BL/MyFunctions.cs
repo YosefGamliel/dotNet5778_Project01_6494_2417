@@ -25,9 +25,24 @@ namespace BL
             }
             return null;
         }
-        public Nanny getNannyByChild(Child child)
+        private static string getNannyByChild(Child child)
         {
-
+            foreach (var item in DataSource.ContractList)
+            {
+               if( child.Id == item.ChildID)
+                    return item.BabySitterID;
+            }
+            return null;
+        }
+        public static int numOfChildInBabySitter(List<Child> brothers,string BabySitterId)
+        {
+            int sum = 0;
+            foreach (var item in brothers)
+            {
+                if (getNannyByChild(item) == BabySitterId)
+                    sum++;
+            }
+            return sum;
         }
         public static float max(float a, float b)
         {
