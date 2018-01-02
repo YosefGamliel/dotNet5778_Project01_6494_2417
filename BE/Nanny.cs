@@ -20,7 +20,7 @@ namespace BE
         private int maxKids;
         private int minAge;
         private int maxAge;
-        private bool hourlyRate;//האם מאפשרת תעריף לפי שעה 
+        private bool hourlyRate;//(האם מאפשרת תעריף לפי שעה(אמת זה לפי שעה  
         private float hourSalary;
         private float monthSalary;
         private bool[] workDays;

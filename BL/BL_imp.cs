@@ -36,23 +36,25 @@ namespace BL
         #region
         public void addContract(Contract contract)
         {
-            try
+            int countContracts = 0;
+            foreach (Child item in DataSource.ChildList)
             {
-                int countContracts = 0;
-                foreach (Child item in DataSource.ChildList)
-                {
-                    if (item.Id == contract.ChildID)
-                        if (DateTime.Now.Month - item.Birthday.Month + (DateTime.Now.Year - item.Birthday.Year) * 12 < 3)
-                            throw new Exception();
-                }
-                foreach (Contract item in getContractList())
-                {
-                    if (item.BabySitterID == contract.BabySitterID)
-                        countContracts++;
-                }
-                dal.addContract(contract);
-
+                if (item.Id == contract.ChildID && (DateTime.Now.Month - item.Birthday.Month + (DateTime.Now.Year - 
+                    item.Birthday.Year) * 12 < 3))
+                    throw new Exception();
             }
+            foreach (Contract item in getContractList())
+            {
+                if (item.BabySitterID == contract.BabySitterID)
+                    countContracts++;
+            }
+            foreach (Nanny item in getNannyList())
+            {
+                if (item.Id== contract.BabySitterID && )
+            }
+            if (countContracts+1>)
+            dal.addContract(contract);
+            
         }
         public void removeContract(Contract contract)
         {
@@ -78,9 +80,10 @@ namespace BL
                    ref\// throw new Exception("");
                 else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
                     throw new Exception("");
-                else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0 
+                else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0
                     && DateTime.Now.Day - nanny.Birthday.Day < 0)//ימים
                     throw new Exception("");
+
                 dal.addNanny(nanny);
             }
         }
