@@ -75,7 +75,7 @@ namespace BL
             {
                 //בודק את גיל המטפלת
                 if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
-                    throw new Exception("");
+                   ref\// throw new Exception("");
                 else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
                     throw new Exception("");
                 else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0 
