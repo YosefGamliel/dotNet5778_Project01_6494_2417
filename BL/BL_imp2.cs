@@ -36,10 +36,10 @@ namespace BL
                 commonWorkHour[i, 0] = MyFunctions.max(MotherWorkHour[i, 0], NannyWorkHour[i, 0]);
                 commonWorkHour[i, 1] = MyFunctions.min(MotherWorkHour[i, 1], NannyWorkHour[i, 1]);
             }
-            float A = 1.12;
-            A.
+            
             
         }
+  
     }
    
 }

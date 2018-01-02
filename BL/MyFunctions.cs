@@ -39,5 +39,31 @@ namespace BL
             else
                 return b;
         }
+        private static float sum(float beg, float end)
+        {
+            float _sum = (int)end + (int)beg;
+            float min = end + beg - _sum;
+            if (min > 0.60)
+            {
+                _sum += (float)(1 + (min - 0.60));
+            }
+            else
+                _sum += min;
+
+            return _sum;
+        }
+        private static float dif(float beg, float end)
+        {
+            float _dif = (int)end - (int)beg;
+            float min = end -beg - _dif;
+            if (min < 0.00)
+            {
+                _dif += (float)(-1 + (min + 0.60));
+            }
+            else
+                _dif += min;
+
+            return _dif;
+        }
     }
 }
