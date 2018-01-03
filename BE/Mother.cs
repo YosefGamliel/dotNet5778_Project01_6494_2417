@@ -6,8 +6,7 @@ namespace BE
 {
     public class Mother
     {
-        //fields:
-        #region
+        #region fields:
         private readonly string id;
         private string lastName;
         private string firstName;
@@ -18,8 +17,7 @@ namespace BE
         private float[,] workHours;
         private string notes;//Remarks or Requirements
         #endregion
-        //properties:
-        #region
+        #region properties:
         public string Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
@@ -30,28 +28,24 @@ namespace BE
         public string Notes { get { return notes; } set { notes = value; } }
         public float[,] WorkHours { get { return workHours; } set { workHours = value; } }
         #endregion
-        //functions:
-        #region
-        public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need, 
+        #region functions:
+        public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need,
             float[,] hours, string nt)
         {
-            try
-            {
-                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) || 
-                    !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckAddress(area) 
-                    || !MyFunctions.CheckArraySize(hours, need))
-                    throw new Exception();
-                id = ID.Trim();//DELETE spare space
-                lastName = LN.Trim();//DELETE spare space
-                firstName = FN.Trim();//DELETE spare space
-                phoneNumber = PN.Trim();
-                address = addr;
-                areaNanny = area;
-                needNanny = need;
-                workHours = new float[6, 2];
-                workHours = hours;
-                notes = nt;
-            }
+            if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
+                !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckAddress(area)
+                || !MyFunctions.CheckArraySize(hours, need))
+                throw new Exception();
+            id = ID.Trim();//DELETE spare space
+            lastName = LN.Trim();//DELETE spare space
+            firstName = FN.Trim();//DELETE spare space
+            phoneNumber = PN.Trim();
+            address = addr;
+            areaNanny = area;
+            needNanny = need;
+            workHours = new float[6, 2];
+            workHours = hours;
+            notes = nt;
         }
         public override string ToString()
         {

@@ -29,12 +29,12 @@ namespace BL
         {
             foreach (var item in DataSource.ContractList)
             {
-               if( child.Id == item.ChildID)
+                if (child.Id == item.ChildID)
                     return item.BabySitterID;
             }
             return null;
         }
-        public static int numOfChildInBabySitter(List<Child> brothers,string BabySitterId)
+        public static int numOfChildInBabySitter(List<Child> brothers, string BabySitterId)
         {
             int sum = 0;
             foreach (var item in brothers)
@@ -74,7 +74,7 @@ namespace BL
         public static float dif(float beg, float end)
         {
             float _dif = (int)end - (int)beg;
-            float min = end -beg - _dif;
+            float min = end - beg - _dif;
             if (min < 0.00)
             {
                 _dif += (float)(-1 + (min + 0.60));

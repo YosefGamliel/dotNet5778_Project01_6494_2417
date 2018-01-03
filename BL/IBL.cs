@@ -8,29 +8,26 @@ namespace BL
 {
     interface IBL
     {
-        // Mother function
-        #region
+        #region Mother function
+
         void addMother(Mother mom);
         void removeMother(Mother mom);
         void updateMother(Mother mom);
         List<Mother> getMotherList();
         #endregion
-        // Contract function
-        #region
+        #region Contract function
         void addContract(Contract contract);
         void removeContract(Contract contract);
         void updateContract(Contract contract);
         List<Contract> getContractList();
         #endregion
-        // Nanny function
-        #region
+        #region Nanny function
         void addNanny(Nanny nanny);
         void removeNanny(Nanny nanny);
         void updateNanny(Nanny nanny);
         List<Nanny> getNannyList();
         #endregion
-        // child function
-        #region
+        #region child function
         void addChild(Child child);
         void removeChild(Child child);
         void updateChild(Child child);

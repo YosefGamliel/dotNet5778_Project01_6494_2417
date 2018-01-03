@@ -14,15 +14,12 @@ namespace DAL
         #region
         public void addNanny(Nanny nanny)
         {
-            try
+            foreach (Nanny item in getNannyList())
             {
-                foreach (Nanny item in getNannyList())
-                {
-                    if (item.Id == nanny.Id)
-                        throw new Exception();
-                }
-                getNannyList().Add(nanny);
+                if (item.Id == nanny.Id)
+                    throw new Exception();
             }
+            getNannyList().Add(nanny);
         }
         public List<Nanny> getNannyList()
         {
@@ -31,52 +28,41 @@ namespace DAL
         public void removeNanny(Nanny nanny)
         {
             bool flag = true;
-            try
+            foreach (Nanny item in getNannyList())
             {
-                foreach (Nanny item in getNannyList())
+                if (item.Id == nanny.Id)//if find id to delete
                 {
-                    if (item.Id == nanny.Id)//if find id to delete
-                    {
-                        flag = false;
-                        getNannyList().Remove(item);
-                    }
+                    flag = false;
+                    getNannyList().Remove(item);
                 }
-                if (flag)//id to delete not found throw Exception
-                    throw new Exception();
             }
+            if (flag)//id to delete not found throw Exception
+                throw new Exception();
         }
         public void updateNanny(Nanny nanny)
         {
             bool flag = true;
-            try
+            foreach (Nanny item in getNannyList())
             {
-                foreach (Nanny item in getNannyList())
-                {
-                    if (item.Id == nanny.Id)//if find id to update
-                        flag = false;
-                }
-                if (flag)//id to update not found throw Exception
-                    throw new Exception();
-                removeNanny(nanny);//delete the old mother
-                addNanny(nanny);//insert the update mother
-
+                if (item.Id == nanny.Id)//if find id to update
+                    flag = false;
             }
-
+            if (flag)//id to update not found throw Exception
+                throw new Exception();
+            removeNanny(nanny);//delete the old mother
+            addNanny(nanny);//insert the update mother
         }
         #endregion
         // Mother function
         #region
         public void addMother(Mother mother)
         {
-            try
+            foreach (Mother item in getMotherList())
             {
-                foreach (Mother item in getMotherList())
-                {
-                    if (item.Id == mother.Id)
-                        throw new Exception();
-                }
-                getMotherList().Add(mother);
+                if (item.Id == mother.Id)
+                    throw new Exception();
             }
+            getMotherList().Add(mother);
         }
         public List<Mother> getMotherList()
         {
@@ -85,60 +71,49 @@ namespace DAL
         public void removeMother(Mother mother)
         {
             bool flag = true;
-            try
+            foreach (Mother item in getMotherList())
             {
-                foreach (Mother item in getMotherList())
+                if (item.Id == mother.Id)//if find id to delete
                 {
-                    if (item.Id == mother.Id)//if find id to delete
-                    {
-                        flag = false;
-                        getMotherList().Remove(item);
-                    }
+                    flag = false;
+                    getMotherList().Remove(item);
                 }
-                if (flag)//id to delete not found throw Exception
-                    throw new Exception();
             }
+            if (flag)//id to delete not found throw Exception
+                throw new Exception();
         }
         public void updateMother(Mother mother)
         {
             bool flag = true;
-            try
+            foreach (Mother item in getMotherList())
             {
-                foreach (Mother item in getMotherList())
-                {
-                    if (item.Id == mother.Id)//if find id to update
-                        flag = false;
-                }
-                if (flag)//id to update not found throw Exception
-                    throw new Exception();
-                removeMother(mother);//delete the old mother
-                addMother(mother);//insert the update mother
-
+                if (item.Id == mother.Id)//if find id to update
+                    flag = false;
             }
-
+            if (flag)//id to update not found throw Exception
+                throw new Exception();
+            removeMother(mother);//delete the old mother
+            addMother(mother);//insert the update mother
         }
         #endregion
         //Child function
         #region
         public void addChild(Child child)
         {
-            try
+            bool flag = true;
+            foreach (Child item in DataSource.ChildList)
             {
-                bool flag = true;
-                foreach (Child item in DataSource.ChildList)
-                {
-                    if (item.Id == child.Id)
-                        throw new Exception();
-                }
-                foreach (Mother item in getMotherList())
-                {
-                    if (item.Id == child.MotherId)
-                        flag = false;
-                }
-                if (flag)
+                if (item.Id == child.Id)
                     throw new Exception();
-                DataSource.ChildList.Add(child);
             }
+            foreach (Mother item in getMotherList())
+            {
+                if (item.Id == child.MotherId)
+                    flag = false;
+            }
+            if (flag)
+                throw new Exception();
+            DataSource.ChildList.Add(child);
         }
         public List<Child> getChildList(Mother mother)
         {
@@ -153,35 +128,29 @@ namespace DAL
         public void removeChild(Child child)
         {
             bool flag = true;
-            try
+            foreach (Child item in DataSource.ChildList)
             {
-                foreach (Child item in DataSource.ChildList)
+                if (item.Id == child.Id)//if find id to delete
                 {
-                    if (item.Id == child.Id)//if find id to delete
-                    {
-                        flag = false;
-                        DataSource.ChildList.Remove(child);
-                    }
+                    flag = false;
+                    DataSource.ChildList.Remove(child);
                 }
-                if (flag)//id to delete not found throw Exception
-                    throw new Exception();
             }
+            if (flag)//id to delete not found throw Exception
+                throw new Exception();
         }
         public void updateChild(Child child)
         {
             bool flag = true;
-            try
+            foreach (Child item in DataSource.ChildList)
             {
-                foreach (Child item in DataSource.ChildList)
-                {
-                    if (item.Id == child.Id)//if find id to update
-                        flag = false;
-                }
-                if (flag)//id to update not found throw Exception
-                    throw new Exception();
-                removeChild(child);//delete the old mother
-                addChild(child);//insert the update mother
+                if (item.Id == child.Id)//if find id to update
+                    flag = false;
             }
+            if (flag)//id to update not found throw Exception
+                throw new Exception();
+            removeChild(child);//delete the old mother
+            addChild(child);//insert the update mother
 
         }
         #endregion
@@ -189,34 +158,31 @@ namespace DAL
         #region
         public void addContract(Contract contract)
         {
-            try
+            string motherID = null;
+            bool flag = true;
+            foreach (Child item in DataSource.ChildList)
             {
-                string motherID = null;
-                bool flag = true;
-                foreach (Child item in DataSource.ChildList)
-                {
-                    if (item.Id == contract.ChildID)
-                        motherID = item.MotherId;
-                }
-                foreach (Mother item in getMotherList())
-                {
-                    if (item.Id == motherID)
-                        flag = false;
-                }
-                if (flag)
-                    throw new Exception();
-                flag = true;
-                foreach (Nanny item in getNannyList())
-                {
-                    if (item.Id == contract.BabySitterID)
-                        flag = false;
-                }
-                if (flag)
-                    throw new Exception();
-                contract.ContractID = contratNumber.ToString();
-                contratNumber++;
-                getContractList().Add(contract);
+                if (item.Id == contract.ChildID)
+                    motherID = item.MotherId;
             }
+            foreach (Mother item in getMotherList())
+            {
+                if (item.Id == motherID)
+                    flag = false;
+            }
+            if (flag)
+                throw new Exception();
+            flag = true;
+            foreach (Nanny item in getNannyList())
+            {
+                if (item.Id == contract.BabySitterID)
+                    flag = false;
+            }
+            if (flag)
+                throw new Exception();
+            contract.ContractID = contratNumber.ToString();
+            contratNumber++;
+            getContractList().Add(contract);
         }
         public List<Contract> getContractList()
         {
@@ -225,36 +191,29 @@ namespace DAL
         public void removeContract(Contract contract)
         {
             bool flag = true;
-            try
+            foreach (Contract item in getContractList())
             {
-                foreach (Contract item in getContractList())
+                if (item.ContractID == contract.ContractID)//if find id to delete
                 {
-                    if (item.ContractID == contract.ContractID)//if find id to delete
-                    {
-                        flag = false;
-                        getContractList().Remove(item);
-                    }
+                    flag = false;
+                    getContractList().Remove(item);
                 }
-                if (flag)//id to delete not found throw Exception
-                    throw new Exception();
             }
+            if (flag)//id to delete not found throw Exception
+                throw new Exception();
         }
         public void updateContract(Contract contract)
         {
             bool flag = true;
-            try
+            foreach (Contract item in getContractList())
             {
-                foreach (Contract item in getContractList())
-                {
-                    if (item.ContractID == contract.ContractID)//if find id to update
-                        flag = false;
-                }
-                if (flag)//id to update not found throw Exception
-                    throw new Exception();
-                removeContract(contract);//delete the old mother
-                addContract(contract);//insert the update mother
+                if (item.ContractID == contract.ContractID)//if find id to update
+                    flag = false;
             }
-
+            if (flag)//id to update not found throw Exception
+                throw new Exception();
+            removeContract(contract);//delete the old mother
+            addContract(contract);//insert the update mother
         }
         #endregion
     }

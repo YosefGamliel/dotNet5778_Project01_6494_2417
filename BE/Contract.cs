@@ -6,8 +6,7 @@ namespace BE
 {
     public class Contract
     {
-        //fields:
-        #region
+        #region fields:
         private string contractID;
         private readonly string babySitterID;
         private readonly string childID;
@@ -21,8 +20,7 @@ namespace BE
         private double payment;
         private float discount;
         #endregion
-        //properties:
-        #region
+        #region properties:
         public string ContractID { get { return contractID; } set { contractID = value; } }
         public string BabySitterID { get { return babySitterID; } }
         public string ChildID { get { return childID; } }
@@ -36,28 +34,25 @@ namespace BE
         public double Payment { get { return payment; } set { payment = value; } }
         public float Discount { get { return discount; } set { discount = value; } }
         #endregion
-        //finction:
-        #region
-        public Contract(string BID, string ChID, bool FM, bool S, float SPH, float SPM, 
-            bool T, DateTime St, DateTime E,double pay)
+        #region finction:
+        public Contract(string BID, string ChID, bool FM, bool S, float SPH, float SPM,
+            bool T, DateTime St, DateTime E, double pay)
         {
-            try
-            {
-                if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
-                    !MyFunctions.CheckID(ChID))
-                    throw new Exception();
-                babySitterID = BID;
-                childID = ChID;
-                firsMeating = FM;
-                signed = S;
-                salaryPerHour = SPH;
-                salaryPerMonth = SPM;
-                salaryType = T;
-                start = St;
-                end = E;
-                payment = pay;
-                discount = 0;
-            }
+            if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
+                !MyFunctions.CheckID(ChID))
+                throw new Exception();
+            babySitterID = BID;
+            childID = ChID;
+            firsMeating = FM;
+            signed = S;
+            salaryPerHour = SPH;
+            salaryPerMonth = SPM;
+            salaryType = T;
+            start = St;
+            end = E;
+            payment = pay;
+            discount = 0;
+
         }
         public override string ToString()
         {

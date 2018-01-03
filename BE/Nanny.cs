@@ -4,10 +4,9 @@ using System.Text;
 
 namespace BE
 {
-    public class Nanny 
+    public class Nanny
     {
-        //fields:
-        #region
+        #region fields:
         private readonly string id;
         private string lastName;
         private string firstName;
@@ -29,8 +28,7 @@ namespace BE
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
         #endregion
-        //properties:
-        #region
+        #region properties:
         public string Id { get { return id; } }
         public string LastName { get { return lastName; } set { lastName = value; } }
         public string FirstName { get { return firstName; } set { firstName = value; } }
@@ -51,44 +49,39 @@ namespace BE
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         #endregion
-        //functions:
-        #region
-
+        #region functions:
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
             int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, float[,] WH, bool VD, string recomm)
         {
-            try
-            {
-                if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
-                    !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckDatePast(birth)
-                    || !MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS)|| !MyFunctions.CheckArraySize(WH, WD))
-                    throw new Exception();
-                ID = ID.Trim();//DELETE spare space
-                id = ID;
-                LN = LN.Trim();//DELETE spare space
-                lastName = LN;
-                FN = FN.Trim();//DELETE spare space
-                firstName = FN;
-                phoneNumber = PN;
-                addr = addr.Trim();//DELETE spare space
-                address = addr;
-                birthday = birth;
-                elevator = elev;
-                floorBuilding = FB;
-                experienceYears = EY;
-                maxKids = MK;
-                minAge = MinA;
-                maxAge = MaxA;
-                hourlyRate = HR;
-                hourSalary = HS;
-                monthSalary = MS;
-                workDays = WD;
-                workHours = new float[6, 2];
-                workHours = WH;
-                vacationDaysITE = VD;
-                recomm = recomm.Trim();//DELETE spare space
-                recommendations = recomm;
-            }
+            if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
+                !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckDatePast(birth)
+                || !MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS) || !MyFunctions.CheckArraySize(WH, WD))
+                throw new Exception();
+            ID = ID.Trim();//DELETE spare space
+            id = ID;
+            LN = LN.Trim();//DELETE spare space
+            lastName = LN;
+            FN = FN.Trim();//DELETE spare space
+            firstName = FN;
+            phoneNumber = PN;
+            addr = addr.Trim();//DELETE spare space
+            address = addr;
+            birthday = birth;
+            elevator = elev;
+            floorBuilding = FB;
+            experienceYears = EY;
+            maxKids = MK;
+            minAge = MinA;
+            maxAge = MaxA;
+            hourlyRate = HR;
+            hourSalary = HS;
+            monthSalary = MS;
+            workDays = WD;
+            workHours = new float[6, 2];
+            workHours = WH;
+            vacationDaysITE = VD;
+            recomm = recomm.Trim();//DELETE spare space
+            recommendations = recomm;
         }
         public override string ToString()
         {

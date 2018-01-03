@@ -11,7 +11,6 @@ namespace BL
     class BL_imp : IBL
     {
         Dal_imp dal = new Dal_imp();
-        // Mother function
         #region MOTHER
         public void addMother(Mother mom)
         {
@@ -32,7 +31,6 @@ namespace BL
             return dal.getMotherList();
         }
         #endregion
-        // Contract function
         #region CONTRACT
         public void addContract(Contract contract)
         {
@@ -108,7 +106,7 @@ namespace BL
         }
         public void removeContract(Contract contract)
         {
-            
+
         }
         public void updateContract(Contract contract)
         {
@@ -119,22 +117,18 @@ namespace BL
             return dal.getContractList();
         }
         #endregion
-        // Nanny function
         #region NANNY
         public void addNanny(Nanny nanny)
         {
-            try
-            {
-                //בודק את גיל המטפלת
-                if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
-                    throw new Exception("");
-                if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
-                    throw new Exception("");
-                if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0
-                    && DateTime.Now.Day - nanny.Birthday.Day < 0)//ימים
-                    throw new Exception("");
-                dal.addNanny(nanny);
-            }
+            //בודק את גיל המטפלת
+            if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
+                throw new Exception("");
+            if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
+                throw new Exception("");
+            if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0
+                && DateTime.Now.Day - nanny.Birthday.Day < 0)//ימים
+                throw new Exception("");
+            dal.addNanny(nanny);
         }
         public void removeNanny(Nanny nanny)
         {
@@ -154,7 +148,6 @@ namespace BL
             return dal.getNannyList();
         }
         #endregion
-        // child function
         #region CHILD
         public void addChild(Child child)
         {
