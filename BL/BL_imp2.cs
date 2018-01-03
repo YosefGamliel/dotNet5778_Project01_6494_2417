@@ -7,7 +7,7 @@ using BE;
 using DAL;
 namespace BL
 {
-    class BL_imp2 : IBL
+    class BL_imp2 
     {
         Dal_imp dal = new Dal_imp();
         public void addContract(Contract contract)
