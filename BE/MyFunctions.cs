@@ -50,8 +50,6 @@ namespace BE
         }
         public static bool CheckContract(DateTime end, DateTime start)
         {
-
-
             return ((end > start) && (start >= DateTime.Now));
         }
         public static bool CheckPhoneNumber(string phoneNumber)
@@ -88,6 +86,7 @@ namespace BE
                 return false;//יותר שנות ניסיון ממה שהיא יכולה
             return true;
         }
+        
     }
 }
 

@@ -158,16 +158,15 @@ namespace DAL
         #region
         public void addContract(Contract contract)
         {
-            string motherID = null;
             bool flag = true;
             foreach (Child item in DataSource.ChildList)
             {
                 if (item.Id == contract.ChildID)
-                    motherID = item.MotherId;
+                    contract.MotherID = item.MotherId;//update Automatically by the child
             }
             foreach (Mother item in getMotherList())
             {
-                if (item.Id == motherID)
+                if (item.Id == contract.MotherID)//the mother not exist
                     flag = false;
             }
             if (flag)

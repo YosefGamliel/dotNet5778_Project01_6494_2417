@@ -10,6 +10,7 @@ namespace BE
         private string contractID;
         private readonly string babySitterID;
         private readonly string childID;
+        private  string motherID;
         private readonly bool firsMeating;
         private bool signed;
         private float salaryPerHour;
@@ -24,6 +25,7 @@ namespace BE
         public string ContractID { get { return contractID; } set { contractID = value; } }
         public string BabySitterID { get { return babySitterID; } }
         public string ChildID { get { return childID; } }
+        public string MotherID { get { return motherID; } set { motherID = value; } }
         public bool FirsMeating { get { return firsMeating; } }
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
@@ -39,10 +41,11 @@ namespace BE
             bool T, DateTime St, DateTime E, double pay)
         {
             if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
-                !MyFunctions.CheckID(ChID))
+                !MyFunctions.CheckID(ChID) )
                 throw new Exception();
             babySitterID = BID;
             childID = ChID;
+            // motherID = MID; update Automatically in DAL layer
             firsMeating = FM;
             signed = S;
             salaryPerHour = SPH;

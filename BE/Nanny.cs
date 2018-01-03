@@ -27,6 +27,7 @@ namespace BE
         private bool vacationDaysITE; //if it's true - she gets her vacation days according to ITE (Ministry
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
+        private int numOfKids;
         #endregion
         #region properties:
         public string Id { get { return id; } }
@@ -48,6 +49,7 @@ namespace BE
         public float[,] WorkHours { get { return WorkHours; } set { workHours = value; } }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
+        public int NumOfKids { get { return numOfKids; } set { numOfKids = value; } }
         #endregion
         #region functions:
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
@@ -82,6 +84,7 @@ namespace BE
             vacationDaysITE = VD;
             recomm = recomm.Trim();//DELETE spare space
             recommendations = recomm;
+            numOfKids = 0;
         }
         public override string ToString()
         {
@@ -107,7 +110,7 @@ namespace BE
                 + "\nAddress: " + address + "\nBirthday: " + birthday + "\nElevator in the building: " + str1 + "\nFloor in the building: "
                 + floorBuilding + "\nExperience years: " + experienceYears + "\nMaximum of kids: " + maxKids + "\nAges: from age " + minAge +
                 " months to age " + maxAge + " months\nHourly rate: " + str2 + "\nMonth salary: " + monthSalary + "\n" + WORK + "\n" + WH + "\n"
-                + str3 + "\nRecommendations" + recommendations;
+                + str3 + "\nRecommendations" + recommendations + "\nNum of kids: " + numOfKids;
         }
         #endregion
     }

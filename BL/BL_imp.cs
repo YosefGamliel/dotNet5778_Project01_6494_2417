@@ -24,7 +24,8 @@ namespace BL
         }
         public void updateMother(Mother mom)
         {
-            dal.updateMother(mom);
+            dal.removeMother(mom);
+            addMother(mom);
         }
         public List<Mother> getMotherList()
         {
@@ -39,7 +40,7 @@ namespace BL
             float[,] NannyWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
             float[,] MotherWorkHour = new float[6, 2];//לשמור את השעות עבודה של האמא
             float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
-            int sumOfChild = 0, countContracts = 0, childAge = 0;
+            int sumOfChild = 0, childAge = 0;
             foreach (Child item in DataSource.ChildList)
             {
                 if (item.Id == contract.ChildID)
@@ -49,21 +50,17 @@ namespace BL
                         throw new Exception();
                 }
             }
-            foreach (Contract item in getContractList())
-            {
-                if (item.BabySitterID == contract.BabySitterID)
-                    countContracts++;
-            }
             foreach (Nanny item in getNannyList())
             {
                 if (item.Id == contract.BabySitterID)
                 {
-                    if (countContracts + 1 > item.MaxKids)
+                    if (item.NumOfKids + 1 > item.MaxKids)
                         throw new Exception();
                     if (childAge < item.MinAge)
                         throw new Exception();
                     if (childAge > item.MaxAge)
                         throw new Exception();
+                    item.NumOfKids++;
                 }
             }
             //calculating the payment
@@ -72,10 +69,12 @@ namespace BL
             {
                 if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)
                 {
-                    MotherWorkHour = item.WorkHours;//מוצא את העוזרת המדוברת
+                    MotherWorkHour = item.WorkHours;//מוצא את האמא המדוברת
+                    //using in item (mother )to find how many brothers with same nanny
                     sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
                 }
             }
+            contract.Discount = (float)( 1 - 0.02 * (sumOfChild - 1));
             if (contract.SalaryType) //per hour
             {
                 foreach (var item in getNannyList())
@@ -96,17 +95,24 @@ namespace BL
                 if (sumOfChild == 1)//no brothers-no discount
                     contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour;
                 else
-                    contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour * (1 - 0.02 * (sumOfChild - 1));
+                    contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour * contract.Discount;
             }
             else
-                contract.Payment = contract.SalaryPerMonth * (1 - 0.02 * (sumOfChild - 1));
+                contract.Payment = contract.SalaryPerMonth * contract.Discount;
             #endregion
             contract.Signed = true;
             dal.addContract(contract);
         }
         public void removeContract(Contract contract)
         {
-
+            int sumOfChild = 0;
+            foreach (var item in getMotherList()) //find the mother
+            {
+                if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)
+                    //using in item (mother )to find how many brothers with same nanny
+                    sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
+            }
+            
         }
         public void updateContract(Contract contract)
         {
@@ -141,7 +147,10 @@ namespace BL
         }
         public void updateNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            dal.removeNanny(nanny);
+            addNanny(nanny);
+            if (nanny.NumOfKids > nanny.MaxKids)
+                throw new Exception();
         }
         public List<Nanny> getNannyList()
         {
@@ -164,7 +173,8 @@ namespace BL
         }
         public void updateChild(Child child)
         {
-            dal.updateChild(child);
+            dal.removeChild(child);
+            addChild(child);
         }
         public List<Child> getChildList(Mother mother)
         {
