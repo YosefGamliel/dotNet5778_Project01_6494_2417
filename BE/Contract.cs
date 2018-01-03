@@ -19,6 +19,7 @@ namespace BE
         private DateTime start;
         private DateTime end;
         private double payment;
+        private float discount;
         #endregion
         //properties:
         #region
@@ -32,8 +33,8 @@ namespace BE
         public bool SalaryType { get { return salaryType; } set { salaryType = value; } }
         public DateTime Start { get { return start; } set { start = value; } }
         public DateTime End { get { return end; } set { end = value; } }
-
         public double Payment { get { return payment; } set { payment = value; } }
+        public float Discount { get { return discount; } set { discount = value; } }
         #endregion
         //finction:
         #region
@@ -55,6 +56,7 @@ namespace BE
                 start = St;
                 end = E;
                 payment = pay;
+                discount = 0;
             }
         }
         public override string ToString()
@@ -67,7 +69,8 @@ namespace BE
             return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " +
                 childID + "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 +
                 "\nContract type: " + salaryType + "\nSalary per hour: " + salaryPerHour + "\nSalary per month: " +
-                salaryPerMonth + "\nStarted to work in: " + start + "\nFinshed to work in: " + end + "\nPayment: " + payment;
+                salaryPerMonth + "\nStarted to work in: " + start + "\nFinshed to work in: " + end + "\nPayment: " +
+                payment + "\nDiscount for the nanny: " + discount;
         }
         #endregion
 

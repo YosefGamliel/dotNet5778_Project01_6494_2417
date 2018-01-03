@@ -12,16 +12,16 @@ namespace BL
     {
         Dal_imp dal = new Dal_imp();
         // Mother function
-        #region
+        #region MOTHER
         public void addMother(Mother mom)
         {
             dal.addMother(mom);
         }
         public void removeMother(Mother mom)
         {
-            dal.removeMother(mom);
             foreach (Child item in dal.getChildList(mom))
                 removeChild(item);
+            dal.removeMother(mom);
         }
         public void updateMother(Mother mom)
         {
@@ -33,7 +33,7 @@ namespace BL
         }
         #endregion
         // Contract function
-        #region
+        #region CONTRACT
         public void addContract(Contract contract)
         {
             float[] sumOfHourinWeek = new float[6];
@@ -41,13 +41,15 @@ namespace BL
             float[,] NannyWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
             float[,] MotherWorkHour = new float[6, 2];//לשמור את השעות עבודה של האמא
             float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
-            int sumOfChild = 0;
-            int countContracts = 0;
+            int sumOfChild = 0, countContracts = 0, childAge = 0;
             foreach (Child item in DataSource.ChildList)
             {
-                if (item.Id == contract.ChildID && (DateTime.Now.Month - item.Birthday.Month + (DateTime.Now.Year -
-                    item.Birthday.Year) * 12 < 3))
-                    throw new Exception();
+                if (item.Id == contract.ChildID)
+                {
+                    childAge = DateTime.Now.Month - item.Birthday.Month + (DateTime.Now.Year - item.Birthday.Year) * 12;
+                    if (childAge < 3)
+                        throw new Exception();
+                }
             }
             foreach (Contract item in getContractList())
             {
@@ -56,8 +58,15 @@ namespace BL
             }
             foreach (Nanny item in getNannyList())
             {
-                if (item.Id == contract.BabySitterID && countContracts + 1 > item.MaxKids)
-                    throw new Exception();
+                if (item.Id == contract.BabySitterID)
+                {
+                    if (countContracts + 1 > item.MaxKids)
+                        throw new Exception();
+                    if (childAge < item.MinAge)
+                        throw new Exception();
+                    if (childAge > item.MaxAge)
+                        throw new Exception();
+                }
             }
             //calculating the payment
             #region
@@ -94,11 +103,12 @@ namespace BL
             else
                 contract.Payment = contract.SalaryPerMonth * (1 - 0.02 * (sumOfChild - 1));
             #endregion
+            contract.Signed = true;
             dal.addContract(contract);
         }
         public void removeContract(Contract contract)
         {
-            throw new NotImplementedException();
+            
         }
         public void updateContract(Contract contract)
         {
@@ -110,7 +120,7 @@ namespace BL
         }
         #endregion
         // Nanny function
-        #region
+        #region NANNY
         public void addNanny(Nanny nanny)
         {
             try
@@ -118,18 +128,22 @@ namespace BL
                 //בודק את גיל המטפלת
                 if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
                     throw new Exception("");
-                else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
+                if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
                     throw new Exception("");
-                else if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0
+                if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0
                     && DateTime.Now.Day - nanny.Birthday.Day < 0)//ימים
                     throw new Exception("");
-
                 dal.addNanny(nanny);
             }
         }
         public void removeNanny(Nanny nanny)
         {
-            throw new NotImplementedException();
+            foreach (Contract item in getContractList())
+            {
+                if (item.BabySitterID == nanny.Id)
+                    removeContract(item);
+            }
+            dal.removeNanny(nanny);
         }
         public void updateNanny(Nanny nanny)
         {
@@ -141,14 +155,19 @@ namespace BL
         }
         #endregion
         // child function
-        #region
+        #region CHILD
         public void addChild(Child child)
         {
             dal.addChild(child);
         }
         public void removeChild(Child child)
         {
-
+            foreach (Contract item in getContractList())
+            {
+                if (item.ChildID == child.Id)
+                    removeContract(item);
+            }
+            dal.removeChild(child);
         }
         public void updateChild(Child child)
         {

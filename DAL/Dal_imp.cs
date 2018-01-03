@@ -36,11 +36,13 @@ namespace DAL
                 foreach (Nanny item in getNannyList())
                 {
                     if (item.Id == nanny.Id)//if find id to delete
+                    {
                         flag = false;
+                        getNannyList().Remove(item);
+                    }
                 }
                 if (flag)//id to delete not found throw Exception
                     throw new Exception();
-                getNannyList().Remove(nanny);
             }
         }
         public void updateNanny(Nanny nanny)
@@ -88,11 +90,13 @@ namespace DAL
                 foreach (Mother item in getMotherList())
                 {
                     if (item.Id == mother.Id)//if find id to delete
-                        flag =false;
+                    {
+                        flag = false;
+                        getMotherList().Remove(item);
+                    }
                 }
                 if (flag)//id to delete not found throw Exception
                     throw new Exception();
-                getMotherList().Remove(mother);
             }
         }
         public void updateMother(Mother mother)
@@ -154,11 +158,13 @@ namespace DAL
                 foreach (Child item in DataSource.ChildList)
                 {
                     if (item.Id == child.Id)//if find id to delete
+                    {
                         flag = false;
+                        DataSource.ChildList.Remove(child);
+                    }
                 }
                 if (flag)//id to delete not found throw Exception
                     throw new Exception();
-                DataSource.ChildList.Remove(child);
             }
         }
         public void updateChild(Child child)
@@ -224,11 +230,13 @@ namespace DAL
                 foreach (Contract item in getContractList())
                 {
                     if (item.ContractID == contract.ContractID)//if find id to delete
+                    {
                         flag = false;
+                        getContractList().Remove(item);
+                    }
                 }
                 if (flag)//id to delete not found throw Exception
                     throw new Exception();
-                getContractList().Remove(contract);
             }
         }
         public void updateContract(Contract contract)
