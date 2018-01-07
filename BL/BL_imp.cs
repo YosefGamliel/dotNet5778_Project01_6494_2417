@@ -52,6 +52,7 @@ namespace BL
             }
             foreach (Nanny item in getNannyList())
             {
+                //check max kids,if OK-add one to Nanny numOfkIDS.
                 if (item.Id == contract.BabySitterID)
                 {
                     if (item.NumOfKids + 1 > item.MaxKids)
@@ -74,7 +75,7 @@ namespace BL
                     sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
                 }
             }
-            contract.Discount = (float)( 1 - 0.02 * (sumOfChild - 1));
+            contract.Discount = (float)(0.02 * (sumOfChild - 1));
             if (contract.SalaryType) //per hour
             {
                 foreach (var item in getNannyList())
@@ -95,10 +96,10 @@ namespace BL
                 if (sumOfChild == 1)//no brothers-no discount
                     contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour;
                 else
-                    contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour * contract.Discount;
+                    contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour * (1 - contract.Discount);
             }
             else
-                contract.Payment = contract.SalaryPerMonth * contract.Discount;
+                contract.Payment = contract.SalaryPerMonth * (1 - contract.Discount);
             #endregion
             contract.Signed = true;
             dal.addContract(contract);
@@ -106,17 +107,31 @@ namespace BL
         public void removeContract(Contract contract)
         {
             int sumOfChild = 0;
+            #region SUMOFCHILD
             foreach (var item in getMotherList()) //find the mother
             {
                 if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)
                     //using in item (mother )to find how many brothers with same nanny
                     sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
             }
-            
+            #endregion
+            //update the discount of the other brothers and their new payment
+            foreach (var item in MyFunctions.GetContractsBy(x => x.MotherID == contract.MotherID))//lambda
+            {
+                if (item.Discount > contract.Discount)
+                {
+                    item.Payment /= (1 - item.Discount);
+                    item.Discount -= (float)0.02;
+                    item.Payment *= (1 - item.Discount);
+                }
+                MyFunctions.getNannyById(contract.BabySitterID).NumOfKids -= 1;
+            }
+            dal.removeContract(contract);//delete
         }
         public void updateContract(Contract contract)
         {
-            throw new NotImplementedException();
+            removeContract(contract);
+            addContract(contract);
         }
         public List<Contract> getContractList()
         {

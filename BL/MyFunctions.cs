@@ -8,7 +8,7 @@ using DAL;
 using DS;
 namespace BL
 {
-    public delegate object condition(object cond);
+   // public delegate bool condition(object cond);
     class MyFunctions
     {
         public static Mother FindMother(string childID)
@@ -85,14 +85,36 @@ namespace BL
 
             return _dif;
         }
-        public static List<Contract> GetContractsBy(List<Contract> contractL,condition cond)
+        public static List<Contract> GetContractsBy(Func<Contract,bool> cond)
         {
             List<Contract> list = new List<Contract>();
-            foreach (Contract item in contractL)
+            var ContractByCondition = from ch in DataSource.ContractList
+                                where cond(ch)
+                                select ch;
+            foreach (var item in ContractByCondition)
+                list.Add(item);
+            return list;
+        }
+        public static int NumOfContractsBy(Func<Contract, bool> cond)
+        {
+            int SumOfContract = 0;
+            //add to ContractByCondition all contract that standing in cond
+            var ContractByCondition = from ch in DataSource.ContractList
+                                      where cond(ch)
+                                      select ch;
+            foreach (var item in ContractByCondition)
+                SumOfContract++;
+            return SumOfContract;
+        }
+        public static Nanny getNannyById(string id)
+        {
+            foreach (var item in DataSource.NannyList)
             {
-                if (cond)
+                if (id == item.Id)
+                    return item;
 
             }
+            return null;
         }
     }
 }
