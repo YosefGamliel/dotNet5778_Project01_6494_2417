@@ -8,6 +8,7 @@ using DAL;
 using DS;
 namespace BL
 {
+    public delegate object condition(object cond);
     class MyFunctions
     {
         public static Mother FindMother(string childID)
@@ -83,6 +84,15 @@ namespace BL
                 _dif += min;
 
             return _dif;
+        }
+        public static List<Contract> GetContractsBy(List<Contract> contractL,condition cond)
+        {
+            List<Contract> list = new List<Contract>();
+            foreach (Contract item in contractL)
+            {
+                if (cond)
+
+            }
         }
     }
 }
