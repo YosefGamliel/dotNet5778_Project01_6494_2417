@@ -135,7 +135,7 @@ namespace BL
             return leg.Distance.Value;
         }
         //match nany by hour;
-        public List<Nanny> InitialCoordination(List<Nanny> NannyL, Mother mother)
+        public List<Nanny> InitialCoordination(Mother mother)
         {
             bool flag = true;
             List<Nanny> MatchNanny = new List<Nanny>();
@@ -157,7 +157,6 @@ namespace BL
                            && item.WorkHours[i, 1] >= mother.WorkHours[i, 1])) //end working after or or exactly when the mother need.
                             flag = false;
                     }
-
                 }
                 if (flag)
                     MatchNanny.Add(item);
@@ -165,11 +164,89 @@ namespace BL
             }
             return MatchNanny;
         }
-        public List<Nanny> NannyByDistance(List<Nanny> NannyL, Mother mother)
+        public List<Nanny> NannyByDistance(Mother mother, bool order = false)
         {
-
+            List<Nanny> NannyL = new List<Nanny>();
+            //they want the list sorted
+            if (order)
+            {
+                var closest = from n in DataSource.NannyList
+                              let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
+                              orderby distance
+                              group n by distance into nannyList
+                              select new { distance = nannyList.Key, orderNanny = nannyList };
+                foreach (var groop in closest)
+                {
+                    foreach (var item in groop.orderNanny)
+                    {
+                        NannyL.Add(item);
+                    }
+                }
+            }
+            //they does not want the list sorted
+            else
+            {
+                var closest = from n in DataSource.NannyList
+                              let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
+                              group n by distance into nannyList
+                              select new { distance = nannyList.Key, orderNanny = nannyList };
+                foreach (var groop in closest)
+                {
+                    foreach (var item in groop.orderNanny)
+                    {
+                        NannyL.Add(item);
+                    }
+                }
+            }
+            return NannyL;
         }
+        /// <summary>
+        /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
+        /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
+        /// ואז אני ממיין לכל מטפלת למי יש הכי הרבה שעות עבודה משותפות ומחזיר 
+        /// את החמש בעלות הכי הרבה שעות עבודה
+        /// </summary>
+        /// <param name="mother"></param>
+        /// <returns></returns>
+        public List<Nanny> FiveclosetNanny(Mother mother)
+        {
+            List<Nanny> bestFive = new List<Nanny>();
+            var closest = from n in DataSource.NannyList
+                          let CommonHour = grade(n, mother)
+                          orderby CommonHour descending
+                          select n;
+            int i = 0;
+            foreach (var nanny in closest)
+            {
+                //אם יש יותר מחמש נאני לא יכניס את השאר
+                //ומטפל גם באפשרות שיש פחות מחמש נאני
+                if (i < 5)
+                {
+                    bestFive.Add(nanny);
+                    ++i;
+                }
 
+            }
+            return bestFive;
+        }
+        private float grade(Nanny nanny, Mother mom)
+        {
+            float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה המשותפות
+            float[] sumOfHourinWeek = new float[6];
+            float TotalCommonHour = 0;
+
+            for (int i = 0; i < 6; i++)
+            {
+                commonWorkHour[i, 0] = MyFunctions.max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
+                commonWorkHour[i, 1] = MyFunctions.min(mom.WorkHours[i, 1], nanny.WorkHours[i, 1]);
+                sumOfHourinWeek[i] = MyFunctions.dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
+            }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
+            for (int i = 0; i < 6; i++)
+            {
+                TotalCommonHour += sumOfHourinWeek[i];
+            }
+            return TotalCommonHour;
+        }
     }
 }
 
