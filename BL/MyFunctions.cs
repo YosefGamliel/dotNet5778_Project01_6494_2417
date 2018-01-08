@@ -231,6 +231,7 @@ namespace BL
         }
         private float grade(Nanny nanny, Mother mom)
         {
+            int a;
             float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה המשותפות
             float[] sumOfHourinWeek = new float[6];
             float TotalCommonHour = 0;
