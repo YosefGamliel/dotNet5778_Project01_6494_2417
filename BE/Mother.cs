@@ -12,7 +12,7 @@ namespace BE
         private string firstName;
         private string phoneNumber;
         private string address;
-        private string areaNanny;//where the mother search nanny
+        private string areaNanny;//where the mother search Babysitter
         private bool[] needNanny;
         private float[,] workHours;
         private string notes;//Remarks or Requirements
