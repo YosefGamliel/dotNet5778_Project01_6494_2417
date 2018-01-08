@@ -138,7 +138,7 @@ namespace BL
         public List<Nanny> InitialCoordination(List<Nanny> NannyL, Mother mother)
         {
             bool flag = true;
-            List<Nanny> MatchNanny = new List<Nanny>;
+            List<Nanny> MatchNanny = new List<Nanny>();
             foreach (var item in DataSource.NannyList)
             {
                 //check the days
@@ -157,12 +157,17 @@ namespace BL
                            && item.WorkHours[i, 1] >= mother.WorkHours[i, 1])) //end working after or or exactly when the mother need.
                             flag = false;
                     }
+
                 }
                 if (flag)
                     MatchNanny.Add(item);
                 flag = true;//check the next nanny
             }
             return MatchNanny;
+        }
+        public List<Nanny> NannyByDistance(List<Nanny> NannyL, Mother mother)
+        {
+
         }
 
     }
