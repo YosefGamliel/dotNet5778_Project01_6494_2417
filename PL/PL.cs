@@ -102,7 +102,7 @@ namespace PL
                 else
                 {
                     hours_of_work[i, 0] = (float)00.00;
-                    hours_of_work[i, 1] = (float)00:00;
+                    hours_of_work[i, 1] = (float)00.00;
                 }
             }
             Console.WriteLine("Enter if gets days off the the education ministry:");
