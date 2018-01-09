@@ -66,6 +66,15 @@ namespace BL
             }
             //calculating the payment
             #region
+            foreach (var item in getNannyList())
+            {
+                if (item.Id==contract.BabySitterID)
+                {
+                    contract.SalaryPerHour = item.HourSalary;
+                    contract.SalaryPerMonth = item.MonthSalary;
+                    contract.SalaryType = item.HourlyRate;
+                }
+            }
             foreach (var item in getMotherList()) //find the mother
             {
                 if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)

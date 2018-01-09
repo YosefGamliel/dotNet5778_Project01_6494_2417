@@ -109,7 +109,7 @@ namespace PL
             bool days_off_by_education_ministry = yes_or_no(Convert.ToChar(Console.ReadLine()));
             Console.WriteLine("Enter recomondations:");
             string recommendations = Console.ReadLine();
-            BE.Nanny the_nanny = new BE.Nanny(id, family_name, name, telephone , address
+            BE.Nanny the_nanny = new BE.Nanny(id, family_name, name, telephone , address,
                bitrh_date, has_elevator, floor, years_of_practice, max_number_childern, min_age
                 , max_age, works_by_hours, rate_per_hour, rate_per_month, days_of_work, hours_of_work, days_off_by_education_ministry, recommendations);
             bl.addNanny(the_nanny);
@@ -141,7 +141,40 @@ namespace PL
             DateTime end = Convert.ToDateTime(Console.ReadLine());      
           
         }
+        private static void Add_Mother()
+        {
+            Console.WriteLine("Enter Mother ID:");
+            string motherID = Console.ReadLine();
+            Console.WriteLine("Enter Mother first name:");
+            string motherFirstName = Console.ReadLine();
+            Console.WriteLine("Enter Mother last name:");
+            Console.WriteLine("Enter Mother phone nunber:");
+            string motherPhoneNumber = Console.ReadLine();
+            Console.WriteLine("Enter Mother address:");
+            string motherAddress = Console.ReadLine();
+            Console.WriteLine("Enter area address of nanny for mother:");
+            string motherAreaNanny = Console.ReadLine();
+            Console.WriteLine("Enter y/n for days when needs nanny: (y-yes,n-no)");
+            bool[] motherNeedNanny=new bool[6];
+            for (int i=0;i<6;++i)
+            {
+                Console.WriteLine(" day: {0}",i+1);
+                motherNeedNanny[i] = yes_or_no(Convert.ToChar(Console.ReadLine()));
+            }
 
+            Console.WriteLine("Enter start hour and end hour for days when needs nanny: (xx.yy)");
+            float[,] workHours = new float[6,2];
+            for (int i=0;i<6;++i)
+            {
+                Console.WriteLine(" day: {0}", i + 1);
+                Console.WriteLine("start hour: ");
+                workHours[i, 0] = float.Parse(Console.ReadLine());
+                Console.WriteLine("end hour: ");
+                workHours[i, 1] = float.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("enter notes if you wants:");
+            string motherNotes = Console.ReadLine();
+        }
 
 }
     }
