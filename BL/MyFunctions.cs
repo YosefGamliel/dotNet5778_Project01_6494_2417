@@ -172,47 +172,6 @@ namespace BL
             {
                 var closest = from n in DataSource.NannyList
                               let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
-                              orderby (order)?distance:0
-                              group n by distance into nannyList
-                              select new { distance = nannyList.Key, orderNanny = nannyList };
-                foreach (var groop in closest)
-                {
-                    foreach (var item in groop.orderNanny)
-                    {
-                        NannyL.Add(item);
-                    }
-                }
-            }
-            
-                //אם שיטת המיון אם הסימן שאלה לא עובדת
-                #region
-                //they does not want the list sorted
-                //else
-                //{
-                //    var closest = from n in DataSource.NannyList
-                //                  let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
-                //                  group n by distance into nannyList
-                //                  select new { distance = nannyList.Key, orderNanny = nannyList };
-                //    foreach (var groop in closest)
-                //    {
-                //        foreach (var item in groop.orderNanny)
-                //        {
-                //            NannyL.Add(item);
-                //        }
-                //    }
-                //}
-                #endregion
-                return NannyL;
-        }
-        public List<Nanny> NannyByage(bool MaxOrMin = false, bool order = false)
-        {
-            //max Age=true, MinAge=FALSE
-            List<Nanny> NannyL = new List<Nanny>();
-            //they want the list sorted
-            if (order)
-            {
-                var closest = from n in DataSource.NannyList
-                              let kidsAge =(MaxOrMin)?n.MaxAge:n.MinAge
                               orderby (order) ? distance : 0
                               group n by distance into nannyList
                               select new { distance = nannyList.Key, orderNanny = nannyList };
@@ -224,21 +183,54 @@ namespace BL
                     }
                 }
             }
+
+            //אם שיטת המיון אם הסימן שאלה לא עובדת
+            #region
+            //they does not want the list sorted
+            //else
+            //{
+            //    var closest = from n in DataSource.NannyList
+            //                  let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
+            //                  group n by distance into nannyList
+            //                  select new { distance = nannyList.Key, orderNanny = nannyList };
+            //    foreach (var groop in closest)
+            //    {
+            //        foreach (var item in groop.orderNanny)
+            //        {
+            //            NannyL.Add(item);
+            //        }
+            //    }
+            //}
+            #endregion
+            return NannyL;
         }
-
-
-
-
-
-            /// <summary>
-            /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
-            /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
-            /// ואז אני ממיין לכל מטפלת למי יש הכי הרבה שעות עבודה משותפות ומחזיר 
-            /// את החמש בעלות הכי הרבה שעות עבודה
-            /// </summary>
-            /// <param name="mother"></param>
-            /// <returns></returns>
-            public List<Nanny> FiveclosetNanny(Mother mother)
+        public List<Nanny> NannyByAge(bool MaxOrMin = false, bool order = false)
+        {
+            List<Nanny> NannyL = new List<Nanny>();
+            var check = from n in DataSource.NannyList
+                            //max Age=true, MinAge=FALSE
+                        let kidsAge = (MaxOrMin) ? (int)(n.MaxAge) / 2 : (int)(n.MinAge) / 2//קבוצות של חודשיים
+                        orderby (order) ? kidsAge : 0 //they want the list sorted
+                        group n by kidsAge into nannyList
+                        select new { kidsAge = nannyList.Key, orderNanny = nannyList };
+            foreach (var groop in check)
+            {
+                foreach (var item in groop.orderNanny)
+                {
+                    NannyL.Add(item);
+                }
+            }
+            return NannyL;
+        }
+        /// <summary>
+        /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
+        /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
+        /// ואז אני ממיין לכל מטפלת למי יש הכי הרבה שעות עבודה משותפות ומחזיר 
+        /// את החמש בעלות הכי הרבה שעות עבודה
+        /// </summary>
+        /// <param name="mother"></param>
+        /// <returns></returns>
+        public List<Nanny> FiveclosetNanny(Mother mother)
         {
             List<Nanny> bestFive = new List<Nanny>();
             var closest = from n in DataSource.NannyList
@@ -276,6 +268,47 @@ namespace BL
                 TotalCommonHour += sumOfHourinWeek[i];
             }
             return TotalCommonHour;
+        }
+        public List<Child> ChildWhithoutContract()
+        {
+            List<Child> ChildWithoutContract = new List<Child>();
+            bool flag = true;
+            foreach (var child in DataSource.ChildList)
+            {
+                foreach (var contract in DataSource.ContractList)
+                {
+                    if (child.Id == contract.ChildID)
+                        flag = false;
+                }
+                if (flag)
+                    ChildWithoutContract.Add(child);
+
+                flag = true;//check the next child
+            }
+            return ChildWithoutContract;
+        }
+        public List<Nanny> NannyByTAMAT ()
+        {
+            List<Nanny> nannyL = new List<Nanny>();
+            nannyL = GetNannyBy(x => x.VacationDaysITE == true);
+            return nannyL;
+        }
+        /// <summary>
+        /// אם יש כוח יש כמה פונקציות שנקראות
+        /// getNANNYby....
+        /// שאפשר להשתמש בפונקציה הזאת
+        /// </summary>
+        /// <param name="cond"></param>
+        /// <returns></returns>
+        public static List<Nanny> GetNannyBy(Func<Nanny, bool> cond)
+        {
+            List<Nanny> list = new List<Nanny>();
+            var NannyByCondition = from n in DataSource.NannyList
+                                      where cond(n)
+                                      select n;
+            foreach (var item in NannyByCondition)
+                list.Add(item);
+            return list;
         }
     }
 }
