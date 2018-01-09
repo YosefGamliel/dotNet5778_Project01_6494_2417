@@ -8,7 +8,7 @@ using DAL;
 using DS;
 namespace BL
 {
-    class BL_imp : IBL
+    public class BL_imp : IBL
     {
         Dal_imp dal = new Dal_imp();
         #region MOTHER
@@ -194,6 +194,10 @@ namespace BL
         public List<Child> getChildList(Mother mother)
         {
             return dal.getChildList(mother);
+        }
+        public List<Child> getChildList()
+        {
+            return dal.getChildList();
         }
         #endregion
     }

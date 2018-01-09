@@ -101,7 +101,7 @@ namespace DAL
         public void addChild(Child child)
         {
             bool flag = true;
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in getChildList())
             {
                 if (item.Id == child.Id)
                     throw new Exception();
@@ -113,27 +113,31 @@ namespace DAL
             }
             if (flag)
                 throw new Exception();
-            DataSource.ChildList.Add(child);
+            getChildList().Add(child);
         }
         public List<Child> getChildList(Mother mother)
         {
             List<Child> childList = new List<Child>();
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in getChildList())
             {
                 if (item.MotherId == mother.Id)
                     childList.Add(item);
             }
             return childList;
         }
+        public List<Child> getChildList()
+        {
+            return DataSource.ChildList;
+        }
         public void removeChild(Child child)
         {
             bool flag = true;
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in getChildList())
             {
                 if (item.Id == child.Id)//if find id to delete
                 {
                     flag = false;
-                    DataSource.ChildList.Remove(child);
+                    getChildList().Remove(child);
                 }
             }
             if (flag)//id to delete not found throw Exception
@@ -142,7 +146,7 @@ namespace DAL
         public void updateChild(Child child)
         {
             bool flag = true;
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in getChildList())
             {
                 if (item.Id == child.Id)//if find id to update
                     flag = false;
@@ -159,7 +163,7 @@ namespace DAL
         public void addContract(Contract contract)
         {
             bool flag = true;
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in getChildList())
             {
                 if (item.Id == contract.ChildID)
                     contract.MotherID = item.MotherId;//update Automatically by the child

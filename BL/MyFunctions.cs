@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DS;
+using DAL;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Response;
 using GoogleMapsApi.Entities.Directions.Request;
@@ -15,15 +16,16 @@ namespace BL
     // public delegate bool condition(object cond);
     class MyFunctions
     {
+        static BL_imp bl = new BL_imp(); // it's static because the functions are also static
         public static Mother FindMother(string childID)
         {
             string motherID = null;
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in bl.getChildList())
             {
                 if (item.Id == childID)
                     motherID = item.MotherId;
             }
-            foreach (Mother item in DataSource.MotherList)
+            foreach (Mother item in bl.getMotherList())
             {
                 if (item.Id == motherID)
                     return item;
@@ -32,7 +34,7 @@ namespace BL
         }
         private static string getNannyByChild(Child child)
         {
-            foreach (var item in DataSource.ContractList)
+            foreach (var item in bl.getContractList())
             {
                 if (child.Id == item.ChildID)
                     return item.BabySitterID;
@@ -92,7 +94,7 @@ namespace BL
         public static List<Contract> GetContractsBy(Func<Contract, bool> cond)
         {
             List<Contract> list = new List<Contract>();
-            var ContractByCondition = from ch in DataSource.ContractList
+            var ContractByCondition = from ch in bl.getContractList()
                                       where cond(ch)
                                       select ch;
             foreach (var item in ContractByCondition)
@@ -103,7 +105,7 @@ namespace BL
         {
             int SumOfContract = 0;
             //add to ContractByCondition all contract that standing in cond
-            var ContractByCondition = from ch in DataSource.ContractList
+            var ContractByCondition = from ch in bl.getContractList()
                                       where cond(ch)
                                       select ch;
             foreach (var item in ContractByCondition)
@@ -112,7 +114,7 @@ namespace BL
         }
         public static Nanny getNannyById(string id)
         {
-            foreach (var item in DataSource.NannyList)
+            foreach (var item in bl.getNannyList())
             {
                 if (id == item.Id)
                     return item;
@@ -139,7 +141,7 @@ namespace BL
         {
             bool flag = true;
             List<Nanny> MatchNanny = new List<Nanny>();
-            foreach (var item in DataSource.NannyList)
+            foreach (var item in bl.getNannyList())
             {
                 //check the days
                 for (int i = 0; i < 6; i++)
@@ -170,7 +172,7 @@ namespace BL
             //they want the list sorted
             if (order)
             {
-                var closest = from n in DataSource.NannyList
+                var closest = from n in bl.getNannyList()
                               let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
                               orderby (order) ? distance : 0
                               group n by distance into nannyList
@@ -189,7 +191,7 @@ namespace BL
             //they does not want the list sorted
             //else
             //{
-            //    var closest = from n in DataSource.NannyList
+            //    var closest = from n in bl.getNannyList()
             //                  let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
             //                  group n by distance into nannyList
             //                  select new { distance = nannyList.Key, orderNanny = nannyList };
@@ -207,7 +209,7 @@ namespace BL
         public List<Nanny> NannyByAge(bool MaxOrMin = false, bool order = false)
         {
             List<Nanny> NannyL = new List<Nanny>();
-            var check = from n in DataSource.NannyList
+            var check = from n in bl.getNannyList()
                             //max Age=true, MinAge=FALSE
                         let kidsAge = (MaxOrMin) ? (int)(n.MaxAge) / 2 : (int)(n.MinAge) / 2//קבוצות של חודשיים
                         orderby (order) ? kidsAge : 0 //they want the list sorted
@@ -233,7 +235,7 @@ namespace BL
         public List<Nanny> FiveclosetNanny(Mother mother)
         {
             List<Nanny> bestFive = new List<Nanny>();
-            var closest = from n in DataSource.NannyList
+            var closest = from n in bl.getNannyList()
                           let CommonHour = grade(n, mother)
                           orderby CommonHour descending
                           select n;
@@ -273,9 +275,9 @@ namespace BL
         {
             List<Child> ChildWithoutContract = new List<Child>();
             bool flag = true;
-            foreach (var child in DataSource.ChildList)
+            foreach (var child in bl.getChildList())
             {
-                foreach (var contract in DataSource.ContractList)
+                foreach (var contract in bl.getContractList())
                 {
                     if (child.Id == contract.ChildID)
                         flag = false;
@@ -287,7 +289,7 @@ namespace BL
             }
             return ChildWithoutContract;
         }
-        public List<Nanny> NannyByTAMAT ()
+        public List<Nanny> NannyByTAMAT()
         {
             List<Nanny> nannyL = new List<Nanny>();
             nannyL = GetNannyBy(x => x.VacationDaysITE == true);
@@ -303,9 +305,9 @@ namespace BL
         public static List<Nanny> GetNannyBy(Func<Nanny, bool> cond)
         {
             List<Nanny> list = new List<Nanny>();
-            var NannyByCondition = from n in DataSource.NannyList
-                                      where cond(n)
-                                      select n;
+            var NannyByCondition = from n in bl.getNannyList()
+                                   where cond(n)
+                                   select n;
             foreach (var item in NannyByCondition)
                 list.Add(item);
             return list;
