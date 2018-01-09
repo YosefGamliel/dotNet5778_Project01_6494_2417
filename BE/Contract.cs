@@ -38,7 +38,7 @@ namespace BE
         #endregion
         #region finction:
         public Contract(string BID, string ChID, bool FM, bool S, float SPH, float SPM,
-            bool T, DateTime St, DateTime E, double pay)
+            bool T, DateTime St, DateTime E)
         {
             if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
                 !MyFunctions.CheckID(ChID) )
@@ -53,7 +53,7 @@ namespace BE
             salaryType = T;
             start = St;
             end = E;
-            payment = pay;
+            payment = 0;
             discount = 0;
 
         }
