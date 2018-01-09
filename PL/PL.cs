@@ -102,7 +102,7 @@ namespace PL
                 else
                 {
                     hours_of_work[i, 0] = (float)00.00;
-                    hours_of_work[i, 1] = (float)00:00;
+                    hours_of_work[i, 1] = (float)00.00;
                 }
             }
             Console.WriteLine("Enter if gets days off the the education ministry:");
@@ -128,16 +128,30 @@ namespace PL
             Console.WriteLine("Enter BabySitter ID:");
             string babySitterID = Console.ReadLine();
             Console.WriteLine("Enter Child ID:");
-            string childID = Console.ReadLine();
-            Console.WriteLine("Enter Mother ID:");
             string motherID = Console.ReadLine();
             Console.WriteLine("first meeting has done? (y/n)");
             bool firsMeating = yes_or_no(Convert.ToChar(Console.ReadLine()));
-            Console.WriteLine("salary type (press y-if it per hour else press n)");
-            bool salaryType = yes_or_no(Convert.ToChar(Console.ReadLine()));
             Console.WriteLine("start day (xx/yy/zzzz)");
             DateTime start = Convert.ToDateTime(Console.ReadLine());
             Console.WriteLine("end day (xx/yy/zzzz)");
+            DateTime end = Convert.ToDateTime(Console.ReadLine());
+            BE.Contract con = new Contract(babySitterID, babySitterID, firsMeating, , start, end);
+            bl.addContract(con);
+        }
+        private static void initialization()
+        {
+            bool[] wd = new bool[6]{true, true, true,true, true, true};
+            float[,] workH = new float[6, 2];
+            DateTime Birth = new DateTime(1990, 01, 01); ;
+            for (int i = 0; i < 6; i++)
+            {
+                workH[i, 0] = (float)14.35;
+                workH[i, 1] = (float)19.35;
+            }
+            Nanny yafit=new Nanny("307471672", "yafit", "yafit", "0547951348","Pashos 29,Beer Sheva,israel",
+              Birth, true, 3,3, 20,3
+                ,55,true,(float)30.5, 3500, wd, workH, true, null);
+            bl.addNanny(yafit);
             DateTime end = Convert.ToDateTime(Console.ReadLine());      
           
         }
@@ -162,6 +176,11 @@ namespace PL
                 motherNeedNanny[i] = yes_or_no(Convert.ToChar(Console.ReadLine()));
             }
 
+            Birth = new DateTime(1989, 01, 01);
+              Nanny shlomit = new Nanny("308922202", "shlomit", "batito", "0547951349", "Pashos 50,Beer Sheva,israel",
+              Birth, true, 3, 3, 20, 3
+                , 55, true, (float)50.5, 5000, wd, workH, true, null);
+            bl.addNanny(shlomit);
             Console.WriteLine("Enter start hour and end hour for days when needs nanny: (xx.yy)");
             float[,] workHours = new float[6,2];
             for (int i=0;i<6;++i)
@@ -176,5 +195,5 @@ namespace PL
             string motherNotes = Console.ReadLine();
         }
 
-}
+        }
     }
