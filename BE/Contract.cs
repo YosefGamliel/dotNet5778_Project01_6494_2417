@@ -37,7 +37,7 @@ namespace BE
         public float Discount { get { return discount; } set { discount = value; } }
         #endregion
         #region finction:
-        public Contract(string BID, string ChID, bool FM, bool S, float SPH, float SPM,
+        public Contract(string BID, string ChID, bool FM, 
             bool T, DateTime St, DateTime E)
         {
             if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
@@ -47,10 +47,6 @@ namespace BE
             childID = ChID;
             // motherID = MID; update Automatically in DAL layer
             firsMeating = FM;
-            signed = S;
-            salaryPerHour = SPH;
-            salaryPerMonth = SPM;
-            salaryType = T;
             start = St;
             end = E;
             payment = 0;
