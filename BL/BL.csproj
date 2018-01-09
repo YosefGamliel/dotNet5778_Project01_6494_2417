@@ -59,10 +59,6 @@
       <Project>{55fbdc51-a82b-4bae-a9d6-2f7edabb43f6}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DS\DS.csproj">
-      <Project>{fdee9ade-66df-47f0-af3e-2cc7c9f810bb}</Project>
-      <Name>DS</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
