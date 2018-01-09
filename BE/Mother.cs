@@ -16,6 +16,14 @@ namespace BE
         private bool[] needNanny;
         private float[,] workHours;
         private string notes;//Remarks or Requirements
+        private string motherID;
+        private string motherLasttName;
+        private string motherFirstName;
+        private string motherPhoneNumber;
+        private string motherAddress;
+        private string motherAreaNanny;
+        private bool[] motherNeedNanny;
+        private object workHoursmotherNotes;
         #endregion
         #region properties:
         public string Id { get { return id; } }
@@ -47,6 +55,19 @@ namespace BE
             workHours = hours;
             notes = nt;
         }
+
+        public Mother(string motherID, string motherLasttName, string motherFirstName, string motherPhoneNumber, string motherAddress, string motherAreaNanny, bool[] motherNeedNanny, object workHoursmotherNotes)
+        {
+            this.motherID = motherID;
+            this.motherLasttName = motherLasttName;
+            this.motherFirstName = motherFirstName;
+            this.motherPhoneNumber = motherPhoneNumber;
+            this.motherAddress = motherAddress;
+            this.motherAreaNanny = motherAreaNanny;
+            this.motherNeedNanny = motherNeedNanny;
+            this.workHoursmotherNotes = workHoursmotherNotes;
+        }
+
         public override string ToString()
         {
             string WH = "The required hours each day:", NEED = "Days when needs a nanny: ";

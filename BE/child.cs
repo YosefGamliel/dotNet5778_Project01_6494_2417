@@ -10,6 +10,7 @@ namespace BE
 
         private readonly string id;
         private string firstName;
+        private string LastName;
         private readonly string motherId;
         private readonly DateTime birthday;
         private bool specialNeeds;
@@ -26,13 +27,14 @@ namespace BE
         #endregion
 
         #region functions:
-        public Child(string ID, string FN, string MID, DateTime birth, bool SN, string ISN)
+        public Child(string ID, string FN,string LN, string MID, DateTime birth, bool SN, string ISN)
         {
             if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(FN) || !MyFunctions.CheckID(MID) ||
                 !MyFunctions.CheckDatePast(birth))
                 throw new Exception();
             id = ID;
             firstName = FN.Trim();//DELETE spare space
+            LastName = LN.Trim();//DELETE spare space
             motherId = MID;
             birthday = birth;
             specialNeeds = SN;

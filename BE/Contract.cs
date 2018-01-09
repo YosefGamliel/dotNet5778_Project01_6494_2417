@@ -20,6 +20,11 @@ namespace BE
         private DateTime end;
         private double payment;
         private float discount;
+        private string v1;
+        private string v2;
+        private bool v3;
+        private DateTime birth;
+        private DateTime end1;
         #endregion
         #region properties:
         public string ContractID { get { return contractID; } set { contractID = value; } }
@@ -53,6 +58,16 @@ namespace BE
             discount = 0;
 
         }
+
+        public Contract(string v1, string v2, bool v3, DateTime birth, DateTime end1)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+            this.birth = birth;
+            this.end1 = end1;
+        }
+
         public override string ToString()
         {
             string str1, str2;

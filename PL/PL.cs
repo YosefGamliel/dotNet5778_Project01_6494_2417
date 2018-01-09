@@ -47,7 +47,13 @@ namespace PL
                 Console.WriteLine("26: Print all nannys in groups of ages of kids she can take");
                 Console.WriteLine("27: Print all contracts in groups of distances from wanted place");
                 choice = Convert.ToInt32(Console.ReadLine());
-            }
+                switch (choice)
+                {
+                    default:
+                        break;
+                }
+            } while (choice != 0);
+
         }
 
         private static void Add_nanny()
@@ -77,7 +83,7 @@ namespace PL
             Console.WriteLine("Enter maximum age:");
             int max_age = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter if works by hours:(y/n)");
-          bool works_by_hours = yes_or_no(Convert.ToChar(Console.ReadLine()));
+            bool works_by_hours = yes_or_no(Convert.ToChar(Console.ReadLine()));
             Console.WriteLine("Enter rate per hour:");
             float rate_per_hour = float.Parse(Console.ReadLine());
             Console.WriteLine("Enter rate per month:");
@@ -109,7 +115,7 @@ namespace PL
             bool days_off_by_education_ministry = yes_or_no(Convert.ToChar(Console.ReadLine()));
             Console.WriteLine("Enter recomondations:");
             string recommendations = Console.ReadLine();
-            BE.Nanny the_nanny = new BE.Nanny(id, family_name, name, telephone , address,
+            BE.Nanny the_nanny = new BE.Nanny(id, family_name, name, telephone, address,
                bitrh_date, has_elevator, floor, years_of_practice, max_number_childern, min_age
                 , max_age, works_by_hours, rate_per_hour, rate_per_month, days_of_work, hours_of_work, days_off_by_education_ministry, recommendations);
             bl.addNanny(the_nanny);
@@ -138,23 +144,7 @@ namespace PL
             BE.Contract con = new Contract(babySitterID, babySitterID, firsMeating, , start, end);
             bl.addContract(con);
         }
-        private static void initialization()
-        {
-            bool[] wd = new bool[6]{true, true, true,true, true, true};
-            float[,] workH = new float[6, 2];
-            DateTime Birth = new DateTime(1990, 01, 01); ;
-            for (int i = 0; i < 6; i++)
-            {
-                workH[i, 0] = (float)14.35;
-                workH[i, 1] = (float)19.35;
-            }
-            Nanny yafit=new Nanny("307471672", "yafit", "yafit", "0547951348","Pashos 29,Beer Sheva,israel",
-              Birth, true, 3,3, 20,3
-                ,55,true,(float)30.5, 3500, wd, workH, true, null);
-            bl.addNanny(yafit);
-            DateTime end = Convert.ToDateTime(Console.ReadLine());      
-          
-        }
+
         private static void Add_Mother()
         {
             Console.WriteLine("Enter Mother ID:");
@@ -162,6 +152,7 @@ namespace PL
             Console.WriteLine("Enter Mother first name:");
             string motherFirstName = Console.ReadLine();
             Console.WriteLine("Enter Mother last name:");
+            string motherLasttName = Console.ReadLine();
             Console.WriteLine("Enter Mother phone nunber:");
             string motherPhoneNumber = Console.ReadLine();
             Console.WriteLine("Enter Mother address:");
@@ -169,21 +160,15 @@ namespace PL
             Console.WriteLine("Enter area address of nanny for mother:");
             string motherAreaNanny = Console.ReadLine();
             Console.WriteLine("Enter y/n for days when needs nanny: (y-yes,n-no)");
-            bool[] motherNeedNanny=new bool[6];
-            for (int i=0;i<6;++i)
+            bool[] motherNeedNanny = new bool[6];
+            for (int i = 0; i < 6; ++i)
             {
-                Console.WriteLine(" day: {0}",i+1);
+                Console.WriteLine(" day: {0}", i + 1);
                 motherNeedNanny[i] = yes_or_no(Convert.ToChar(Console.ReadLine()));
             }
-
-            Birth = new DateTime(1989, 01, 01);
-              Nanny shlomit = new Nanny("308922202", "shlomit", "batito", "0547951349", "Pashos 50,Beer Sheva,israel",
-              Birth, true, 3, 3, 20, 3
-                , 55, true, (float)50.5, 5000, wd, workH, true, null);
-            bl.addNanny(shlomit);
             Console.WriteLine("Enter start hour and end hour for days when needs nanny: (xx.yy)");
-            float[,] workHours = new float[6,2];
-            for (int i=0;i<6;++i)
+            float[,] workHours = new float[6, 2];
+            for (int i = 0; i < 6; ++i)
             {
                 Console.WriteLine(" day: {0}", i + 1);
                 Console.WriteLine("start hour: ");
@@ -193,7 +178,76 @@ namespace PL
             }
             Console.WriteLine("enter notes if you wants:");
             string motherNotes = Console.ReadLine();
+            BE.Mother mom = new Mother(motherID, motherLasttName, motherFirstName, motherPhoneNumber, motherAddress, motherAreaNanny, motherNeedNanny, workHoursmotherNotes);
+            bl.addMother(mom);
         }
+        private static void Add_Child()
+        {
+            Console.WriteLine("Enter  ID:");
+            string id = Console.ReadLine();
+            Console.WriteLine("Enter  first name:");
+            string firstName = Console.ReadLine();
+            Console.WriteLine("Enter last name:");
+            string LasttName = Console.ReadLine();
+            Console.WriteLine("Enter Mother ID:");
+            string motherID = Console.ReadLine();
+            Console.WriteLine("Enter birth date: (xx/yy/zzzz)");
+            DateTime bitrh_date = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("had special needs? (y/n)");
+            bool specialNeeds = yes_or_no(Convert.ToChar(Console.ReadLine()));
+            Console.WriteLine("explan:");
+            string infoSpecialNeeds = Console.ReadLine();
+
+            BE.Child child = new Child(id, firstName, LasttName, motherID, bitrh_date, specialNeeds, infoSpecialNeeds);
+            bl.addChild(child);
+
+        }
+        private static void initialization()
+        {
+            bool[] wd = new bool[6] { true, true, true, true, true, true };
+            float[,] workH = new float[6, 2];
+            DateTime Birth = new DateTime(1990, 01, 01); ;
+            for (int i = 0; i < 6; i++)
+            {
+                workH[i, 0] = (float)14.35;
+                workH[i, 1] = (float)19.35;
+            }
+            #region NannyExample
+            Nanny yafit = new Nanny("307471672", "yafit", "yafit", "0547951348", "Pashos 29,Beer Sheva,israel",
+              Birth, true, 3, 3, 20, 3
+                , 55, true, (float)30.5, 3500, wd, workH, true, null);
+            bl.addNanny(yafit);
+            Birth = new DateTime(1989, 01, 01);
+            Nanny shlomit = new Nanny("308922202", "shlomit", "batito", "0547951349", "Pashos 50,Beer Sheva,israel",
+            Birth, true, 3, 3, 20, 3
+              , 55, true, (float)50.5, 5000, wd, workH, true, null);
+            bl.addNanny(shlomit);
+            #endregion
+            #region MotherExample
+            Mother galit = new Mother("309549079", "galit", "galit", "0547951344", "Pashos 40,Beer Sheva,israel", "Pashos 40,Beer Sheva,israel", wd, workH);
+            bl.addMother(galit);
+            Mother hagit = new Mother("314370768", "hagit", "hagit", "0547951366", "Pashos 41,Beer Sheva,israel", "Pashos 41,Beer Sheva,israel", wd, workH);
+            bl.addMother(hagit);
+            #endregion
+            #region ChildExample
+            Birth = new DateTime(2017, 05, 05);
+            Child sunofgalit = new Child("317383297", "sunofgalit", "sunofgalit", "309549079", Birth, false, null);
+            bl.addChild(sunofgalit);
+            Birth = new DateTime(2017, 04, 04);
+            Child sunofhagit = new Child("318000262", "sunofgalit", "sunofhagit", "314370768", Birth, false, null);
+            bl.addChild(sunofhagit);
+            #endregion
+            #region ContractExample
+            Birth = new DateTime(2018, 01, 09);
+            DateTime End = new DateTime(2018, 05, 09);
+            BE.Contract HagitContractAndYafit = new Contract("307471672", "318000262", true, Birth, End);
+            bl.addContract(HagitContractAndYafit);
+            Birth = new DateTime(2018, 01, 08);
+            End = new DateTime(2018, 05, 08);
+            BE.Contract GalitContractAndshlomit = new Contract("308922202", "317383297", true, Birth, End);
+            bl.addContract(GalitContractAndshlomit);
+            #endregion ContractExample
 
         }
     }
+}
