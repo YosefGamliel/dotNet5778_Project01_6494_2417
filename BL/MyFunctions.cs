@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
-using DAL;
+using DS;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Response;
 using GoogleMapsApi.Entities.Directions.Request;
@@ -172,7 +172,7 @@ namespace BL
             {
                 var closest = from n in DataSource.NannyList
                               let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
-                              orderby distance
+                              orderby (order)?distance:0
                               group n by distance into nannyList
                               select new { distance = nannyList.Key, orderNanny = nannyList };
                 foreach (var groop in closest)
@@ -183,11 +183,37 @@ namespace BL
                     }
                 }
             }
-            //they does not want the list sorted
-            else
+            
+                //אם שיטת המיון אם הסימן שאלה לא עובדת
+                #region
+                //they does not want the list sorted
+                //else
+                //{
+                //    var closest = from n in DataSource.NannyList
+                //                  let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
+                //                  group n by distance into nannyList
+                //                  select new { distance = nannyList.Key, orderNanny = nannyList };
+                //    foreach (var groop in closest)
+                //    {
+                //        foreach (var item in groop.orderNanny)
+                //        {
+                //            NannyL.Add(item);
+                //        }
+                //    }
+                //}
+                #endregion
+                return NannyL;
+        }
+        public List<Nanny> NannyByage(bool MaxOrMin = false, bool order = false)
+        {
+            //max Age=true, MinAge=FALSE
+            List<Nanny> NannyL = new List<Nanny>();
+            //they want the list sorted
+            if (order)
             {
                 var closest = from n in DataSource.NannyList
-                              let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
+                              let kidsAge =(MaxOrMin)?n.MaxAge:n.MinAge
+                              orderby (order) ? distance : 0
                               group n by distance into nannyList
                               select new { distance = nannyList.Key, orderNanny = nannyList };
                 foreach (var groop in closest)
@@ -198,17 +224,21 @@ namespace BL
                     }
                 }
             }
-            return NannyL;
         }
-        /// <summary>
-        /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
-        /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
-        /// ואז אני ממיין לכל מטפלת למי יש הכי הרבה שעות עבודה משותפות ומחזיר 
-        /// את החמש בעלות הכי הרבה שעות עבודה
-        /// </summary>
-        /// <param name="mother"></param>
-        /// <returns></returns>
-        public List<Nanny> FiveclosetNanny(Mother mother)
+
+
+
+
+
+            /// <summary>
+            /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
+            /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
+            /// ואז אני ממיין לכל מטפלת למי יש הכי הרבה שעות עבודה משותפות ומחזיר 
+            /// את החמש בעלות הכי הרבה שעות עבודה
+            /// </summary>
+            /// <param name="mother"></param>
+            /// <returns></returns>
+            public List<Nanny> FiveclosetNanny(Mother mother)
         {
             List<Nanny> bestFive = new List<Nanny>();
             var closest = from n in DataSource.NannyList
