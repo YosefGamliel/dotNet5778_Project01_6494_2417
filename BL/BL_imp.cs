@@ -41,13 +41,13 @@ namespace BL
             float[,] MotherWorkHour = new float[6, 2];//לשמור את השעות עבודה של האמא
             float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
             int sumOfChild = 0, childAge = 0;
-            foreach (Child item in DataSource.ChildList)
+            foreach (Child item in getChildList())
             {
                 if (item.Id == contract.ChildID)
                 {
                     childAge = DateTime.Now.Month - item.Birthday.Month + (DateTime.Now.Year - item.Birthday.Year) * 12;
                     if (childAge < 3)
-                        throw new Exception();
+                        throw new Exception("child age can not be under 3 months");
                 }
             }
             foreach (Nanny item in getNannyList())
@@ -56,11 +56,11 @@ namespace BL
                 if (item.Id == contract.BabySitterID)
                 {
                     if (item.NumOfKids + 1 > item.MaxKids)
-                        throw new Exception();
+                        throw new Exception("this nanny can not have more childs");
                     if (childAge < item.MinAge)
-                        throw new Exception();
+                        throw new Exception("this nanny doesn't take care of this age");
                     if (childAge > item.MaxAge)
-                        throw new Exception();
+                        throw new Exception("this nanny doesn't take care of this ages");
                     item.NumOfKids++;
                 }
             }
@@ -152,12 +152,12 @@ namespace BL
         {
             //בודק את גיל המטפלת
             if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
-                throw new Exception("");
+                throw new Exception("age of nanny can't be under 18");
             if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
-                throw new Exception("");
+                throw new Exception("age of nanny can't be under 18");
             if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month == 0
                 && DateTime.Now.Day - nanny.Birthday.Day < 0)//ימים
-                throw new Exception("");
+                throw new Exception("age of nanny can't be under 18");
             dal.addNanny(nanny);
         }
         public void removeNanny(Nanny nanny)
@@ -174,7 +174,7 @@ namespace BL
             dal.removeNanny(nanny);
             addNanny(nanny);
             if (nanny.NumOfKids > nanny.MaxKids)
-                throw new Exception();
+                throw new Exception("this nanny have more childs than what she can");
         }
         public List<Nanny> getNannyList()
         {
