@@ -32,6 +32,7 @@ namespace BL
         void removeChild(Child child);
         void updateChild(Child child);
         List<Child> getChildList(Mother mother);
+        List<Child> getChildList();
         #endregion
 
     }
