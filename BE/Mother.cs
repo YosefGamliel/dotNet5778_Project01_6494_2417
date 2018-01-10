@@ -16,14 +16,6 @@ namespace BE
         private bool[] needNanny;
         private float[,] workHours;
         private string notes;//Remarks or Requirements
-        private string motherID;
-        private string motherLasttName;
-        private string motherFirstName;
-        private string motherPhoneNumber;
-        private string motherAddress;
-        private string motherAreaNanny;
-        private bool[] motherNeedNanny;
-        private object workHoursmotherNotes;
         #endregion
         #region properties:
         public string Id { get { return id; } }
@@ -40,10 +32,20 @@ namespace BE
         public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need,
             float[,] hours, string nt)
         {
-            if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
-                !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckAddress(area)
-                || !MyFunctions.CheckArraySize(hours, need))
-                throw new Exception();
+            if (!MyFunctions.CheckID(ID))
+                throw new Exception("Invalid ID");
+            if (!MyFunctions.CheckName(LN))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckName(FN))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckPhoneNumber(PN))
+                throw new Exception("Invalid phone number");
+            if (!MyFunctions.CheckAddress(addr))
+                throw new Exception("Invalid address");
+            if (!MyFunctions.CheckAddress(area))
+                throw new Exception("Invalid address");
+            if (!MyFunctions.CheckArraySize(hours, need))
+                throw new Exception("Invalid arrays sizes");
             id = ID.Trim();//DELETE spare space
             lastName = LN.Trim();//DELETE spare space
             firstName = FN.Trim();//DELETE spare space
@@ -55,19 +57,6 @@ namespace BE
             workHours = hours;
             notes = nt;
         }
-
-        public Mother(string motherID, string motherLasttName, string motherFirstName, string motherPhoneNumber, string motherAddress, string motherAreaNanny, bool[] motherNeedNanny, object workHoursmotherNotes)
-        {
-            this.motherID = motherID;
-            this.motherLasttName = motherLasttName;
-            this.motherFirstName = motherFirstName;
-            this.motherPhoneNumber = motherPhoneNumber;
-            this.motherAddress = motherAddress;
-            this.motherAreaNanny = motherAreaNanny;
-            this.motherNeedNanny = motherNeedNanny;
-            this.workHoursmotherNotes = workHoursmotherNotes;
-        }
-
         public override string ToString()
         {
             string WH = "The required hours each day:", NEED = "Days when needs a nanny: ";

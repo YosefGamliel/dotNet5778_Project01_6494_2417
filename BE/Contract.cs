@@ -20,11 +20,6 @@ namespace BE
         private DateTime end;
         private double payment;
         private float discount;
-        private string v1;
-        private string v2;
-        private bool v3;
-        private DateTime birth;
-        private DateTime end1;
         #endregion
         #region properties:
         public string ContractID { get { return contractID; } set { contractID = value; } }
@@ -42,30 +37,24 @@ namespace BE
         public float Discount { get { return discount; } set { discount = value; } }
         #endregion
         #region finction:
-        public Contract(string BID, string ChID, bool FM, 
-            bool T, DateTime St, DateTime E)
+        public Contract(string BID, string ChID, bool FM, bool T, DateTime St, DateTime E)
         {
-            if (!MyFunctions.CheckContract(E, St) || !MyFunctions.CheckID(BID) ||
-                !MyFunctions.CheckID(ChID) )
-                throw new Exception();
+            if (!MyFunctions.CheckContract(E, St))
+                throw new Exception("Invalid dates");
+            if (!MyFunctions.CheckID(BID))
+                throw new Exception("Invalid ID");
+            if (!MyFunctions.CheckID(ChID))
+                throw new Exception("Invalid ID");
             babySitterID = BID;
             childID = ChID;
             // motherID = MID; update Automatically in DAL layer
             firsMeating = FM;
             start = St;
             end = E;
+            salaryType = T;
             payment = 0;
             discount = 0;
 
-        }
-
-        public Contract(string v1, string v2, bool v3, DateTime birth, DateTime end1)
-        {
-            this.v1 = v1;
-            this.v2 = v2;
-            this.v3 = v3;
-            this.birth = birth;
-            this.end1 = end1;
         }
 
         public override string ToString()

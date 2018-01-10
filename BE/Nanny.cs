@@ -55,10 +55,22 @@ namespace BE
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
             int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, float[,] WH, bool VD, string recomm)
         {
-            if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(LN) || !MyFunctions.CheckName(FN) ||
-                !MyFunctions.CheckPhoneNumber(PN) || !MyFunctions.CheckAddress(addr) || !MyFunctions.CheckDatePast(birth)
-                || !MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS) || !MyFunctions.CheckArraySize(WH, WD))
-                throw new Exception();
+            if (!MyFunctions.CheckID(ID))
+                throw new Exception("Invalid ID");
+            if (!MyFunctions.CheckName(LN))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckName(FN))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckPhoneNumber(PN))
+                throw new Exception("Invalid phone number");
+            if (!MyFunctions.CheckAddress(addr))
+                throw new Exception("Invalid address");
+            if (!MyFunctions.CheckDatePast(birth))
+                throw new Exception("Invalid date");
+            if (!MyFunctions.CheckArraySize(WH, WD))
+                throw new Exception("Invalid arrays sizes");
+            if (!MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS))
+                throw new Exception("Invalid ages or invalid salaries");
             ID = ID.Trim();//DELETE spare space
             id = ID;
             LN = LN.Trim();//DELETE spare space

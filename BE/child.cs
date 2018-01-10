@@ -29,9 +29,14 @@ namespace BE
         #region functions:
         public Child(string ID, string FN,string LN, string MID, DateTime birth, bool SN, string ISN)
         {
-            if (!MyFunctions.CheckID(ID) || !MyFunctions.CheckName(FN) || !MyFunctions.CheckID(MID) ||
-                !MyFunctions.CheckDatePast(birth))
-                throw new Exception();
+            if (!MyFunctions.CheckID(ID))
+                throw new Exception("Invalid ID");
+            if (!MyFunctions.CheckName(FN))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckID(MID))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckDatePast(birth))
+                throw new Exception("Invalid date");
             id = ID;
             firstName = FN.Trim();//DELETE spare space
             LastName = LN.Trim();//DELETE spare space
