@@ -200,7 +200,7 @@ namespace PL
                         }
                         Console.WriteLine("enter notes if you wants:");
                         string motherNotes = Console.ReadLine();
-                        BE.Mother mom = new Mother(motherID, motherLasttName, motherFirstName, motherPhoneNumber, motherAddress, motherAreaNanny, motherNeedNanny, workHoursmotherNotes);
+                        BE.Mother mom = new Mother(motherID, motherLasttName, motherFirstName, motherPhoneNumber, motherAddress, motherAreaNanny, motherNeedNanny, workHours, motherNotes);
                         #endregion
                         bl.updateMother(mom);
                         break;
@@ -227,19 +227,19 @@ namespace PL
                         bl.updateChild(child);
                         break;
                     case 12:
-                        Console.WriteLine("enter update details of the Child");
-                        #region
                         Console.WriteLine("Enter BabySitter ID:");
                         string babySitterID = Console.ReadLine();
                         Console.WriteLine("Enter Child ID:");
-                         motherID = Console.ReadLine();
+                        string ChildID = Console.ReadLine();
                         Console.WriteLine("first meeting has done? (y/n)");
                         bool firsMeating = yes_or_no(Convert.ToChar(Console.ReadLine()));
+                        Console.WriteLine("which type of salary (y-hour rate/n-month rate)");
+                        bool type = yes_or_no(Convert.ToChar(Console.ReadLine()));
                         Console.WriteLine("start day (xx/yy/zzzz)");
                         DateTime start = Convert.ToDateTime(Console.ReadLine());
                         Console.WriteLine("end day (xx/yy/zzzz)");
                         DateTime end = Convert.ToDateTime(Console.ReadLine());
-                        BE.Contract con = new Contract(babySitterID, babySitterID, firsMeating,start, end);
+                        BE.Contract con = new Contract(babySitterID, ChildID, firsMeating, type, start, end);
                         #endregion
                         bl.updateContract(con);
                         break;
@@ -279,7 +279,6 @@ namespace PL
                                 bl.removeContract(item);
                         }
                         break;
-                    #endregion
                     case 17:
                         Console.WriteLine("enret Mother ID to find Nanny's");
                         ID = Console.ReadLine();
@@ -384,14 +383,16 @@ namespace PL
             Console.WriteLine("Enter BabySitter ID:");
             string babySitterID = Console.ReadLine();
             Console.WriteLine("Enter Child ID:");
-            string motherID = Console.ReadLine();
+            string ChildID = Console.ReadLine();
             Console.WriteLine("first meeting has done? (y/n)");
             bool firsMeating = yes_or_no(Convert.ToChar(Console.ReadLine()));
+            Console.WriteLine("which type of salary (y-hour rate/n-month rate)");
+            bool type = yes_or_no(Convert.ToChar(Console.ReadLine()));
             Console.WriteLine("start day (xx/yy/zzzz)");
             DateTime start = Convert.ToDateTime(Console.ReadLine());
             Console.WriteLine("end day (xx/yy/zzzz)");
             DateTime end = Convert.ToDateTime(Console.ReadLine());
-            BE.Contract con = new Contract(babySitterID, babySitterID, firsMeating, , start, end);
+            BE.Contract con = new Contract(babySitterID, ChildID, firsMeating,type, start, end);
             bl.addContract(con);
         }
         private static void Add_Mother()
