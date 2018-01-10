@@ -39,14 +39,14 @@ namespace BE
         public bool Elevator { get { return elevator; } set { elevator = value; } }
         public int FloorBuilding { get { return floorBuilding; } set { floorBuilding = value; } }
         public int ExperienceYears { get { return experienceYears; } set { experienceYears = value; } }
-        public int MaxKids { get { return MaxKids; } set { MaxKids = value; } }
+        public int MaxKids { get { return maxKids; } set { maxKids = value; } }
         public int MinAge { get { return minAge; } set { minAge = value; } }
         public int MaxAge { get { return maxAge; } set { maxAge = value; } }
         public bool HourlyRate { get { return hourlyRate; } set { hourlyRate = value; } }
         public float HourSalary { get { return hourSalary; } set { hourSalary = value; } }
         public float MonthSalary { get { return monthSalary; } set { monthSalary = value; } }
         public bool[] WorkDays { get { return workDays; } set { workDays = value; } }
-        public float[,] WorkHours { get { return WorkHours; } set { workHours = value; } }
+        public float[,] WorkHours { get { return workHours; } set { workHours = value; } }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         public int NumOfKids { get { return numOfKids; } set { numOfKids = value; } }
@@ -71,14 +71,10 @@ namespace BE
                 throw new Exception("Invalid arrays sizes");
             if (!MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS))
                 throw new Exception("Invalid ages or invalid salaries");
-            ID = ID.Trim();//DELETE spare space
             id = ID;
-            LN = LN.Trim();//DELETE spare space
             lastName = LN;
-            FN = FN.Trim();//DELETE spare space
             firstName = FN;
             phoneNumber = PN;
-            addr = addr.Trim();//DELETE spare space
             address = addr;
             birthday = birth;
             elevator = elev;
@@ -94,10 +90,14 @@ namespace BE
             workHours = new float[6, 2];
             workHours = WH;
             vacationDaysITE = VD;
-            recomm = recomm.Trim();//DELETE spare space
             recommendations = recomm;
             numOfKids = 0;
         }
+
+        public Nanny()
+        {
+        }
+
         public override string ToString()
         {
             string str1 = null, str2 = null, str3 = null, WH = "The hours she works each day:", WORK = "Days when she works: ";

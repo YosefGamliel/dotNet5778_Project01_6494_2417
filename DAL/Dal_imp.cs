@@ -14,12 +14,15 @@ namespace DAL
         #region
         public void addNanny(Nanny nanny)
         {
-            foreach (Nanny item in getNannyList())
+            if (!(DataSource.NannyList == null))
             {
-                if (item.Id == nanny.Id)
-                    throw new Exception();
+                foreach (Nanny item in getNannyList())
+                {
+                    if (item.Id == nanny.Id)
+                        throw new Exception();
+                }
             }
-            getNannyList().Add(nanny);
+            DataSource.NannyList.Add(nanny);
         }
         public List<Nanny> getNannyList()
         {
@@ -57,12 +60,15 @@ namespace DAL
         #region
         public void addMother(Mother mother)
         {
-            foreach (Mother item in getMotherList())
+            if (!(DataSource.MotherList == null))
             {
-                if (item.Id == mother.Id)
-                    throw new Exception();
+                foreach (Mother item in getMotherList())
+                {
+                    if (item.Id == mother.Id)
+                        throw new Exception();
+                }
             }
-            getMotherList().Add(mother);
+            DataSource.MotherList.Add(mother);
         }
         public List<Mother> getMotherList()
         {
@@ -101,19 +107,24 @@ namespace DAL
         public void addChild(Child child)
         {
             bool flag = true;
-            foreach (Child item in getChildList())
+            if (!(DataSource.ChildList == null))
             {
-                if (item.Id == child.Id)
+                foreach (Child item in getChildList())
+                {
+                    if (item.Id == child.Id)
+                        throw new Exception();
+                }
+                if (DataSource.MotherList == null)
+                    throw new Exception("ERROR-child withoutMother");
+                foreach (Mother item in getMotherList())
+                {
+                    if (item.Id == child.MotherId)
+                        flag = false;
+                }
+                if (flag)
                     throw new Exception();
             }
-            foreach (Mother item in getMotherList())
-            {
-                if (item.Id == child.MotherId)
-                    flag = false;
-            }
-            if (flag)
-                throw new Exception();
-            getChildList().Add(child);
+            DataSource.ChildList.Add(child);
         }
         public List<Child> getChildList(Mother mother)
         {
@@ -163,6 +174,8 @@ namespace DAL
         public void addContract(Contract contract)
         {
             bool flag = true;
+            if ((DataSource.ChildList == null || DataSource.NannyList == null || DataSource.MotherList == null))
+                throw new Exception("Missing Details");
             foreach (Child item in getChildList())
             {
                 if (item.Id == contract.ChildID)
@@ -185,7 +198,7 @@ namespace DAL
                 throw new Exception();
             contract.ContractID = contratNumber.ToString();
             contratNumber++;
-            getContractList().Add(contract);
+            DataSource.ContractList.Add(contract);
         }
         public List<Contract> getContractList()
         {
@@ -193,17 +206,18 @@ namespace DAL
         }
         public void removeContract(Contract contract)
         {
+            Contract ToDelete = new Contract();
             bool flag = true;
             foreach (Contract item in getContractList())
             {
                 if (item.ContractID == contract.ContractID)//if find id to delete
                 {
                     flag = false;
-                    getContractList().Remove(item);
-                }
+                    ToDelete = item;                }
             }
             if (flag)//id to delete not found throw Exception
-                throw new Exception();
+                throw new Exception("Contract Not Found");
+            getContractList().Remove(ToDelete);
         }
         public void updateContract(Contract contract)
         {

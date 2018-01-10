@@ -47,7 +47,6 @@ namespace BE
                 throw new Exception("Invalid ID");
             babySitterID = BID;
             childID = ChID;
-            // motherID = MID; update Automatically in DAL layer
             firsMeating = FM;
             start = St;
             end = E;
@@ -55,6 +54,10 @@ namespace BE
             payment = 0;
             discount = 0;
 
+        }
+
+        public Contract()
+        {
         }
 
         public override string ToString()

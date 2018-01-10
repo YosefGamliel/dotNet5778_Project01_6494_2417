@@ -39,7 +39,7 @@ namespace BE
             bool flag = true;
             foreach (char item in Name)
             {
-                if (!((item < 'z' && item > 'a') || (item < 'Z' && item > 'A') || (item == ' ')))
+                if (!((item <= 'z' && item >= 'a') || (item <= 'Z' && item >= 'A') || (item == ' ')))
                     flag = false;
             }
             return flag;

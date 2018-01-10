@@ -57,6 +57,11 @@ namespace BE
             workHours = hours;
             notes = nt;
         }
+
+        public Mother()
+        {
+        }
+
         public override string ToString()
         {
             string WH = "The required hours each day:", NEED = "Days when needs a nanny: ";

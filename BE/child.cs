@@ -38,15 +38,19 @@ namespace BE
             if (!MyFunctions.CheckDatePast(birth))
                 throw new Exception("Invalid date");
             id = ID;
-            firstName = FN.Trim();//DELETE spare space
-            LastName = LN.Trim();//DELETE spare space
+            firstName = FN;
+            LastName = LN;
             motherId = MID;
             birthday = birth;
             specialNeeds = SN;
-            ISN = ISN.Trim();//DELETE spare space
             infoSpecialNeeds = ISN;
 
         }
+
+        public Child()
+        {
+        }
+
         public override string ToString()
         {
             string str1 = null, str2 = null;
