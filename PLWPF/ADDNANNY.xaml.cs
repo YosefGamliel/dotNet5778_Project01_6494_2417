@@ -29,7 +29,8 @@ namespace PLWPF
             bl = new BL_imp();
             this.grid1.DataContext = nanny;
             this.workDay.DataContext = nanny;
-           // DateTime time = new DateTime();
+            this.time.DataContext = nanny;
+            // DateTime time = new DateTime();
             birthdayDatePicker.DataContext = nanny.Birthday;
         }
 

@@ -6,15 +6,16 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.ADDNANNY"
         mc:Ignorable="d"
-        Title="ADDNANNY" Height="737" Width="742">
-    <Grid Margin="0,0,0,-1">
+        Title="ADDNANNY" Height="658" Width="742">
+    <Grid Height="627" VerticalAlignment="Top">
         <Grid.RowDefinitions>
-            <RowDefinition Height="586*"/>
-            <RowDefinition Height="23*"/>
-            <RowDefinition Height="98*"/>
+            <RowDefinition Height="196*"/>
+
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="295" Height="588" Grid.RowSpan="2">
+        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="295" Height="588">
             <Grid.RowDefinitions>
                 <RowDefinition Height="34*"/>
                 <RowDefinition Height="33*"/>
@@ -94,34 +95,39 @@
             <CheckBox x:Name="vacationDaysITECheckBox" VerticalAlignment="Center" Grid.Row="17" Margin="3,8,0,8" IsChecked="{Binding VacationDaysITE, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content="" Height="16" Width="20"/>
         </Grid>
 
-        <Grid x:Name="workDay" HorizontalAlignment="Left" Height="220" Margin="318,21,0,0" VerticalAlignment="Top" Width="162">
+        <Grid x:Name="workDay" HorizontalAlignment="Left" Height="220" Margin="313,54,0,0" VerticalAlignment="Top" Width="162">
             <TextBlock x:Name="workDays" HorizontalAlignment="Left" Margin="10,0,0,181" TextWrapping="Wrap" Text="work days:" Width="62"/>
-            <CheckBox x:Name="sun" Content="sunday" HorizontalAlignment="Left"  Margin="82,1,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" Checked="sun_Checked"/>
-            <CheckBox x:Name="mon" Content="monday" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" Checked="mon_Checked"/>
-            <CheckBox x:Name="tus" Content="tuseday" HorizontalAlignment="Left" Margin="82,71,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" Checked="tus_Checked"/>
-            <CheckBox x:Name="wed" Content="wednesday" HorizontalAlignment="Left" Margin="82,107,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" Checked="wed_Checked"/>
-            <CheckBox x:Name="thu" Content="thoursday" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" Checked="thu_Checked"/>
-            <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" Checked="fri_Checked"/>
+            <CheckBox x:Name="sun" Content="sunday" HorizontalAlignment="Left"  Margin="82,1,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29"/>
+            <CheckBox x:Name="mon" Content="monday" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" />
+            <CheckBox x:Name="tus" Content="tuseday" HorizontalAlignment="Left" Margin="82,71,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29" />
+            <CheckBox x:Name="wed" Content="wednesday" HorizontalAlignment="Left" Margin="82,107,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29"/>
+            <CheckBox x:Name="thu" Content="thoursday" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="29"/>
         </Grid>
 
-        <Grid x:Name="time" HorizontalAlignment="Left" Height="226" Margin="318,21,0,0" VerticalAlignment="Top" Width="402">
-            <extToolkit:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" />
-            <extToolkit:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=mon, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=tus, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=wed, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=thu, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=fri, Path=IsChecked}"/>
+        <Grid x:Name="time" HorizontalAlignment="Left" Height="500" Margin="313,54,0,0" VerticalAlignment="Top" Width="402">
+            <extToolkit:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Value="{Binding Path=WorkHours[0][0] }" />
+            <extToolkit:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Value="{Binding Path=WorkHours[1][0] }"/>
+            <extToolkit:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Value="{Binding Path=WorkHours[2][0] }"/>
+            <extToolkit:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Value="{Binding Path=WorkHours[3][0] }"/>
+            <extToolkit:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Value="{Binding Path=WorkHours[4][0] }" />
+            <extToolkit:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Value="{Binding Path=WorkHours[5][0]}" />
 
-            <extToolkit:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=sun, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=mon, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=tus, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=wed, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=thu, Path=IsChecked}"/>
-            <extToolkit:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="98" Height="19" IsEnabled="{Binding ElementName=fri, Path=IsChecked}"/>
+            <extToolkit:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Value="{Binding Path=WorkHours[0][1] }"/>
+            <extToolkit:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Value="{Binding Path=WorkHours[1][1] }" />
+            <extToolkit:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Value="{Binding Path=WorkHours[2][1] }"/>
+            <extToolkit:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Value="{Binding Path=WorkHours[3][1] }"/>
+            <extToolkit:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Value="{Binding Path=WorkHours[4][1] }"/>
+            <extToolkit:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Value="{Binding Path=WorkHours[5][1] }"/>
+            <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
         </Grid>
 
-        <Button Content="אישור" HorizontalAlignment="Left" Margin="111,56,0,10" Width="86" Click="Button_Click" Grid.Row="2"/>
-
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="416,295,0,220" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1">
+            <Button.ContextMenu>
+                <ContextMenu/>
+            </Button.ContextMenu>
+        </Button>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="591,10,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="478,11,0,0" TextWrapping="Wrap" Text="Start Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
 
     </Grid>
 </Window>
