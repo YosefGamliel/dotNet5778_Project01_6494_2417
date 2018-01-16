@@ -8,19 +8,55 @@ namespace BE
     {
         #region fields:
 
-        private readonly string id;
+        private string id;
         private string firstName;
-        private readonly string motherId;
-        private readonly DateTime birthday;
+        private string motherId;
+        private DateTime birthday;
         private bool specialNeeds;
         private string infoSpecialNeeds; //include note about the problems of the child
         #endregion
 
         #region properties:
-        public string Id { get { return id; } }
-        public string FirstName { get { return firstName; } set { firstName = value; } }
-        public string MotherId { get { return motherId; } }
-        public DateTime Birthday { get { return birthday; } }
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                if (!MyFunctions.CheckID(value))
+                    throw new Exception("Invalid ID");
+                id = value;
+            }
+        }
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                if (!MyFunctions.CheckName(value))
+                    throw new Exception("Invalid name");
+                firstName = value;
+            }
+        }
+        public string MotherId
+        {
+            get { return motherId; }
+            set
+            {
+                if (!MyFunctions.CheckID(value))
+                    throw new Exception("Invalid ID");
+                motherId = value;
+            }
+        }
+        public DateTime Birthday
+        {
+            get { return birthday; }
+            set
+            {
+                if (!MyFunctions.CheckDatePast(value))
+                    throw new Exception("Invalid date");
+                birthday = value;
+            }
+        }
         public bool SpecialNeeds { get { return specialNeeds; } set { specialNeeds = value; } }
         public string InfoSpecialNeeds { get { return infoSpecialNeeds; } set { infoSpecialNeeds = value; } }
         #endregion

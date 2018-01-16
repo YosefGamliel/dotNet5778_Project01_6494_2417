@@ -8,10 +8,10 @@ namespace BE
     {
         #region fields:
         private string contractID;
-        private readonly string babySitterID;
-        private readonly string childID;
-        private  string motherID;
-        private readonly bool firsMeating;
+        private string babySitterID;
+        private string childID;
+        private string motherID;
+        private bool firsMeating;
         private bool signed;
         private float salaryPerHour;
         private float salaryPerMonth;
@@ -23,8 +23,26 @@ namespace BE
         #endregion
         #region properties:
         public string ContractID { get { return contractID; } set { contractID = value; } }
-        public string BabySitterID { get { return babySitterID; } }
-        public string ChildID { get { return childID; } }
+        public string BabySitterID
+        {
+            get { return babySitterID; }
+            set
+            {
+                if (!MyFunctions.CheckID(value))
+                    throw new Exception("Invalid ID");
+                babySitterID = value;
+            }
+        }
+        public string ChildID
+        {
+            get { return childID; }
+            set
+            {
+                if (!MyFunctions.CheckID(value))
+                    throw new Exception("Invalid ID");
+                childID = value;
+            }
+        }
         public string MotherID { get { return motherID; } set { motherID = value; } }
         public bool FirsMeating { get { return firsMeating; } }
         public bool Signed { get { return signed; } set { signed = value; } }
@@ -40,7 +58,7 @@ namespace BE
         public Contract(string BID, string ChID, bool FM, bool T, DateTime St, DateTime E)
         {
             if (!MyFunctions.CheckContract(E, St))
-                throw new Exception("Invalid dates");
+                throw new Exception("Invalid hours");
             if (!MyFunctions.CheckID(BID))
                 throw new Exception("Invalid ID");
             if (!MyFunctions.CheckID(ChID))

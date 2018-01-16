@@ -74,19 +74,30 @@ namespace BE
             }
             return (count == 2);
         }
-        public static bool CheckArraySize(TimeSpan[,] workHours, bool[] workDays)
+        public static bool CheckArraySize1(bool[] workDays)
         {
-            return (workHours.GetLength(0) == 6 && workHours.GetLength(1) == 2 && workDays.GetLength(0) == 6);
+            return (workDays.GetLength(0) == 6);
         }
-        public static bool CheckNanny(DateTime birhday, int experienceYears, int maxKids, int minAge, int maxAge,
-            float hourSalary, float monthSalary)
+        public static bool CheckArraySize2(TimeSpan[,] workHours)
         {
-            if ((DateTime.Now.Year - birhday.Year - 18) < experienceYears || maxKids < 1 || minAge < 3 || minAge > maxAge
-                || hourSalary < 0 || monthSalary < 0)//כי היא יכולה לעבוד מגיל 18
-                return false;//יותר שנות ניסיון ממה שהיא יכולה
-            return true;
+            return (workHours.GetLength(0) == 6 && workHours.GetLength(1) == 2);
         }
-        
+        public static bool CheckMaxKids(int maxKids)
+        {
+            return !(maxKids < 1);
+        }
+        public static bool CheckMinAge(int minAge)
+        {
+            return !(minAge < 3);
+        }
+        public static bool CheckHourSalary(float hourSalary)
+        {
+            return !(hourSalary < 0);
+        }
+        public static bool CheckMonthSalary(float monthSalary)
+        {
+            return !(monthSalary < 0);
+        }
     }
 }
 

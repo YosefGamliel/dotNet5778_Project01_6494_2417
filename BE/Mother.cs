@@ -7,7 +7,7 @@ namespace BE
     public class Mother
     {
         #region fields:
-        private readonly string id;
+        private string id;
         private string lastName;
         private string firstName;
         private string phoneNumber;
@@ -18,15 +18,87 @@ namespace BE
         private string notes;//Remarks or Requirements
         #endregion
         #region properties:
-        public string Id { get { return id; } }
-        public string LastName { get { return lastName; } set { lastName = value; } }
-        public string FirstName { get { return firstName; } set { firstName = value; } }
-        public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
-        public string Address { get { return address; } set { address = value; } }
-        public string AreaNanny { get { return areaNanny; } set { areaNanny = value; } }
-        public bool[] NeedNanny { get { return needNanny; } set { needNanny = value; } }
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                if (!MyFunctions.CheckID(value))
+                    throw new Exception("Invalid ID");
+                id = value;
+            }
+        }
+        public string LastName
+        {
+            get { return lastName; }
+            set
+            {
+                if (!MyFunctions.CheckName(value))
+                    throw new Exception("Invalid name");
+                lastName = value;
+            }
+        }
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                if (!MyFunctions.CheckName(value))
+                    throw new Exception("Invalid name");
+                firstName = value;
+            }
+        }
+        public string PhoneNumber
+        {
+            get { return phoneNumber; }
+            set
+            {
+                if (!MyFunctions.CheckPhoneNumber(value))
+                    throw new Exception("Invalid phone number");
+                phoneNumber = value;
+            }
+        }
+        public string Address
+        {
+            get { return address; }
+            set
+            {
+                if (!MyFunctions.CheckAddress(value))
+                    throw new Exception("Invalid address");
+                address = value;
+            }
+        }
+        public string AreaNanny
+        {
+            get { return areaNanny; }
+            set
+            {
+                if (!MyFunctions.CheckAddress(value))
+                    throw new Exception("Invalid address");
+                areaNanny = value;
+            }
+        }
+        public bool[] NeedNanny
+        {
+            get { return needNanny; }
+            set
+            {
+                if (!MyFunctions.CheckArraySize1(value))
+                    throw new Exception("Invalid arrays sizes");
+                needNanny = value;
+            }
+        }
         public string Notes { get { return notes; } set { notes = value; } }
-        public TimeSpan[,] WorkHours { get { return workHours; } set { workHours = value; } }
+        public TimeSpan[,] WorkHours
+        {
+            get { return workHours; }
+            set
+            {
+                if (!MyFunctions.CheckArraySize2(value))
+                    throw new Exception("Invalid arrays sizes");
+                workHours = value;
+            }
+        }
         #endregion
         #region functions:
         public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need,
@@ -44,7 +116,9 @@ namespace BE
                 throw new Exception("Invalid address");
             if (!MyFunctions.CheckAddress(area))
                 throw new Exception("Invalid address");
-            if (!MyFunctions.CheckArraySize(hours, need))
+            if (!MyFunctions.CheckArraySize1(need))
+                throw new Exception("Invalid arrays sizes");
+            if (!MyFunctions.CheckArraySize2(hours))
                 throw new Exception("Invalid arrays sizes");
             id = ID.Trim();//DELETE spare space
             lastName = LN.Trim();//DELETE spare space

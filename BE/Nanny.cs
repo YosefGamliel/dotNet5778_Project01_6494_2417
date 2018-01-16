@@ -7,12 +7,12 @@ namespace BE
     public class Nanny
     {
         #region fields:
-        private readonly string id;
+        private string id;
         private string lastName;
         private string firstName;
         private string phoneNumber;
         private string address;
-        private readonly DateTime birthday;
+        private DateTime birthday;
         private bool elevator;
         private int floorBuilding;
         private int experienceYears;
@@ -30,23 +30,131 @@ namespace BE
         private int numOfKids;
         #endregion
         #region properties:
-        public string Id { get { return id; } }
-        public string LastName { get { return lastName; } set { lastName = value; } }
-        public string FirstName { get { return firstName; } set { firstName = value; } }
-        public string PhoneNumber { get { return phoneNumber; } set { phoneNumber = value; } }
-        public string Address { get { return address; } set { address = value; } }
-        public DateTime Birthday { get{ return birthday; }}
+        public string Id
+        {
+            get { return id; }
+            set
+            {
+                if (!MyFunctions.CheckID(value))
+                    throw new Exception("Invalid ID");
+                id = value;
+            }
+        }
+        public string LastName
+        {
+            get { return lastName; }
+            set
+            {
+                if (!MyFunctions.CheckName(value))
+                    throw new Exception("Invalid name");
+                lastName = value;
+            }
+        }
+        public string FirstName
+        {
+            get { return firstName; }
+            set
+            {
+                if (!MyFunctions.CheckName(value))
+                    throw new Exception("Invalid name");
+                firstName = value;
+            }
+        }
+        public string PhoneNumber
+        {
+            get { return phoneNumber; }
+            set
+            {
+                if (!MyFunctions.CheckPhoneNumber(value))
+                    throw new Exception("Invalid phone number");
+                phoneNumber = value;
+            }
+        }
+        public string Address
+        {
+            get { return address; }
+            set
+            {
+                if (!MyFunctions.CheckAddress(value))
+                    throw new Exception("Invalid address");
+                address = value;
+            }
+        }
+        public DateTime Birthday
+        {
+            get { return birthday; }
+            set
+            {
+                if (!MyFunctions.CheckDatePast(value))
+                    throw new Exception("Invalid date");
+                birthday = value;
+            }
+        }
         public bool Elevator { get { return elevator; } set { elevator = value; } }
         public int FloorBuilding { get { return floorBuilding; } set { floorBuilding = value; } }
         public int ExperienceYears { get { return experienceYears; } set { experienceYears = value; } }
-        public int MaxKids { get { return maxKids; } set { maxKids = value; } }
-        public int MinAge { get { return minAge; } set { minAge = value; } }
+        public int MaxKids
+        {
+            get { return maxKids; }
+            set
+            {
+                if (!MyFunctions.CheckMaxKids(value))
+                    throw new Exception("Invalid max kids");
+                maxKids = value;
+            }
+        }
+        public int MinAge
+        {
+            get { return minAge; }
+            set
+            {
+                if (!MyFunctions.CheckMinAge(value))
+                    throw new Exception("Invalid min age");
+                minAge = value;
+            }
+        }
         public int MaxAge { get { return maxAge; } set { maxAge = value; } }
         public bool HourlyRate { get { return hourlyRate; } set { hourlyRate = value; } }
-        public float HourSalary { get { return hourSalary; } set { hourSalary = value; } }
-        public float MonthSalary { get { return monthSalary; } set { monthSalary = value; } }
-        public bool[] WorkDays { get { return workDays; } set { workDays = value; } }
-        public TimeSpan[,] WorkHours { get { return workHours; } set { workHours = value; } }
+        public float HourSalary
+        {
+            get { return hourSalary; }
+            set
+            {
+                if (!MyFunctions.CheckHourSalary(value))
+                    throw new Exception("Invalid hour salary");
+                hourSalary = value;
+            }
+        }
+        public float MonthSalary
+        {
+            get { return monthSalary; }
+            set
+            {
+                if (!MyFunctions.CheckMonthSalary(value))
+                    throw new Exception("Invalid month salary");
+                monthSalary = value;
+            }
+        }
+        public bool[] WorkDays
+        {
+            get { return workDays; }
+            set
+            {
+                if (!MyFunctions.CheckArraySize1(value))
+                    throw new Exception("Invalid arrays sizes");
+                workDays = value;
+            }
+        }
+        public TimeSpan[,] WorkHours
+        {
+            get { return workHours; }
+            set
+            {
+                if (!MyFunctions.CheckArraySize2(value))
+                    throw new Exception("Invalid arrays sizes");
+                workHours = value;
+            }
+        }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         public int NumOfKids { get { return numOfKids; } set { numOfKids = value; } }
@@ -67,10 +175,18 @@ namespace BE
                 throw new Exception("Invalid address");
             if (!MyFunctions.CheckDatePast(birth))
                 throw new Exception("Invalid date");
-            if (!MyFunctions.CheckArraySize(WH, WD))
+            if (!MyFunctions.CheckArraySize1(WD))
                 throw new Exception("Invalid arrays sizes");
-            if (!MyFunctions.CheckNanny(birth, EY, MK, MinA, MaxA, HS, MS))
-                throw new Exception("Invalid ages or invalid salaries");
+            if (!MyFunctions.CheckArraySize2(WH))
+                throw new Exception("Invalid arrays sizes");
+            if (!MyFunctions.CheckMaxKids(MK))
+                throw new Exception("Invalid max kids");
+            if (!MyFunctions.CheckMinAge(MinA))
+                throw new Exception("Invalid min age");
+            if (!MyFunctions.CheckHourSalary(HS))
+                throw new Exception("Invalid hour salary");
+            if (!MyFunctions.CheckMonthSalary(MS))
+                throw new Exception("Invalid month salary");
             id = ID;
             lastName = LN;
             firstName = FN;
