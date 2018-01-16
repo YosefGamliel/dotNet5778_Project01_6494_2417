@@ -1,0 +1,24 @@
+﻿<Window x:Class="PLWPF.ContractDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="ContractDetails" Height="300" Width="300">
+    <Grid>
+        <Button Content="Add Contract" HorizontalAlignment="Left" Height="56" Margin="63,22,0,0" VerticalAlignment="Top" Width="160" Click="ADDCONTRACTWINDOW"/>
+        <Button Content="Remove Contract" HorizontalAlignment="Left" Height="58" Margin="63,105,0,0" VerticalAlignment="Top" Width="160" Click="REMOVECONTRACTWINDOW"/>
+        <Button Content="Update Contract" HorizontalAlignment="Left" Height="50" Margin="61,188,0,0" VerticalAlignment="Top" Width="165" RenderTransformOrigin="0.5,0.5" Click="UPDATECONTRACTWINDOW">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="0.223"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.33"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+    </Grid>
+</Window>

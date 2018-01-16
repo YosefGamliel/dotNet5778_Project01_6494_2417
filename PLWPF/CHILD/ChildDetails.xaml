@@ -1,0 +1,15 @@
+﻿<Window x:Class="PLWPF.ChildDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="ChildDetails" Height="300" Width="300">
+    <Grid>
+        <Button Content="Add Child" HorizontalAlignment="Left" Height="58" Margin="47,20,0,0" VerticalAlignment="Top" Width="182" Click="ADDCHILDWINDOW"/>
+        <Button Content="Remove Child" HorizontalAlignment="Left" Height="64" Margin="47,100,0,0" VerticalAlignment="Top" Width="182" Click="REMOVEWINDOW"/>
+        <Button Content="Update Child" HorizontalAlignment="Left" Height="63" Margin="47,187,0,0" VerticalAlignment="Top" Width="182" Click="UPDATEWINDOW"/>
+
+    </Grid>
+</Window>

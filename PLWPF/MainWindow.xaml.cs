@@ -23,8 +23,6 @@ namespace PLWPF
         public MainWindow()
         {
             InitializeComponent();
-            ADDNANNY add = new ADDNANNY();
-            add.ShowDialog();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -35,9 +33,30 @@ namespace PLWPF
             // nannyViewSource.Source = [generic data source]
         }
 
-        private void Button_Click()
-        {
+  
 
+        private void MotherWindows(object sender, RoutedEventArgs e)
+        {
+            MotherDetails MotherDetail = new MotherDetails();
+            MotherDetail.ShowDialog();
+        }
+
+        private void NannyWindows(object sender, RoutedEventArgs e)
+        {
+            NannyDetails NannyDetail = new NannyDetails();
+            NannyDetail.ShowDialog();
+        }
+
+        private void ChildWindow(object sender, RoutedEventArgs e)
+        {
+            ChildDetails ChildDetail = new ChildDetails();
+            ChildDetail.ShowDialog();
+        }
+
+        private void ContractWindow(object sender, RoutedEventArgs e)
+        {
+            ContractDetails ContractDetail = new ContractDetails();
+            ContractDetail.ShowDialog();
         }
     }
 }

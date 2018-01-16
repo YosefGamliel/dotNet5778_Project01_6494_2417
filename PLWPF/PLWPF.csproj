@@ -57,7 +57,57 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ADDNANNY.xaml">
+    <Compile Include="MOTHER\ADDMOTHER.xaml.cs">
+      <DependentUpon>ADDMOTHER.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACT\ADDCONTRACT.xaml.cs">
+      <DependentUpon>ADDCONTRACT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CHILD\REMOVECHILD.xaml.cs">
+      <DependentUpon>REMOVECHILD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CHILD\UPDATECHILD.xaml.cs">
+      <DependentUpon>UPDATECHILD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACT\REMOVECONTRACT.xaml.cs">
+      <DependentUpon>REMOVECONTRACT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACT\UPDATECONTRACT.xaml.cs">
+      <DependentUpon>UPDATECONTRACT.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NANNY\REMOVENANNY.xaml.cs">
+      <DependentUpon>REMOVENANNY.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NANNY\UPDATENANNY.xaml.cs">
+      <DependentUpon>UPDATENANNY.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MOTHER\REMOVEMOTHER.xaml.cs">
+      <DependentUpon>REMOVEMOTHER.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MOTHER\UPDATEMOTHER.xaml.cs">
+      <DependentUpon>UPDATEMOTHER.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MOTHER\ADDMOTHER.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CONTRACT\ADDCONTRACT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CHILD\ADDCHILD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NANNY\ADDNANNY.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CHILD\ChildDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CONTRACT\ContractDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -65,19 +115,74 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="ADDNANNY.xaml.cs">
+    <Compile Include="CHILD\ADDCHILD.xaml.cs">
+      <DependentUpon>ADDCHILD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NANNY\ADDNANNY.xaml.cs">
       <DependentUpon>ADDNANNY.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CHILD\ChildDetails.xaml.cs">
+      <DependentUpon>ChildDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACT\ContractDetails.xaml.cs">
+      <DependentUpon>ContractDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MOTHER\MotherDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NANNY\NannyDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CHILD\REMOVECHILD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CHILD\UPDATECHILD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CONTRACT\REMOVECONTRACT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CONTRACT\UPDATECONTRACT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NANNY\REMOVENANNY.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NANNY\UPDATENANNY.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MOTHER\REMOVEMOTHER.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MOTHER\UPDATEMOTHER.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MOTHER\MotherDetails.xaml.cs">
+      <DependentUpon>MotherDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NANNY\NannyDetails.xaml.cs">
+      <DependentUpon>NannyDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

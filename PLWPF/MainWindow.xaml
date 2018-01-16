@@ -10,5 +10,11 @@
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
     </Window.Resources>
-    <Grid/>
+    <Grid>
+        <Button Content="Mother" HorizontalAlignment="Left" Height="59" Margin="77,51,0,0" VerticalAlignment="Top" Width="159" Click="MotherWindows" HorizontalContentAlignment="Center"/>
+        <Button Content="Nanny" HorizontalAlignment="Left" Height="68" Margin="77,143,0,0" VerticalAlignment="Top" Width="159" Click="NannyWindows"/>
+        <Button Content="Child" HorizontalAlignment="Left" Height="56" Margin="77,236,0,0" VerticalAlignment="Top" Width="159" Click="ChildWindow"/>
+        <Button Content="Contract" HorizontalAlignment="Left" Height="68" Margin="270,143,0,0" VerticalAlignment="Top" Width="174" Click="ContractWindow"/>
+        <TextBlock HorizontalAlignment="Left" Height="61" Margin="292,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="25"><Run Text="who you are"/><Run Text="?"/></TextBlock>
+    </Grid>
 </Window>
