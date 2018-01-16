@@ -245,22 +245,19 @@ namespace BL
             }
             return bestFive;
         }
-        private float grade(Nanny nanny, Mother mom)
+        private double grade(Nanny nanny, Mother mom)
         {
-            float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה המשותפות
-            float[] sumOfHourinWeek = new float[6];
-            float TotalCommonHour = 0;
+            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה המשותפות
+            double[] sumOfHourinWeek = new double[6];
+            double TotalCommonHour = 0;
 
             for (int i = 0; i < 6; i++)
             {
-                commonWorkHour[i, 0] = MyFunctions.max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
-                commonWorkHour[i, 1] = MyFunctions.min(mom.WorkHours[i, 1], nanny.WorkHours[i, 1]);
-                sumOfHourinWeek[i] = MyFunctions.dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
+                commonWorkHour[i, 0] = max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
+                commonWorkHour[i, 1] = min(mom.WorkHours[i, 1], nanny.WorkHours[i, 1]);
+                sumOfHourinWeek[i] = dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
+                TotalCommonHour = sum(TotalCommonHour, sumOfHourinWeek[i]);
             }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
-            for (int i = 0; i < 6; i++)
-            {
-                TotalCommonHour += sumOfHourinWeek[i];
-            }
             return TotalCommonHour;
         }
         public List<Child> ChildWhithoutContract()
