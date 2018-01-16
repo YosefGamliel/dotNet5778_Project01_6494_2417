@@ -35,11 +35,11 @@ namespace BL
         #region CONTRACT
         public void addContract(Contract contract)
         {
-            float[] sumOfHourinWeek = new float[6];
-            float sumOfHourinMonth = 0;
-            float[,] NannyWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
-            float[,] MotherWorkHour = new float[6, 2];//לשמור את השעות עבודה של האמא
-            float[,] commonWorkHour = new float[6, 2];//לשמור את השעות עבודה של המטפלת
+            double[] sumOfHourinWeek = new double[6];
+            double sumOfHourinMonth = 0;
+            TimeSpan[,] NannyWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה של המטפלת
+            TimeSpan[,] MotherWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה של האמא
+            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה של המטפלת
             int sumOfChild = 0, childAge = 0;
             foreach (Child item in getChildList())
             {

@@ -51,45 +51,37 @@ namespace BL
             }
             return sum;
         }
-        public static float max(float a, float b)
+        public static TimeSpan max(TimeSpan a, TimeSpan b)
         {
             if (a >= b)
                 return a;
             else
                 return b;
         }
-        public static float min(float a, float b)
+        public static TimeSpan min(TimeSpan a, TimeSpan b)
         {
             if (a <= b)
                 return a;
             else
                 return b;
         }
-        public static float sum(float beg, float end)
+        public static double sum(double beg, double end)
         {
-            float _sum = (int)end + (int)beg;
-            float min = end + beg - _sum;
+            double _sum = (int)end + (int)beg;
+            double min = end + beg - _sum;
             if (min > 0.60)
             {
-                _sum += (float)(1 + (min - 0.60));
+                _sum += (1 + (min - 0.60));
             }
             else
                 _sum += min;
 
             return _sum;
         }
-        public static float dif(float beg, float end)
+        public static double dif(TimeSpan beg, TimeSpan end)
         {
-            float _dif = (int)end - (int)beg;
-            float min = end - beg - _dif;
-            if (min < 0.00)
-            {
-                _dif += (float)(-1 + (min + 0.60));
-            }
-            else
-                _dif += min;
-
-            return _dif;
+            TimeSpan common = end - beg;
+            return common.TotalHours;
         }
         public static List<Contract> GetContractsBy(Func<Contract, bool> cond)
         {

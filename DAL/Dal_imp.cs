@@ -19,7 +19,7 @@ namespace DAL
                 foreach (Nanny item in getNannyList())
                 {
                     if (item.Id == nanny.Id)
-                        throw new Exception();
+                        throw new Exception("there is already nanny with this id");
                 }
             }
             DataSource.NannyList.Add(nanny);
@@ -40,7 +40,7 @@ namespace DAL
                 }
             }
             if (flag)//id to delete not found throw Exception
-                throw new Exception();
+                throw new Exception("this nanny is not exist");
         }
         public void updateNanny(Nanny nanny)
         {
@@ -51,7 +51,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)//id to update not found throw Exception
-                throw new Exception();
+                throw new Exception("this nanny is not exist");
             removeNanny(nanny);//delete the old mother
             addNanny(nanny);//insert the update mother
         }
@@ -65,7 +65,7 @@ namespace DAL
                 foreach (Mother item in getMotherList())
                 {
                     if (item.Id == mother.Id)
-                        throw new Exception();
+                        throw new Exception("there is already mother with this id");
                 }
             }
             DataSource.MotherList.Add(mother);
@@ -86,7 +86,7 @@ namespace DAL
                 }
             }
             if (flag)//id to delete not found throw Exception
-                throw new Exception();
+                throw new Exception("this mother is not exist");
         }
         public void updateMother(Mother mother)
         {
@@ -97,7 +97,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)//id to update not found throw Exception
-                throw new Exception();
+                throw new Exception("this mother is not exist");
             removeMother(mother);//delete the old mother
             addMother(mother);//insert the update mother
         }
@@ -112,7 +112,7 @@ namespace DAL
                 foreach (Child item in getChildList())
                 {
                     if (item.Id == child.Id)
-                        throw new Exception();
+                        throw new Exception("there is already child with this id");
                 }
                 if (DataSource.MotherList == null)
                     throw new Exception("ERROR-child without Mother");
@@ -122,7 +122,7 @@ namespace DAL
                         flag = false;
                 }
                 if (flag)
-                    throw new Exception();
+                    throw new Exception("this child has no Mother");
             }
             DataSource.ChildList.Add(child);
         }
@@ -152,7 +152,7 @@ namespace DAL
                 }
             }
             if (flag)//id to delete not found throw Exception
-                throw new Exception();
+                throw new Exception("this child is not exist");
         }
         public void updateChild(Child child)
         {
@@ -163,7 +163,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)//id to update not found throw Exception
-                throw new Exception();
+                throw new Exception("this child is not exist");
             removeChild(child);//delete the old mother
             addChild(child);//insert the update mother
 
@@ -187,7 +187,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)
-                throw new Exception();
+                throw new Exception("there is no mother with this id");
             flag = true;
             foreach (Nanny item in getNannyList())
             {
@@ -195,7 +195,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)
-                throw new Exception();
+                throw new Exception("there is no nanny with this id");
             contract.ContractID = contratNumber.ToString();
             contratNumber++;
             DataSource.ContractList.Add(contract);
@@ -228,7 +228,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)//id to update not found throw Exception
-                throw new Exception("");
+                throw new Exception("Contract Not Found");
             removeContract(contract);//delete the old mother
             addContract(contract);//insert the update mother
         }
