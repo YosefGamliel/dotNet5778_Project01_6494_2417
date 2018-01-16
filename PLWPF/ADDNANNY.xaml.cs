@@ -20,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class ADDNANNY : Window
     {
-        Nanny nanny;
+        Nanny nanny,nanny1;
         IBL bl ;
         public ADDNANNY()
         {   
@@ -38,7 +38,8 @@ namespace PLWPF
         {
             try
             {
-                bl.addNanny(nanny);
+                nanny1 = new Nanny(nanny);//
+                bl.addNanny(nanny1);
                 nanny = new Nanny();
                 this.grid1.DataContext = nanny;
                 this.Close();

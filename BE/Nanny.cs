@@ -93,47 +93,6 @@ namespace BE
             recommendations = recomm;
             numOfKids = 0;
         }
-        public Nanny(Nanny nanny)
-        {
-            if (!MyFunctions.CheckID(nanny.Id))
-                throw new Exception("Invalid ID");
-            if (!MyFunctions.CheckName(nanny.LastName))
-                throw new Exception("Invalid name");
-            if (!MyFunctions.CheckName(nanny.FirstName))
-                throw new Exception("Invalid name");
-            if (!MyFunctions.CheckPhoneNumber(nanny.PhoneNumber))
-                throw new Exception("Invalid phone number");
-            if (!MyFunctions.CheckAddress(nanny.Address))
-                throw new Exception("Invalid address");
-            if (!MyFunctions.CheckDatePast(nanny.Birthday))
-                throw new Exception("Invalid date");
-            if (!MyFunctions.CheckArraySize(nanny.WorkHours, nanny.WorkDays))
-                throw new Exception("Invalid arrays sizes");
-            if (!MyFunctions.CheckNanny(nanny.Birthday, nanny.ExperienceYears, nanny.MaxKids, nanny.MinAge, nanny.MaxAge, nanny.HourSalary, nanny.MonthSalary))
-                throw new Exception("Invalid ages or invalid salaries");
-            id = nanny.Id;
-            lastName = nanny.LastName;
-            firstName = nanny.FirstName;
-            phoneNumber = PN;
-            address = addr;
-            birthday = birth;
-            elevator = elev;
-            floorBuilding = FB;
-            experienceYears = EY;
-            maxKids = MK;
-            minAge = MinA;
-            maxAge = MaxA;
-            hourlyRate = HR;
-            hourSalary = HS;
-            monthSalary = MS;
-            workDays = WD;
-            workHours = new TimeSpan[6, 2];
-            workHours = WH;
-            vacationDaysITE = VD;
-            recommendations = recomm;
-            numOfKids = 0;
-        }
-
         public Nanny()
         {
         }

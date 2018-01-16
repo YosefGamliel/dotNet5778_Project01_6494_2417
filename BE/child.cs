@@ -44,24 +44,7 @@ namespace BE
             infoSpecialNeeds = ISN;
 
         }
-        public Child(Child child)
-        {
-            if (!MyFunctions.CheckID(child.Id))
-                throw new Exception("Invalid ID");
-            if (!MyFunctions.CheckName(child.FirstName))
-                throw new Exception("Invalid name");
-            if (!MyFunctions.CheckID(child.MotherId))
-                throw new Exception("Invalid ID");
-            if (!MyFunctions.CheckDatePast(child.Birthday))
-                throw new Exception("Invalid date");
-            id = child.Id;
-            firstName = child.FirstName;
-            motherId = child.MotherId;
-            birthday = child.Birthday;
-            specialNeeds = child.SpecialNeeds;
-            infoSpecialNeeds = child.InfoSpecialNeeds;
-
-        }
+        
         public Child()
         {
         }

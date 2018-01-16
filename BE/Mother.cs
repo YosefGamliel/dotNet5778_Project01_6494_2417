@@ -57,33 +57,7 @@ namespace BE
             workHours = hours;
             notes = nt;
         }
-        public Mother(Mother mother)
-        {
-            if (!MyFunctions.CheckID(mother.Id))
-                throw new Exception("Invalid ID");
-            if (!MyFunctions.CheckName(mother.LastName))
-                throw new Exception("Invalid name");
-            if (!MyFunctions.CheckName(mother.FirstName))
-                throw new Exception("Invalid name");
-            if (!MyFunctions.CheckPhoneNumber(mother.PhoneNumber))
-                throw new Exception("Invalid phone number");
-            if (!MyFunctions.CheckAddress(mother.Address))
-                throw new Exception("Invalid address");
-            if (!MyFunctions.CheckAddress(mother.AreaNanny))
-                throw new Exception("Invalid address");
-            if (!MyFunctions.CheckArraySize(mother.WorkHours, mother.NeedNanny))
-                throw new Exception("Invalid arrays sizes");
-            id = mother.Id.Trim();//DELETE spare space
-            lastName = mother.LastName.Trim();//DELETE spare space
-            firstName = mother.FirstName.Trim();//DELETE spare space
-            phoneNumber = mother.PhoneNumber.Trim();
-            address = mother.Address;
-            areaNanny = mother.AreaNanny;
-            needNanny = mother.NeedNanny;
-            workHours = new TimeSpan[6, 2];
-            workHours = mother.WorkHours;
-            notes = mother.Notes;
-        }
+        
         public Mother()
         {
         }

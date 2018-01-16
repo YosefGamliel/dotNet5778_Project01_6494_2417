@@ -55,24 +55,7 @@ namespace BE
             discount = 0;
 
         }
-        public Contract(Contract contract)
-        {
-            if (!MyFunctions.CheckContract(contract.End, contract.Start))
-                throw new Exception("Invalid dates");
-            if (!MyFunctions.CheckID(contract.BabySitterID))
-                throw new Exception("Invalid ID");
-            if (!MyFunctions.CheckID(contract.ChildID))
-                throw new Exception("Invalid ID");
-            babySitterID = contract.BabySitterID;
-            childID = contract.ChildID;
-            firsMeating = contract.FirsMeating;
-            start = contract.Start;
-            end = contract.End;
-            salaryType = contract.SalaryType;
-            payment = 0;
-            discount = 0;
-
-        }
+        
         public Contract()
         {
         }
