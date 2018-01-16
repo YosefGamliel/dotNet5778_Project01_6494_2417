@@ -28,6 +28,9 @@ namespace PLWPF
             nanny = new Nanny();
             bl = new BL_imp();
             this.grid1.DataContext = nanny;
+            this.workDay.DataContext = nanny;
+           // DateTime time = new DateTime();
+            birthdayDatePicker.DataContext = nanny.Birthday;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -37,11 +40,15 @@ namespace PLWPF
                 bl.addNanny(nanny);
                 nanny = new Nanny();
                 this.grid1.DataContext = nanny;
+                this.Close();
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+
+       
     }
 }
