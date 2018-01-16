@@ -10,7 +10,6 @@ namespace BE
 
         private readonly string id;
         private string firstName;
-        private string LastName;
         private readonly string motherId;
         private readonly DateTime birthday;
         private bool specialNeeds;
@@ -34,19 +33,35 @@ namespace BE
             if (!MyFunctions.CheckName(FN))
                 throw new Exception("Invalid name");
             if (!MyFunctions.CheckID(MID))
-                throw new Exception("Invalid name");
+                throw new Exception("Invalid ID");
             if (!MyFunctions.CheckDatePast(birth))
                 throw new Exception("Invalid date");
             id = ID;
             firstName = FN;
-            LastName = LN;
             motherId = MID;
             birthday = birth;
             specialNeeds = SN;
             infoSpecialNeeds = ISN;
 
         }
+        public Child(Child child)
+        {
+            if (!MyFunctions.CheckID(child.Id))
+                throw new Exception("Invalid ID");
+            if (!MyFunctions.CheckName(child.FirstName))
+                throw new Exception("Invalid name");
+            if (!MyFunctions.CheckID(child.MotherId))
+                throw new Exception("Invalid ID");
+            if (!MyFunctions.CheckDatePast(child.Birthday))
+                throw new Exception("Invalid date");
+            id = child.Id;
+            firstName = child.FirstName;
+            motherId = child.MotherId;
+            birthday = child.Birthday;
+            specialNeeds = child.SpecialNeeds;
+            infoSpecialNeeds = child.InfoSpecialNeeds;
 
+        }
         public Child()
         {
         }
