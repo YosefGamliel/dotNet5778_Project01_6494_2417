@@ -23,7 +23,7 @@ namespace BE
         private float hourSalary;
         private float monthSalary;
         private bool[] workDays;
-        private float[,] workHours;
+        private TimeSpan[,] workHours;
         private bool vacationDaysITE; //if it's true - she gets her vacation days according to ITE (Ministry
         // of Industry, Trade and Employment), if it's false - she gets according to the Ministry of Education.
         private string recommendations;
@@ -46,14 +46,14 @@ namespace BE
         public float HourSalary { get { return hourSalary; } set { hourSalary = value; } }
         public float MonthSalary { get { return monthSalary; } set { monthSalary = value; } }
         public bool[] WorkDays { get { return workDays; } set { workDays = value; } }
-        public float[,] WorkHours { get { return workHours; } set { workHours = value; } }
+        public TimeSpan[,] WorkHours { get { return workHours; } set { workHours = value; } }
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         public int NumOfKids { get { return numOfKids; } set { numOfKids = value; } }
         #endregion
         #region functions:
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
-            int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, float[,] WH, bool VD, string recomm)
+            int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, TimeSpan[,] WH, bool VD, string recomm)
         {
             if (!MyFunctions.CheckID(ID))
                 throw new Exception("Invalid ID");
@@ -87,7 +87,7 @@ namespace BE
             hourSalary = HS;
             monthSalary = MS;
             workDays = WD;
-            workHours = new float[6, 2];
+            workHours = new TimeSpan[6, 2];
             workHours = WH;
             vacationDaysITE = VD;
             recommendations = recomm;
@@ -112,8 +112,7 @@ namespace BE
                     WORK += ": Yes ";
                 else
                     WORK += ": No ";
-                WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + (workHours[i, 0] / 100) + ":"
-                    + (workHours[i, 0] % 100) + "End time: " + (workHours[i, 1] / 100) + ":" + (workHours[i, 1] % 100));
+                WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + workHours[i, 0].ToString() + "End time: " + workHours[i, 1].ToString());
                 if (vacationDaysITE)
                     str3 = "gets her vacation days according to the Ministry of Industry, Trade and Employment";
                 else str3 = "gets her vacation days according to the Ministry of Education";

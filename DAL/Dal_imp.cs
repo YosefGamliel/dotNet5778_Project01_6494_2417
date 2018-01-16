@@ -115,7 +115,7 @@ namespace DAL
                         throw new Exception();
                 }
                 if (DataSource.MotherList == null)
-                    throw new Exception("ERROR-child withoutMother");
+                    throw new Exception("ERROR-child without Mother");
                 foreach (Mother item in getMotherList())
                 {
                     if (item.Id == child.MotherId)

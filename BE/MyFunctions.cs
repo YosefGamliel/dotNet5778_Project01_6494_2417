@@ -74,7 +74,7 @@ namespace BE
             }
             return (count == 2);
         }
-        public static bool CheckArraySize(float[,] workHours, bool[] workDays)
+        public static bool CheckArraySize(TimeSpan[,] workHours, bool[] workDays)
         {
             return (workHours.GetLength(0) == 6 && workHours.GetLength(1) == 2 && workDays.GetLength(0) == 6);
         }

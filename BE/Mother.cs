@@ -14,7 +14,7 @@ namespace BE
         private string address;
         private string areaNanny;//where the mother search Babysitter
         private bool[] needNanny;
-        private float[,] workHours;
+        private TimeSpan[,] workHours;
         private string notes;//Remarks or Requirements
         #endregion
         #region properties:
@@ -26,11 +26,11 @@ namespace BE
         public string AreaNanny { get { return areaNanny; } set { areaNanny = value; } }
         public bool[] NeedNanny { get { return needNanny; } set { needNanny = value; } }
         public string Notes { get { return notes; } set { notes = value; } }
-        public float[,] WorkHours { get { return workHours; } set { workHours = value; } }
+        public TimeSpan[,] WorkHours { get { return workHours; } set { workHours = value; } }
         #endregion
         #region functions:
         public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need,
-            float[,] hours, string nt)
+            TimeSpan[,] hours, string nt)
         {
             if (!MyFunctions.CheckID(ID))
                 throw new Exception("Invalid ID");
@@ -53,7 +53,7 @@ namespace BE
             address = addr;
             areaNanny = area;
             needNanny = need;
-            workHours = new float[6, 2];
+            workHours = new TimeSpan[6, 2];
             workHours = hours;
             notes = nt;
         }
@@ -72,8 +72,7 @@ namespace BE
                     NEED += ": Yes ";
                 else
                     NEED += ": No ";
-                WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + (workHours[i, 0] / 100) + ":"
-                    + (workHours[i, 0] % 100) + "End time: " + (workHours[i, 1] / 100) + ":" + (workHours[i, 1] % 100));
+                WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + workHours[i, 0].ToString() + "End time: " + workHours[i, 1].ToString());
             }
             return "Id: " + Id + "\nFirst name: " + FirstName + "\nLast name: " + LastName + "\nPhone number: " +
                 PhoneNumber + "\nAddress: " + Address + "\nAddress of area where she search a nanny: " + areaNanny
