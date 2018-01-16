@@ -10,7 +10,7 @@ namespace BL
 {
     public class BL_imp : IBL
     {
-        Dal_imp dal = new Dal_imp();
+        Idal dal = new Dal_imp();
         #region MOTHER
         public void addMother(Mother mom)
         {

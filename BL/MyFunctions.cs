@@ -16,7 +16,7 @@ namespace BL
     // public delegate bool condition(object cond);
     public class MyFunctions
     {
-        static BL_imp bl = new BL_imp(); // it's static because the functions are also static
+        static IBL bl = new BL_imp(); // it's static because the functions are also static
         public static Mother FindMother(string childID)
         {
             string motherID = null;

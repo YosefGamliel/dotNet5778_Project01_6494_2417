@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE;
+using BL;
 namespace PLWPF
 {
     /// <summary>
@@ -19,25 +20,28 @@ namespace PLWPF
     /// </summary>
     public partial class ADDNANNY : Window
     {
+        Nanny nanny;
+        IBL bl ;
         public ADDNANNY()
-        {
+        {   
             InitializeComponent();
+            nanny = new Nanny();
+            bl = new BL_imp();
+            this.grid1.DataContext = nanny;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
-        }
-
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
-        {
-
-            System.Windows.Data.CollectionViewSource nannyViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("nannyViewSource")));
-            // Load data by setting the CollectionViewSource.Source property:
-            // nannyViewSource.Source = [generic data source]
+            try
+            {
+                bl.addNanny(nanny);
+                nanny = new Nanny();
+                this.grid1.DataContext = nanny;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
