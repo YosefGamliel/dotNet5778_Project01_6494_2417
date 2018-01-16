@@ -228,7 +228,7 @@ namespace DAL
                     flag = false;
             }
             if (flag)//id to update not found throw Exception
-                throw new Exception();
+                throw new Exception("");
             removeContract(contract);//delete the old mother
             addContract(contract);//insert the update mother
         }
