@@ -22,7 +22,7 @@ namespace PLWPF
     {
         Nanny nanny;
         IBL bl ;
-        private List<string> errorMessage;
+        private List<string> errorMessage=new List<string>();
         public ADDNANNY()
         {   
             InitializeComponent();
@@ -64,9 +64,9 @@ namespace PLWPF
         private void validation_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
-                errorMessage.Add(e.Error.Exception.Message);
+                errorMessage.Add((string)e.Error.ErrorContent);
             else
-                errorMessage.Remove(e.Error.Exception.Message);
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }
