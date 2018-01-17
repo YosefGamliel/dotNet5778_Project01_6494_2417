@@ -34,6 +34,5 @@ namespace BL
         List<Child> getChildList(Mother mother);
         List<Child> getChildList();
         #endregion
-
     }
 }
