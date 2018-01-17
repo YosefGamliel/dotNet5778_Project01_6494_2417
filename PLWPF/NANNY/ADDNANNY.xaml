@@ -122,7 +122,7 @@
             <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
         </Grid>
 
-        <Button Content="ADD" HorizontalAlignment="Left" Margin="435,321,0,194" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1">
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="454,325,0,190" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1">
             <Button.ContextMenu>
                 <ContextMenu/>
             </Button.ContextMenu>
