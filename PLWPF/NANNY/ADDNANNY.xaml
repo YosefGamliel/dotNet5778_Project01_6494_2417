@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
-        xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.ADDNANNY"
+        xmlns:BE="clr-namespace:BE;assembly=BE"
+        xmlns:extToolkit1="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.ADDNANNY"
         mc:Ignorable="d"
         Title="ADDNANNY" Height="658" Width="742">
     <Grid Height="627" VerticalAlignment="Top">
@@ -105,19 +106,19 @@
         </Grid>
 
         <Grid x:Name="time" HorizontalAlignment="Left" Height="500" Margin="313,54,0,0" VerticalAlignment="Top" Width="402">
-            <extToolkit:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Value="{Binding Path=WorkHours[0][0] }" />
-            <extToolkit:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Value="{Binding Path=WorkHours[1][0] }"/>
-            <extToolkit:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Value="{Binding Path=WorkHours[2][0] }"/>
-            <extToolkit:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Value="{Binding Path=WorkHours[3][0] }"/>
-            <extToolkit:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Value="{Binding Path=WorkHours[4][0] }" />
-            <extToolkit:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Value="{Binding Path=WorkHours[5][0]}" />
+            <extToolkit1:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Value="{Binding Path=WorkHours[0][0] }" />
+            <extToolkit1:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Value="{Binding Path=WorkHours[1][0] }"/>
+            <extToolkit1:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Value="{Binding Path=WorkHours[2][0] }"/>
+            <extToolkit1:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Value="{Binding Path=WorkHours[3][0] }"/>
+            <extToolkit1:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Value="{Binding Path=WorkHours[4][0] }" />
+            <extToolkit1:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Value="{Binding Path=WorkHours[5][0]}" />
 
-            <extToolkit:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Value="{Binding Path=WorkHours[0][1] }"/>
-            <extToolkit:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Value="{Binding Path=WorkHours[1][1] }" />
-            <extToolkit:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Value="{Binding Path=WorkHours[2][1] }"/>
-            <extToolkit:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Value="{Binding Path=WorkHours[3][1] }"/>
-            <extToolkit:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Value="{Binding Path=WorkHours[4][1] }"/>
-            <extToolkit:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Value="{Binding Path=WorkHours[5][1] }"/>
+            <extToolkit1:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Value="{Binding Path=WorkHours[0][1] }"/>
+            <extToolkit1:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Value="{Binding Path=WorkHours[1][1] }" />
+            <extToolkit1:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Value="{Binding Path=WorkHours[2][1] }"/>
+            <extToolkit1:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Value="{Binding Path=WorkHours[3][1] }"/>
+            <extToolkit1:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Value="{Binding Path=WorkHours[4][1] }"/>
+            <extToolkit1:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Value="{Binding Path=WorkHours[5][1] }"/>
             <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"  />
         </Grid>
 
