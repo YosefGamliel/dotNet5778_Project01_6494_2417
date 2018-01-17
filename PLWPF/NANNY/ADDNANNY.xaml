@@ -127,7 +127,7 @@
                 <ContextMenu/>
             </Button.ContextMenu>
         </Button>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="591,10,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="597,11,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
         <TextBox HorizontalAlignment="Left" Height="30" Margin="478,11,0,0" TextWrapping="Wrap" Text="Start Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
 
     </Grid>
