@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
+using BL;
 
 namespace PLWPF
 {
@@ -19,9 +21,56 @@ namespace PLWPF
     /// </summary>
     public partial class ADDMOTHER : Window
     {
+        Mother mother;
+        IBL bl;
+        private List<string> errorMessage = new List<string>();
         public ADDMOTHER()
         {
             InitializeComponent();
+            mother = new Mother();
+            bl = new BL_imp();
+            this.grid1.DataContext = mother;
+            this.workDay.DataContext = mother;
+            this.time.DataContext = mother;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            System.Windows.Data.CollectionViewSource motherViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("motherViewSource")));
+            // Load data by setting the CollectionViewSource.Source property:
+            // motherViewSource.Source = [generic data source]
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
+                bl.addMother(mother);
+                mother = new Mother();
+                this.grid1.DataContext = mother;
+                this.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add((string)e.Error.ErrorContent);
+            else
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }
