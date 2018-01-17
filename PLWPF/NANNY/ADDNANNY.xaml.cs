@@ -22,6 +22,7 @@ namespace PLWPF
     {
         Nanny nanny;
         IBL bl ;
+        private List<string> errorMessage;
         public ADDNANNY()
         {   
             InitializeComponent();
@@ -36,11 +37,21 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+           
             try
             {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
                 bl.addNanny(nanny);
                 nanny = new Nanny();
                 this.grid1.DataContext = nanny;
+
                 this.Close();
                 
             }
@@ -50,6 +61,12 @@ namespace PLWPF
             }
         }
 
-       
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add(e.Error.Exception.Message);
+            else
+                errorMessage.Remove(e.Error.Exception.Message);
+        }
     }
 }
