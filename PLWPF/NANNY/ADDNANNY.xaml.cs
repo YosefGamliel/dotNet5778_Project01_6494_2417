@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using GoogleMapsApi;
+using GoogleMapsApi.Entities.PlaceAutocomplete.Request;
+
 namespace PLWPF
 {
     /// <summary>
@@ -21,23 +24,22 @@ namespace PLWPF
     public partial class ADDNANNY : Window
     {
         Nanny nanny;
-        IBL bl ;
-        private List<string> errorMessage=new List<string>();
+        IBL bl;
+        private List<string> errorMessage = new List<string>();
         public ADDNANNY()
-        {   
+        {
             InitializeComponent();
             nanny = new Nanny();
             bl = new BL_imp();
             this.grid1.DataContext = nanny;
             this.workDay.DataContext = nanny;
             this.time.DataContext = nanny;
-            // DateTime time = new DateTime();
-            birthdayDatePicker.DataContext = nanny.Birthday;
+            birthdayDatePicker.DataContext = DateTime.Now;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+
             try
             {
                 if (errorMessage.Any())
@@ -48,12 +50,14 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
+                nanny.Address = addressTextBox.Text;
+
                 bl.addNanny(nanny);
                 nanny = new Nanny();
                 this.grid1.DataContext = nanny;
 
                 this.Close();
-                
+
             }
             catch (Exception ex)
             {
@@ -68,5 +72,9 @@ namespace PLWPF
             else
                 errorMessage.Remove((string)e.Error.ErrorContent);
         }
+
+
+
+        
     }
 }

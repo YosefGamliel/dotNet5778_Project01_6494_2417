@@ -34,6 +34,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GoogleMapsApi, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMapsApi.0.69.0\lib\net40\GoogleMapsApi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -75,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="algo\GoogleApiFunc.cs" />
     <Compile Include="MOTHER\ADDMOTHER.xaml.cs">
       <DependentUpon>ADDMOTHER.xaml</DependentUpon>
     </Compile>
@@ -104,6 +112,9 @@
     </Compile>
     <Compile Include="MOTHER\UPDATEMOTHER.xaml.cs">
       <DependentUpon>UPDATEMOTHER.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\PlaceAutoCompleteUC.xaml.cs">
+      <DependentUpon>PlaceAutoCompleteUC.xaml</DependentUpon>
     </Compile>
     <Page Include="MOTHER\ADDMOTHER.xaml">
       <SubType>Designer</SubType>
@@ -190,6 +201,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MOTHER\UPDATEMOTHER.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl\PlaceAutoCompleteUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -483,5 +498,6 @@
       <Name>BL</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,9 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE"
-        xmlns:extToolkit1="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.ADDNANNY"
+        xmlns:extToolkit1="http://schemas.xceed.com/wpf/xaml/toolkit"
+        x:Class="PLWPF.ADDNANNY"
+        xmlns:local="clr-namespace:PLWPF"
+        xmlns:UserControl="clr-namespace:PLWPF.UserControl"
         mc:Ignorable="d"
         Validation.Error="validation_Error"
         Title="ADDNANNY" Height="658" Width="742">
@@ -43,7 +45,7 @@
                 <ColumnDefinition Width="144*"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Address:" Height="26" Width="55"/>
-            <TextBox x:Name="addressTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true, ValidatesOnDataErrors=True}" Grid.Row="0" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+            <UserControl:PlaceAutoCompleteUC x:Name="addressTextBox" Width="120" VerticalAlignment="Top"  Grid.Row="0" Margin="3,4,0,0" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
 
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Birthday:" Height="26" Width="56"/>
             <DatePicker x:Name="birthdayDatePicker" VerticalAlignment="Center" DisplayDateStart="01/01/1900" SelectedDate="{Binding Birthday, Mode=TwoWay , NotifyOnValidationError=true, ValidatesOnExceptions=true, ValidatesOnDataErrors=True}" Grid.Row="1" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="1" Height="24" Width="102"/>
@@ -95,8 +97,8 @@
 
             <Label VerticalAlignment="Center" Grid.Row="17" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Vacation Days ITE:" Height="26" Width="105"/>
             <CheckBox x:Name="vacationDaysITECheckBox" VerticalAlignment="Center" Grid.Row="17" Margin="3,8,0,8" IsChecked="{Binding VacationDaysITE, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true , ValidatesOnDataErrors=True}" HorizontalAlignment="Left" Grid.Column="1" Content="" Height="16" Width="20"/>
-        </Grid>
 
+        </Grid>
         <Grid x:Name="workDay" HorizontalAlignment="Left" Height="220" Margin="313,54,0,0" VerticalAlignment="Top" Width="162">
             <TextBlock x:Name="workDays" HorizontalAlignment="Left" Margin="10,0,0,181" TextWrapping="Wrap" Text="work days:" Width="62"/>
             <CheckBox x:Name="sun" Content="sunday" HorizontalAlignment="Left"  Margin="82,1,0,0" VerticalAlignment="Top" IsChecked="{Binding workDays[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true , ValidatesOnDataErrors=True}" Height="29"/>
