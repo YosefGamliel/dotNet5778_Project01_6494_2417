@@ -28,7 +28,8 @@ namespace PLWPF
         {
             InitializeComponent();
             mother = new Mother();
-            bl = new BL_imp();
+            if (bl == null)
+                bl = new BL_imp();
             this.grid1.DataContext = mother;
             this.workDay.DataContext = mother;
             this.time.DataContext = mother;
@@ -54,6 +55,8 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
+                mother.Address = addressTextBox.Text;
+                mother.AreaNanny = addressNannyTextBox.Text;
                 bl.addMother(mother);
                 mother = new Mother();
                 this.grid1.DataContext = mother;

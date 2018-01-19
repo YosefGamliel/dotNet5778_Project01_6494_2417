@@ -30,7 +30,8 @@ namespace PLWPF
         {
             InitializeComponent();
             nanny = new Nanny();
-            bl = new BL_imp();
+            if (bl == null)
+                bl = new BL_imp();
             this.grid1.DataContext = nanny;
             this.workDay.DataContext = nanny;
             this.time.DataContext = nanny;
@@ -50,8 +51,17 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
-                nanny.Address = addressTextBox.Text;
+                #region איתחולים שלא עובדים עם בינדינג
+               nanny.Address = addressTextBox.Text;
+               nanny.Birthday = (DateTime)birthdayDatePicker.SelectedDate;
+                //nanny.WorkDays[0] = (bool)sun.IsChecked;
+                //nanny.WorkDays[1] = (bool)mon.IsChecked;
+                //nanny.WorkDays[2] = (bool)tus.IsChecked;
+                //nanny.WorkDays[3] = (bool)wed.IsChecked;
+                //nanny.WorkDays[4] = (bool)thu.IsChecked;
+                //nanny.WorkDays[5] = (bool)fri.IsChecked;
 
+                #endregion
                 bl.addNanny(nanny);
                 nanny = new Nanny();
                 this.grid1.DataContext = nanny;
@@ -72,8 +82,7 @@ namespace PLWPF
             else
                 errorMessage.Remove((string)e.Error.ErrorContent);
         }
-
-
+      
 
         
     }

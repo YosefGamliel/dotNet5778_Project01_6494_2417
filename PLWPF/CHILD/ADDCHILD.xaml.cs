@@ -28,7 +28,8 @@ namespace PLWPF
         {
             InitializeComponent();
             child = new Child();
-            bl = new BL_imp();
+            if (bl == null)
+                bl = new BL_imp();
             this.grid1.DataContext = child;
             birthdayDatePicker.SelectedDate = DateTime.Now;
         }

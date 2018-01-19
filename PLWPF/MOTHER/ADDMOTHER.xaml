@@ -5,6 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.ADDMOTHER"
+       xmlns:extToolkit1="http://schemas.xceed.com/wpf/xaml/toolkit"
+       xmlns:UserControl="clr-namespace:PLWPF.UserControl"
+
         mc:Ignorable="d"
         Validation.Error="validation_Error"
         Title="ADDMOTHER" Height="393.278" Width="644.538" Loaded="Window_Loaded">
@@ -28,9 +31,9 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Address:"/>
-            <TextBox x:Name="addressTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Address, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="0" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <UserControl:PlaceAutoCompleteUC x:Name="addressTextBox" Width="120" VerticalAlignment="Top"  Grid.Row="0" Margin="3,4,0,0" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
             <Label VerticalAlignment="Center" Grid.Row="1" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Area Nanny:"/>
-            <TextBox x:Name="areaNannyTextBox" Width="120" VerticalAlignment="Center" Text="{Binding AreaNanny, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
+            <UserControl:PlaceAutoCompleteUC x:Name="addressNannyTextBox" Width="120" VerticalAlignment="Top"  Grid.Row="1" Margin="3,3,0,0" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
             <Label VerticalAlignment="Center" Grid.Row="2" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:"/>
             <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label VerticalAlignment="Center" Grid.Row="3" Margin="3" HorizontalAlignment="Left" Grid.Column="0" Content="Id:"/>

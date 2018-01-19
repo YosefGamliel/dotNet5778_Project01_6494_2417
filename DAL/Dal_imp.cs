@@ -30,17 +30,20 @@ namespace DAL
         }
         public void removeNanny(Nanny nanny)
         {
+            Nanny todelete = new Nanny();
             bool flag = true;
             foreach (Nanny item in getNannyList())
             {
                 if (item.Id == nanny.Id)//if find id to delete
                 {
                     flag = false;
-                    getNannyList().Remove(item);
+                   todelete=item;
                 }
             }
             if (flag)//id to delete not found throw Exception
                 throw new Exception("this nanny is not exist");
+            else
+                getNannyList().Remove(todelete);
         }
         public void updateNanny(Nanny nanny)
         {
@@ -77,16 +80,19 @@ namespace DAL
         public void removeMother(Mother mother)
         {
             bool flag = true;
+            Mother todelete = new Mother();
             foreach (Mother item in getMotherList())
             {
                 if (item.Id == mother.Id)//if find id to delete
                 {
                     flag = false;
-                    getMotherList().Remove(item);
+                    todelete = item; 
                 }
             }
             if (flag)//id to delete not found throw Exception
                 throw new Exception("this mother is not exist");
+            else
+                getMotherList().Remove(todelete);
         }
         public void updateMother(Mother mother)
         {
@@ -143,16 +149,19 @@ namespace DAL
         public void removeChild(Child child)
         {
             bool flag = true;
+            Child todelete = new Child();
             foreach (Child item in getChildList())
             {
                 if (item.Id == child.Id)//if find id to delete
                 {
                     flag = false;
-                    getChildList().Remove(child);
+                    todelete = child;
                 }
             }
             if (flag)//id to delete not found throw Exception
                 throw new Exception("this child is not exist");
+            else
+                getChildList().Remove(todelete);
         }
         public void updateChild(Child child)
         {
@@ -217,6 +226,7 @@ namespace DAL
             }
             if (flag)//id to delete not found throw Exception
                 throw new Exception("Contract Not Found");
+            else
             getContractList().Remove(ToDelete);
         }
         public void updateContract(Contract contract)

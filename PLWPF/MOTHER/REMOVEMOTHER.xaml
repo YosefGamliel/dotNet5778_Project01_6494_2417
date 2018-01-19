@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="REMOVEMOTHER" Height="300" Width="300">
     <Grid>
-        
+        <ComboBox x:Name="Mothersname" HorizontalAlignment="Left" Margin="70,72,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Height="43" Margin="35,7,0,0" TextWrapping="Wrap" Text="MOTHER'S  ID TO DELETE:" VerticalAlignment="Top" Width="221"/>
     </Grid>
 </Window>
