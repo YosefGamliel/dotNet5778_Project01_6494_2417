@@ -213,6 +213,10 @@ namespace BE
         public Nanny()
         {
         }
+        //צריך לסדר את זה אבל 
+        //********חובה************
+        //שהתשע תווים הראשונים יהיו של התז ללא שום תוספת 
+        //או למצוא דרך לסדר את ה מחיקה ב תצוגה.
         public override string ToString()
         {
             return Id + " " + FirstName + "  " + LastName + " ";

@@ -135,23 +135,31 @@ namespace BE
         public Mother()
         {
         }
-
+        //צריך לסדר את זה אבל 
+        //********חובה************
+        //שהתשע תווים הראשונים יהיו של התז ללא שום תוספת 
+        //או למצוא דרך לסדר את ה מחיקה ב תצוגה.
         public override string ToString()
         {
-            string WH = "The required hours each day:", NEED = "Days when needs a nanny: ";
-            for (int i = 0; i < 6; ++i)
-            {
-                NEED += ((DaysOfWeek)i).ToString();
-                if (needNanny[i])
-                    NEED += ": Yes ";
-                else
-                    NEED += ": No ";
-                WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + workHours[i, 0].ToString() + "End time: " + workHours[i, 1].ToString());
-            }
-            return "Id: " + Id + "\nFirst name: " + FirstName + "\nLast name: " + LastName + "\nPhone number: " +
-                PhoneNumber + "\nAddress: " + Address + "\nAddress of area where she search a nanny: " + areaNanny
-                + "\n" + NEED + "\n" + WH + "\nNotes: " + notes;
+            return Id + "  " + FirstName + "  " + LastName;
         }
+
+        //public override string ToString()
+        //{
+        //    string WH = "The required hours each day:", NEED = "Days when needs a nanny: ";
+        //    for (int i = 0; i < 6; ++i)
+        //    {
+        //        NEED += ((DaysOfWeek)i).ToString();
+        //        if (needNanny[i])
+        //            NEED += ": Yes ";
+        //        else
+        //            NEED += ": No ";
+        //        WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + workHours[i, 0].ToString() + "End time: " + workHours[i, 1].ToString());
+        //    }
+        //    return "Id: " + Id + "\nFirst name: " + FirstName + "\nLast name: " + LastName + "\nPhone number: " +
+        //        PhoneNumber + "\nAddress: " + Address + "\nAddress of area where she search a nanny: " + areaNanny
+        //        + "\n" + NEED + "\n" + WH + "\nNotes: " + notes;
+        //}
         #endregion 
     }
 }

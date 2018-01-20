@@ -24,31 +24,35 @@ namespace PLWPF
     /// </summary>
     public partial class REMOVENANNY : Window
     {
-        Nanny nanny;
+        string toDELETE;
         IBL bl;
         public REMOVENANNY()
         {
             InitializeComponent();
             if(bl==null)
                 bl=new BL_imp();
-            nanny = new Nanny();
-            this.DataContext = nanny;
-            //foreach (var item in bl.getNannyList())
-            //{
-            //    ComboBoxItem newItem = new ComboBoxItem();
-            //    newItem.Content = item.FirstName +"  " + item.LastName;
-            //    Nannysname.Items.Add(newItem);
-            //}
-
             this.Nannysname.ItemsSource = bl.getNannyList();
-          //  this.Nannysname.DisplayMemberPath = "FirstName + LastName";
-          //  this.Nannysname.SelectedValuePath = "Id";
-
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (toDELETE == null)
+                throw new Exception("Must Choose Nanny To Delete");
+
+           bl.removeNanny(MyFunctions.getNannyById(toDELETE.Substring(9)));
+           toDELETE = null;
+
+        }
+        /// <summary>
+        /// הסבר : הכומבו בוקס לא מחזיר מסוג עוזרת אלא את ה העמסת אופרטור טו סטרינג ולכן מה עשיתי ? 
+        /// לקחתי את המחרוזת חתכתי את ה התעודת זהות שלה 
+        /// וחיפשתי לפיה ומחקתי
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            bl.removeNanny((Nanny)Nannysname.SelectedItem);
+           toDELETE =Nannysname.SelectedItem.ToString();
         }
     }
 }

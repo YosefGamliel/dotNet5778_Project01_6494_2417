@@ -13,7 +13,6 @@ using GoogleMapsApi.Entities.Directions.Request;
 
 namespace BL
 {
-    // public delegate bool condition(object cond);
     public class MyFunctions
     {
         static IBL bl = new BL_imp(); // it's static because the functions are also static
@@ -32,7 +31,16 @@ namespace BL
             }
             return null;
         }
-        private static string getNannyByChild(Child child)
+        public static Mother FindMotherById(string MotherID)
+        {
+            foreach (var item in bl.getMotherList())
+            {
+                if (item.Id == MotherID)
+                    return item;
+            }
+            return null;
+        }
+            private static string getNannyByChild(Child child)
         {
             foreach (var item in bl.getContractList())
             {
@@ -301,6 +309,17 @@ namespace BL
                 list.Add(item);
             return list;
         }
+        public static List<Child> GetChildBy(Func<Child, bool> cond)
+        {
+            List<Child> list = new List<Child>();
+            var ChildByCondition = from n in bl.getChildList()
+                                   where cond(n)
+                                   select n;
+            foreach (var item in ChildByCondition)
+                list.Add(item);
+            return list;
+        }
+      
     }
 }
 
