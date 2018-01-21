@@ -38,7 +38,6 @@ namespace PLWPF
             mother = Mothersname.SelectionBoxItem as Mother;
             if (mother == null)
                 throw new Exception("Must Choose Mother");
-
             bl.removeMother(mother);
             Close();
         }

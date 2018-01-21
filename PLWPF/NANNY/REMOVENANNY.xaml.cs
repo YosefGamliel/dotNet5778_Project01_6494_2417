@@ -24,35 +24,23 @@ namespace PLWPF
     /// </summary>
     public partial class REMOVENANNY : Window
     {
-        string toDELETE;
+        Nanny nanny = new Nanny();
         IBL bl;
         public REMOVENANNY()
         {
             InitializeComponent();
-            if(bl==null)
-                bl=new BL_imp();
+            if (bl == null)
+                bl = new BL_imp();
             this.Nannysname.ItemsSource = bl.getNannyList();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (toDELETE == null)
+            nanny = Nannysname.SelectionBoxItem as Nanny;
+            if (nanny == null)
                 throw new Exception("Must Choose Nanny To Delete");
-
-           bl.removeNanny(MyFunctions.getNannyById(toDELETE.Substring(9)));
-           toDELETE = null;
-
-        }
-        /// <summary>
-        /// הסבר : הכומבו בוקס לא מחזיר מסוג עוזרת אלא את ה העמסת אופרטור טו סטרינג ולכן מה עשיתי ? 
-        /// לקחתי את המחרוזת חתכתי את ה התעודת זהות שלה 
-        /// וחיפשתי לפיה ומחקתי
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-           toDELETE =Nannysname.SelectedItem.ToString();
+            bl.removeNanny(nanny);
+            Close();
         }
     }
 }

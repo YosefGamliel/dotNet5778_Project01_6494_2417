@@ -126,6 +126,7 @@ namespace BE
             phoneNumber = PN.Trim();
             address = addr;
             areaNanny = area;
+            needNanny = new bool[6];
             needNanny = need;
             workHours = new TimeSpan[6, 2];
             workHours = hours;
@@ -135,6 +136,7 @@ namespace BE
         public Mother()
         {
             needNanny = new bool[6];
+            workHours = new TimeSpan[6, 2];
         }
         //צריך לסדר את זה אבל 
         //********חובה************

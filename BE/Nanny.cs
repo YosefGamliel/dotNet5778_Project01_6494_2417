@@ -203,6 +203,7 @@ namespace BE
             hourlyRate = HR;
             hourSalary = HS;
             monthSalary = MS;
+            workDays = new bool[6];
             workDays = WD;
             workHours = new TimeSpan[6, 2];
             workHours = WH;
@@ -212,6 +213,8 @@ namespace BE
         }
         public Nanny()
         {
+            workDays = new bool[6];
+            workHours = new TimeSpan[6, 2];
         }
         //צריך לסדר את זה אבל 
         //********חובה************

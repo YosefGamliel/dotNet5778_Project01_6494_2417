@@ -20,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class REMOVECHILD : Window
     {
-        string toDELETE;
+        Child child = new Child();
         IBL bl;
         public REMOVECHILD()
         {
@@ -32,19 +32,14 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            if (toDELETE == null)
+            child = Childsname.SelectionBoxItem as Child;
+            if (child == null)
                 throw new Exception("Must Choose Child To Delete");
             //שלוח לפונקציה שיחזיר את הילד עם ה תעודת זהות המתאימה
             
 //could'nt be 2 child with same id so the list must be only with one Var
-            bl.removeChild(MyFunctions.GetChildBy(x=>(x.Id==toDELETE.Substring(9)))[0]);
-            toDELETE = null;
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            toDELETE = Childsname.SelectedItem.ToString();
+            bl.removeChild(child);
+            Close();
         }
     }
 }

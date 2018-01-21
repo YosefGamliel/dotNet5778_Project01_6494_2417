@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BL;
+using BE;
 namespace PLWPF
 {
     /// <summary>
@@ -19,7 +20,7 @@ namespace PLWPF
     /// </summary>
     public partial class REMOVECONTRACT : Window
     {
-        string toDELETE;
+        Contract contract = new Contract();
         IBL bl;
         public REMOVECONTRACT()
         {
@@ -31,19 +32,14 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (toDELETE == null)
-                throw new Exception("Must Choose Nanny To Delete");
+            contract = Contractsname.SelectionBoxItem as Contract;
+            if (contract == null)
+                throw new Exception("Must Choose Contract To Delete");
             //שלוח לפונקציה שיחזיר את חוזה עם ה תעודת זהות המתאימה
 
             //could'nt be 2 Contracts with same id so the list must be only with one Var
-            bl.removeContract(MyFunctions.GetContractsBy(x => (x.ContractID == toDELETE.Substring(9)))[0]);
-            toDELETE = null;
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            toDELETE = Contractsname.SelectedItem.ToString();
-
+            bl.removeContract(contract);
+            Close();
         }
     }
 }
