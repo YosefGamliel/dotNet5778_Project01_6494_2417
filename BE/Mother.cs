@@ -134,6 +134,7 @@ namespace BE
         
         public Mother()
         {
+            needNanny = new bool[6];
         }
         //צריך לסדר את זה אבל 
         //********חובה************

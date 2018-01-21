@@ -21,7 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class REMOVEMOTHER : Window
     {
-        String toDELETE;
+        Mother mother = new Mother();
         IBL bl;
         public REMOVEMOTHER()
         {
@@ -29,21 +29,18 @@ namespace PLWPF
             if (bl == null)
                 bl = new BL_imp();
             this.Mothersname.ItemsSource = bl.getMotherList();
-            this.Mothersname.DisplayMemberPath = "";
+                //.Select(x=> "ID: "+x.Id+"  Name: "+x.FirstName+" "+x.LastName);
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            toDELETE =Mothersname.SelectedItem.ToString();
-        }
-
+       
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (toDELETE == null)
+            mother = Mothersname.SelectionBoxItem as Mother;
+            if (mother == null)
                 throw new Exception("Must Choose Mother");
 
-            bl.removeMother(MyFunctions.FindMotherById(toDELETE.Substring(9)));
-            toDELETE = null;
+            bl.removeMother(mother);
+            Close();
         }
     }
 }
