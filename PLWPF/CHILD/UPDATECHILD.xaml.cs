@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BL;
+using BE;
 namespace PLWPF
 {
     /// <summary>
@@ -19,9 +20,24 @@ namespace PLWPF
     /// </summary>
     public partial class UPDATECHILD : Window
     {
+        IBL bl;
+        Child child;
         public UPDATECHILD()
         {
             InitializeComponent();
+            if (bl == null)
+                bl = new BL_imp();
+            UpdateChildComboBox.ItemsSource = bl.getChildList();
+        }
+        private void UpdateChildComboBox_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            child = UpdateChildComboBox.SelectionBoxItem as Child;
+            grid1.DataContext = child;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            bl.updateChild(child);
+            Close();
         }
     }
 }
