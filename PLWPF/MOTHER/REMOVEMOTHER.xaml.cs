@@ -28,17 +28,20 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            this.Mothersname.ItemsSource = bl.getMotherList();
+            foreach (var mo in bl.getMotherList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + mo.Id + " Name: " + mo.FirstName + " " + mo.LastName;
+                Mothersname.Items.Add(item);
+            }
                 //.Select(x=> "ID: "+x.Id+"  Name: "+x.FirstName+" "+x.LastName);
         }
 
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            mother = Mothersname.SelectionBoxItem as Mother;
-            if (mother == null)
-                throw new Exception("Must Choose Mother");
-            bl.removeMother(mother);
+            string id = Mothersname.SelectionBoxItem as string;
+            bl.removeMother(MyFunctions.FindMotherById(id.Substring(4,9)));
             Close();
         }
     }

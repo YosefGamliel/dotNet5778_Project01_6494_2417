@@ -12,7 +12,7 @@
     </Window.Resources>
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="53,24,0,0" TextWrapping="Wrap" Text="Mother to update:" VerticalAlignment="Top" Width="134" Height="29" FontSize="16"/>
-        <ComboBox HorizontalAlignment="Left" Margin="225,24,0,0" VerticalAlignment="Top" Width="138"/>
+        <ComboBox x:Name="UpdateMotherComboBox" HorizontalAlignment="Left" Margin="225,24,0,0" VerticalAlignment="Top" Width="138" SelectionChanged="UpdateMotherComboBox_SelectionChanged" />
 
         <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource motherViewSource}" Height="219" Width="237" Margin="13,93,0,0">
             <Grid.RowDefinitions>

@@ -31,7 +31,7 @@ namespace PLWPF
         }
         private void UpdateChildComboBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            child = UpdateChildComboBox.SelectionBoxItem as Child;
+            
             grid1.DataContext = child;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
