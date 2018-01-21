@@ -43,7 +43,6 @@ namespace PLWPF
 
             try
             {
-              
                 if (errorMessage.Any())
                 {
                     string err = "Exception:";
@@ -53,20 +52,38 @@ namespace PLWPF
                     return;
                 }
                 #region איתחולים שלא עובדים עם בינדינג
-               nanny.Address = addressTextBox.Text;
-               nanny.Birthday = (DateTime)birthdayDatePicker.SelectedDate;
-                nanny.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
-                nanny.WorkHours[1, 0] = TimeSpan.Parse(monTimeStart.Text);
-                nanny.WorkHours[2, 0] = TimeSpan.Parse(tueTimeStart.Text);
-                nanny.WorkHours[3, 0] = TimeSpan.Parse(wedTimeStart.Text);
-                nanny.WorkHours[4, 0] = TimeSpan.Parse(thoTimeStart.Text);
-                nanny.WorkHours[5, 0] = TimeSpan.Parse(friTimeStart.Text);
-                nanny.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
-                nanny.WorkHours[1, 1] = TimeSpan.Parse(monTimeEnd.Text);
-                nanny.WorkHours[2, 1] = TimeSpan.Parse(tueTimeEnd.Text);
-                nanny.WorkHours[3, 1] = TimeSpan.Parse(wedTimeEnd.Text);
-                nanny.WorkHours[4, 1] = TimeSpan.Parse(thoTimeEnd.Text);
-                nanny.WorkHours[5, 1] = TimeSpan.Parse(friTimeEnd.Text);
+                nanny.Address = addressTextBox.Text;
+                nanny.Birthday = (DateTime)birthdayDatePicker.SelectedDate;
+                if (nanny.WorkDays[0])
+                {
+                    nanny.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
+                    nanny.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
+                }
+                if (nanny.WorkDays[1])
+                {
+                    nanny.WorkHours[1, 0] = TimeSpan.Parse(monTimeStart.Text);
+                    nanny.WorkHours[1, 1] = TimeSpan.Parse(monTimeEnd.Text);
+                }
+                if (nanny.WorkDays[2])
+                {
+                    nanny.WorkHours[2, 0] = TimeSpan.Parse(tueTimeStart.Text);
+                    nanny.WorkHours[2, 1] = TimeSpan.Parse(tueTimeEnd.Text);
+                }
+                if (nanny.WorkDays[3])
+                {
+                    nanny.WorkHours[3, 0] = TimeSpan.Parse(wedTimeStart.Text);
+                    nanny.WorkHours[3, 1] = TimeSpan.Parse(wedTimeEnd.Text);
+                }
+                if (nanny.WorkDays[4])
+                {
+                    nanny.WorkHours[4, 0] = TimeSpan.Parse(thoTimeStart.Text);
+                    nanny.WorkHours[4, 1] = TimeSpan.Parse(thoTimeEnd.Text);
+                }
+                if (nanny.WorkDays[5])
+                {
+                    nanny.WorkHours[5, 0] = TimeSpan.Parse(friTimeStart.Text);
+                    nanny.WorkHours[5, 1] = TimeSpan.Parse(friTimeEnd.Text);
+                }
                 #endregion
                 bl.addNanny(nanny);
                 nanny = new Nanny();
@@ -79,7 +96,6 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void validation_Error(object sender, ValidationErrorEventArgs e)
         {
             if (e.Action == ValidationErrorEventAction.Added)
@@ -87,8 +103,5 @@ namespace PLWPF
             else
                 errorMessage.Remove((string)e.Error.ErrorContent);
         }
-      
-
-        
     }
 }
