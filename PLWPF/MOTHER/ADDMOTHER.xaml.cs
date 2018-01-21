@@ -55,8 +55,22 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
+                #region איתחולים שלא עובדים בבינדינג
                 mother.Address = addressTextBox.Text;
                 mother.AreaNanny = addressNannyTextBox.Text;
+                mother.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
+                mother.WorkHours[1, 0] = TimeSpan.Parse(monTimeStart.Text);
+                mother.WorkHours[2, 0] = TimeSpan.Parse(tueTimeStart.Text);
+                mother.WorkHours[3, 0] = TimeSpan.Parse(wedTimeStart.Text);
+                mother.WorkHours[4, 0] = TimeSpan.Parse(thoTimeStart.Text);
+                mother.WorkHours[5, 0] = TimeSpan.Parse(friTimeStart.Text);
+                mother.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
+                mother.WorkHours[1, 1] = TimeSpan.Parse(monTimeEnd.Text);
+                mother.WorkHours[2, 1] = TimeSpan.Parse(tueTimeEnd.Text);
+                mother.WorkHours[3, 1] = TimeSpan.Parse(wedTimeEnd.Text);
+                mother.WorkHours[4, 1] = TimeSpan.Parse(thoTimeEnd.Text);
+                mother.WorkHours[5, 1] = TimeSpan.Parse(friTimeEnd.Text);
+                #endregion
                 bl.addMother(mother);
                 mother = new Mother();
                 this.grid1.DataContext = mother;
