@@ -93,10 +93,10 @@ namespace PLWPF
             #endregion
             #region ChildExample
             Birth = new DateTime(2017, 05, 05);
-            Child sunofgalit = new Child("317383297", "sunofgalit", "Yosef", "309549079", Birth, false, null);
+            Child sunofgalit = new Child("317383297", "Yosef", "309549079", Birth, false, null);
             bl.addChild(sunofgalit);
             Birth = new DateTime(2017, 04, 04);
-            Child sunofhagit = new Child("318000262", "sunofhagit", "Eliav", "314370768", Birth, false, null);
+            Child sunofhagit = new Child("318000262", "Eliav", "314370768", Birth, true, "needs to take 3 pills a day");
             bl.addChild(sunofhagit);
             #endregion
             #region ContractExample

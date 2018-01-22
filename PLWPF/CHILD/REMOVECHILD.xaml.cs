@@ -27,18 +27,18 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            this.Childsname.ItemsSource = bl.getChildList();
+            foreach (var ch in bl.getChildList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
+                Childsname.Items.Add(item);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            child = Childsname.SelectionBoxItem as Child;
-            if (child == null)
-                throw new Exception("Must Choose Child To Delete");
-            //שלוח לפונקציה שיחזיר את הילד עם ה תעודת זהות המתאימה
-            
-//could'nt be 2 child with same id so the list must be only with one Var
-            bl.removeChild(child);
+            string id = (string)((ComboBoxItem)Childsname.SelectedItem).Content;
+            bl.removeChild(MyFunctions.GetChildBy(x => x.Id == id.Substring(4, 9))[0]);
             Close();
         }
     }

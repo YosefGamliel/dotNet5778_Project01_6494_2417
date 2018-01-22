@@ -40,7 +40,7 @@ namespace PLWPF
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string id = Mothersname.SelectionBoxItem as string;
+            string id = (string)((ComboBoxItem)Mothersname.SelectedItem).Content;
             bl.removeMother(MyFunctions.FindMotherById(id.Substring(4,9)));
             Close();
         }

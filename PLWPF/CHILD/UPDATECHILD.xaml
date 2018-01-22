@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.UPDATECHILD"
         mc:Ignorable="d"
-        Title="UPDATECHILD" Height="414.433" Width="408.403">
+        Title="UPDATECHILD" Height="364.515" Width="408.403">
     <Window.Resources>
         <CollectionViewSource x:Key="childViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Child}, CreateList=True}"/>
     </Window.Resources>
-    <Grid Margin="0,0,13,0" Height="374" VerticalAlignment="Top">
+    <Grid Margin="0,0,13,0" Height="337" VerticalAlignment="Top">
 
-        <Grid x:Name="grid1" Width="273" VerticalAlignment="Top" Margin="58,80,0,0" Height="205" HorizontalAlignment="Left" >
+        <Grid x:Name="grid1" Width="279" VerticalAlignment="Top" Margin="52,80,0,0" Height="157" HorizontalAlignment="Left" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -29,16 +29,12 @@
             <DatePicker x:Name="birthdayDatePicker" Width="102" VerticalAlignment="Center" SelectedDate="{Binding Birthday, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="1" Margin="4,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label Width="70" VerticalAlignment="Center" Margin="3,4,0,4" Height="26" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:"/>
             <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Margin="4,4,0,7" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label Width="23" VerticalAlignment="Center" Grid.Row="2" Margin="3,4,0,3" Height="26" HorizontalAlignment="Left" Grid.Column="0" Content="Id:"/>
-            <TextBox x:Name="idTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,5,0,5" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label Width="111" VerticalAlignment="Center" Grid.Row="5" Margin="3,1,0,10" Height="26" HorizontalAlignment="Left" Grid.Column="0" Content="Info Special Needs:"/>
             <TextBox x:Name="infoSpecialNeedsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding InfoSpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="4,5,0,10" IsEnabled="{Binding IsChecked, ElementName=specialNeedsCheckBox}" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label Width="65" VerticalAlignment="Center" Grid.Row="3" Margin="3,3,0,5" Height="26" HorizontalAlignment="Left" Grid.Column="0" Content="Mother Id:"/>
-            <TextBox x:Name="motherIdTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MotherId, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3,5,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
             <Label Width="87" VerticalAlignment="Center" Grid.Row="4" Margin="3,0,0,8" Height="26" HorizontalAlignment="Left" Grid.Column="0" Content="Special Needs:"/>
             <CheckBox x:Name="specialNeedsCheckBox" Width="20" VerticalAlignment="Center" RenderTransformOrigin="0.67,-0.491" Grid.Row="4" Margin="4,9,0,11" IsChecked="{Binding SpecialNeeds, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Height="14" HorizontalAlignment="Left" Grid.Column="1" Content=""/>
         </Grid>
-        <Button Width="99" VerticalAlignment="Top" TextOptions.TextHintingMode="Fixed" Margin="131,307,0,0" AutomationProperties.IsOffscreenBehavior="Offscreen" Height="53" HorizontalAlignment="Left" FontFamily="MS Office Symbol Bold" FontSize="23" FontWeight="SemiBold" Content="update" BorderThickness="1" Click="Button_Click">
+        <Button Width="114" VerticalAlignment="Top" TextOptions.TextHintingMode="Fixed" Margin="116,254,0,0" AutomationProperties.IsOffscreenBehavior="Offscreen" Height="53" HorizontalAlignment="Left" FontFamily="MS Office Symbol Bold" FontSize="23" FontWeight="SemiBold" Content="update" BorderThickness="1" Click="Button_Click">
             <Button.ContextMenu>
                 <ContextMenu/>
             </Button.ContextMenu>

@@ -62,7 +62,7 @@ namespace BE
         #endregion
 
         #region functions:
-        public Child(string ID, string FN,string LN, string MID, DateTime birth, bool SN, string ISN)
+        public Child(string ID, string FN, string MID, DateTime birth, bool SN, string ISN)
         {
             if (!MyFunctions.CheckID(ID))
                 throw new Exception("Invalid ID");
