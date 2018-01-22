@@ -67,7 +67,7 @@
         </Grid>
         <TextBox HorizontalAlignment="Left" Height="30" Margin="518,56,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
         <TextBox HorizontalAlignment="Left" Height="30" Margin="406,56,0,0" TextWrapping="Wrap" Text="Start Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Button Content="update" HorizontalAlignment="Left" Margin="398,339,0,26" Width="178"  FontSize="24" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1">
+        <Button Content="update" HorizontalAlignment="Left" Margin="398,339,0,26" Width="178"  FontSize="24" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Click="Button_Click">
             <Button.Style>
                 <Style>
                     <Style.Triggers>

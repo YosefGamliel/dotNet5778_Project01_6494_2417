@@ -27,11 +27,17 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            UpdateChildComboBox.ItemsSource = bl.getChildList();
+            foreach (var ch in bl.getMotherList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName + " " + ch.LastName;
+                UpdateChildComboBox.Items.Add(item);
+            }
         }
         private void UpdateChildComboBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            
+            string id = (string)((ComboBoxItem)UpdateChildComboBox.SelectedItem).Content;
+            child = MyFunctions.GetChildBy(x => x.Id == id)[0];
             grid1.DataContext = child;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
