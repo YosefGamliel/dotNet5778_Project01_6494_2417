@@ -122,7 +122,6 @@ namespace PLWPF
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             bl.updateMother(mother);
             Close();
         }
