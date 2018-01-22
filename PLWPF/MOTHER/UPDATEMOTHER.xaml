@@ -47,7 +47,9 @@
             <CheckBox x:Name="mon" Content="monday" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29" />
             <CheckBox x:Name="tus" Content="tuseday" HorizontalAlignment="Left" Margin="82,71,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29" />
             <CheckBox x:Name="wed" Content="wednesday" HorizontalAlignment="Left" Margin="82,107,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
-            <CheckBox x:Name="thu" Content="thoursday" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
+           <CheckBox x:Name="thu" Content="thoursday" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
+            <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"  />
+
         </Grid>
         <Grid x:Name="time" HorizontalAlignment="Left" Height="213" Margin="236,99,0,0" VerticalAlignment="Top" Width="402">
             <xctk:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}" Value="{Binding WorkHours[0][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
@@ -63,7 +65,6 @@
             <xctk:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}" Value="{Binding WorkHours[3][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
             <xctk:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}" Value="{Binding WorkHours[4][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
             <xctk:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}" Value="{Binding WorkHours[5][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"  />
         </Grid>
         <TextBox HorizontalAlignment="Left" Height="30" Margin="518,56,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
         <TextBox HorizontalAlignment="Left" Height="30" Margin="406,56,0,0" TextWrapping="Wrap" Text="Start Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>

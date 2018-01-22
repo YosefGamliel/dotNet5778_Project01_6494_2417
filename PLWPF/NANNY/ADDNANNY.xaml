@@ -13,9 +13,9 @@
         Title="ADDNANNY" Height="658" Width="742">
     <Grid Height="627" VerticalAlignment="Top">
         <Grid.RowDefinitions>
-            <RowDefinition Height="196*"/>
+            <RowDefinition Height="197*"/>
 
-            <RowDefinition Height="13*"/>
+            <RowDefinition Height="12*"/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
 
