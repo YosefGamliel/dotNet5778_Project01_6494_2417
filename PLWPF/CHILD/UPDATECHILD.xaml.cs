@@ -37,7 +37,7 @@ namespace PLWPF
         private void UpdateChildComboBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
             string id = (string)((ComboBoxItem)UpdateChildComboBox.SelectedItem).Content;
-            child = MyFunctions.GetChildBy(x => x.Id == id)[0];
+            child = BL.MyFunctions.GetChildBy(x => x.Id == id.Substring(4, 9))[0];
             grid1.DataContext = child;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
