@@ -109,7 +109,7 @@
             <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding WorkDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
 
         </Grid>
-        
+
 
         <Grid x:Name="time" HorizontalAlignment="Left" Height="500" Margin="313,54,0,0" VerticalAlignment="Top" Width="402">
             <extToolkit1:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}"/>
@@ -127,7 +127,7 @@
             <extToolkit1:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}"/>
         </Grid>
 
-        <Button Content="ADD" HorizontalAlignment="Left" Margin="454,325,0,190" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1">
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="454,346,0,188" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Height="Auto">
             <Button.ContextMenu>
                 <ContextMenu/>
             </Button.ContextMenu>
