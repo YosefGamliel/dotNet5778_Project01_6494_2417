@@ -29,7 +29,6 @@ namespace PLWPF.CHILD
             if (bl == null)
                 bl = new BL_imp();
             list = bl.getChildList();
-            
             ListOfChilds.ItemsSource = list;
         }
 

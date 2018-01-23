@@ -20,27 +20,49 @@ namespace PLWPF.CHILD
     /// </summary>
     public partial class GroupWindow : Window
     {
-        IEnumerable<IGrouping<int, Child>> ChildGroup;
+        IEnumerable<IGrouping<int, Child>> ChildGroupId;
+        IEnumerable<IGrouping<String, Child>> ChildGroupMother;
         IBL bl;
         public GroupWindow()
         {
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
+            KeyID();
+            keyMother();
         }
-
-        void func()
+        void keyMother()
         {
-            ChildGroup = MyFunctions.ChildByAge();
-            foreach (var item in ChildGroup)
+            ChildGroupMother = MyFunctions.ChildByMother();
+            foreach (var item in ChildGroupMother)
+            {
+                keyByMother.Items.Add(item.Key);
+            }
+
+
+        }
+        void KeyID()
+        {
+            ChildGroupId = MyFunctions.ChildByAge();
+            foreach (var item in ChildGroupId)
             {
                 keysComboBox.Items.Add(item.Key);
             }
         }
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (var item in ChildGroup)
+            foreach (var item in ChildGroupId)
             {if (item.Key == (int)keysComboBox.SelectedItem)
+                    ChildView.ItemsSource = item;
+
+            }
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            foreach (var item in ChildGroupMother)
+            {
+                if (item.Key == (string)keysComboBox.SelectedItem)
                     ChildView.ItemsSource = item;
 
             }

@@ -52,7 +52,8 @@ namespace PLWPF
 
         private void GroupBY(object sender, RoutedEventArgs e)
         {
-
+            GroupWindow Gwindow = new GroupWindow();
+            Gwindow.ShowDialog();
         }
     }
 }
