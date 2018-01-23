@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GroupWindow" Height="343.985" Width="575.188">
     <Grid Margin="0,0,-8,22">
-        <TabControl Margin="0,0,0,-198" SelectionChanged="TabControl_SelectionChanged" RenderTransformOrigin="0.503,0.556">
+        <TabControl Margin="0,0,0,-198"  RenderTransformOrigin="0.503,0.556">
             <TabItem Header="Child By Age">
                 <Grid Background="#FFE5E5E5" Margin="0,0,2,0" Height="485" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
                     <Grid.RenderTransform>
@@ -23,7 +23,7 @@
                         <ColumnDefinition Width="453*"/>
                         <ColumnDefinition Width="7*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ChildView" Margin="0,80,0,52" HorizontalAlignment="Left" Width="557" SelectionChanged="ChildView_SelectionChanged" Grid.ColumnSpan="2">
+                    <ListView x:Name="ChildView" Margin="0,80,0,52" HorizontalAlignment="Left" Width="557"  Grid.ColumnSpan="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
@@ -36,7 +36,7 @@
                             </GridView>
                         </ListView.View>
                     </ListView>
-                    <ComboBox x:Name="keysComboBox" HorizontalAlignment="Left" Margin="144.657,0,0,440" VerticalAlignment="Stretch" Width="270" SelectionChanged="ComboBox_SelectionChanged" Grid.Column="1"/>
+                    <ComboBox x:Name="keysComboBox" HorizontalAlignment="Left" Margin="145,0,0,440" VerticalAlignment="Stretch" Width="270" SelectionChanged="keyByID_SelectionChanged" Grid.Column="1"/>
                     <TextBlock HorizontalAlignment="Left" Height="54" Margin="2,0,0,0" TextWrapping="Wrap" Text="Choose Group Age (month):" VerticalAlignment="Top" Width="227" RenderTransformOrigin="0.5,0.5" FontSize="16" TextDecorations="Underline" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
@@ -53,7 +53,7 @@
             </TabItem>
             <TabItem Header="Child By Mother" Height="22" VerticalAlignment="Bottom">
                 <Grid Background="#FFE5E5E5" Height="454" VerticalAlignment="Top">
-                    <ListView HorizontalAlignment="Left" Margin="0,72,0,0" Width="559" SelectionChanged="ListView_SelectionChanged" Height="382" VerticalAlignment="Top">
+                    <ListView HorizontalAlignment="Left" Margin="0,72,0,0" Width="559"  Height="382" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
@@ -67,7 +67,7 @@
                         </ListView.View>
                     </ListView>
                     <TextBlock HorizontalAlignment="Left" Height="39" Margin="20,10,0,0" TextWrapping="Wrap" Text="Choose Mother To Show Her Child" VerticalAlignment="Top" Width="193"/>
-                    <ComboBox x:Name ="keyByMother" HorizontalAlignment="Left" Height="39" Margin="231,10,0,0" VerticalAlignment="Top" Width="249" SelectionChanged="ComboBox_SelectionChanged_1"/>
+                    <ComboBox x:Name ="keyByMother" HorizontalAlignment="Left" Height="39" Margin="231,10,0,0" VerticalAlignment="Top" Width="249" SelectionChanged="keyByMother_SelectionChanged" />
                 </Grid>
 
             </TabItem>

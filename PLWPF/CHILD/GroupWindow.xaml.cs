@@ -49,20 +49,20 @@ namespace PLWPF.CHILD
                 keysComboBox.Items.Add(item.Key);
             }
         }
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void keyByID_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (var item in ChildGroupId)
-            {if (item.Key == (int)keysComboBox.SelectedItem)
+            {
+                if (item.Key == (int)keysComboBox.SelectedItem)
                     ChildView.ItemsSource = item;
 
             }
         }
-
-        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void keyByMother_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             foreach (var item in ChildGroupMother)
             {
-                if (item.Key == (string)keysComboBox.SelectedItem)
+                if (item.Key == keyByMother.SelectedItem.ToString())
                     ChildView.ItemsSource = item;
 
             }
