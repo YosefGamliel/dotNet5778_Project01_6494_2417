@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="ChildDetails" Height="392.481" Width="300">
+        Title="ChildDetails" Height="501.667" Width="307.377">
     <Grid>
         <Button Content="Add Child" HorizontalAlignment="Left" Height="55" Margin="47,20,0,0" VerticalAlignment="Top" Width="182" Click="ADDCHILDWINDOW"/>
         <Button Content="Remove Child" HorizontalAlignment="Left" Height="55" Margin="47,100,0,0" VerticalAlignment="Top" Width="182" Click="REMOVEWINDOW"/>
         <Button Content="Update Child" HorizontalAlignment="Left" Height="55" Margin="47,187,0,0" VerticalAlignment="Top" Width="182" Click="UPDATEWINDOW"/>
         <Button Content="List Of Child" HorizontalAlignment="Left" Height="55" Margin="47,276,0,0" VerticalAlignment="Top" Width="182" Click="Button_Click"/>
+        <Button Content="List By Group" HorizontalAlignment="Left" Margin="47,364,0,0" VerticalAlignment="Top" Width="182
+                " Height="55"/>
 
     </Grid>
 </Window>

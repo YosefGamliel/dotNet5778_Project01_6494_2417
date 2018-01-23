@@ -40,7 +40,7 @@ namespace BL
             }
             return null;
         }
-            private static string getNannyByChild(Child child)
+        private static string getNannyByChild(Child child)
         {
             foreach (var item in bl.getContractList())
             {
@@ -136,6 +136,21 @@ namespace BL
             Leg leg = route.Legs.First();
             return leg.Distance.Value;
         }
+        private double grade(Nanny nanny, Mother mom)
+        {
+            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה המשותפות
+            double[] sumOfHourinWeek = new double[6];
+            double TotalCommonHour = 0;
+
+            for (int i = 0; i < 6; i++)
+            {
+                commonWorkHour[i, 0] = max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
+                commonWorkHour[i, 1] = min(mom.WorkHours[i, 1], nanny.WorkHours[i, 1]);
+                sumOfHourinWeek[i] = dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
+                TotalCommonHour = sum(TotalCommonHour, sumOfHourinWeek[i]);
+            }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
+            return TotalCommonHour;
+        }
         //match nany by hour;
         public List<Nanny> InitialCoordination(Mother mother)
         {
@@ -224,6 +239,41 @@ namespace BL
             }
             return NannyL;
         }
+        public List<Child> ChildByAge(bool MaxOrMin = true)
+        {
+            List<Child> ChildL = new List<Child>();
+            var check = from n in bl.getChildList()
+                            //big to little=False, Little to big=True
+                        let kidsAge = (DateTime.Now.Month - n.Birthday.Month + (DateTime.Now.Year - n.Birthday.Year) * 12) / 2
+                        orderby (MaxOrMin) ? kidsAge  : kidsAge descending //they want the list sorted
+                        group n by kidsAge into childList
+                        select new { kidsAge = childList.Key, orderCHILD = childList };
+            foreach (var groop in check)
+            {
+                foreach (var item in groop.orderCHILD)
+                {
+                    ChildL.Add(item);
+                }
+            }
+            return ChildL;
+        }
+        public List<Child> ChildByMother(bool MaxOrMin = true)
+        {
+            List<Child> ChildL = new List<Child>();
+            var check = from n in bl.getChildList()
+                            //big to little=False, Little to big=True
+                        let MotherID = n.MotherId
+                        group n by MotherID into childList
+                        select new { kidsAge = childList.Key, orderCHILD = childList };
+            foreach (var groop in check)
+            {
+                foreach (var item in groop.orderCHILD)
+                {
+                    ChildL.Add(item);
+                }
+            }
+            return ChildL;
+        }
         /// <summary>
         /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
         /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
@@ -252,21 +302,6 @@ namespace BL
 
             }
             return bestFive;
-        }
-        private double grade(Nanny nanny, Mother mom)
-        {
-            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה המשותפות
-            double[] sumOfHourinWeek = new double[6];
-            double TotalCommonHour = 0;
-
-            for (int i = 0; i < 6; i++)
-            {
-                commonWorkHour[i, 0] = max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
-                commonWorkHour[i, 1] = min(mom.WorkHours[i, 1], nanny.WorkHours[i, 1]);
-                sumOfHourinWeek[i] = dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
-                TotalCommonHour = sum(TotalCommonHour, sumOfHourinWeek[i]);
-            }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
-            return TotalCommonHour;
         }
         public List<Child> ChildWhithoutContract()
         {
@@ -319,7 +354,7 @@ namespace BL
                 list.Add(item);
             return list;
         }
-      
+
     }
 }
 
