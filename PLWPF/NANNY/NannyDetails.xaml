@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="NannyDetails" Height="300" Width="300">
+        Title="NannyDetails" Height="396.992" Width="288.722">
     <Grid>
         <Button Content="ADD" HorizontalAlignment="Left" Height="50" Margin="41,21,0,0" VerticalAlignment="Top" Width="195" Click="ADDNANNYWINDOW"/>
-        <Button Content="REMOVE" HorizontalAlignment="Left" Height="57" Margin="41,92,0,0" VerticalAlignment="Top" Width="195" Click="REMOVENANNYWINDOW"/>
-        <Button Content="UPDATE" HorizontalAlignment="Left" Height="53" Margin="41,171,0,0" VerticalAlignment="Top" Width="195" Click="UPDATENANNYWINDOW"/>
+        <Button Content="REMOVE" HorizontalAlignment="Left" Height="50" Margin="41,92,0,0" VerticalAlignment="Top" Width="195" Click="REMOVENANNYWINDOW"/>
+        <Button Content="UPDATE" HorizontalAlignment="Left" Height="50" Margin="41,171,0,0" VerticalAlignment="Top" Width="195" Click="UPDATENANNYWINDOW"/>
+        <Button Content="List Of Nanny" HorizontalAlignment="Left" Height="50" Margin="41,254,0,0" VerticalAlignment="Top" Width="195" Click="NannyListWindow"/>
     </Grid>
 </Window>

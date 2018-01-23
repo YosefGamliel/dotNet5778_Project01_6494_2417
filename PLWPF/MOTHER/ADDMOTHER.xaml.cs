@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MaterialDesignColors;
+#pragma warning disable CS0105 // Using directive appeared previously in this namespace
 using MaterialDesignColors;
+#pragma warning restore CS0105 // Using directive appeared previously in this namespace
 using BE;
 using BL;
 

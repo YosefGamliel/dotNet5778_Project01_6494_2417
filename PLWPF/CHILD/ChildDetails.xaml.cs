@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.CHILD;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,12 @@ namespace PLWPF
         {
             UPDATECHILD UPDATECHILDPAGE = new UPDATECHILD();
             UPDATECHILDPAGE.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ListOfChild ListOfChildPage = new ListOfChild();
+            ListOfChildPage.ShowDialog();
         }
     }
 }

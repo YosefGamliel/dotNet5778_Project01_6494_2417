@@ -100,6 +100,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="algo\GoogleApiFunc.cs" />
+    <Compile Include="CHILD\ListOfChild.xaml.cs">
+      <DependentUpon>ListOfChild.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CONTRACT\ListOfContract.xaml.cs">
+      <DependentUpon>ListOfContract.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MOTHER\ADDMOTHER.xaml.cs">
       <DependentUpon>ADDMOTHER.xaml</DependentUpon>
     </Compile>
@@ -118,6 +124,12 @@
     <Compile Include="CONTRACT\UPDATECONTRACT.xaml.cs">
       <DependentUpon>UPDATECONTRACT.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MOTHER\ListOfMother.xaml.cs">
+      <DependentUpon>ListOfMother.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NANNY\ListOfNanny.xaml.cs">
+      <DependentUpon>ListOfNanny.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NANNY\REMOVENANNY.xaml.cs">
       <DependentUpon>REMOVENANNY.xaml</DependentUpon>
     </Compile>
@@ -133,6 +145,14 @@
     <Compile Include="UserControl\PlaceAutoCompleteUC.xaml.cs">
       <DependentUpon>PlaceAutoCompleteUC.xaml</DependentUpon>
     </Compile>
+    <Page Include="CHILD\ListOfChild.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CONTRACT\ListOfContract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MOTHER\ADDMOTHER.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CHILD\ADDCHILD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MOTHER\ListOfMother.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +206,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MOTHER\MotherDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NANNY\ListOfNanny.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

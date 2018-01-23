@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.NANNY;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,13 @@ namespace PLWPF
         {
             UPDATENANNY uPDATENANNYWINDOWS = new UPDATENANNY();
             uPDATENANNYWINDOWS.ShowDialog();
+        }
+
+        private void NannyListWindow(object sender, RoutedEventArgs e)
+        {
+            ListOfNanny listOfNanny = new ListOfNanny();
+            listOfNanny.ShowDialog();
+
         }
     }
 }

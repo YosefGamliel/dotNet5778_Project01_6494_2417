@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.CONTRACT;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace PLWPF
 
         private void ADDCONTRACTWINDOW(object sender, RoutedEventArgs e)
         {
-            ADDCONTRACT aDDCONTRACTWINDOWS = new ADDCONTRACT ();
+            ADDCONTRACT aDDCONTRACTWINDOWS = new ADDCONTRACT();
             aDDCONTRACTWINDOWS.ShowDialog();
         }
 
@@ -40,6 +41,17 @@ namespace PLWPF
         {
             UPDATECONTRACT uPDATECONTRACTWINDOW = new UPDATECONTRACT();
             uPDATECONTRACTWINDOW.ShowDialog();
+        }
+
+        private void ListOfContractsWindow(object sender, RoutedEventArgs e)
+        {
+            ListOfContract listOfContracts = new ListOfContract();
+            listOfContracts.ShowDialog();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -14,15 +14,51 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
     mc:Ignorable="d"
-        Title="MainWindow" Height="554.902" Width="676.961" Loaded="Window_Loaded">
+        Title="MainWindow" Height="418.902" Width="630.961" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
     </Window.Resources>
-    <Grid Margin="10,0,0,9">
-        <Button Content="Mother" HorizontalAlignment="Left" Height="59" Margin="121,145,0,0" VerticalAlignment="Top" Width="159" Click="MotherWindows" HorizontalContentAlignment="Center"/>
-        <Button Content="Nanny" HorizontalAlignment="Left" Height="68" Margin="380,245,0,0" VerticalAlignment="Top" Width="159" Click="NannyWindows"/>
-        <Button Content="Child" HorizontalAlignment="Left" Height="56" Margin="121,257,0,0" VerticalAlignment="Top" Width="159" Click="ChildWindow"/>
-        <Button Content="Contract" HorizontalAlignment="Left" Height="68" Margin="390,126,0,0" VerticalAlignment="Top" Width="174" Click="ContractWindow"/>
-        <TextBlock HorizontalAlignment="Left" Height="61" Margin="292,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="25"><Run Text="who are"/><Run FlowDirection="RightToLeft" Text=" "/><Run Text="you?"/></TextBlock>
+    <Grid Height="409" VerticalAlignment="Top" Margin="0,-22,2,0">
+        <Button Content="Mother" HorizontalAlignment="Left" Height="61" Margin="121,144,0,0" VerticalAlignment="Top" Width="158" Click="MotherWindows" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="17.042"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-9.361"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Nanny" HorizontalAlignment="Left" Height="68" Margin="380,245,0,0" VerticalAlignment="Top" Width="159" Click="NannyWindows" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="21.329"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-13.276"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Child" HorizontalAlignment="Left" Height="68" Margin="121,245,0,0" VerticalAlignment="Top" Width="159" Click="ChildWindow" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="20.376"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-12.629"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button Content="Contract" HorizontalAlignment="Left" Height="61" Margin="380,145,0,0" VerticalAlignment="Top" Width="159" Click="ContractWindow" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="20.854"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-11.619"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="220,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="25"><Run Text="who are"/><Run FlowDirection="RightToLeft" Text=" "/><Run Text="you?"/></TextBlock>
     </Grid>
 </Window>

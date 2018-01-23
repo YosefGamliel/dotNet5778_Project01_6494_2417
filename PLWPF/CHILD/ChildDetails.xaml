@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="ChildDetails" Height="300" Width="300">
+        Title="ChildDetails" Height="392.481" Width="300">
     <Grid>
-        <Button Content="Add Child" HorizontalAlignment="Left" Height="58" Margin="47,20,0,0" VerticalAlignment="Top" Width="182" Click="ADDCHILDWINDOW"/>
-        <Button Content="Remove Child" HorizontalAlignment="Left" Height="64" Margin="47,100,0,0" VerticalAlignment="Top" Width="182" Click="REMOVEWINDOW"/>
-        <Button Content="Update Child" HorizontalAlignment="Left" Height="63" Margin="47,187,0,0" VerticalAlignment="Top" Width="182" Click="UPDATEWINDOW"/>
+        <Button Content="Add Child" HorizontalAlignment="Left" Height="55" Margin="47,20,0,0" VerticalAlignment="Top" Width="182" Click="ADDCHILDWINDOW"/>
+        <Button Content="Remove Child" HorizontalAlignment="Left" Height="55" Margin="47,100,0,0" VerticalAlignment="Top" Width="182" Click="REMOVEWINDOW"/>
+        <Button Content="Update Child" HorizontalAlignment="Left" Height="55" Margin="47,187,0,0" VerticalAlignment="Top" Width="182" Click="UPDATEWINDOW"/>
+        <Button Content="List Of Child" HorizontalAlignment="Left" Height="55" Margin="47,276,0,0" VerticalAlignment="Top" Width="182" Click="Button_Click"/>
 
     </Grid>
 </Window>

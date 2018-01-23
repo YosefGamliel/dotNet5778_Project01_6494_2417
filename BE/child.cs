@@ -83,6 +83,7 @@ namespace BE
         
         public Child()
         {
+            birthday = new DateTime(2017, 1, 1);
         }
 
         public override string ToString()

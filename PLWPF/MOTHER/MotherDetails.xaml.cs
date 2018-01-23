@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.MOTHER;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,12 @@ namespace PLWPF
         {
             UPDATEMOTHER uPDATEMOTHERWINDOW = new UPDATEMOTHER();
             uPDATEMOTHERWINDOW.ShowDialog();
+        }
+
+        private void ListOfMotherWindow(object sender, RoutedEventArgs e)
+        {
+            ListOfMother ListOfMotherPage = new ListOfMother();
+            ListOfMotherPage.ShowDialog();
         }
     }
 }

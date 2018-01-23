@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="MotherDetails" Height="300" Width="300">
+        Title="MotherDetails" Height="385.602" Width="300">
     <Grid>
-        <Button Content="ADD" HorizontalAlignment="Left" Height="61" Margin="57,10,0,0" VerticalAlignment="Top" Width="183" Click="ADDMOTHERWINDOW"/>
-        <Button Content="REMOVE" HorizontalAlignment="Left" Height="57" Margin="57,94,0,0" VerticalAlignment="Top" Width="183" Click="REMOVEMOTHERWINDOW"/>
-        <Button Content="UPDATE" HorizontalAlignment="Left" Height="53" Margin="57,179,0,0" VerticalAlignment="Top" Width="183" Click="UPDATEMOTHERWINDOW"/>
+        <Button Content="ADD" HorizontalAlignment="Left" Height="50" Margin="57,10,0,0" VerticalAlignment="Top" Width="183" Click="ADDMOTHERWINDOW"/>
+        <Button Content="REMOVE" HorizontalAlignment="Left" Height="50" Margin="57,94,0,0" VerticalAlignment="Top" Width="183" Click="REMOVEMOTHERWINDOW"/>
+        <Button Content="UPDATE" HorizontalAlignment="Left" Height="50" Margin="57,179,0,0" VerticalAlignment="Top" Width="183" Click="UPDATEMOTHERWINDOW"/>
+        <Button Content="List Of Mother" HorizontalAlignment="Left" Height="50" Margin="57,269,0,0" VerticalAlignment="Top" Width="183" Click="ListOfMotherWindow"/>
 
     </Grid>
 </Window>
