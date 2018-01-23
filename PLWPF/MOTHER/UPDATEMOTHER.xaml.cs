@@ -50,7 +50,7 @@ namespace PLWPF
             wed.IsChecked = mother.NeedNanny[3];
             thu.IsChecked = mother.NeedNanny[4];
             fri.IsChecked = mother.NeedNanny[5];
-           
+
             if (mother.NeedNanny[0])
             {
                 sunTimeStart.Value = new DateTime(mother.WorkHours[0, 0].Ticks);

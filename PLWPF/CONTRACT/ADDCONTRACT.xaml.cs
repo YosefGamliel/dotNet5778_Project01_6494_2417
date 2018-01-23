@@ -38,20 +38,14 @@ namespace PLWPF
                 item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
                 motherIDComboBox.Items.Add(item);
             }
-            List<Child> chList = bl.getChildList(MyFunctions.FindMotherById(((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9)));
-            foreach (var ch in chList)
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
-                childIDComboBox.Items.Add(item);
-            }
+            ////List<Child> chList = bl.getChildList(MyFunctions.FindMotherById(((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9)));
+            //foreach (var ch in chList)
+            //{
+            //    ComboBoxItem item = new ComboBoxItem();
+            //    item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
+            //    childIDComboBox.Items.Add(item);
+            //}
             //List<Nanny> nanList=BL.MyFunctions.
-            foreach (var mo in bl.getMotherList())
-            {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
-                motherIDComboBox.Items.Add(item);
-            }
             this.grid1.DataContext = contract;
             endDatePicker.SelectedDate = DateTime.Now;
             startDatePicker.SelectedDate = DateTime.Now;
@@ -97,6 +91,17 @@ namespace PLWPF
                 errorMessage.Add((string)e.Error.ErrorContent);
             else
                 errorMessage.Remove((string)e.Error.ErrorContent);
+        }
+
+        private void motherIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string id = (string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content;
+            foreach (var ch in bl.getChildList(MyFunctions.FindMotherById(id.Substring(4, 9))))
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
+                childIDComboBox.Items.Add(item);
+            }
         }
     }
     public class TrueToFalseConverter : IValueConverter
