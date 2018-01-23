@@ -28,10 +28,10 @@ namespace PLWPF
             if (bl == null)
                 bl = new BL_imp();
             nanny = new Nanny();
-            foreach (var mo in bl.getNannyList())
+            foreach (var nan in bl.getNannyList())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + mo.Id + " Name: " + mo.FirstName + " " + mo.LastName;
+                item.Content = "ID: " + nan.Id + " Name: " + nan.FirstName + " " + nan.LastName;
                 UpdateNannyComboBox.Items.Add(item);
             }
         }
@@ -89,7 +89,6 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
             this.nanny.Address = addressTextBox.Text;
             bl.updateNanny(nanny);
             Close();

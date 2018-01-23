@@ -9,7 +9,16 @@
     <Grid>
         <ComboBox x:Name="Childsname" HorizontalAlignment="Left" Margin="70,72,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Height="43" Margin="35,7,0,0" TextWrapping="Wrap" Text="CHILD'S  ID TO DELETE:" VerticalAlignment="Top" Width="221"/>
-        <Button Content="DELETE" HorizontalAlignment="Left" Height="67" Margin="48,145,0,0" VerticalAlignment="Top" Width="198" Click="Button_Click"/>
-
+        <Button Content="DELETE" HorizontalAlignment="Left" Height="67" Margin="48,145,0,0" VerticalAlignment="Top" Width="198" Click="Button_Click">
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=Childsname, Path=Text}" Value="">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>

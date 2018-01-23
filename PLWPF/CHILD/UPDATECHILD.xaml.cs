@@ -42,6 +42,8 @@ namespace PLWPF
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (specialNeedsCheckBox.IsChecked == false)
+                child.InfoSpecialNeeds = "";
             bl.updateChild(child);
             Close();
         }

@@ -77,6 +77,10 @@ namespace PLWPF
                 errorMessage.Remove((string)e.Error.ErrorContent);
         }
 
-
+        private void salaryTypeCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (salaryTypeCheckBox.IsChecked.Value)
+                salaryPerMonthTextBox.IsEnabled = false;
+        }
     }
 }

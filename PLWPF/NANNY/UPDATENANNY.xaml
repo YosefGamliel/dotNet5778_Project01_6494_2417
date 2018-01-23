@@ -9,94 +9,128 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" 
 
         mc:Ignorable="d"
-        Title="UPDATENANNY" Height="463.65" Width="652">
+        Title="UPDATENANNY" Height="729.891" Width="771.484">
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
     </Window.Resources>
-    <Grid Margin="0,0,0,-3">
-        <TextBlock HorizontalAlignment="Left" Margin="53,24,0,0" TextWrapping="Wrap" Text="Nanny to update:" VerticalAlignment="Top" Width="134" Height="29" FontSize="16"/>
-        <ComboBox x:Name="UpdateNannyComboBox" HorizontalAlignment="Left" Margin="225,24,0,0" VerticalAlignment="Top" Width="138" SelectionChanged="UpdateNannyComboBox_SelectionChanged" />
-
-        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource nannyViewSource}" Height="219" Width="237" Margin="13,93,0,0">
+    <Grid Margin="0,0,20,8">
+        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="295" Height="588" Margin="7,82,0,0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="38*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="36*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto" MinHeight="48"/>
-                <RowDefinition Height="Auto" MinHeight="49"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="35*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="151*"/>
+                <ColumnDefinition Width="144*"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,4,0,12" HorizontalAlignment="Left" Grid.Column="0" Content="Address:" Height="26" Width="55"/>
+            <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,4,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Address:" Height="26" Width="55"/>
             <UserControl:PlaceAutoCompleteUC x:Name="addressTextBox" Width="120" VerticalAlignment="Top"  Grid.Row="0" Margin="3,4,0,0" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
-            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,11,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:" Height="26" Width="70"/>
-            <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,11,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,5,0,9" HorizontalAlignment="Left" Grid.Column="0" Content="Last Name:" Height="26" Width="69"/>
-            <TextBox x:Name="lastNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="3" Margin="3,5,0,11" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,11,0,11" HorizontalAlignment="Left" Grid.Column="0" Content="Notes:" Height="26" Width="44"/>
-            <TextBox x:Name="notesTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Notes, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="5" Margin="3,13,0,11" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,12,0,11" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:" Height="26" Width="93"/>
-            <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,14,0,13" Height="22" HorizontalAlignment="Left" Grid.Column="1"/>
-        </Grid>
-        <Grid x:Name="workDay" HorizontalAlignment="Left" Height="220" Margin="236,99,0,0" VerticalAlignment="Top" Width="162">
-            <TextBlock x:Name="workDays" HorizontalAlignment="Left" Margin="10,0,0,181" TextWrapping="Wrap" Width="62"><Run Text="When need"/><LineBreak/><Run Text="    nanny?"/></TextBlock>
-            <CheckBox x:Name="sun" Content="sunday" HorizontalAlignment="Left"  Margin="82,1,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
-            <CheckBox x:Name="mon" Content="monday" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29" />
-            <CheckBox x:Name="tus" Content="tuseday" HorizontalAlignment="Left" Margin="82,71,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29" />
-            <CheckBox x:Name="wed" Content="wednesday" HorizontalAlignment="Left" Margin="82,107,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
-            <CheckBox x:Name="thu" Content="thoursday" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
-        </Grid>
-        <Grid x:Name="time" HorizontalAlignment="Left" Height="213" Margin="236,99,0,0" VerticalAlignment="Top" Width="402">
-            <xctk:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}" Value="{Binding WorkHours[0][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
-            <xctk:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}" Value="{Binding WorkHours[1][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}" Value="{Binding WorkHours[2][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}" Value="{Binding WorkHours[3][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}" Value="{Binding WorkHours[4][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
-            <xctk:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}" Value="{Binding WorkHours[5][0], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
 
-            <xctk:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}" Value="{Binding WorkHours[0][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}" Value="{Binding WorkHours[1][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
-            <xctk:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}" Value="{Binding WorkHours[2][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}" Value="{Binding WorkHours[3][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}" Value="{Binding WorkHours[4][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <xctk:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}" Value="{Binding WorkHours[5][1], NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
-            <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding workDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"  />
+            <Label VerticalAlignment="Center" Grid.Row="1" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Elevator:" Height="26" Width="55"/>
+            <CheckBox x:Name="elevatorCheckBox" VerticalAlignment="Center" Grid.Row="1" Margin="3,8,0,8" IsChecked="{Binding Elevator, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content="" Height="16" Width="20"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="2" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Experience Years:" Height="26" Width="100"/>
+            <TextBox x:Name="experienceYearsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding ExperienceYears, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="2" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="3" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="First Name:" Height="26" Width="70"/>
+            <TextBox x:Name="firstNameTextBox" Width="120" VerticalAlignment="Center" Grid.Row="3" Margin="3,4,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"  Text="{Binding FirstName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="4" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Floor Building:" Height="26" Width="86"/>
+            <TextBox x:Name="floorBuildingTextBox" Width="120" VerticalAlignment="Center" Text="{Binding FloorBuilding, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="4" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="5" Margin="3,3,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Hourly Rate:" Height="26" Width="75"/>
+            <CheckBox x:Name="hourlyRateCheckBox" VerticalAlignment="Center" Grid.Row="5" Margin="3,8,0,8" IsChecked="{Binding HourlyRate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content="" Height="16" Width="20"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="6" Margin="3,5,0,6" HorizontalAlignment="Left" Grid.Column="0" Content="Hour Salary:" Height="26" Width="74"/>
+            <TextBox x:Name="hourSalaryTextBox" Width="120" VerticalAlignment="Center" Text="{Binding HourSalary, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3,7,0,6" Height="24" HorizontalAlignment="Left" Grid.Column="1" IsEnabled="{Binding IsChecked, ElementName=hourlyRateCheckBox, Mode=OneWay}"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="8" Margin="3,3,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Last Name:" Height="26" Width="69"/>
+            <TextBox x:Name="lastNameTextBox" Width="120" VerticalAlignment="Center" Text="{Binding LastName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="8" Margin="3,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="9" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Max Age:" Height="26" Width="59"/>
+            <TextBox x:Name="maxAgeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MaxAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="9" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="10" Margin="3,3,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Max Kids:" Height="26" Width="60"/>
+            <TextBox x:Name="maxKidsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MaxKids, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="10" Margin="3,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="11" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Min Age:" Height="26" Width="57"/>
+            <TextBox x:Name="minAgeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MinAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="12" Margin="3,3,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Month Salary:" Height="26" Width="83"/>
+            <TextBox x:Name="monthSalaryTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MonthSalary, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
+
+            <Label VerticalAlignment="Center" Grid.Row="13" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Num Of Kids:" Height="26" Width="80"/>
+            <TextBox x:Name="numOfKidsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding NumOfKids, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="13" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="14" Margin="3,3,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Phone Number:" Height="26" Width="93"/>
+            <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="14" Margin="3,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="15" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Recommendations:" Height="26" Width="111"/>
+            <TextBox x:Name="recommendationsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding Recommendations, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="15" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
+
+            <Label VerticalAlignment="Center" Grid.Row="16" Margin="3,3,0,2" HorizontalAlignment="Left" Grid.Column="0" Content="Vacation Days ITE:" Height="26" Width="105"/>
+            <CheckBox x:Name="vacationDaysITECheckBox" VerticalAlignment="Center" Grid.Row="16" Margin="3,7,0,8" IsChecked="{Binding VacationDaysITE, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" HorizontalAlignment="Left" Grid.Column="1" Content="" Height="16" Width="20"/>
+
         </Grid>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="518,56,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <TextBox HorizontalAlignment="Left" Height="30" Margin="406,56,0,0" TextWrapping="Wrap" Text="Start Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
-        <Button Content="update" HorizontalAlignment="Left" Margin="398,339,0,26" Width="178"  FontSize="24" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Click="Button_Click">
-            <Button.Style>
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=addressTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=addressNannyTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=firstNameTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=idTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=lastNameTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=phoneNumberTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
+        <Grid x:Name="workDay" HorizontalAlignment="Left" Height="220" Margin="320,136,0,0" VerticalAlignment="Top" Width="162">
+            <TextBlock x:Name="workDays"  HorizontalAlignment="Left" Margin="10,0,0,181" TextWrapping="Wrap" Text="work days:" Width="62"/>
+            <CheckBox x:Name="sun" Content="sunday" HorizontalAlignment="Left"  Margin="82,1,0,0" VerticalAlignment="Top"  Height="29"  IsChecked="{Binding WorkDays[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
+            <CheckBox x:Name="mon" Content="monday" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" Height="29" IsChecked="{Binding WorkDays[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
+            <CheckBox x:Name="tus" Content="tuseday" HorizontalAlignment="Left" Margin="82,71,0,0" VerticalAlignment="Top"  Height="29" IsChecked="{Binding WorkDays[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
+            <CheckBox x:Name="wed" Content="wednesday" HorizontalAlignment="Left" Margin="82,107,0,0" VerticalAlignment="Top" Height="29" IsChecked="{Binding WorkDays[3], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
+            <CheckBox x:Name="thu" Content="thoursday" HorizontalAlignment="Left" Margin="82,143,0,0" VerticalAlignment="Top" Height="29" IsChecked="{Binding WorkDays[4], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}"/>
+            <CheckBox x:Name="fri" Content="firday" HorizontalAlignment="Left" Margin="82,177,0,0" VerticalAlignment="Top"  Width="55" Height="30" IsChecked="{Binding WorkDays[5], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" />
+
+        </Grid>
+
+
+        <Grid x:Name="time" HorizontalAlignment="Left" Height="500" Margin="320,136,0,0" VerticalAlignment="Top" Width="402">
+            <xctk:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}"/>
+            <xctk:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}"/>
+            <xctk:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}"/>
+            <xctk:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}"/>
+            <xctk:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}"/>
+            <xctk:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}"/>
+
+            <xctk:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}"/>
+            <xctk:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}"/>
+            <xctk:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}"/>
+            <xctk:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}"/>
+            <xctk:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}"/>
+            <xctk:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}"/>
+        </Grid>
+
+        <Button Content="update" HorizontalAlignment="Left" Margin="447,442,0,158" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Height="Auto" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-0.966"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.633"/>
+                </TransformGroup>
+            </Button.RenderTransform>
             <Button.ContextMenu>
                 <ContextMenu/>
             </Button.ContextMenu>
         </Button>
-
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="610,85,0,0" TextWrapping="Wrap" Text="End Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <TextBox HorizontalAlignment="Left" Height="30" Margin="492,85,0,0" TextWrapping="Wrap" Text="Start Hour" VerticalAlignment="Top" Width="98" FontSize="16" FontFamily="Segoe UI Semibold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="172,10,0,0" TextWrapping="Wrap" Text="Nanny to update:" VerticalAlignment="Top" Width="134" Height="29" FontSize="16"/>
+        <ComboBox x:Name="UpdateNannyComboBox" HorizontalAlignment="Left" Margin="344,10,0,0" VerticalAlignment="Top" Width="138" SelectionChanged="UpdateNannyComboBox_SelectionChanged" />
     </Grid>
 </Window>

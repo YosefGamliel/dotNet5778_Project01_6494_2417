@@ -10,12 +10,12 @@
         <ListView Name="ListOfChilds" Height="230" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="560" RenderTransformOrigin="0.498,0.56">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="80" DisplayMemberBinding="{Binding FirstName}" />
-                    <GridViewColumn Header="Mother ID" Width="100" DisplayMemberBinding="{Binding MotherId}" />
-                    <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="Date Of Birth" Width="120" DisplayMemberBinding="{Binding Birthday}" />
-                    <GridViewColumn Header="Special Need" Width="120" DisplayMemberBinding="{Binding SpecialNeeds}" />
-                    <GridViewColumn Header="Details" Width="80" DisplayMemberBinding="{Binding InfoSpecialNeeds}" />
+                    <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="Mother ID" Width="auto" DisplayMemberBinding="{Binding MotherId}" />
+                    <GridViewColumn Header="ID" Width="auto" DisplayMemberBinding="{Binding Id}" />
+                    <GridViewColumn Header="Date Of Birth" Width="auto" DisplayMemberBinding="{Binding Birthday}" />
+                    <GridViewColumn Header="Special Need" Width="auto" DisplayMemberBinding="{Binding SpecialNeeds}" />
+                    <GridViewColumn Header="Details" Width="auto" DisplayMemberBinding="{Binding InfoSpecialNeeds}" />
 
                 </GridView>
             </ListView.View>
