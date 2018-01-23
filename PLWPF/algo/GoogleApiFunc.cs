@@ -100,9 +100,6 @@ namespace PLWPF.algo
             Leg leg = route.Legs.First();
             return leg.Distance.Value;
         }
-
-
-
     }
 }
 

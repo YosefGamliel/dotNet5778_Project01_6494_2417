@@ -21,6 +21,7 @@ namespace BE
         private double payment;
         private float discount;
         #endregion
+
         #region properties:
         public string ContractID { get { return contractID; } set { contractID = value; } }
         public string BabySitterID
@@ -54,6 +55,7 @@ namespace BE
         public double Payment { get { return payment; } set { payment = value; } }
         public float Discount { get { return discount; } set { discount = value; } }
         #endregion
+
         #region finction:
         public Contract(string BID, string ChID, bool FM, bool T, DateTime St, DateTime E)
         {

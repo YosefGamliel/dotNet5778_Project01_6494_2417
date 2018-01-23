@@ -31,6 +31,7 @@ namespace PLWPF.MOTHER
                 bl = new BL_imp();
             list = bl.getMotherList();
             ListOfMothers.ItemsSource = list;
+            
         }
     }
 }

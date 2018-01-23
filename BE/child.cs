@@ -7,7 +7,6 @@ namespace BE
     public class Child
     {
         #region fields:
-
         private string id;
         private string firstName;
         private string motherId;
@@ -57,6 +56,7 @@ namespace BE
                 birthday = value;
             }
         }
+     
         public bool SpecialNeeds { get { return specialNeeds; } set { specialNeeds = value; } }
         public string InfoSpecialNeeds { get { return infoSpecialNeeds; } set { infoSpecialNeeds = value; } }
         #endregion
@@ -80,7 +80,7 @@ namespace BE
             infoSpecialNeeds = ISN;
 
         }
-        
+
         public Child()
         {
             birthday = new DateTime(2017, 1, 1);
