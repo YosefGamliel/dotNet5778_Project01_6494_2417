@@ -45,7 +45,7 @@ namespace PLWPF
                 item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
                 childIDComboBox.Items.Add(item);
             }
-            List<Nanny> nanList=BL.MyFunctions.
+            //List<Nanny> nanList=BL.MyFunctions.
             foreach (var mo in bl.getMotherList())
             {
                 ComboBoxItem item = new ComboBoxItem();

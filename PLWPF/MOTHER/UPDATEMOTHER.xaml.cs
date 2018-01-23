@@ -32,7 +32,7 @@ namespace PLWPF
             foreach (var mo in bl.getMotherList())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + mo.Id + " Name: " + mo.FirstName + " " + mo.LastName;
+                item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
                 UpdateMotherComboBox.Items.Add(item);
             }
         }
@@ -81,14 +81,47 @@ namespace PLWPF
                 friTimeStart.Value = new DateTime(mother.WorkHours[5, 0].Ticks);
                 friTimeEnd.Value = new DateTime(mother.WorkHours[5, 1].Ticks);
             }
-            mother.Address = addressTextBox.Text;
-            mother.AreaNanny = addressNannyTextBox.Text;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         { 
-            this.mother.Address = addressTextBox.Text;
-            this.mother.AreaNanny=addressNannyTextBox.Text;
-            this.mother.NeedNanny[0] = sun.IsChecked.Value;
+            mother.Address = addressTextBox.Text;
+            mother.AreaNanny = addressNannyTextBox.Text;
+            mother.NeedNanny[0] = sun.IsChecked.Value;
+            mother.NeedNanny[1] = mon.IsChecked.Value;
+            mother.NeedNanny[2] = tus.IsChecked.Value;
+            mother.NeedNanny[3] = wed.IsChecked.Value;
+            mother.NeedNanny[4] = thu.IsChecked.Value;
+            mother.NeedNanny[5] = fri.IsChecked.Value;
+            if (mother.NeedNanny[0])
+            {
+                mother.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
+                mother.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
+            }
+            if (mother.NeedNanny[1])
+            {
+                mother.WorkHours[1, 0] = TimeSpan.Parse(monTimeStart.Text);
+                mother.WorkHours[1, 1] = TimeSpan.Parse(monTimeEnd.Text);
+            }
+            if (mother.NeedNanny[2])
+            {
+                mother.WorkHours[2, 0] = TimeSpan.Parse(tueTimeStart.Text);
+                mother.WorkHours[2, 1] = TimeSpan.Parse(tueTimeEnd.Text);
+            }
+            if (mother.NeedNanny[3])
+            {
+                mother.WorkHours[3, 0] = TimeSpan.Parse(wedTimeStart.Text);
+                mother.WorkHours[3, 1] = TimeSpan.Parse(wedTimeEnd.Text);
+            }
+            if (mother.NeedNanny[4])
+            {
+                mother.WorkHours[4, 0] = TimeSpan.Parse(thoTimeStart.Text);
+                mother.WorkHours[4, 1] = TimeSpan.Parse(thoTimeEnd.Text);
+            }
+            if (mother.NeedNanny[5])
+            {
+                mother.WorkHours[5, 0] = TimeSpan.Parse(friTimeStart.Text);
+                mother.WorkHours[5, 1] = TimeSpan.Parse(friTimeEnd.Text);
+            }
             bl.updateMother(mother);
             Close();
         }
