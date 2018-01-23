@@ -63,7 +63,7 @@ namespace PLWPF.CHILD
             foreach (var item in ChildGroupMother)
             {
                 if (item.Key == keyByMother.SelectedItem.ToString())
-                    ChildView.ItemsSource = item;
+                    ByMother.ItemsSource = item;
 
             }
         }

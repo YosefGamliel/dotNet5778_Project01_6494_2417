@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="GroupWindow" Height="343.985" Width="575.188">
     <Grid Margin="0,0,-8,22">
-        <TabControl Margin="0,0,0,-198"  RenderTransformOrigin="0.503,0.556">
+        <TabControl Margin="0,0,0,-25"  RenderTransformOrigin="0.503,0.556">
             <TabItem Header="Child By Age">
                 <Grid Background="#FFE5E5E5" Margin="0,0,2,0" Height="485" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
                     <Grid.RenderTransform>
@@ -52,8 +52,8 @@
 
             </TabItem>
             <TabItem Header="Child By Mother" Height="22" VerticalAlignment="Bottom">
-                <Grid Background="#FFE5E5E5" Height="454" VerticalAlignment="Top">
-                    <ListView HorizontalAlignment="Left" Margin="0,72,0,0" Width="559"  Height="382" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" Height="289" VerticalAlignment="Top" Margin="0,-1,4,-2">
+                    <ListView x:Name="ByMother" HorizontalAlignment="Left" Margin="0,70,0,0" Width="565"  Height="219" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
