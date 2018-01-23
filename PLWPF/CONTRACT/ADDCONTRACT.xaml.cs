@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -31,7 +32,26 @@ namespace PLWPF
             contract = new Contract();
             if (bl == null)
                 bl = new BL_imp();
-
+            foreach (var mo in bl.getMotherList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
+                motherIDComboBox.Items.Add(item);
+            }
+            List<Child> chList = bl.getChildList(MyFunctions.FindMotherById(((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9)));
+            foreach (var ch in chList)
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
+                childIDComboBox.Items.Add(item);
+            }
+            List<Nanny> nanList=BL.MyFunctions.
+            foreach (var mo in bl.getMotherList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
+                motherIDComboBox.Items.Add(item);
+            }
             this.grid1.DataContext = contract;
             endDatePicker.SelectedDate = DateTime.Now;
             startDatePicker.SelectedDate = DateTime.Now;
@@ -57,7 +77,9 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
-                
+                contract.MotherID = ((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9);
+                contract.ChildID = ((string)((ComboBoxItem)childIDComboBox.SelectedItem).Content).Substring(4, 9);
+                contract.BabySitterID = ((string)((ComboBoxItem)babySitterIDComboBox.SelectedItem).Content).Substring(4, 9);
                 bl.addContract(contract);
                 contract = new Contract();
                 this.grid1.DataContext = contract;
@@ -76,11 +98,20 @@ namespace PLWPF
             else
                 errorMessage.Remove((string)e.Error.ErrorContent);
         }
-
-        private void salaryTypeCheckBox_Checked(object sender, RoutedEventArgs e)
+    }
+    public class TrueToFalseConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (salaryTypeCheckBox.IsChecked.Value)
-                salaryPerMonthTextBox.IsEnabled = false;
+            bool boolValue = (bool)value;
+            if (boolValue)
+                return !boolValue;
+            else
+                return !boolValue;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
         }
     }
 }

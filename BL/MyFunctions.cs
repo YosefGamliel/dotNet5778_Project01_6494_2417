@@ -152,7 +152,7 @@ namespace BL
             return TotalCommonHour;
         }
         //match nany by hour;
-        public List<Nanny> InitialCoordination(Mother mother)
+        private List<Nanny> InitialCoordination(Mother mother)
         {
             bool flag = true;
             List<Nanny> MatchNanny = new List<Nanny>();
@@ -181,25 +181,24 @@ namespace BL
             }
             return MatchNanny;
         }
-        public List<Nanny> NannyByDistance(Mother mother, bool order = false)
+        public static List<Nanny> NannyByDistance(Mother mother, bool order = false)
         {
             List<Nanny> NannyL = new List<Nanny>();
             //they want the list sorted
-            if (order)
+
+            var closest = from n in bl.getNannyList()
+                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
+                          orderby (order) ? distance : 0
+                          group n by distance into nannyList
+                          select new { distance = nannyList.Key, orderNanny = nannyList };
+            foreach (var groop in closest)
             {
-                var closest = from n in bl.getNannyList()
-                              let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
-                              orderby (order) ? distance : 0
-                              group n by distance into nannyList
-                              select new { distance = nannyList.Key, orderNanny = nannyList };
-                foreach (var groop in closest)
+                foreach (var item in groop.orderNanny)
                 {
-                    foreach (var item in groop.orderNanny)
-                    {
-                        NannyL.Add(item);
-                    }
+                    NannyL.Add(item);
                 }
             }
+
 
             //אם שיטת המיון אם הסימן שאלה לא עובדת
             #region
@@ -221,7 +220,7 @@ namespace BL
             #endregion
             return NannyL;
         }
-        public List<Nanny> NannyByAge(bool MaxOrMin = false, bool order = false)
+        public static List<Nanny> NannyByAge(bool MaxOrMin = false, bool order = false)
         {
             List<Nanny> NannyL = new List<Nanny>();
             var check = from n in bl.getNannyList()
@@ -239,13 +238,13 @@ namespace BL
             }
             return NannyL;
         }
-        public List<Child> ChildByAge(bool MaxOrMin = true)
+        public static List<Child> ChildByAge(bool MaxOrMin = true)
         {
             List<Child> ChildL = new List<Child>();
             var check = from n in bl.getChildList()
                             //big to little=False, Little to big=True
                         let kidsAge = (DateTime.Now.Month - n.Birthday.Month + (DateTime.Now.Year - n.Birthday.Year) * 12) / 2
-                        orderby (MaxOrMin) ? kidsAge  : kidsAge descending //they want the list sorted
+                        orderby (MaxOrMin) ? kidsAge : kidsAge descending //they want the list sorted
                         group n by kidsAge into childList
                         select new { kidsAge = childList.Key, orderCHILD = childList };
             foreach (var groop in check)
@@ -257,7 +256,7 @@ namespace BL
             }
             return ChildL;
         }
-        public List<Child> ChildByMother(bool MaxOrMin = true)
+        public static List<Child> ChildByMother(bool MaxOrMin = true)
         {
             List<Child> ChildL = new List<Child>();
             var check = from n in bl.getChildList()
@@ -303,7 +302,7 @@ namespace BL
             }
             return bestFive;
         }
-        public List<Child> ChildWhithoutContract()
+        public static List<Child> ChildWhithoutContract()
         {
             List<Child> ChildWithoutContract = new List<Child>();
             bool flag = true;
@@ -321,7 +320,7 @@ namespace BL
             }
             return ChildWithoutContract;
         }
-        public List<Nanny> NannyByTAMAT()
+        public static List<Nanny> NannyByTAMAT()
         {
             List<Nanny> nannyL = new List<Nanny>();
             nannyL = GetNannyBy(x => x.VacationDaysITE == true);
@@ -354,6 +353,12 @@ namespace BL
                 list.Add(item);
             return list;
         }
+        /*public static List<Nanny> NanniesToMother(string motherId)
+        {
+            List<Nanny> nanList = new List<Nanny>();
+            Mother mom = FindMotherById(motherId);
+            if (InitialCoordination(mom)!=null)
+        }*/
 
     }
 }
