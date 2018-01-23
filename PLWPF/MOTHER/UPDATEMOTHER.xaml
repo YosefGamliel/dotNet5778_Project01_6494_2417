@@ -7,14 +7,14 @@
         xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:UserControl="clr-namespace:PLWPF.UserControl" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.UPDATEMOTHER"
         mc:Ignorable="d"
         Title="UPDATEMOTHER" Height="450.42" Width="666.387">
-    <Window.Resources>
+    <!--<Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
-    </Window.Resources>
+    </Window.Resources>-->
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="53,24,0,0" TextWrapping="Wrap" Text="Mother to update:" VerticalAlignment="Top" Width="134" Height="29" FontSize="16"/>
         <ComboBox x:Name="UpdateMotherComboBox" HorizontalAlignment="Left" Margin="225,24,0,0" VerticalAlignment="Top" Width="138" SelectionChanged="UpdateMotherComboBox_SelectionChanged" />
 
-        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" DataContext="{StaticResource motherViewSource}" Height="226" Width="237" Margin="13,93,0,0">
+        <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left"  Height="226" Width="237" Margin="13,93,0,0">     <!--DataContext="{StaticResource motherViewSource}"-->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -25,7 +25,7 @@
                 <RowDefinition Height="Auto" MinHeight="36"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>    
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Grid.Row="0" Margin="3,4,0,6" HorizontalAlignment="Left" Grid.Column="0" Content="Address:" Height="26" Width="55"/>

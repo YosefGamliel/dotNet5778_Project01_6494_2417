@@ -83,7 +83,7 @@ namespace PLWPF
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
-        { 
+        {    
             mother.Address = addressTextBox.Text;
             mother.AreaNanny = addressNannyTextBox.Text;
             mother.NeedNanny[0] = sun.IsChecked.Value;
