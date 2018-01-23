@@ -17,6 +17,7 @@ namespace BE
         private TimeSpan[,] workHours;
         private string notes;//Remarks or Requirements
         #endregion
+
         #region properties:
         public string Id
         {
@@ -100,6 +101,7 @@ namespace BE
             }
         }
         #endregion
+
         #region functions:
         public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need,
             TimeSpan[,] hours, string nt)

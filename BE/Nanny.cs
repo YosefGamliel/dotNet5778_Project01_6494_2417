@@ -29,6 +29,7 @@ namespace BE
         private string recommendations;
         private int numOfKids;
         #endregion
+
         #region properties:
         public string Id
         {
@@ -161,6 +162,7 @@ namespace BE
         public int NumOfKids { get { return numOfKids; } set { numOfKids = value; } }
         
         #endregion
+
         #region functions:
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
             int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, TimeSpan[,] WH, bool VD, string recomm)
