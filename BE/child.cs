@@ -7,7 +7,6 @@ namespace BE
     public class Child
     {
         #region fields:
-
         private string id;
         private string firstName;
         private string motherId;
