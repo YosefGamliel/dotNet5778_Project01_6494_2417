@@ -12,8 +12,7 @@
                 <GridView>
                     <GridViewColumn Header="First Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn Header="Last Name" Width="auto" DisplayMemberBinding="{Binding LastName}" />
-                    <GridViewColumn Header="ID" Width="auto" DisplayMemberBinding="{Binding Id}" />
-                    <GridViewColumn Header="Date Of Birth" Width="auto" DisplayMemberBinding="{Binding Birthday}" />
+                    <GridViewColumn Header="ID" Width="auto" DisplayMemberBinding="{Binding Id}"/>
                     <GridViewColumn Header="Address" Width="auto" DisplayMemberBinding="{Binding Address}" />
                     <GridViewColumn Header="Nanny Area" Width="auto" DisplayMemberBinding="{Binding AreaNanny}" />
                     <GridViewColumn Header="Phone Number" Width="auto" DisplayMemberBinding="{Binding PhoneNumber}" />
