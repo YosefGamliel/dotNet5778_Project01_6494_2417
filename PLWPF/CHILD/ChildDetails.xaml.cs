@@ -49,5 +49,10 @@ namespace PLWPF
             ListOfChild ListOfChildPage = new ListOfChild();
             ListOfChildPage.ShowDialog();
         }
+
+        private void GroupBY(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

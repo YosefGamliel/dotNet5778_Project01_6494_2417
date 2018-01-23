@@ -220,41 +220,40 @@ namespace BL
             #endregion
             return NannyL;
         }
-        public static List<Nanny> NannyByAge(bool MaxOrMin = false, bool order = false)
-        {
-            List<Nanny> NannyL = new List<Nanny>();
-            var check = from n in bl.getNannyList()
-                            //max Age=true, MinAge=FALSE
-                        let kidsAge = (MaxOrMin) ? (int)(n.MaxAge) / 2 : (int)(n.MinAge) / 2//קבוצות של חודשיים
-                        orderby (order) ? kidsAge : 0 //they want the list sorted
-                        group n by kidsAge into nannyList
-                        select new { kidsAge = nannyList.Key, orderNanny = nannyList };
-            foreach (var groop in check)
-            {
-                foreach (var item in groop.orderNanny)
-                {
-                    NannyL.Add(item);
-                }
-            }
-            return NannyL;
-        }
-        public static List<Child> ChildByAge(bool MaxOrMin = true)
+        //public static IEnumerable<IGrouping<int,Nanny>> NannyByAge(bool MaxOrMin = false, bool order = false)
+        //{
+        //    List<Nanny> NannyL = new List<Nanny>();
+        //    var check = from n in bl.getNannyList()
+        //                    //max Age=true, MinAge=FALSE
+        //                let kidsAge = (MaxOrMin) ? (int)(n.MaxAge) / 2 : (int)(n.MinAge) / 2//קבוצות של חודשיים
+        //                orderby (order) ? kidsAge : 0 //they want the list sorted
+        //                group n by kidsAge into nannyList
+        //                select new { kidsAge = nannyList.Key, orderNanny = nannyList };
+        //    //foreach (var groop in check)
+        //    //{
+        //    //    foreach (var item in groop.orderNanny)
+        //    //    {
+        //    //        NannyL.Add(item);
+        //    //    }
+        //    //}
+        //    return NannyL;
+        //}
+        public static IEnumerable<IGrouping<int, Child>> ChildByAge(bool MaxOrMin = true)
         {
             List<Child> ChildL = new List<Child>();
-            var check = from n in bl.getChildList()
-                            //big to little=False, Little to big=True
-                        let kidsAge = (DateTime.Now.Month - n.Birthday.Month + (DateTime.Now.Year - n.Birthday.Year) * 12) / 2
-                        orderby (MaxOrMin) ? kidsAge : kidsAge descending //they want the list sorted
-                        group n by kidsAge into childList
-                        select new { kidsAge = childList.Key, orderCHILD = childList };
-            foreach (var groop in check)
-            {
-                foreach (var item in groop.orderCHILD)
-                {
-                    ChildL.Add(item);
-                }
-            }
-            return ChildL;
+        IEnumerable<IGrouping<int, Child>> check = from n in bl.getChildList()
+                        //big to little=False, Little to big=True
+                    let kidsAge = (DateTime.Now.Month - n.Birthday.Month + (DateTime.Now.Year - n.Birthday.Year) * 12) / 2
+                    orderby (MaxOrMin) ? kidsAge : kidsAge descending //they want the list sorted
+                    group n by kidsAge;
+            //foreach (var groop in check)
+            //{
+            //    foreach (var item in groop.orderCHILD)
+            //    {
+            //        ChildL.Add(item);
+            //    }
+            //}
+            return check;
         }
         public static List<Child> ChildByMother(bool MaxOrMin = true)
         {

@@ -12,7 +12,7 @@
         <Button Content="Update Child" HorizontalAlignment="Left" Height="55" Margin="47,187,0,0" VerticalAlignment="Top" Width="182" Click="UPDATEWINDOW"/>
         <Button Content="List Of Child" HorizontalAlignment="Left" Height="55" Margin="47,276,0,0" VerticalAlignment="Top" Width="182" Click="Button_Click"/>
         <Button Content="List By Group" HorizontalAlignment="Left" Margin="47,364,0,0" VerticalAlignment="Top" Width="182
-                " Height="55"/>
+                " Height="55" Click="GroupBY"/>
 
     </Grid>
 </Window>

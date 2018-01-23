@@ -1,0 +1,36 @@
+﻿<Window x:Class="PLWPF.CHILD.GroupWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.CHILD"
+        mc:Ignorable="d"
+        Title="GroupWindow" Height="343.985" Width="575.188">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="286" VerticalAlignment="Top" Width="697">
+            <TabItem Header="Child By Age">
+                <Grid Background="#FFE5E5E5" Margin="0,0,124,0">
+                    <ListView x:Name="ChildView" Height="200" Margin="10,48,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="542">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="Mother ID" Width="auto" DisplayMemberBinding="{Binding MotherId}" />
+                                <GridViewColumn Header="ID" Width="auto" DisplayMemberBinding="{Binding Id}" />
+                                <GridViewColumn Header="Date Of Birth" Width="auto" DisplayMemberBinding="{Binding Birthday}" />
+                                <GridViewColumn Header="Special Need" Width="auto" DisplayMemberBinding="{Binding SpecialNeeds}" />
+                                <GridViewColumn Header="Details" Width="auto" DisplayMemberBinding="{Binding InfoSpecialNeeds}" />
+
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <ComboBox x:Name="keysComboBox" HorizontalAlignment="Left" Height="32" Margin="229,16,0,0" VerticalAlignment="Top" Width="196" SelectionChanged="ComboBox_SelectionChanged"/>
+                </Grid>
+
+
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

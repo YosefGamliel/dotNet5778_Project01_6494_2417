@@ -100,6 +100,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="algo\GoogleApiFunc.cs" />
+    <Compile Include="CHILD\GroupWindow.xaml.cs">
+      <DependentUpon>GroupWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CHILD\ListOfChild.xaml.cs">
       <DependentUpon>ListOfChild.xaml</DependentUpon>
     </Compile>
@@ -145,6 +148,10 @@
     <Compile Include="UserControl\PlaceAutoCompleteUC.xaml.cs">
       <DependentUpon>PlaceAutoCompleteUC.xaml</DependentUpon>
     </Compile>
+    <Page Include="CHILD\GroupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CHILD\ListOfChild.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
