@@ -351,7 +351,7 @@ namespace BL
             //they want the list sorted
 
             var closest = from n in bl.getNannyList()
-                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address))
+                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address)/5)
                           orderby distance
                           group n by distance; 
                                    

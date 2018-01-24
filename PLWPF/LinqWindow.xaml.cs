@@ -46,13 +46,13 @@ namespace PLWPF
         {
             string id = (string)((ComboBoxItem)motherDistanceComboBox.SelectedItem).Content;
             mother = MyFunctions.FindMotherById(id.Substring(4, 9));
-
-            foreach (var item in MyFunctions.NannyByDistance(mother))
-                DistanceKey.Items.Add(item.Key);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            foreach (var item in MyFunctions.NannyByDistance(mother))
+                DistanceKey.Items.Add(item.Key);
+            
             foreach (var item in MyFunctions.NannyByDistance(mother))
             {
                 if (item.Key == (int)DistanceKey.SelectedItem)
