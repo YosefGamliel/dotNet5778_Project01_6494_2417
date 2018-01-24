@@ -35,7 +35,7 @@ namespace PLWPF
             foreach (var mo in bl.getMotherList())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
+                item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
                 motherIDComboBox.Items.Add(item);
             }
             ////List<Child> chList = bl.getChildList(MyFunctions.FindMotherById(((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9)));
@@ -102,6 +102,13 @@ namespace PLWPF
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
                 childIDComboBox.Items.Add(item);
+            }
+            babySitterIDComboBox.Items.Clear();
+            foreach (var nan in MyFunctions.NanniesToMother(MyFunctions.FindMotherById(id.Substring(4, 9))))
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + nan.Id + ", First Name: " + nan.FirstName + ", Last Name: " + nan.LastName;
+                babySitterIDComboBox.Items.Add(item);
             }
         }
     }

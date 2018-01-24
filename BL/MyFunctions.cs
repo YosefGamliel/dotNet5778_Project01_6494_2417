@@ -136,7 +136,7 @@ namespace BL
             Leg leg = route.Legs.First();
             return leg.Distance.Value;
         }
-        private double grade(Nanny nanny, Mother mom)
+        private static double grade(Nanny nanny, Mother mom)
         {
             TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה המשותפות
             double[] sumOfHourinWeek = new double[6];
@@ -152,7 +152,7 @@ namespace BL
             return TotalCommonHour;
         }
         //match nany by hour;
-        private List<Nanny> InitialCoordination(Mother mother)
+        private static List<Nanny> InitialCoordination(Mother mother)
         {
             bool flag = true;
             List<Nanny> MatchNanny = new List<Nanny>();
@@ -211,7 +211,7 @@ namespace BL
         /// </summary>
         /// <param name="mother"></param>
         /// <returns></returns>
-        public List<Nanny> FiveclosetNanny(Mother mother)
+        public static List<Nanny> FiveclosetNanny(Mother mother)
         {
             List<Nanny> bestFive = new List<Nanny>();
             var closest = from n in bl.getNannyList()
@@ -283,12 +283,16 @@ namespace BL
                 list.Add(item);
             return list;
         }
-        /*public static List<Nanny> NanniesToMother(string motherId)
+        
+        public static List<Nanny> NanniesToMother(Mother mom)
         {
             List<Nanny> nanList = new List<Nanny>();
-            Mother mom = FindMotherById(motherId);
-            if (InitialCoordination(mom)!=null)
-        }*/
+            if (InitialCoordination(mom) != null)
+                nanList = InitialCoordination(mom);
+            else
+                nanList = FiveclosetNanny(mom);
+            return nanList;
+        }
 
         #region IEnumerable
         public static IEnumerable<IGrouping<int, Nanny>> NannyByAge(bool order = false)

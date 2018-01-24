@@ -7,11 +7,12 @@
         xmlns:UserControl="clr-namespace:PLWPF.UserControl"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:BE="clr-namespace:BE;assembly=BE" 
-
         mc:Ignorable="d"
+        Validation.Error="validation_Error"
         Title="UPDATENANNY" Height="729.891" Width="771.484">
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
+        <local:TrueToFalseConverter x:Key="TrueToFalseConverter" />
     </Window.Resources>
     <Grid Margin="0,0,20,8">
         <Grid x:Name="grid1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="295" Height="588" Margin="7,82,0,0">
@@ -72,7 +73,7 @@
             <TextBox x:Name="minAgeTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MinAge, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="11" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
 
             <Label VerticalAlignment="Center" Grid.Row="12" Margin="3,3,0,4" HorizontalAlignment="Left" Grid.Column="0" Content="Month Salary:" Height="26" Width="83"/>
-            <TextBox x:Name="monthSalaryTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MonthSalary, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1" />
+            <TextBox x:Name="monthSalaryTextBox" Width="120" VerticalAlignment="Center" Text="{Binding MonthSalary, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="12" Margin="3,5,0,4" Height="24" HorizontalAlignment="Left" Grid.Column="1" IsEnabled="{Binding ElementName=hourlyRateCheckBox, Path=IsChecked, Converter={StaticResource TrueToFalseConverter}}"/>
 
             <Label VerticalAlignment="Center" Grid.Row="13" Margin="3,4,0,3" HorizontalAlignment="Left" Grid.Column="0" Content="Num Of Kids:" Height="26" Width="80"/>
             <TextBox x:Name="numOfKidsTextBox" Width="120" VerticalAlignment="Center" Text="{Binding NumOfKids, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Grid.Row="13" Margin="3,4,0,5" Height="24" HorizontalAlignment="Left" Grid.Column="1"/>
@@ -116,6 +117,15 @@
         </Grid>
 
         <Button Content="update" HorizontalAlignment="Left" Margin="447,442,0,158" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Height="Auto" RenderTransformOrigin="0.5,0.5">
+            <Button.Style>
+                <Style>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=UpdateNannyComboBox, Path=Text}" Value="">
+                            <Setter Property="Button.IsEnabled" Value="false"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

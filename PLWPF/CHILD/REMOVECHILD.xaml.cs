@@ -31,7 +31,7 @@ namespace PLWPF
             foreach (var ch in bl.getChildList())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
+                item.Content = "ID: " + ch.Id + ", Name: " + ch.FirstName;
                 Childsname.Items.Add(item);
             }
         }

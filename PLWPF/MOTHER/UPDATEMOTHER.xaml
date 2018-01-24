@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" xmlns:UserControl="clr-namespace:PLWPF.UserControl" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="PLWPF.UPDATEMOTHER"
         mc:Ignorable="d"
+        Validation.Error="validation_Error"
         Title="UPDATEMOTHER" Height="450.42" Width="666.387">
     <!--<Window.Resources>
         <CollectionViewSource x:Key="motherViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Mother}, CreateList=True}"/>
@@ -71,22 +72,7 @@
             <Button.Style>
                 <Style>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=addressTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=addressNannyTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=firstNameTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=idTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=lastNameTextBox}" Value="">
-                            <Setter Property="UIElement.IsEnabled" Value="false"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding Text, ElementName=phoneNumberTextBox}" Value="">
+                        <DataTrigger Binding="{Binding Text, ElementName=UpdateMotherComboBox}" Value="">
                             <Setter Property="UIElement.IsEnabled" Value="false"/>
                         </DataTrigger>
                     </Style.Triggers>

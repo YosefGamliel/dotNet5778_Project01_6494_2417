@@ -23,6 +23,7 @@ namespace PLWPF
     {
         Mother mother = new Mother();
         IBL bl;
+        private List<string> errorMessage = new List<string>();
         public REMOVEMOTHER()
         {
             InitializeComponent();
@@ -31,7 +32,7 @@ namespace PLWPF
             foreach (var mo in bl.getMotherList())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + mo.Id + " Name: " + mo.FirstName + " " + mo.LastName;
+                item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
                 Mothersname.Items.Add(item);
             }
                 //.Select(x=> "ID: "+x.Id+"  Name: "+x.FirstName+" "+x.LastName);
@@ -40,9 +41,31 @@ namespace PLWPF
        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string id = (string)((ComboBoxItem)Mothersname.SelectedItem).Content;
-            bl.removeMother(MyFunctions.FindMotherById(id.Substring(4,9)));
-            Close();
+            try
+            {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
+                string id = (string)((ComboBoxItem)Mothersname.SelectedItem).Content;
+                bl.removeMother(MyFunctions.FindMotherById(id.Substring(4, 9)));
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add((string)e.Error.ErrorContent);
+            else
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }
