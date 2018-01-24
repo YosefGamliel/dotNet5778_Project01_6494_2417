@@ -51,7 +51,7 @@ namespace BL
         }
         public static int numOfChildInBabySitter(List<Child> brothers, string BabySitterId)
         {
-            int sum = 0;
+            int sum = 1;
             foreach (var item in brothers)
             {
                 if (getNannyByChild(item) == BabySitterId)

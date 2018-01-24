@@ -10,6 +10,7 @@
     <Window.Resources>
         <CollectionViewSource x:Key="contractViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Contract}, CreateList=True}"/>
         <local:TrueToFalseConverter x:Key="TrueToFalseConverter" />
+        <local:ComboBoxItemToBoolConverter x:Key="ComboBoxItemToBoolConverter" />
     </Window.Resources>
     <Grid Margin="0,0,0,14">
 
@@ -50,8 +51,8 @@
             <Label Content="Child ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="4,2,0,28" Grid.Row="1" VerticalAlignment="Center" Height="26" Width="55"/>
             <Label Content="Baby Sitter ID:" Grid.Column="0" HorizontalAlignment="Left" Margin="4,38,0,52" Grid.Row="1" VerticalAlignment="Center" Grid.RowSpan="4"/>
             <ComboBox x:Name="motherIDComboBox" HorizontalAlignment="Left" Margin="3,6,0,0" VerticalAlignment="Top" Width="133" Grid.Column="1" SelectionChanged="motherIDComboBox_SelectionChanged"/>
-            <ComboBox x:Name="childIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" IsEnabled="{Binding  }"/>
-            <ComboBox x:Name="babySitterIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,38,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="133"/>
+            <ComboBox x:Name="childIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" IsEnabled="{Binding ElementName=motherIDComboBox, Path=SelectedItem, Converter={StaticResource ComboBoxItemToBoolConverter}}"/>
+            <ComboBox x:Name="babySitterIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,38,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="133" IsEnabled="{Binding ElementName=motherIDComboBox, Path=SelectedItem, Converter={StaticResource ComboBoxItemToBoolConverter}}"/>
         </Grid>
         <Button Content="ADD" HorizontalAlignment="Left" Height="43" Margin="86,394,0,0" VerticalAlignment="Top" Width="130" Click="Button_Click" FontSize="16">
             <Button.Style>

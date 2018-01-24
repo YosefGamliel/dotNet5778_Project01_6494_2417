@@ -205,8 +205,11 @@ namespace DAL
             }
             if (flag)
                 throw new Exception("there is no nanny with this id");
-            contract.ContractID = contratNumber.ToString();
-            contratNumber++;
+            if (contract.ContractID==null)
+            {
+                contract.ContractID = contratNumber.ToString();
+                contratNumber++;
+            }
             DataSource.ContractList.Add(contract);
         }
         public List<Contract> getContractList()

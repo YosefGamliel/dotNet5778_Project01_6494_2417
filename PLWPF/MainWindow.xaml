@@ -19,7 +19,7 @@
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
     </Window.Resources>
     <Grid Margin="0,-22,2,10">
-        <Button Content="Mother" HorizontalAlignment="Left" Height="61" Margin="121,144,0,0" VerticalAlignment="Top" Width="158" Click="MotherWindows" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold">
+        <Button Content="Mother" HorizontalAlignment="Left" Height="61" Margin="121,144,0,0" VerticalAlignment="Top" Width="158" Click="MotherWindows" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="20">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -59,7 +59,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Height="26" Margin="220,70,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="25" RenderTransformOrigin="0.5,0.5">
+        <TextBlock HorizontalAlignment="Left" Height="56" Margin="180,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="40" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -68,7 +68,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </TextBlock.RenderTransform><Run Text="who are"/><Run FlowDirection="RightToLeft" Text=" "/><Run Text="you?"/></TextBlock>
-        <Button Content="DATA LINQ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="470" Margin="101,358,0,0" Height="84" RenderTransformOrigin="0.5,0.5" FontSize="36" FontWeight="Bold" FontStyle="Italic" Click="LIMQwindow">
+        <Button Content="DATA LINQ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="431" Margin="123,357,0,0" Height="84" RenderTransformOrigin="0.5,0.5" FontSize="36" FontWeight="Bold" FontStyle="Italic" Click="LIMQwindow">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
