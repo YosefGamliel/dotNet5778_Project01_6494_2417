@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class LinqWindow : Window
     {
+        BackgroundWorker backgroundWorker;
         List<Child> list = new List<Child>();
         List<Nanny> list1 = new List<Nanny>();
         Mother mother = new Mother();
@@ -39,19 +41,55 @@ namespace PLWPF
                 item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
                 motherDistanceComboBox.Items.Add(item);
             }
+            backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += BackgroundWorker_DoWork;
+            backgroundWorker.RunWorkerCompleted += BackgroundWorker_RunWorkerCompleted;
+            backgroundWorker.WorkerSupportsCancellation = true;
+        }
 
+        private void BackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled != true && e.Error==null)
+            {
+                List<ComboBoxItem> forComboBox = e.Result as List<ComboBoxItem>;
+                foreach (ComboBoxItem item in forComboBox)
+                {
+                    DistanceKey.Items.Add(item);
+                }
+            }
+            else
+            {
+                MessageBox.Show("problem with google maps", "error");
+            }
+        }
+
+        private void BackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Mother motherLocal = e.Argument as Mother;
+            List<ComboBoxItem> forComboBox = new List<ComboBoxItem>();
+            try
+            {
+                foreach (var item in MyFunctions.NannyByDistance(motherLocal))
+                    forComboBox.Add(new ComboBoxItem { Content = item.Key });
+            }
+            catch
+            {
+                e.Cancel = true;
+            }
+                e.Result = forComboBox;
         }
 
         private void motherDistanceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string id = (string)((ComboBoxItem)motherDistanceComboBox.SelectedItem).Content;
             mother = MyFunctions.FindMotherById(id.Substring(4, 9));
+            if (backgroundWorker.IsBusy == true)
+                backgroundWorker.CancelAsync();
+            backgroundWorker.RunWorkerAsync(mother);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            foreach (var item in MyFunctions.NannyByDistance(mother))
-                DistanceKey.Items.Add(item.Key);
             
             foreach (var item in MyFunctions.NannyByDistance(mother))
             {
