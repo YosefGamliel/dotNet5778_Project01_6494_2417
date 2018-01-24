@@ -188,13 +188,18 @@ namespace BL
         }
         public void removeChild(Child child)
         {
+            bool flag = false;
             Contract toDelete = new Contract();
             foreach (Contract item in getContractList())
             {
                 if (item.ChildID == child.Id)
+                {
+                    flag = true;
                     toDelete = item;
+                }
             }
-            removeContract(toDelete);
+            if (flag)
+                removeContract(toDelete);
             dal.removeChild(child);
         }
         public void updateChild(Child child)

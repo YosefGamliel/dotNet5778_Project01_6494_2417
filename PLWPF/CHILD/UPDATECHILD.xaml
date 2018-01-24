@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:BE="clr-namespace:BE;assembly=BE" x:Class="PLWPF.UPDATECHILD"
         mc:Ignorable="d"
+        Validation.Error="validation_Error"
         Title="UPDATECHILD" Height="325.715" Width="408.403">
     <Window.Resources>
         <CollectionViewSource x:Key="childViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Child}, CreateList=True}"/>

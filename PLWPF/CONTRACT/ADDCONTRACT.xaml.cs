@@ -95,6 +95,7 @@ namespace PLWPF
 
         private void motherIDComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            childIDComboBox.Items.Clear();
             string id = (string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content;
             foreach (var ch in bl.getChildList(MyFunctions.FindMotherById(id.Substring(4, 9))))
             {

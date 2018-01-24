@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 using BE;
 namespace DAL
 {
-    class Dal_XML_imp : Idal
+    /*class Dal_XML_imp : Idal
     {
         int contractnumber = 0;
         XElement child;
@@ -207,7 +207,7 @@ namespace DAL
         }
         public List<Contract> getContractList()
         {
-            return LoadFromXML<List<Contract>>(contractPath); 
+            return LoadFromXML<List<Contract>>(contractPath);
         }
         public void removeContract(Contract contract)
         {
@@ -258,7 +258,7 @@ namespace DAL
             XElement infospecialneeds = new XElement("InfoSpecialNeeds", Child.InfoSpecialNeeds);
             child.Add(new XElement("child", id, motherid, firstName, birthday, specialneeds, infospecialneeds));
             child.Save(childPath);
-           
+
         }
         public void deleteChild(Child Child)
         {
@@ -268,8 +268,8 @@ namespace DAL
             try
             {
                 deleteChild = (from c in child.Elements()
-                                  where (c.Element("id").Value) == Child.Id
-                                  select c).FirstOrDefault();
+                               where (c.Element("id").Value) == Child.Id
+                               select c).FirstOrDefault();
                 deleteChild.Remove();
                 child.Save(childPath);
             }
@@ -283,24 +283,35 @@ namespace DAL
             LoadData();
 
             XElement UPdateChild = (from c in child.Elements()
-                                       where(c.Element("id").Value) == Child.Id
-                                       select c).FirstOrDefault();
+                                    where (c.Element("id").Value) == Child.Id
+                                    select c).FirstOrDefault();
 
             UPdateChild.Element("firstname").Value = Child.FirstName;
             UPdateChild.Element("SpecialNeeds").Value = Child.SpecialNeeds.ToString();
             UPdateChild.Element("InfoSpecialNeeds").Value = Child.InfoSpecialNeeds;
         }
 
-        public List<Child> getChildList()
+        //public List<Child> getChildList()
+        //{
+        //    Child c;
+        //    LoadData();
+        //    foreach (var item in child.Elements())
+        //    {
+        //        c = new Child(item.Element("id").Value, item.Element("firstname").Value, item.Element("Mothwerid").Value, (DateTime)(item.Element("Birthday").Value), (bool)item.Element("SpecialNeeds").Value, item.Element("InfoSpecialNeeds").Value)
+        //    }
+        //}
+
+        public void removeChild(Child child)
         {
-            Child c;
-            LoadData();
-            foreach (var item in child.Elements())
-            {
-            c=new Child(item.Element("id").Value,item.Element("firstname").Value,item.Element("Mothwerid").Value,(DateTime)(item.Element("Birthday").Value),(bool)item.Element("SpecialNeeds").Value, item.Element("InfoSpecialNeeds").Value)
-            }        
+            throw new NotImplementedException();
+        }
+
+        public List<Child> getChildList(Mother mother)
+        {
+            throw new NotImplementedException();
         }
         #endregion
 
 
-    }
+    }*/
+}

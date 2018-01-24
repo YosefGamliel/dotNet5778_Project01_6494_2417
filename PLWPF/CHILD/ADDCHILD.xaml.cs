@@ -32,6 +32,12 @@ namespace PLWPF
                 bl = new BL_imp();
             this.grid1.DataContext = child;
             birthdayDatePicker.SelectedDate = DateTime.Now;
+            foreach (var mo in bl.getMotherList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
+                motherIdComboBox.Items.Add(item);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -54,6 +60,7 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
+                child.MotherId = ((string)((ComboBoxItem)motherIdComboBox.SelectedItem).Content).Substring(4, 9);
                 bl.addChild(child);
                 child = new Child();
                 this.grid1.DataContext = child;

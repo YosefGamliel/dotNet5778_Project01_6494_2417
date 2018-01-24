@@ -22,6 +22,7 @@ namespace PLWPF
     {
         IBL bl;
         Child child;
+        private List<string> errorMessage = new List<string>();
         public UPDATECHILD()
         {
             InitializeComponent();
@@ -42,10 +43,32 @@ namespace PLWPF
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (specialNeedsCheckBox.IsChecked == false)
-                child.InfoSpecialNeeds = "";
-            bl.updateChild(child);
-            Close();
+            try
+            {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
+                if (specialNeedsCheckBox.IsChecked == false)
+                    child.InfoSpecialNeeds = "";
+                bl.updateChild(child);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add((string)e.Error.ErrorContent);
+            else
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }

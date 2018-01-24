@@ -36,6 +36,8 @@ namespace BE
         }
         public static bool CheckName(string Name)
         {
+            if (Name == "" || Name == null)
+                return false;
             bool flag = true;
             foreach (char item in Name)
             {

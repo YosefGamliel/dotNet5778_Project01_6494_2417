@@ -22,24 +22,47 @@ namespace PLWPF
     {
         Contract contract = new Contract();
         IBL bl;
+        private List<string> errorMessage = new List<string>();
         public REMOVECONTRACT()
         {
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            this.Contractsname.ItemsSource = bl.getNannyList();
+            foreach (var co in bl.getContractList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "Contract ID: " + co.ContractID;
+                Contractsname.Items.Add(item);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            contract = Contractsname.SelectionBoxItem as Contract;
-            if (contract == null)
-                throw new Exception("Must Choose Contract To Delete");
-            //שלוח לפונקציה שיחזיר את חוזה עם ה תעודת זהות המתאימה
-
-            //could'nt be 2 Contracts with same id so the list must be only with one Var
-            bl.removeContract(contract);
-            Close();
+            try
+            {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
+                string id = (string)((ComboBoxItem)Contractsname.SelectedItem).Content;
+                bl.removeContract(MyFunctions.GetContractsBy(x => x.ContractID == id.Substring(13, 8))[0]);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add((string)e.Error.ErrorContent);
+            else
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }

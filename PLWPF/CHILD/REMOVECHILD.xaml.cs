@@ -22,6 +22,7 @@ namespace PLWPF
     {
         Child child = new Child();
         IBL bl;
+        private List<string> errorMessage = new List<string>();
         public REMOVECHILD()
         {
             InitializeComponent();
@@ -37,9 +38,31 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string id = (string)((ComboBoxItem)Childsname.SelectedItem).Content;
-            bl.removeChild(MyFunctions.GetChildBy(x => x.Id == id.Substring(4, 9))[0]);
-            Close();
+            try
+            {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
+                string id = (string)((ComboBoxItem)Childsname.SelectedItem).Content;
+                bl.removeChild(MyFunctions.GetChildBy(x => x.Id == id.Substring(4, 9))[0]);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add((string)e.Error.ErrorContent);
+            else
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }
