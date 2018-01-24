@@ -198,26 +198,6 @@ namespace BL
                     NannyL.Add(item);
                 }
             }
-
-
-            //אם שיטת המיון אם הסימן שאלה לא עובדת
-            #region
-            //they does not want the list sorted
-            //else
-            //{
-            //    var closest = from n in bl.getNannyList()
-            //                  let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
-            //                  group n by distance into nannyList
-            //                  select new { distance = nannyList.Key, orderNanny = nannyList };
-            //    foreach (var groop in closest)
-            //    {
-            //        foreach (var item in groop.orderNanny)
-            //        {
-            //            NannyL.Add(item);
-            //        }
-            //    }
-            //}
-            #endregion
             return NannyL;
         }
 
@@ -363,6 +343,19 @@ namespace BL
                                                                               //    }
                                                                               //}
             return check;
+        }
+
+        public static IEnumerable<IGrouping<int, Nanny>>  NannyByDistance(Mother mother)
+        {
+            List<Nanny> NannyL = new List<Nanny>();
+            //they want the list sorted
+
+            var closest = from n in bl.getNannyList()
+                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address))
+                          orderby distance
+                          group n by distance; 
+                                   
+            return closest;
         }
         #endregion
     }

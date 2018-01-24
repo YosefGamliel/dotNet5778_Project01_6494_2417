@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ListOfNanny" Height="312.406" Width="709.398">
     <Grid>
-        <ListView Name="ListOfNannys" Height="230" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="701" RenderTransformOrigin="0.498,0.56">
+        <ListView Name="ListOfNANNY" Height="230" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="701" RenderTransformOrigin="0.498,0.56">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="First Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
@@ -16,9 +16,16 @@
                     <GridViewColumn Header="Date Of Birth" Width="auto" DisplayMemberBinding="{Binding Birthday}" />
                     <GridViewColumn Header="Address" Width="auto" DisplayMemberBinding="{Binding Address}" />
                     <GridViewColumn Header="Phone Number" Width="auto" DisplayMemberBinding="{Binding PhoneNumber}" />
+                    <GridViewColumn Header="Experience Years" Width="auto" DisplayMemberBinding="{Binding ExperienceYears}" />
+                    <GridViewColumn Header="Max Kids" Width="auto" DisplayMemberBinding="{Binding MaxKids}" />
+                    <GridViewColumn Header="Min Age(Month)" Width="auto" DisplayMemberBinding="{Binding MinAge}" />
+                    <GridViewColumn Header="Max Age(Month)" Width="auto" DisplayMemberBinding="{Binding MaxAge}" />
+                    <GridViewColumn Header="NumOfKids" Width="auto" DisplayMemberBinding="{Binding NumOfKids}" />
+                    <GridViewColumn Header="Salary" Width="auto" DisplayMemberBinding="{Binding MonthSalary}" />
                     <GridViewColumn Header="Vacation Days ITE ?" Width="auto" DisplayMemberBinding="{Binding VacationDaysITE}" />
-
-                 
+                    <GridViewColumn Header="Had elevator?" Width="auto" DisplayMemberBinding="{Binding Elevator}" />
+                    <GridViewColumn Header="Floor Building ?" Width="auto" DisplayMemberBinding="{Binding FloorBuilding}" />
+                    <GridViewColumn Header="Recommendations" Width="auto" DisplayMemberBinding="{Binding Recommendations}" />
                 </GridView>
             </ListView.View>
         </ListView>

@@ -110,5 +110,11 @@ namespace PLWPF
             bl.addContract(GalitContractAndshlomit);
             #endregion ContractExample}
         }
+
+        private void LIMQwindow(object sender, RoutedEventArgs e)
+        {
+            LinqWindow linqWindow = new LinqWindow();
+            linqWindow.ShowDialog();
+        }
     }
 }

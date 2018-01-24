@@ -44,6 +44,7 @@ namespace PLWPF.CHILD
         void KeyID()
         {
             ChildGroupId = MyFunctions.ChildByAge();
+            
             foreach (var item in ChildGroupId)
             {
                 keysComboBox.Items.Add(item.Key);

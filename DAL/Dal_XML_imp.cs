@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 using BE;
 namespace DAL
 {
-    /*class Dal_XML_imp : Idal
+    class Dal_XML_imp : Idal
     {
         int contractnumber = 0;
         XElement child;
@@ -291,15 +291,18 @@ namespace DAL
             UPdateChild.Element("InfoSpecialNeeds").Value = Child.InfoSpecialNeeds;
         }
 
-        //public List<Child> getChildList()
-        //{
-        //    Child c;
-        //    LoadData();
-        //    foreach (var item in child.Elements())
-        //    {
-        //        c = new Child(item.Element("id").Value, item.Element("firstname").Value, item.Element("Mothwerid").Value, (DateTime)(item.Element("Birthday").Value), (bool)item.Element("SpecialNeeds").Value, item.Element("InfoSpecialNeeds").Value)
-        //    }
-        //}
+        public List<Child> getChildList()
+        {
+            List<Child> c=new List<Child>();
+            LoadData();
+            foreach (var item in child.Elements())
+            {
+               
+                c.Add(new Child(item.Element("id").Value, item.Element("firstname").Value, item.Element("Mothwerid").Value,
+                    Convert.ToDateTime(item.Element("Birthday").Value),Convert.ToBoolean(item.Element("SpecialNeeds").Value), item.Element("InfoSpecialNeeds").Value));
+            }
+            return c;
+        }
 
         public void removeChild(Child child)
         {
@@ -313,5 +316,5 @@ namespace DAL
         #endregion
 
 
-    }*/
+    }
 }

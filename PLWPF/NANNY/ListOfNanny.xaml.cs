@@ -28,7 +28,7 @@ namespace PLWPF.NANNY
             if(bl == null)
                 bl = new BL_imp();
             list = bl.getNannyList();
-            ListOfNannys.ItemsSource = list;
+            ListOfNANNY.ItemsSource = list;
         }
     }
 }

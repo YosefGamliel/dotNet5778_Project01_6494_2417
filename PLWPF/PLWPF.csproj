@@ -109,6 +109,9 @@
     <Compile Include="CONTRACT\ListOfContract.xaml.cs">
       <DependentUpon>ListOfContract.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LinqWindow.xaml.cs">
+      <DependentUpon>LinqWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MOTHER\ADDMOTHER.xaml.cs">
       <DependentUpon>ADDMOTHER.xaml</DependentUpon>
     </Compile>
@@ -157,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CONTRACT\ListOfContract.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LinqWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
