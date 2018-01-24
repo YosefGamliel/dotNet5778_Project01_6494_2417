@@ -112,30 +112,60 @@ namespace PLWPF
                     nanny.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
                     nanny.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
                 }
+                else
+                {
+                    nanny.WorkHours[0, 0] = TimeSpan.Zero;
+                    nanny.WorkHours[0, 1] = TimeSpan.Zero;
+                }
                 if (nanny.WorkDays[1])
                 {
                     nanny.WorkHours[1, 0] = TimeSpan.Parse(monTimeStart.Text);
                     nanny.WorkHours[1, 1] = TimeSpan.Parse(monTimeEnd.Text);
+                }
+                else
+                {
+                    nanny.WorkHours[1, 0] = TimeSpan.Zero;
+                    nanny.WorkHours[1, 1] = TimeSpan.Zero;
                 }
                 if (nanny.WorkDays[2])
                 {
                     nanny.WorkHours[2, 0] = TimeSpan.Parse(tueTimeStart.Text);
                     nanny.WorkHours[2, 1] = TimeSpan.Parse(tueTimeEnd.Text);
                 }
+                else
+                {
+                    nanny.WorkHours[2, 0] = TimeSpan.Zero;
+                    nanny.WorkHours[2, 1] = TimeSpan.Zero;
+                }
                 if (nanny.WorkDays[3])
                 {
                     nanny.WorkHours[3, 0] = TimeSpan.Parse(wedTimeStart.Text);
                     nanny.WorkHours[3, 1] = TimeSpan.Parse(wedTimeEnd.Text);
+                }
+                else
+                {
+                    nanny.WorkHours[3, 0] = TimeSpan.Zero;
+                    nanny.WorkHours[3, 1] = TimeSpan.Zero;
                 }
                 if (nanny.WorkDays[4])
                 {
                     nanny.WorkHours[4, 0] = TimeSpan.Parse(thoTimeStart.Text);
                     nanny.WorkHours[4, 1] = TimeSpan.Parse(thoTimeEnd.Text);
                 }
+                else
+                {
+                    nanny.WorkHours[4, 0] = TimeSpan.Zero;
+                    nanny.WorkHours[4, 1] = TimeSpan.Zero;
+                }
                 if (nanny.WorkDays[5])
                 {
                     nanny.WorkHours[5, 0] = TimeSpan.Parse(friTimeStart.Text);
                     nanny.WorkHours[5, 1] = TimeSpan.Parse(friTimeEnd.Text);
+                }
+                else
+                {
+                    nanny.WorkHours[5, 0] = TimeSpan.Zero;
+                    nanny.WorkHours[5, 1] = TimeSpan.Zero;
                 }
                 bl.updateNanny(nanny);
                 Close();

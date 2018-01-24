@@ -66,29 +66,32 @@ namespace PLWPF
         }
         private void inti()
         {
-            bool[] wd = new bool[6] { true, true, true, true, true, true };
+            bool[] wd = new bool[6] { true, false, true, false, true, false };
             TimeSpan[,] workH = new TimeSpan[6, 2];
             DateTime Birth = new DateTime(1991, 2, 3);
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
-                workH[i, 0] = new TimeSpan(14, 35, 00);
-                workH[i, 1] = new TimeSpan(20, 35, 00);
+                workH[i*2, 0] = new TimeSpan(14, 35, 00);
+                workH[i*2, 1] = new TimeSpan(20, 35, 00);
             }
             #region NannyExample
-            Nanny yafit = new Nanny("307471672", "Yafit", "Batito", "0547951348", "Pashos 29,Beer Sheva,israel",
-              Birth, true, 3, 3, 20, 3
-                , 55, true, (float)30.5, 3500, wd, workH, true, null);
+            Nanny yafit = new Nanny("307471672", "Batito", "Yafit", "0547951348", "Pashos 29,Beer Sheva,israel",
+              Birth, true, 3, 3, 7, 3, 55, true, (float)30.5, 0, wd, workH, false, null);
             bl.addNanny(yafit);
             Birth = new DateTime(1989, 01, 01);
             Nanny shlomit = new Nanny("308922202", "shlomit", "batito", "0547951349", "Pashos 50,Beer Sheva,israel",
-            Birth, true, 3, 3, 20, 3
-              , 55, true, (float)50.5, 5000, wd, workH, true, null);
+            Birth, false, 1, 2, 6, 3, 55, false, 0, 5000, wd, workH, true, "good nanny");
             bl.addNanny(shlomit);
             #endregion
+            for (int i = 0; i < 3; i++)
+            {
+                workH[i * 2, 0] = new TimeSpan(17, 00, 00);
+                workH[i * 2, 1] = new TimeSpan(20, 00, 00);
+            }
             #region MotherExample
-            Mother galit = new Mother("309549079", "galit", "Gamliel", "0547951344", "Pashos 40,Beer Sheva,israel", "Pashos 40,Beer Sheva,israel", wd, workH, null);
+            Mother galit = new Mother("309549079", "Gamliel", "galit", "0547951344", "Pashos 40,Beer Sheva,israel", "Pashos 40,Beer Sheva,israel", wd, workH, null);
             bl.addMother(galit);
-            Mother hagit = new Mother("314370768", "Hagit", "Brok", "0547951366", "Pashos 41,Beer Sheva,israel", "Pashos 41,Beer Sheva,israel", wd, workH, null);
+            Mother hagit = new Mother("314370768", "Brok", "Hagit", "0547951366", "יפתח הגלעדי 49, אשקלון, ישראל", "יפתח הגלעדי 49, אשקלון, ישראל", wd, workH, null);
             bl.addMother(hagit);
             #endregion
             #region ChildExample
@@ -106,7 +109,7 @@ namespace PLWPF
             bl.addContract(HagitContractAndYafit);
             Birth = new DateTime(2019, 01, 08);
             End = new DateTime(2019, 05, 08);
-            BE.Contract GalitContractAndshlomit = new Contract("308922202", "317383297", true, true, Birth, End);
+            BE.Contract GalitContractAndshlomit = new Contract("308922202", "317383297", false, true, Birth, End);
             bl.addContract(GalitContractAndshlomit);
             #endregion ContractExample}
         }

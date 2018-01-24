@@ -108,30 +108,60 @@ namespace PLWPF
                     mother.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
                     mother.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
                 }
+                else
+                {
+                    mother.WorkHours[0, 0] = TimeSpan.Zero;
+                    mother.WorkHours[0, 1] = TimeSpan.Zero;
+                }
                 if (mother.NeedNanny[1])
                 {
                     mother.WorkHours[1, 0] = TimeSpan.Parse(monTimeStart.Text);
                     mother.WorkHours[1, 1] = TimeSpan.Parse(monTimeEnd.Text);
+                }
+                else
+                {
+                    mother.WorkHours[1, 0] = TimeSpan.Zero;
+                    mother.WorkHours[1, 1] = TimeSpan.Zero;
                 }
                 if (mother.NeedNanny[2])
                 {
                     mother.WorkHours[2, 0] = TimeSpan.Parse(tueTimeStart.Text);
                     mother.WorkHours[2, 1] = TimeSpan.Parse(tueTimeEnd.Text);
                 }
+                else
+                {
+                    mother.WorkHours[2, 0] = TimeSpan.Zero;
+                    mother.WorkHours[2, 1] = TimeSpan.Zero;
+                }
                 if (mother.NeedNanny[3])
                 {
                     mother.WorkHours[3, 0] = TimeSpan.Parse(wedTimeStart.Text);
                     mother.WorkHours[3, 1] = TimeSpan.Parse(wedTimeEnd.Text);
+                }
+                else
+                {
+                    mother.WorkHours[3, 0] = TimeSpan.Zero;
+                    mother.WorkHours[3, 1] = TimeSpan.Zero;
                 }
                 if (mother.NeedNanny[4])
                 {
                     mother.WorkHours[4, 0] = TimeSpan.Parse(thoTimeStart.Text);
                     mother.WorkHours[4, 1] = TimeSpan.Parse(thoTimeEnd.Text);
                 }
+                else
+                {
+                    mother.WorkHours[4, 0] = TimeSpan.Zero;
+                    mother.WorkHours[4, 1] = TimeSpan.Zero;
+                }
                 if (mother.NeedNanny[5])
                 {
                     mother.WorkHours[5, 0] = TimeSpan.Parse(friTimeStart.Text);
                     mother.WorkHours[5, 1] = TimeSpan.Parse(friTimeEnd.Text);
+                }
+                else
+                {
+                    mother.WorkHours[5, 0] = TimeSpan.Zero;
+                    mother.WorkHours[5, 1] = TimeSpan.Zero;
                 }
                 bl.updateMother(mother);
                 Close();
