@@ -35,7 +35,7 @@ namespace PLWPF
             foreach (var mo in bl.getMotherList())
             {
                 ComboBoxItem item = new ComboBoxItem();
-                item.Content = "ID: " + mo.Id + " First Name: " + mo.FirstName + " Last Name: " + mo.LastName;
+                item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
                 motherIDComboBox.Items.Add(item);
             }
             ////List<Child> chList = bl.getChildList(MyFunctions.FindMotherById(((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9)));
@@ -103,6 +103,13 @@ namespace PLWPF
                 item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
                 childIDComboBox.Items.Add(item);
             }
+            babySitterIDComboBox.Items.Clear();
+            foreach (var nan in MyFunctions.NanniesToMother(MyFunctions.FindMotherById(id.Substring(4, 9))))
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + nan.Id + ", First Name: " + nan.FirstName + ", Last Name: " + nan.LastName;
+                babySitterIDComboBox.Items.Add(item);
+            }
         }
     }
     public class TrueToFalseConverter : IValueConverter
@@ -110,10 +117,21 @@ namespace PLWPF
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             bool boolValue = (bool)value;
-            if (boolValue)
-                return !boolValue;
+            return !boolValue;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    public class ComboBoxItemToBoolConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (value != null)
+                return true;
             else
-                return !boolValue;
+                return false;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

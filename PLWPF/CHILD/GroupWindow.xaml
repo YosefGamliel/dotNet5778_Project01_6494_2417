@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF.CHILD"
         mc:Ignorable="d"
-        Title="GroupWindow" Height="343.985" Width="575.188">
+        Title="GroupWindow" Height="461.985" Width="563.188">
     <Grid Margin="0,0,-8,22">
         <TabControl Margin="0,0,0,-25"  RenderTransformOrigin="0.503,0.556">
             <TabItem Header="Child By Age">
@@ -23,7 +23,7 @@
                         <ColumnDefinition Width="453*"/>
                         <ColumnDefinition Width="7*"/>
                     </Grid.ColumnDefinitions>
-                    <ListView x:Name="ChildView" Margin="0,80,0,52" HorizontalAlignment="Left" Width="557"  Grid.ColumnSpan="2">
+                    <ListView x:Name="ChildView" Margin="0,80,0,163" HorizontalAlignment="Left" Width="541"  Grid.ColumnSpan="2">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />
@@ -52,8 +52,8 @@
 
             </TabItem>
             <TabItem Header="Child By Mother" Height="22" VerticalAlignment="Bottom">
-                <Grid Background="#FFE5E5E5" Height="289" VerticalAlignment="Top" Margin="0,-1,4,-2">
-                    <ListView x:Name="ByMother" HorizontalAlignment="Left" Margin="0,70,0,0" Width="565"  Height="219" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" Width="auto" Height="404" VerticalAlignment="Top" Margin="0,-1,-1,0">
+                    <ListView x:Name="ByMother" Width="auto" Margin="0,70,10,0"  Height="324" VerticalAlignment="Top">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding FirstName}" />

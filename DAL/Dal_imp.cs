@@ -205,8 +205,11 @@ namespace DAL
             }
             if (flag)
                 throw new Exception("there is no nanny with this id");
-            contract.ContractID = contratNumber.ToString();
-            contratNumber++;
+            if (contract.ContractID==null)
+            {
+                contract.ContractID = contratNumber.ToString();
+                contratNumber++;
+            }
             DataSource.ContractList.Add(contract);
         }
         public List<Contract> getContractList()
@@ -239,6 +242,7 @@ namespace DAL
             }
             if (flag)//id to update not found throw Exception
                 throw new Exception("Contract Not Found");
+            contratNumber--;
             removeContract(contract);//delete the old mother
             addContract(contract);//insert the update mother
         }

@@ -26,21 +26,47 @@ namespace PLWPF
     {
         Nanny nanny = new Nanny();
         IBL bl;
+        private List<string> errorMessage = new List<string>();
         public REMOVENANNY()
         {
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            this.Nannysname.ItemsSource = bl.getNannyList();
+            foreach (var nan in bl.getNannyList())
+            {
+                ComboBoxItem item = new ComboBoxItem();
+                item.Content = "ID: " + nan.Id + ", First Name: " + nan.FirstName + ", Last Name: " + nan.LastName;
+                Nannysname.Items.Add(item);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            nanny = Nannysname.SelectionBoxItem as Nanny;
-            if (nanny == null)
-                throw new Exception("Must Choose Nanny To Delete");
-            bl.removeNanny(nanny);
-            Close();
+            try
+            {
+                if (errorMessage.Any())
+                {
+                    string err = "Exception:";
+                    foreach (var item in errorMessage)
+                        err += "\n" + item;
+                    MessageBox.Show(err);
+                    return;
+                }
+                string id = (string)((ComboBoxItem)Nannysname.SelectedItem).Content;
+                bl.removeNanny(MyFunctions.GetNannyBy(x => x.Id == id.Substring(4, 9))[0]);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void validation_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+                errorMessage.Add((string)e.Error.ErrorContent);
+            else
+                errorMessage.Remove((string)e.Error.ErrorContent);
         }
     }
 }

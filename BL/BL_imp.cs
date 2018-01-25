@@ -110,7 +110,6 @@ namespace BL
             else
                 contract.Payment = contract.SalaryPerMonth * (1 - contract.Discount);
             #endregion
-            contract.Signed = true;
             dal.addContract(contract);
         }
         public void removeContract(Contract contract)

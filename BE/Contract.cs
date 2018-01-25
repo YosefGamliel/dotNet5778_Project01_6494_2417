@@ -45,7 +45,7 @@ namespace BE
             }
         }
         public string MotherID { get { return motherID; } set { motherID = value; } }
-        public bool FirsMeating { get { return firsMeating; } }
+        public bool FirsMeating { get { return firsMeating; } set { firsMeating = value; } }
         public bool Signed { get { return signed; } set { signed = value; } }
         public float SalaryPerHour { get { return salaryPerHour; } set { salaryPerHour = value; } }
         public float SalaryPerMonth { get { return salaryPerMonth; } set { salaryPerMonth = value; } }
