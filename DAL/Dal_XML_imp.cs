@@ -14,11 +14,11 @@ namespace DAL
         int contractnumber = 0;
         XElement child;
         XElement ContractID;
-        const string childPath = @"Child.xml";
-        const string motherPath = @"Mother.xml";
-        const string nannyPath = @"Nanny.xml";
-        const string contractPath = @"Contract.xml";
-        const string contractIDPath = @"ContractID.xml";
+        const string childPath = "../../../XmlFiles/Child.xml";
+        const string motherPath = "../../../XmlFiles/Mother.xml";
+        const string nannyPath = "../../../XmlFiles/Nanny.xml";
+        const string contractPath = "../../../XmlFiles/Contract.xml";
+        const string contractIDPath = "../../../XmlFiles/ContractID.xml";
         private void CreateFiles(string fileName = childPath)
         {
             if (fileName.Equals(childPath))
@@ -204,14 +204,12 @@ namespace DAL
             addMother(mother);//insert the update mother
         }
         #endregion
-
-
         #region Contract
         public void addContract(Contract contract)
         {
             var listMother = LoadFromXML<List<Mother>>(motherPath);
             var listContract = LoadFromXML<List<Contract>>(contractPath);
-            var listChild = LoadFromXML<List<Child>>(childPath);
+            var listChild = getChildList();
             var listNanny = LoadFromXML<List<Nanny>>(nannyPath);
             bool flag = true;
             if ((listChild == null || listNanny == null || listMother == null))
@@ -236,10 +234,10 @@ namespace DAL
             }
             if (flag)
                 throw new Exception("there is no nanny with this id");
-            contract.ContractID = ContractID.Element("ContractID").ToString();
+            contract.ContractID = ContractID.Value.ToString();
             contractnumber = ((int.Parse(contract.ContractID)));
             contractnumber++;
-            ContractID.Element("ContractID").Value = contractnumber.ToString();
+            ContractID.Value = contractnumber.ToString();
             listContract.Add(contract);
             SaveToXML(listContract, contractPath);
         }
@@ -342,14 +340,32 @@ namespace DAL
             return c;
         }
 
-        public void removeChild(Child child)
+        public void removeChild(Child Child)
         {
-            throw new NotImplementedException();
+            LoadData();
+
+            XElement deleteChild;
+            try
+            {
+                deleteChild = (from c in child.Elements()
+                               where (c.Element("id").Value) == Child.Id
+                               select c).FirstOrDefault();
+                deleteChild.Remove();
+                child.Save(childPath);
+            }
+            catch
+            { throw new Exception("ERROR"); }
         }
 
         public List<Child> getChildList(Mother mother)
         {
-            throw new NotImplementedException();
+            List<Child> childList = new List<Child>();
+            foreach (Child item in getChildList())
+            {
+                if (item.MotherId == mother.Id)
+                    childList.Add(item);
+            }
+            return childList;
         }
         #endregion
 

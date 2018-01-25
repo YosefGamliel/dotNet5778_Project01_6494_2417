@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BE
+namespace BE1
 {
     public class Child
     {

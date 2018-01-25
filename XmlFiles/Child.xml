@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<children>
+  <child>
+    <id>317383297</id>
+    <Mothwerid>309549079</Mothwerid>
+    <firstname>Yosef</firstname>
+    <Birthday>05/05/2017 00:00:00</Birthday>
+    <SpecialNeeds>false</SpecialNeeds>
+    <InfoSpecialNeeds />
+  </child>
+  <child>
+    <id>318000262</id>
+    <Mothwerid>314370768</Mothwerid>
+    <firstname>Eliav</firstname>
+    <Birthday>04/04/2017 00:00:00</Birthday>
+    <SpecialNeeds>true</SpecialNeeds>
+    <InfoSpecialNeeds>needs to take 3 pills a day</InfoSpecialNeeds>
+  </child>
+</children>

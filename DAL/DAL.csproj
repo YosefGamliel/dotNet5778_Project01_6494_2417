@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BE\BE.csproj">
-      <Project>{8bf2a6c2-3451-49f0-ba61-55345123db2d}</Project>
+      <Project>{46b0f03c-b137-4d31-8f6e-b66229438525}</Project>
       <Name>BE</Name>
     </ProjectReference>
     <ProjectReference Include="..\DS\DS.csproj">

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<ArrayOfContract xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Contract>
+    <ContractID>10000000</ContractID>
+    <BabySitterID>307471672</BabySitterID>
+    <ChildID>318000262</ChildID>
+    <MotherID>314370768</MotherID>
+    <FirsMeating>true</FirsMeating>
+    <Signed>false</Signed>
+    <SalaryPerHour>30.5</SalaryPerHour>
+    <SalaryPerMonth>0</SalaryPerMonth>
+    <SalaryType>true</SalaryType>
+    <Start>2019-01-09T00:00:00</Start>
+    <End>2019-05-09T00:00:00</End>
+    <Payment>1098</Payment>
+    <Discount>0</Discount>
+  </Contract>
+  <Contract>
+    <ContractID>10000001</ContractID>
+    <BabySitterID>308922202</BabySitterID>
+    <ChildID>317383297</ChildID>
+    <MotherID>309549079</MotherID>
+    <FirsMeating>false</FirsMeating>
+    <Signed>false</Signed>
+    <SalaryPerHour>0</SalaryPerHour>
+    <SalaryPerMonth>5000</SalaryPerMonth>
+    <SalaryType>false</SalaryType>
+    <Start>2019-01-08T00:00:00</Start>
+    <End>2019-05-08T00:00:00</End>
+    <Payment>5000</Payment>
+    <Discount>0</Discount>
+  </Contract>
+</ArrayOfContract>

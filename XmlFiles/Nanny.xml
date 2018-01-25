@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<ArrayOfNanny xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Nanny>
+    <Id>307471672</Id>
+    <LastName>Batito</LastName>
+    <FirstName>Yafit</FirstName>
+    <PhoneNumber>0547951348</PhoneNumber>
+    <Address>Pashos 29,Beer Sheva,israel</Address>
+    <Birthday>1991-02-03T00:00:00</Birthday>
+    <Elevator>true</Elevator>
+    <FloorBuilding>3</FloorBuilding>
+    <ExperienceYears>3</ExperienceYears>
+    <MaxKids>7</MaxKids>
+    <MinAge>3</MinAge>
+    <MaxAge>55</MaxAge>
+    <HourlyRate>true</HourlyRate>
+    <HourSalary>30.5</HourSalary>
+    <MonthSalary>0</MonthSalary>
+    <WorkDaysXml>6,True,False,True,False,True,False</WorkDaysXml>
+    <workHourxml>6,2,14:35:00,20:35:00,00:00:00,00:00:00,14:35:00,20:35:00,00:00:00,00:00:00,14:35:00,20:35:00,00:00:00,00:00:00</workHourxml>
+    <VacationDaysITE>false</VacationDaysITE>
+    <NumOfKids>0</NumOfKids>
+  </Nanny>
+  <Nanny>
+    <Id>308922202</Id>
+    <LastName>shlomit</LastName>
+    <FirstName>batito</FirstName>
+    <PhoneNumber>0547951349</PhoneNumber>
+    <Address>Pashos 50,Beer Sheva,israel</Address>
+    <Birthday>1989-01-01T00:00:00</Birthday>
+    <Elevator>false</Elevator>
+    <FloorBuilding>1</FloorBuilding>
+    <ExperienceYears>2</ExperienceYears>
+    <MaxKids>6</MaxKids>
+    <MinAge>3</MinAge>
+    <MaxAge>55</MaxAge>
+    <HourlyRate>false</HourlyRate>
+    <HourSalary>0</HourSalary>
+    <MonthSalary>5000</MonthSalary>
+    <WorkDaysXml>6,True,False,True,False,True,False</WorkDaysXml>
+    <workHourxml>6,2,14:35:00,20:35:00,00:00:00,00:00:00,14:35:00,20:35:00,00:00:00,00:00:00,14:35:00,20:35:00,00:00:00,00:00:00</workHourxml>
+    <VacationDaysITE>true</VacationDaysITE>
+    <Recommendations>good nanny</Recommendations>
+    <NumOfKids>0</NumOfKids>
+  </Nanny>
+</ArrayOfNanny>

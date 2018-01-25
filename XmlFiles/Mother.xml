@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ArrayOfMother xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Mother>
+    <Id>309549079</Id>
+    <LastName>Gamliel</LastName>
+    <FirstName>galit</FirstName>
+    <PhoneNumber>0547951344</PhoneNumber>
+    <Address>Pashos 40,Beer Sheva,israel</Address>
+    <AreaNanny>Pashos 40,Beer Sheva,israel</AreaNanny>
+    <NeedNannyXml>6,True,False,True,False,True,False</NeedNannyXml>
+    <workHourxml>6,2,17:00:00,20:00:00,00:00:00,00:00:00,17:00:00,20:00:00,00:00:00,00:00:00,17:00:00,20:00:00,00:00:00,00:00:00</workHourxml>
+  </Mother>
+  <Mother>
+    <Id>314370768</Id>
+    <LastName>Brok</LastName>
+    <FirstName>Hagit</FirstName>
+    <PhoneNumber>0547951366</PhoneNumber>
+    <Address>יפתח הגלעדי 49, אשקלון, ישראל</Address>
+    <AreaNanny>יפתח הגלעדי 49, אשקלון, ישראל</AreaNanny>
+    <NeedNannyXml>6,True,False,True,False,True,False</NeedNannyXml>
+    <workHourxml>6,2,17:00:00,20:00:00,00:00:00,00:00:00,17:00:00,20:00:00,00:00:00,00:00:00,17:00:00,20:00:00,00:00:00,00:00:00</workHourxml>
+  </Mother>
+  <Mother>
+    <Id>211739172</Id>
+    <LastName>Fat</LastName>
+    <FirstName>Bob</FirstName>
+    <PhoneNumber>0523225659</PhoneNumber>
+    <Address>Hava'ad Haleumi, Jerusalem, Israel</Address>
+    <AreaNanny>Hava'ad Haleumi, Jerusalem, Israel</AreaNanny>
+    <Notes>fkfkjf</Notes>
+    <NeedNannyXml>6,True,False,False,False,False,False</NeedNannyXml>
+    <workHourxml>6,2,01:00:00,03:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00,00:00:00</workHourxml>
+  </Mother>
+</ArrayOfMother>

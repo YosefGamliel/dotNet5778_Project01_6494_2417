@@ -28,7 +28,7 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            inti();
+            //inti();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

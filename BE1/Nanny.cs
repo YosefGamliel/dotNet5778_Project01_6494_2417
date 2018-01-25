@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 
-namespace BE
+namespace BE1
 {
     public class Nanny
     {
