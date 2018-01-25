@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 using BE;
 namespace DAL
 {
-    class Dal_XML_imp : Idal
+    public class Dal_XML_imp : Idal
     {
         int contractnumber = 0;
         XElement child;
@@ -19,30 +19,68 @@ namespace DAL
         const string nannyPath = @"Nanny.xml";
         const string contractPath = @"Contract.xml";
         const string contractIDPath = @"ContractID.xml";
-        private void CreateFiles()
+        private void CreateFiles(string fileName = childPath)
         {
-            child = new XElement("children");
-            child.Save(childPath);
-            ContractID = new XElement("ContractID", 10000000);
-            ContractID.Save(contractIDPath);
+            if (fileName.Equals(childPath))
+            {
+                child = new XElement("children");
+                child.Save(childPath);
+            }
+            if (fileName.Equals(contractIDPath))
+            {
+                ContractID = new XElement("ContractID", 10000000);
+                ContractID.Save(contractIDPath);
+            }
         }
 
-        private void LoadData()
+        string ToXMLstring<T>(T toSerialize)
+        {
+            using (StringWriter textWriter = new StringWriter())
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                xmlSerializer.Serialize(textWriter, toSerialize);
+                return textWriter.ToString();
+            }
+        }
+        T ToObject<T>(string toDeserialize)
+        {
+            using (StringReader textReader = new StringReader(toDeserialize))
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                return (T)xmlSerializer.Deserialize(textReader);
+            }
+        }
+
+        private void LoadData(string fileName = childPath)
         {
             try
             {
-                child = XElement.Load(childPath);
+                if (fileName.Equals(childPath))
+                    child = XElement.Load(childPath);
+                if (fileName.Equals(contractIDPath))
+                    ContractID = XElement.Load(contractIDPath);
+
             }
             catch
             {
                 throw new Exception("File upload problem");
             }
         }
-        Dal_XML_imp()
+        public Dal_XML_imp()
         {
-            SaveToXML(new List<Nanny>(), nannyPath);
-            SaveToXML(new List<Mother>(), motherPath);
-            SaveToXML(new List<Contract>(), contractPath);
+            if(!File.Exists(nannyPath))
+                SaveToXML(new List<Nanny>(), nannyPath);
+            if (!File.Exists(motherPath))
+                SaveToXML(new List<Mother>(), motherPath);
+            if (!File.Exists(contractPath))
+                SaveToXML(new List<Contract>(), contractPath);
+            if (!File.Exists(childPath))
+                CreateFiles();
+            else LoadData();
+
+            if (!File.Exists(contractIDPath))
+                CreateFiles(contractIDPath);
+            else LoadData(contractIDPath);
 
         }
         public static void SaveToXML<T>(T source, string path)

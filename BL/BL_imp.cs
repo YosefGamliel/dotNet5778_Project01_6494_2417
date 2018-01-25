@@ -10,7 +10,7 @@ namespace BL
 {
     public class BL_imp : IBL
     {
-        Idal dal = new Dal_imp();
+        Idal dal = FactoryDal.GetDal();
         #region MOTHER
         public void addMother(Mother mom)
         {

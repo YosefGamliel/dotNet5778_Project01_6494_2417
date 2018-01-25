@@ -137,6 +137,7 @@ namespace BE
                 monthSalary = value;
             }
         }
+     //   [XmlIgnore]
         public bool[] WorkDays
         {
             get { return workDays; }
@@ -147,6 +148,7 @@ namespace BE
                 workDays = value;
             }
         }
+     //   [XmlIgnore]
         public TimeSpan[,] WorkHours
         {
             get { return workHours; }
@@ -157,6 +159,75 @@ namespace BE
                 workHours = value;
             }
         }
+
+         public string WorkDaysXml
+        {
+            get
+            {
+                if (WorkDays == null)
+                    return null;
+                string result = "";
+                int size1 = WorkDays.Length;
+                result += size1;
+                for (int i = 0; i < size1; i++)
+                {
+                    result += "," + WorkDays[i].ToString();
+                }
+                return result;
+            }
+            set
+            {
+                if(value!= null&&value.Length>0)
+                {
+                    string[] values = value.Split(',');
+                    int size = int.Parse(values[0]);
+                    WorkDays = new bool[size];
+                    int index = 1;
+                    for (int i = 0; i < size; i++)
+                    {
+                        WorkDays[i] = bool.Parse(values[index++]);
+                    }
+                }
+
+
+
+
+            }
+        }
+        public string workHourxml
+        {
+            get
+            {
+                if (WorkHours == null) return null;
+                string result = "";
+                if (WorkHours != null)
+                {
+
+                    int sizeA = WorkHours.GetLength(0);
+                    int sizeB = WorkHours.GetLength(1);
+                    result += "" + sizeA + "," + sizeB;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            result += "," + WorkHours[i, j];
+                }
+                return result;
+            }
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                    string[] values = value.Split(',');
+                    int sizeA = int.Parse(values[0]);
+                    int sizeB = int.Parse(values[1]);
+                    WorkHours = new TimeSpan[sizeA, sizeB];
+                    int index = 2;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            WorkHours[i, j] = TimeSpan.Parse(values[index++]);
+                }
+            }
+        }
+
         public bool VacationDaysITE { get { return vacationDaysITE; } set { vacationDaysITE = value; } }
         public string Recommendations { get { return recommendations; } set { recommendations = value; } }
         public int NumOfKids { get { return numOfKids; } set { numOfKids = value; } }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Xml.Serialization;
 namespace BE
 {
     public class Mother
@@ -79,6 +79,7 @@ namespace BE
                 areaNanny = value;
             }
         }
+        
         public bool[] NeedNanny
         {
             get { return needNanny; }
@@ -90,6 +91,8 @@ namespace BE
             }
         }
         public string Notes { get { return notes; } set { notes = value; } }
+
+        [XmlIgnore]
         public TimeSpan[,] WorkHours
         {
             get { return workHours; }
@@ -98,6 +101,70 @@ namespace BE
                 if (!MyFunctions.CheckArraySize2(value))
                     throw new Exception("Invalid arrays sizes");
                 workHours = value;
+            }
+        }
+
+        public string NeedNannyXml
+        {
+            get
+            {
+                if (NeedNanny == null)
+                    return null;
+                string result = "";
+                int size1 = NeedNanny.Length;
+                result += size1;
+                for (int i = 0; i < size1; i++)
+                {
+                    result += "," + NeedNanny[i].ToString();
+                }
+                return result;
+            }
+            set
+            {
+                if(value!= null&&value.Length>0)
+                {
+                    string[] values = value.Split(',');
+                    int size = int.Parse(values[0]);
+                    NeedNanny = new bool[size];
+                    int index = 1;
+                    for (int i = 0; i < size; i++)
+                    {
+                        NeedNanny[i] = bool.Parse(values[index++]);
+                    }
+                }
+            }
+        }
+        public string workHourxml
+        {
+            get
+            {
+                if (WorkHours == null) return null;
+                string result = "";
+                if (WorkHours != null)
+                {
+
+                    int sizeA = WorkHours.GetLength(0);
+                    int sizeB = WorkHours.GetLength(1);
+                    result += "" + sizeA + "," + sizeB;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            result += "," + WorkHours[i, j];
+                }
+                return result;
+            }
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                    string[] values = value.Split(',');
+                    int sizeA = int.Parse(values[0]);
+                    int sizeB = int.Parse(values[1]);
+                    WorkHours = new TimeSpan[sizeA, sizeB];
+                    int index = 2;
+                    for (int i = 0; i < sizeA; i++)
+                        for (int j = 0; j < sizeB; j++)
+                            WorkHours[i, j] = TimeSpan.Parse(values[index++]);
+                }
             }
         }
         #endregion
@@ -167,5 +234,7 @@ namespace BE
         //}
         #endregion 
     }
+
+
 }
 
