@@ -64,34 +64,48 @@ namespace PLWPF
             ContractDetails ContractDetail = new ContractDetails();
             ContractDetail.ShowDialog();
         }
-        private void inti()
+
+        private TimeSpan[,] getHourNanny()
         {
-            bool[] wd = new bool[6] { true, false, true, false, true, false };
-            TimeSpan[,] workH = new TimeSpan[6, 2];
-            DateTime Birth = new DateTime(1991, 2, 3);
+            TimeSpan[,] hours = new TimeSpan[6, 2];
             for (int i = 0; i < 3; i++)
             {
-                workH[i*2, 0] = new TimeSpan(14, 35, 00);
-                workH[i*2, 1] = new TimeSpan(20, 35, 00);
+                hours[i * 2, 0] = new TimeSpan(14, 35, 00);
+                hours[i * 2, 1] = new TimeSpan(20, 35, 00);
             }
+            return hours;
+        }
+        private TimeSpan[,] getHourMother()
+        {
+            TimeSpan[,] hours = new TimeSpan[6, 2];
+            for (int i = 0; i < 3; i++)
+            {
+                hours[i * 2, 0] = new TimeSpan(17, 00, 00);
+                hours[i * 2, 1] = new TimeSpan(20, 00, 00);
+            }
+            return hours;
+        }
+        private bool[] getDays()
+        {
+            bool[] days = new bool[6] { true, false, true, false, true, false };
+            return days;
+        }
+        private void inti()
+        {
+            DateTime Birth = new DateTime(1991, 2, 3);
             #region NannyExample
             Nanny yafit = new Nanny("307471672", "Batito", "Yafit", "0547951348", "Pashos 29,Beer Sheva,israel",
-              Birth, true, 3, 3, 7, 3, 55, true, (float)30.5, 0, wd, workH, false, null);
+              Birth, true, 3, 3, 7, 3, 55, true, (float)30.5, 0, getDays(), getHourNanny(), false, null);
             bl.addNanny(yafit);
             Birth = new DateTime(1989, 01, 01);
             Nanny shlomit = new Nanny("308922202", "shlomit", "batito", "0547951349", "Pashos 50,Beer Sheva,israel",
-            Birth, false, 1, 2, 6, 3, 55, false, 0, 5000, wd, workH, true, "good nanny");
+            Birth, false, 1, 2, 6, 3, 55, false, 0, 5000, getDays(), getHourNanny(), true, "good nanny");
             bl.addNanny(shlomit);
             #endregion
-            for (int i = 0; i < 3; i++)
-            {
-                workH[i * 2, 0] = new TimeSpan(17, 00, 00);
-                workH[i * 2, 1] = new TimeSpan(20, 00, 00);
-            }
             #region MotherExample
-            Mother galit = new Mother("309549079", "Gamliel", "galit", "0547951344", "Pashos 40,Beer Sheva,israel", "Pashos 40,Beer Sheva,israel", wd, workH, null);
+            Mother galit = new Mother("309549079", "Gamliel", "galit", "0547951344", "Pashos 40,Beer Sheva,israel", "Pashos 40,Beer Sheva,israel", getDays(), getHourMother(), null);
             bl.addMother(galit);
-            Mother hagit = new Mother("314370768", "Brok", "Hagit", "0547951366", "יפתח הגלעדי 49, אשקלון, ישראל", "יפתח הגלעדי 49, אשקלון, ישראל", wd, workH, null);
+            Mother hagit = new Mother("314370768", "Brok", "Hagit", "0547951366", "יפתח הגלעדי 49, אשקלון, ישראל", "יפתח הגלעדי 49, אשקלון, ישראל", getDays(), getHourMother(), null);
             bl.addMother(hagit);
             #endregion
             #region ChildExample
