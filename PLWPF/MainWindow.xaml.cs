@@ -38,8 +38,7 @@ namespace PLWPF
             // Load data by setting the CollectionViewSource.Source property:
             // nannyViewSource.Source = [generic data source]
         }
-
-
+        
 
         private void MotherWindows(object sender, RoutedEventArgs e)
         {
