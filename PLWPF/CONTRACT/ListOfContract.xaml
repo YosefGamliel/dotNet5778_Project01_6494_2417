@@ -14,6 +14,10 @@
                 <GridViewColumn Header="Nanny ID" Width="auto" DisplayMemberBinding="{Binding BabySitterID}" />
                 <GridViewColumn Header="Child ID" Width="auto" DisplayMemberBinding="{Binding ChildID}" />
                 <GridViewColumn Header="First Meeting has done?" Width="auto" DisplayMemberBinding="{Binding FirsMeating}" />
+                <GridViewColumn Header="Signed?" Width="auto" DisplayMemberBinding="{Binding Signed}" />
+                <GridViewColumn Header="Payment:" Width="auto" DisplayMemberBinding="{Binding Payment}" />
+                <GridViewColumn Header="Start:" Width="auto" DisplayMemberBinding="{Binding Start}" />
+                <GridViewColumn Header="End:" Width="auto" DisplayMemberBinding="{Binding End}" />
             </GridView>
         </ListView.View>
     </ListView>

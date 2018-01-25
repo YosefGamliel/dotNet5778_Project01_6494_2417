@@ -20,8 +20,10 @@
                     <GridViewColumn Header="Max Kids" Width="auto" DisplayMemberBinding="{Binding MaxKids}" />
                     <GridViewColumn Header="Min Age(Month)" Width="auto" DisplayMemberBinding="{Binding MinAge}" />
                     <GridViewColumn Header="Max Age(Month)" Width="auto" DisplayMemberBinding="{Binding MaxAge}" />
-                    <GridViewColumn Header="NumOfKids" Width="auto" DisplayMemberBinding="{Binding NumOfKids}" />
-                    <GridViewColumn Header="Salary" Width="auto" DisplayMemberBinding="{Binding MonthSalary}" />
+                    <GridViewColumn Header="Num Of Kids" Width="auto" DisplayMemberBinding="{Binding NumOfKids}" />
+                    <GridViewColumn Header="Salary Per Hour?" Width="auto" DisplayMemberBinding="{Binding HourlyRate}" />
+                    <GridViewColumn Header="Hour Salary" Width="auto" DisplayMemberBinding="{Binding HourSalary}" />
+                    <GridViewColumn Header="Month Salary" Width="auto" DisplayMemberBinding="{Binding MonthSalary}" />
                     <GridViewColumn Header="Vacation Days ITE ?" Width="auto" DisplayMemberBinding="{Binding VacationDaysITE}" />
                     <GridViewColumn Header="Had elevator?" Width="auto" DisplayMemberBinding="{Binding Elevator}" />
                     <GridViewColumn Header="Floor Building ?" Width="auto" DisplayMemberBinding="{Binding FloorBuilding}" />
