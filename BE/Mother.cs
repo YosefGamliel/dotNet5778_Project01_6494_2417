@@ -91,8 +91,8 @@ namespace BE
             }
         }
         public string Notes { get { return notes; } set { notes = value; } }
-
-        [XmlIgnore]
+    
+        
         public TimeSpan[,] WorkHours
         {
             get { return workHours; }
