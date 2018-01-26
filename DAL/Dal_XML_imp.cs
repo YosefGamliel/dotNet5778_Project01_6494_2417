@@ -234,10 +234,13 @@ namespace DAL
             }
             if (flag)
                 throw new Exception("there is no nanny with this id");
-            contract.ContractID = ContractID.Value.ToString();
-            contractnumber = ((int.Parse(contract.ContractID)));
-            contractnumber++;
-            ContractID.Value = contractnumber.ToString();
+            if (contract.ContractID == null)
+            {
+                contract.ContractID = ContractID.Value.ToString();
+                contractnumber = ((int.Parse(contract.ContractID)));
+                contractnumber++;
+                ContractID.Value = contractnumber.ToString();
+            }
             listContract.Add(contract);
             SaveToXML(listContract, contractPath);
         }
