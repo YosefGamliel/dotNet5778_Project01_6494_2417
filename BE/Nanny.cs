@@ -291,41 +291,25 @@ namespace BE
             workDays = new bool[6];
             workHours = new TimeSpan[6, 2];
         }
-        //צריך לסדר את זה אבל 
-        //********חובה************
-        //שהתשע תווים הראשונים יהיו של התז ללא שום תוספת 
-        //או למצוא דרך לסדר את ה מחיקה ב תצוגה.
-        public override string ToString()
-        {
-            return Id + " " + FirstName + "  " + LastName + " ";
-        }
-        #region
+
         //public override string ToString()
         //{
-        //    string str1 = null, str2 = null, str3 = null, WH = "The hours she works each day:", WORK = "Days when she works: ";
-        //    if (elevator) str1 = "Yes";
-        //    else str1 = "No";
-        //    if (hourlyRate) str2 = "Yes";
-        //    else str2 = "No";
-        //    //for (int i = 0; i < 6; ++i)
-        //    //{
-        //    //    WORK += ((DaysOfWeek)i).ToString();
-        //    //    if (workDays[i])
-        //    //        WORK += ": Yes ";
-        //    //    else
-        //    //        WORK += ": No ";
-        //    //    WH += ("\n" + ((DaysOfWeek)i).ToString() + "- Beginning time: " + workHours[i, 0].ToString() + "End time: " + workHours[i, 1].ToString());
-        //    //    if (vacationDaysITE)
-        //    //        str3 = "gets her vacation days according to the Ministry of Industry, Trade and Employment";
-        //    //    else str3 = "gets her vacation days according to the Ministry of Education";
-        //    //}
-        //    return "Id: " + id + "\nFirst name: " + firstName + "\nLast name: " + lastName + "\nPhone number: " + phoneNumber
-        //        + "\nAddress: " + address + "\nBirthday: " + birthday + "\nElevator in the building: " + str1 + "\nFloor in the building: "
-        //        + floorBuilding + "\nExperience years: " + experienceYears + "\nMaximum of kids: " + maxKids + "\nAges: from age " + minAge +
-        //        " months to age " + maxAge + " months\nHourly rate: " + str2 + "\nMonth salary: " + monthSalary + "\n" + WORK + "\n" + WH + "\n"
-        //        + str3 + "\nRecommendations" + recommendations + "\nNum of kids: " + numOfKids;
+        //    return Id + " " + FirstName + "  " + LastName + " ";
         //}
-        #endregion
+        
+        public override string ToString()
+        {
+            string str1 = null, str2 = null, str3 = null, WH = "The hours she works each day:", WORK = "Days when she works: ";
+            if (elevator) str1 = "Yes";
+            else str1 = "No";
+            if (hourlyRate) str2 = "Yes";
+            else str2 = "No";
+            return "Id: " + id + "\nFirst name: " + firstName + "\nLast name: " + lastName + "\nPhone number: " + phoneNumber
+                + "\nAddress: " + address + "\nBirthday: " + birthday + "\nElevator in the building: " + str1 + "\nFloor in the building: "
+                + floorBuilding + "\nExperience years: " + experienceYears + "\nMaximum of kids: " + maxKids + "\nAges: from age " + minAge +
+                " months to age " + maxAge + " months\nHourly rate: " + str2 + "\nMonth salary: " + monthSalary + "\n" + WORK + "\n" + WH + "\n"
+                + str3 + "\nRecommendations" + recommendations + "\nNum of kids: " + numOfKids;
+        }
         #endregion
     }
 

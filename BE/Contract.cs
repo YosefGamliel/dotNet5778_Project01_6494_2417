@@ -79,21 +79,21 @@ namespace BE
         public Contract()
         {
         }
-        public override string ToString()
-        { return ContractID; }
         //public override string ToString()
-        //{
-        //    string str1, str2;
-        //    if (firsMeating) str1 = "Yes";
-        //    else str1 = "No";
-        //    if (signed) str2 = "Yes";
-        //    else str2 = "No";
-        //    return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " +
-        //        childID + "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 +
-        //        "\nContract type: " + salaryType + "\nSalary per hour: " + salaryPerHour + "\nSalary per month: " +
-        //        salaryPerMonth + "\nStarted to work in: " + start + "\nFinshed to work in: " + end + "\nPayment: " +
-        //        payment + "\nDiscount for the nanny: " + discount;
-        //}
+        //{ return ContractID; }
+        public override string ToString()
+        {
+            string str1, str2;
+            if (firsMeating) str1 = "Yes";
+            else str1 = "No";
+            if (signed) str2 = "Yes";
+            else str2 = "No";
+            return "Contract number: " + contractID + "\nBaybysitter ID: " + babySitterID + "\nChild id: " +
+                childID + "\nWas there a first meeting?: " + str1 + "\nThe contract was signed?: " + str2 +
+                "\nContract type: " + salaryType + "\nSalary per hour: " + salaryPerHour + "\nSalary per month: " +
+                salaryPerMonth + "\nStarted to work in: " + start + "\nFinshed to work in: " + end + "\nPayment: " +
+                payment + "\nDiscount for the nanny: " + discount;
+        }
         #endregion
 
     }
