@@ -18,7 +18,7 @@ namespace DAL
             {
                 foreach (Nanny item in getNannyList())
                 {
-                    if (item.Id == nanny.Id)
+                    if (item.Id == nanny.Id)//HAD nanny with sameid
                         throw new Exception("there is already nanny with this id");
                 }
             }

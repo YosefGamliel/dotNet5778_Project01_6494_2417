@@ -8,9 +8,13 @@ using DAL;
 using DS;
 namespace BL
 {
+    /// <summary>
+    /// Realizing of the Basic Action
+    /// Of our Program
+    /// </summary>
     public class BL_imp : IBL
     {
-        Idal dal = FactoryDal.GetDal();
+        Idal dal = FactoryDal.GetDal();//
         #region MOTHER
         public void addMother(Mother mom)
         {
@@ -18,13 +22,16 @@ namespace BL
         }
         public void removeMother(Mother mom)
         {
+            //delete the mother's children
             foreach (Child item in dal.getChildList(mom))
                 removeChild(item);
             dal.removeMother(mom);
         }
         public void updateMother(Mother mom)
         {
+            //delete the old mother
             dal.removeMother(mom);
+            //add the update Mother
             addMother(mom);
         }
         public List<Mother> getMotherList()
@@ -37,10 +44,11 @@ namespace BL
         {
             double[] sumOfHourinWeek = new double[6];
             double sumOfHourinMonth = 0;
-            TimeSpan[,] NannyWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה של המטפלת
-            TimeSpan[,] MotherWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה של האמא
-            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה של המטפלת
+            TimeSpan[,] NannyWorkHour = new TimeSpan[6, 2];//save the Nanny working hours
+            TimeSpan[,] MotherWorkHour = new TimeSpan[6, 2];////save the Mother working hours
+            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];////save the Common working hours
             int sumOfChild = 0, childAge = 0;
+            //check  if the child is older than 3 month
             foreach (Child item in getChildList())
             {
                 if (item.Id == contract.ChildID)
@@ -79,7 +87,7 @@ namespace BL
             {
                 if (MyFunctions.FindMother(contract.ChildID).Id == item.Id)
                 {
-                    MotherWorkHour = item.WorkHours;//מוצא את האמא המדוברת
+                    MotherWorkHour = item.WorkHours;//Find The requested mother
                     //using in item (mother )to find how many brothers with same nanny
                     sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
                 }
@@ -91,7 +99,7 @@ namespace BL
                 {
                     if (contract.BabySitterID == item.Id)
                     {
-                        NannyWorkHour = item.WorkHours;//מוצא את העוזרת המדוברת
+                        NannyWorkHour = item.WorkHours;//Find The requested Nanny
                     }
                 }
                 for (int i = 0; i < 6; i++)
@@ -99,8 +107,8 @@ namespace BL
                     commonWorkHour[i, 0] = MyFunctions.max(MotherWorkHour[i, 0], NannyWorkHour[i, 0]);
                     commonWorkHour[i, 1] = MyFunctions.min(MotherWorkHour[i, 1], NannyWorkHour[i, 1]);
                     sumOfHourinWeek[i] = MyFunctions.dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
-                }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
-                for (int i = 0; i < 6; i++) //מחשב את המשכורת ע"י סכימה של שעות העבודה 
+                }//calculating the common hour
+                for (int i = 0; i < 6; i++) //calculating how much hour in week 
                     sumOfHourinMonth = MyFunctions.sum(sumOfHourinMonth, sumOfHourinWeek[i]);
                 if (sumOfChild == 1)//no brothers-no discount
                     contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour;
@@ -110,7 +118,7 @@ namespace BL
             else
                 contract.Payment = contract.SalaryPerMonth * (1 - contract.Discount);
             #endregion
-            dal.addContract(contract);
+            dal.addContract(contract);//all right, add the contract
         }
         public void removeContract(Contract contract)
         {
@@ -138,6 +146,7 @@ namespace BL
         }
         public void updateContract(Contract contract)
         {
+            //like Mother Update
             removeContract(contract);
             addContract(contract);
         }
@@ -149,7 +158,7 @@ namespace BL
         #region NANNY
         public void addNanny(Nanny nanny)
         {
-            //בודק את גיל המטפלת
+            //Check the Nanny age
             if (DateTime.Now.Year - nanny.Birthday.Year < 18)//שנים
                 throw new Exception("age of nanny can't be under 18");
             if (DateTime.Now.Year - nanny.Birthday.Year == 18 && DateTime.Now.Month - nanny.Birthday.Month < 0)//חודשים
@@ -161,6 +170,7 @@ namespace BL
         }
         public void removeNanny(Nanny nanny)
         {
+            //delete all Contract that this Nanny sign on
             foreach (Contract item in getContractList())
             {
                 if (item.BabySitterID == nanny.Id)
@@ -172,6 +182,7 @@ namespace BL
         {
             dal.removeNanny(nanny);
             addNanny(nanny);
+            //if the new max kids is little than the current amount of her kids
             if (nanny.NumOfKids > nanny.MaxKids)
                 throw new Exception("this nanny have more childs than what she can");
         }
@@ -189,6 +200,7 @@ namespace BL
         {
             bool flag = false;
             Contract toDelete = new Contract();
+            //delete the contract the]at child sign on
             foreach (Contract item in getContractList())
             {
                 if (item.ChildID == child.Id)

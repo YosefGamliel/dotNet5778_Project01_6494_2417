@@ -15,7 +15,12 @@ namespace BL
 {
     public class MyFunctions
     {
-        static IBL bl = new BL_imp(); // it's static because the functions are also static
+        static IBL bl = FactoryBL.GetBL(); // it's static because the functions are also static
+        /// <summary>
+        /// Find Mother By Child ID.
+        /// </summary>
+        /// <param name="childID"></param>
+        /// <returns></returns>
         public static Mother FindMother(string childID)
         {
             string motherID = null;
@@ -31,6 +36,11 @@ namespace BL
             }
             return null;
         }
+        /// <summary>
+        /// find Mother by her ID
+        /// </summary>
+        /// <param name="MotherID"></param>
+        /// <returns></returns>
         public static Mother FindMotherById(string MotherID)
         {
             foreach (var item in bl.getMotherList())
@@ -40,6 +50,11 @@ namespace BL
             }
             return null;
         }
+        /// <summary>
+        /// find the Babby sitter of specific child
+        /// </summary>
+        /// <param name="child"></param>
+        /// <returns></returns>
         private static string getNannyByChild(Child child)
         {
             foreach (var item in bl.getContractList())
@@ -49,6 +64,13 @@ namespace BL
             }
             return null;
         }
+        /// <summary>
+        /// check how much brother Signed in same Babby sitter
+        /// to calculating the discount
+        /// </summary>
+        /// <param name="brothers"></param>
+        /// <param name="BabySitterId"></param>
+        /// <returns></returns>
         public static int numOfChildInBabySitter(List<Child> brothers, string BabySitterId)
         {
             int sum = 1;
@@ -59,6 +81,12 @@ namespace BL
             }
             return sum;
         }
+        /// <summary>
+        /// override MAX between rwo TimeSpan
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static TimeSpan max(TimeSpan a, TimeSpan b)
         {
             if (a >= b)
@@ -66,6 +94,12 @@ namespace BL
             else
                 return b;
         }
+        /// <summary>
+        ///  override MIN between rwo TimeSpan
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
         public static TimeSpan min(TimeSpan a, TimeSpan b)
         {
             if (a <= b)
@@ -73,6 +107,14 @@ namespace BL
             else
                 return b;
         }
+        /// <summary>
+        /// Performs a schema operation of hours
+        /// its meaninig that 1.3 its one hour and 30 minute
+        /// and if I add 1.3+1.3 its meaning that i want=>3
+        /// </summary>
+        /// <param name="beg"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public static double sum(double beg, double end)
         {
             double _sum = (int)end + (int)beg;
@@ -86,11 +128,24 @@ namespace BL
 
             return _sum;
         }
+        /// <summary>
+        /// Performs a schema operation of hours
+        /// its meaninig that 1.3 its one hour and 30 minute
+        /// and if I add 1.3-1.2 its meaning that i want=>0.1
+        /// </summary>
+        /// <param name="beg"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public static double dif(TimeSpan beg, TimeSpan end)
         {
             TimeSpan common = end - beg;
             return common.TotalHours;
         }
+        /// <summary>
+        /// find Contact By condition
+        /// </summary>
+        /// <param name="cond"></param>
+        /// <returns></returns>
         public static List<Contract> GetContractsBy(Func<Contract, bool> cond)
         {
             List<Contract> list = new List<Contract>();
@@ -101,6 +156,11 @@ namespace BL
                 list.Add(item);
             return list;
         }
+        /// <summary>
+        /// Find the Number Of Contract by Condition 
+        /// </summary>
+        /// <param name="cond"></param>
+        /// <returns></returns>
         public static int NumOfContractsBy(Func<Contract, bool> cond)
         {
             int SumOfContract = 0;
@@ -112,6 +172,11 @@ namespace BL
                 SumOfContract++;
             return SumOfContract;
         }
+        /// <summary>
+        /// find NANNY by her ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Nanny getNannyById(string id)
         {
             foreach (var item in bl.getNannyList())
@@ -122,7 +187,12 @@ namespace BL
             }
             return null;
         }
-        //google maps
+        /// <summary>
+        /// google maps function
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="dest"></param>
+        /// <returns></returns>
         public static int CalculateDistance(string source, string dest)
         {
             var drivingDirectionRequest = new DirectionsRequest
@@ -136,22 +206,35 @@ namespace BL
             Leg leg = route.Legs.First();
             return leg.Distance.Value;
         }
+        /// <summary>
+        /// give garde to Nanny by her Common Work HOUR with
+        /// Mother The more hours Common, thenanny get higher score
+        /// </summary>
+        /// <param name="nanny"></param>
+        /// <param name="mom"></param>
+        /// <returns></returns>
         private static double grade(Nanny nanny, Mother mom)
         {
             TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה המשותפות
             double[] sumOfHourinWeek = new double[6];
             double TotalCommonHour = 0;
 
+            //calculatin the sum of the Common hour
             for (int i = 0; i < 6; i++)
             {
                 commonWorkHour[i, 0] = max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
                 commonWorkHour[i, 1] = min(mom.WorkHours[i, 1], nanny.WorkHours[i, 1]);
                 sumOfHourinWeek[i] = dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
                 TotalCommonHour = sum(TotalCommonHour, sumOfHourinWeek[i]);
-            }//מחשב כמה שעות עבודה יש ביום הכולל עבודה משותפת
+            }
             return TotalCommonHour;
         }
-        //match nany by hour;
+
+        /// <summary>
+        /// nanny with Precise match during work hours
+        /// </summary>
+        /// <param name="mother"></param>
+        /// <returns></returns>
         private static List<Nanny> InitialCoordination(Mother mother)
         {
             bool flag = true;
@@ -181,33 +264,18 @@ namespace BL
             }
             return MatchNanny;
         }
-        public static List<Nanny> NannyByDistance(Mother mother, bool order = false)
-        {
-            List<Nanny> NannyL = new List<Nanny>();
-            //they want the list sorted
-
-            var closest = from n in bl.getNannyList()
-                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
-                          orderby (order) ? distance : 0
-                          group n by distance into nannyList
-                          select new { distance = nannyList.Key, orderNanny = nannyList };
-            foreach (var groop in closest)
-            {
-                foreach (var item in groop.orderNanny)
-                {
-                    NannyL.Add(item);
-                }
-            }
-            return NannyL;
-        }
-
-
 
         /// <summary>
         /// הקטע הוא כזה אני בודק לאיזה מטפלת יש הכי הרבה שעות עבודה משותפות 
         /// הבדיקה נעשית ע"י הפונקציה גרייד שמחזירה את מספר השעות עבודה משותפות
         /// ואז אני ממיין לכל מטפלת למי יש הכי הרבה שעות עבודה משותפות ומחזיר 
         /// את החמש בעלות הכי הרבה שעות עבודה
+        /// </summary>
+        /// <param name="mother"></param>
+        /// <returns></returns>
+        /// <summary>
+        ///***Our choice was according to the common hours because this is the main factor***
+        ///match nany by hour;
         /// </summary>
         /// <param name="mother"></param>
         /// <returns></returns>
@@ -221,8 +289,7 @@ namespace BL
             int i = 0;
             foreach (var nanny in closest)
             {
-                //אם יש יותר מחמש נאני לא יכניס את השאר
-                //ומטפל גם באפשרות שיש פחות מחמש נאני
+                //care that return MAX 5 Nanny's
                 if (i < 5)
                 {
                     bestFive.Add(nanny);
@@ -232,6 +299,11 @@ namespace BL
             }
             return bestFive;
         }
+
+        /// <summary>
+        /// return List of Chikd without Contract
+        /// </summary>
+        /// <returns></returns>
         public static List<Child> ChildWhithoutContract()
         {
             List<Child> ChildWithoutContract = new List<Child>();
@@ -250,6 +322,10 @@ namespace BL
             }
             return ChildWithoutContract;
         }
+        /// <summary>
+        /// return List Of Nanny that wirkung By TMT
+        /// </summary>
+        /// <returns></returns>
         public static List<Nanny> NannyByTAMAT()
         {
             List<Nanny> nannyL = new List<Nanny>();
@@ -257,9 +333,7 @@ namespace BL
             return nannyL;
         }
         /// <summary>
-        /// אם יש כוח יש כמה פונקציות שנקראות
-        /// getNANNYby....
-        /// שאפשר להשתמש בפונקציה הזאת
+        /// return List Of NANNY BY condition
         /// </summary>
         /// <param name="cond"></param>
         /// <returns></returns>
@@ -273,6 +347,11 @@ namespace BL
                 list.Add(item);
             return list;
         }
+        /// <summary>
+        /// return List Of Child BY condition
+        /// </summary>
+        /// <param name="cond"></param>
+        /// <returns></returns>
         public static List<Child> GetChildBy(Func<Child, bool> cond)
         {
             List<Child> list = new List<Child>();
@@ -283,82 +362,80 @@ namespace BL
                 list.Add(item);
             return list;
         }
-        
+
+        /// <summary>
+        /// Find the best result of nanny that 
+        /// match to  Specific Mother
+        /// </summary>
+        /// <param name="mom"></param>
+        /// <returns></returns>
         public static List<Nanny> NanniesToMother(Mother mom)
         {
             List<Nanny> nanList = new List<Nanny>();
-            if (InitialCoordination(mom) != null)
-                nanList = InitialCoordination(mom);
-            else
-                nanList = FiveclosetNanny(mom);
+            if (InitialCoordination(mom) != null)//if had Full match
+                nanList = InitialCoordination(mom);//return the Full match
+            else//dont had full Match
+                nanList = FiveclosetNanny(mom);//return the best five
             return nanList;
         }
 
         #region IEnumerable
+        /// <summary>
+        /// return Group OF nanny by age group
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public static IEnumerable<IGrouping<int, Nanny>> NannyByAge(bool order = false)
         {
-            // List<Nanny> NannyL = new List<Nanny>();
             IEnumerable<IGrouping<int, Nanny>> check = from n in bl.getNannyList()
                                                            //max Age = true, MinAge = FALSE
                                                        let kidsAge = n.MinAge
                                                        orderby (order) ? kidsAge : 0 //they want the list sorted
-                                                       group n by kidsAge;//into nannyList
-                                                                          //select new { kidsAge = nannyList.Key, orderNanny = nannyList };
-                                                                          //foreach (var groop in check)
-                                                                          //{
-                                                                          //    foreach (var item in groop.orderNanny)
-                                                                          //    {
-                                                                          //        NannyL.Add(item);
-                                                                          //    }
-                                                                          //}
+                                                       group n by kidsAge;
             return check;
         }
+        /// <summary>
+        /// return Group OF child by age group
+        /// </summary>
+        /// <param name="MaxOrMin"></param>
+        /// <returns></returns>
         public static IEnumerable<IGrouping<int, Child>> ChildByAge(bool MaxOrMin = true)
         {
-            // List<Child> ChildL = new List<Child>();
             IEnumerable<IGrouping<int, Child>> check = from n in bl.getChildList()
                                                            //big to little=False, Little to big=True
                                                        let kidsAge = (DateTime.Now.Month - n.Birthday.Month + (DateTime.Now.Year - n.Birthday.Year) * 12)
                                                        orderby (MaxOrMin) ? kidsAge : kidsAge descending //they want the list sorted
                                                        group n by kidsAge;
 
-            //foreach (var groop in check)
-            //{
-            //    foreach (var item in groop.orderCHILD)
-            //    {
-            //        ChildL.Add(item);
-            //    }
-            //}
             return check;
         }
+        /// <summary>
+        /// return Group OF child by age same mother
+        /// </summary>
+        /// <param name="MaxOrMin"></param>
+        /// <returns></returns>
         public static IEnumerable<IGrouping<string, Child>> ChildByMother(bool MaxOrMin = true)
         {
             //List<Child> ChildL = new List<Child>();
             IEnumerable<IGrouping<string, Child>> check = from n in bl.getChildList()
                                                               //big to little=False, Little to big=True
                                                           let MotherID = n.MotherId
-                                                          group n by MotherID;//into childList
-                                                                              // select new { kidsAge = childList.Key, orderCHILD = childList };
-                                                                              //foreach (var groop in check)
-                                                                              //{
-                                                                              //    foreach (var item in groop.orderCHILD)
-                                                                              //    {
-                                                                              //        ChildL.Add(item);
-                                                                              //    }
-                                                                              //}
+                                                          group n by MotherID;
             return check;
         }
-
-        public static IEnumerable<IGrouping<int, Nanny>>  NannyByDistance(Mother mother)
+        /// <summary>
+        /// return Group OF nanny by distace group
+        /// </summary>
+        /// <param name="mother"></param>
+        /// <returns></returns>
+        public static IEnumerable<IGrouping<int, Nanny>> NannyByDistance(Mother mother)
         {
-            List<Nanny> NannyL = new List<Nanny>();
-            //they want the list sorted
-
+       
             var closest = from n in bl.getNannyList()
-                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address)/5)
+                          let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
                           orderby distance
-                          group n by distance; 
-                                   
+                          group n by distance;
+
             return closest;
         }
         #endregion

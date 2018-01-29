@@ -14,6 +14,7 @@ namespace BL
         
         public static IBL GetBL()
         {
+            //singltone
             if (ibl == null)
                 ibl = new BL_imp();
             return ibl;

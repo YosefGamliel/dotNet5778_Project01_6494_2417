@@ -4,7 +4,10 @@ using System.Text;
 using System.Xml.Serialization;
 
 namespace BE
-{
+{/// <summary>
+/// Create Nanny argument 
+/// age,salary,address.....
+/// </summary>
     public class Nanny
     {
         #region fields:
@@ -138,6 +141,8 @@ namespace BE
                 monthSalary = value;
             }
         }
+        //when I use in Xml Move to the other Constractor
+        //WorkDaysXml
         [XmlIgnore]
         public bool[] WorkDays
         {
@@ -149,6 +154,8 @@ namespace BE
                 workDays = value;
             }
         }
+        //when I use in Xml Move to the other Constractor
+        //workHourxml
         [XmlIgnore]
         public TimeSpan[,] WorkHours
         {
@@ -291,12 +298,6 @@ namespace BE
             workDays = new bool[6];
             workHours = new TimeSpan[6, 2];
         }
-
-        //public override string ToString()
-        //{
-        //    return Id + " " + FirstName + "  " + LastName + " ";
-        //}
-        
         public override string ToString()
         {
             string str1 = null, str2 = null, str3 = null, WH = "The hours she works each day:", WORK = "Days when she works: ";

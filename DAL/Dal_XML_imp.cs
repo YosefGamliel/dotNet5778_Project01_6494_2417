@@ -19,6 +19,10 @@ namespace DAL
         const string nannyPath = "../../../XmlFiles/Nanny.xml";
         const string contractPath = "../../../XmlFiles/Contract.xml";
         const string contractIDPath = "../../../XmlFiles/ContractID.xml";
+        /// <summary>
+        /// we do the children Manually and the Number Of The contract
+        /// </summary>
+        /// <param name="fileName"></param>
         private void CreateFiles(string fileName = childPath)
         {
             if (fileName.Equals(childPath))
@@ -99,6 +103,10 @@ namespace DAL
             return result;
         }
         #region Nanny
+        /// <summary>
+        /// add Nanny to file
+        /// </summary>
+        /// <param name="nanny"></param>
         public void addNanny(Nanny nanny)
         {
             var list = LoadFromXML<List<Nanny>>(nannyPath);
@@ -106,7 +114,7 @@ namespace DAL
             {
                 foreach (Nanny item in list)
                 {
-                    if (item.Id == nanny.Id)
+                    if (item.Id == nanny.Id)//had nanny withsame ID
                         throw new Exception("there is already nanny with this id");
                 }
             }

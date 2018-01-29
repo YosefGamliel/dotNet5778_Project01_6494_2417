@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 namespace BE
-{
+{/// <summary>
+ ///Child Class-create argument of child
+ /// age,Id,name....
+ /// </summary>
     public class Mother
     {
         #region fields:
@@ -79,6 +82,8 @@ namespace BE
                 areaNanny = value;
             }
         }
+        //when I use in Xml Move to the other Constractor
+        //NeedNannyXml
         [XmlIgnore]
         public bool[] NeedNanny
         {
@@ -92,6 +97,8 @@ namespace BE
         }
         public string Notes { get { return notes; } set { notes = value; } }
 
+        //when I use in Xml Move to the other Constractor
+        //workHourxml
         [XmlIgnore]
         public TimeSpan[,] WorkHours
         {
@@ -207,12 +214,6 @@ namespace BE
             needNanny = new bool[6];
             workHours = new TimeSpan[6, 2];
         }
-
-        //public override string ToString()
-        //{
-        //    return Id + "  " + FirstName + "  " + LastName;
-        //}
-
         public override string ToString()
         {
             string WH = "The required hours each day:", NEED = "Days when needs a nanny: ";

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 using BE;
 namespace BL
 {
-     public interface IBL
+    /// <summary>
+    /// The interface Realizing the Basic Action
+    /// Of our Program
+    /// </summary>
+    public interface IBL
     {
         #region Mother function
 

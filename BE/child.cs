@@ -4,6 +4,10 @@ using System.Text;
 
 namespace BE
 {
+    /// <summary>
+    /// Child Class-create argument of child
+    /// age,Id,name....
+    /// /// </summary>
     public class Child
     {
         #region fields:
@@ -86,7 +90,6 @@ namespace BE
             //initialization
             birthday = new DateTime(2017, 1, 1);
         }
-        //Tostring
         public override string ToString()
         {
             string str1 = null, str2 = null;

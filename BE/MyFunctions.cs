@@ -6,6 +6,12 @@ namespace BE
 {
     class MyFunctions
     {
+    /// <summary>
+    /// check if the ID is valid
+    /// (dont Include char and 9 digits)
+    /// </summary>
+    /// <param name="strID"></param>
+    /// <returns></returns>
         public static bool CheckID(string strID)
         {
             bool flag = true;
@@ -18,8 +24,15 @@ namespace BE
             }
             return (flag && CheckIDNo(strID));
         }
+        /// <summary>
+        /// Algorithm that check if the ID valid in Israel
+        /// From the Internet
+        /// </summary>
+        /// <param name="strID"></param>
+        /// <returns></returns>
         private static bool CheckIDNo(String strID)
         {
+           
             int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
             int count = 0;
             if (strID == null)
@@ -34,6 +47,11 @@ namespace BE
             }
             return (count % 10 == 0);
         }
+        /// <summary>
+        /// check if the name is valid
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         public static bool CheckName(string Name)
         {
             if (Name == "" || Name == null)
@@ -46,14 +64,32 @@ namespace BE
             }
             return flag;
         }
+        /// <summary>
+        /// Checks whether this is a date from the past
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static bool CheckDatePast(DateTime date)
         {
             return (date < DateTime.Now);
         }
+        /// <summary>
+        /// check if the end of the Contract is After
+        /// the Start. 
+        /// </summary>
+        /// <param name="end"></param>
+        /// <param name="start"></param>
+        /// <returns></returns>
         public static bool CheckContract(DateTime end, DateTime start)
         {
             return ((end > start) && (start >= DateTime.Now));
         }
+        /// <summary>
+        /// Check if the Phone Number is Valid 
+        /// (10 digits,only Numbers)
+        /// </summary>
+        /// <param name="phoneNumber"></param>
+        /// <returns></returns>
         public static bool CheckPhoneNumber(string phoneNumber)
         {
             bool flag = true;
@@ -66,6 +102,12 @@ namespace BE
             }
             return flag;
         }
+        /// <summary>
+        /// check that the Format of the address suitable to 
+        /// Google Maps Format (three ',')
+        /// </summary>
+        /// <param name="address"></param>
+        /// <returns></returns>
         public static bool CheckAddress(string address)
         {
             int count = 0;
@@ -76,6 +118,11 @@ namespace BE
             }
             return (count == 2);
         }
+        /// <summary>
+        /// check that ist only six day of work
+        /// </summary>
+        /// <param name="workDays"></param>
+        /// <returns></returns>
         public static bool CheckArraySize1(bool[] workDays)
         {
             return (workDays.GetLength(0) == 6);
@@ -88,6 +135,11 @@ namespace BE
         {
             return !(maxKids < 1);
         }
+        /// <summary>
+        /// check that the min Age three month
+        /// </summary>
+        /// <param name="minAge"></param>
+        /// <returns></returns>
         public static bool CheckMinAge(int minAge)
         {
             return !(minAge < 3);

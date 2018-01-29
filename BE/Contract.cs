@@ -4,6 +4,10 @@ using System.Text;
 
 namespace BE
 {
+    /// <summary>
+    /// Contract Class-create argument of Contract 
+    /// payment,Id,Date....
+    /// </summary>
     public class Contract
     {
         #region fields:
@@ -79,8 +83,6 @@ namespace BE
         public Contract()
         {
         }
-        //public override string ToString()
-        //{ return ContractID; }
         public override string ToString()
         {
             string str1, str2;
