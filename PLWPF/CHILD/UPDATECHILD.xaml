@@ -38,7 +38,7 @@
                 <ContextMenu/>
             </Button.ContextMenu>
             <Button.Style>
-                <Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=UpdateChildComboBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>

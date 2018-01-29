@@ -46,9 +46,9 @@
             <ComboBox x:Name="childIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="134" IsEnabled="{Binding ElementName=motherIDComboBox, Path=SelectedItem, Converter={StaticResource ComboBoxItemToBoolConverter}}"/>
             <ComboBox x:Name="babySitterIDComboBox" Grid.Column="1" HorizontalAlignment="Left" Margin="3,38,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="133" IsEnabled="{Binding ElementName=motherIDComboBox, Path=SelectedItem, Converter={StaticResource ComboBoxItemToBoolConverter}}"/>
         </Grid>
-        <Button Content="ADD" HorizontalAlignment="Left" Margin="83,294,0,41" Width="130" Click="Button_Click" FontSize="16">
+        <Button Content="ADD" HorizontalAlignment="Left" Margin="83,302,0,35" Width="130" Click="Button_Click" FontSize="16" Height="Auto">
             <Button.Style>
-                <Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=motherIDComboBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>

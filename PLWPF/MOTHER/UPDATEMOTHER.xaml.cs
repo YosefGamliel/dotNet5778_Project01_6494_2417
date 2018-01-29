@@ -54,33 +54,33 @@ namespace PLWPF
 
             if (mother.NeedNanny[0])
             {
-                sunTimeStart.Value = new DateTime(mother.WorkHours[0, 0].Ticks);
-                sunTimeEnd.Value = new DateTime(mother.WorkHours[0, 1].Ticks);
+                sunTimeStart.Text = new DateTime(mother.WorkHours[0, 0].Ticks).ToShortTimeString();
+                sunTimeEnd.Text = new DateTime(mother.WorkHours[0, 1].Ticks).ToShortTimeString();
             }
             if (mother.NeedNanny[1])
             {
-                monTimeStart.Value = new DateTime(mother.WorkHours[1, 0].Ticks);
-                monTimeEnd.Value = new DateTime(mother.WorkHours[1, 1].Ticks);
+                monTimeStart.Text = new DateTime(mother.WorkHours[1, 0].Ticks).ToShortTimeString();
+                monTimeEnd.Text = new DateTime(mother.WorkHours[1, 1].Ticks).ToShortTimeString();
             }
             if (mother.NeedNanny[2])
             {
-                tueTimeStart.Value = new DateTime(mother.WorkHours[2, 0].Ticks);
-                tueTimeEnd.Value = new DateTime(mother.WorkHours[2, 1].Ticks);
+                tueTimeStart.Text = new DateTime(mother.WorkHours[2, 0].Ticks).ToShortTimeString();
+                tueTimeEnd.Text = new DateTime(mother.WorkHours[2, 1].Ticks).ToShortTimeString();
             }
             if (mother.NeedNanny[3])
             {
-                wedTimeStart.Value = new DateTime(mother.WorkHours[3, 0].Ticks);
-                wedTimeEnd.Value = new DateTime(mother.WorkHours[3, 1].Ticks);
+                wedTimeStart.Text = new DateTime(mother.WorkHours[3, 0].Ticks).ToShortTimeString();
+                wedTimeEnd.Text = new DateTime(mother.WorkHours[3, 1].Ticks).ToShortTimeString();
             }
             if (mother.NeedNanny[4])
             {
-                thoTimeStart.Value = new DateTime(mother.WorkHours[4, 0].Ticks);
-                thoTimeEnd.Value = new DateTime(mother.WorkHours[4, 1].Ticks);
+                thoTimeStart.Text = new DateTime(mother.WorkHours[4, 0].Ticks).ToShortTimeString();
+                thoTimeEnd.Text = new DateTime(mother.WorkHours[4, 1].Ticks).ToShortTimeString();
             }
             if (mother.NeedNanny[5])
             {
-                friTimeStart.Value = new DateTime(mother.WorkHours[5, 0].Ticks);
-                friTimeEnd.Value = new DateTime(mother.WorkHours[5, 1].Ticks);
+                friTimeStart.Text = new DateTime(mother.WorkHours[5, 0].Ticks).ToShortTimeString();
+                friTimeEnd.Text = new DateTime(mother.WorkHours[5, 1].Ticks).ToShortTimeString();
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -9,6 +9,14 @@
         xmlns:local="clr-namespace:PLWPF"
         xmlns:UserControl="clr-namespace:PLWPF.UserControl"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Validation.Error="validation_Error"
         Title="ADDNANNY" Height="658" Width="742">
     <Window.Resources>
@@ -115,19 +123,19 @@
 
 
         <Grid x:Name="time" HorizontalAlignment="Left" Height="500" Margin="313,54,0,0" VerticalAlignment="Top" Width="402">
-            <extToolkit1:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}"/>
+            <materialDesign:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Is24Hours="True"/>
 
-            <extToolkit1:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}"/>
-            <extToolkit1:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}"/>
+            <materialDesign:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=sun, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=mon, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=tus, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=wed, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=thu, Path=IsChecked}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding ElementName=fri, Path=IsChecked}" Is24Hours="True"/>
         </Grid>
 
         <Button Content="ADD" HorizontalAlignment="Left" Margin="454,346,0,188" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Height="Auto">
@@ -135,7 +143,7 @@
                 <ContextMenu/>
             </Button.ContextMenu>
             <Button.Style>
-                <Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=idTextBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>

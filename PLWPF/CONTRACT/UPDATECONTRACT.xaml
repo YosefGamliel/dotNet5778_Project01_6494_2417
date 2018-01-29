@@ -15,7 +15,7 @@
     <Grid Height="560" VerticalAlignment="Top" Margin="0,0,0,-82">
         <Button Width="130" VerticalAlignment="Top" Margin="97,390,0,0" Height="43" HorizontalAlignment="Left" FontSize="16" Content="Update" Click="Button_Click" >
             <Button.Style>
-                <Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=UpdateContractComboBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>

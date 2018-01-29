@@ -57,33 +57,33 @@ namespace PLWPF
 
             if (nanny.WorkDays[0])
             {
-                sunTimeStart.Value = new DateTime(nanny.WorkHours[0, 0].Ticks);
-                sunTimeEnd.Value = new DateTime(nanny.WorkHours[0, 1].Ticks);
+                sunTimeStart.Text = new DateTime(nanny.WorkHours[0, 0].Ticks).ToShortTimeString();
+                sunTimeEnd.Text = new DateTime(nanny.WorkHours[0, 1].Ticks).ToShortTimeString();
             }
             if (nanny.WorkDays[1])
             {
-                monTimeStart.Value = new DateTime(nanny.WorkHours[1, 0].Ticks);
-                monTimeEnd.Value = new DateTime(nanny.WorkHours[1, 1].Ticks);
+                monTimeStart.Text = new DateTime(nanny.WorkHours[1, 0].Ticks).ToShortTimeString();
+                monTimeEnd.Text = new DateTime(nanny.WorkHours[1, 1].Ticks).ToShortTimeString();
             }
             if (nanny.WorkDays[2])
             {
-                tueTimeStart.Value = new DateTime(nanny.WorkHours[2, 0].Ticks);
-                tueTimeEnd.Value = new DateTime(nanny.WorkHours[2, 1].Ticks);
+                tueTimeStart.Text = new DateTime(nanny.WorkHours[2, 0].Ticks).ToShortTimeString();
+                tueTimeEnd.Text = new DateTime(nanny.WorkHours[2, 1].Ticks).ToShortTimeString();
             }
             if (nanny.WorkDays[3])
             {
-                wedTimeStart.Value = new DateTime(nanny.WorkHours[3, 0].Ticks);
-                wedTimeEnd.Value = new DateTime(nanny.WorkHours[3, 1].Ticks);
+                wedTimeStart.Text = new DateTime(nanny.WorkHours[3, 0].Ticks).ToShortTimeString();
+                wedTimeEnd.Text = new DateTime(nanny.WorkHours[3, 1].Ticks).ToShortTimeString();
             }
             if (nanny.WorkDays[4])
             {
-                thoTimeStart.Value = new DateTime(nanny.WorkHours[4, 0].Ticks);
-                thoTimeEnd.Value = new DateTime(nanny.WorkHours[4, 1].Ticks);
+                thoTimeStart.Text = new DateTime(nanny.WorkHours[4, 0].Ticks).ToShortTimeString();
+                thoTimeEnd.Text = new DateTime(nanny.WorkHours[4, 1].Ticks).ToShortTimeString();
             }
             if (nanny.WorkDays[5])
             {
-                friTimeStart.Value = new DateTime(nanny.WorkHours[5, 0].Ticks);
-                friTimeEnd.Value = new DateTime(nanny.WorkHours[5, 1].Ticks);
+                friTimeStart.Text = new DateTime(nanny.WorkHours[5, 0].Ticks).ToShortTimeString();
+                friTimeEnd.Text = new DateTime(nanny.WorkHours[5, 1].Ticks).ToShortTimeString();
             }
             //nanny.Address = addressTextBox.Text;
         }

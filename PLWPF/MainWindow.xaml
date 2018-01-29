@@ -14,12 +14,15 @@
      Background="{DynamicResource MaterialDesignPaper}"
      FontFamily="{DynamicResource MaterialDesignFont}"
     mc:Ignorable="d"
-        Title="MainWindow" Height="495.402" Width="630.961" Loaded="Window_Loaded">
+        Title="MainWindow" Height="691.065" Width="644.613" Loaded="Window_Loaded">
     <Window.Resources>
         <CollectionViewSource x:Key="nannyViewSource" d:DesignSource="{d:DesignInstance {x:Type BE:Nanny}, CreateList=True}"/>
     </Window.Resources>
     <Grid Margin="0,-22,2,10">
-        <Button Content="Mother" HorizontalAlignment="Left" Height="61" Margin="121,144,0,0" VerticalAlignment="Top" Width="158" Click="MotherWindows" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="20">
+        <Grid.Background>
+            <ImageBrush ImageSource="images/nanny-two-children-simple-character-icon-66120973.jpg"/>
+        </Grid.Background>
+        <Button Content="Mother" HorizontalAlignment="Left" Height="94" Margin="82,177,0,0" VerticalAlignment="Top" Width="172" Click="MotherWindows" HorizontalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontSize="20">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -29,7 +32,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button Content="Nanny" HorizontalAlignment="Left" Height="68" Margin="380,245,0,0" VerticalAlignment="Top" Width="159" Click="NannyWindows" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontStyle="Italic" FontSize="20">
+        <Button Content="Nanny" HorizontalAlignment="Left" Height="102" Margin="416,357,0,0" VerticalAlignment="Top" Width="176" Click="NannyWindows" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" FontStyle="Italic" FontSize="20">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -39,7 +42,7 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button Content="Child" HorizontalAlignment="Left" Height="68" Margin="121,245,0,0" VerticalAlignment="Top" Width="159" Click="ChildWindow" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
+        <Button Content="Child" HorizontalAlignment="Left" Height="92" Margin="102,356,0,0" VerticalAlignment="Top" Width="182" Click="ChildWindow" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -49,26 +52,26 @@
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <Button Content="Contract" HorizontalAlignment="Left" Height="61" Margin="380,145,0,0" VerticalAlignment="Top" Width="159" Click="ContractWindow" RenderTransformOrigin="0.5,0.5" FontSize="20" FontWeight="Bold">
+        <Button Content="Contract" HorizontalAlignment="Left" Height="98" Margin="392,180,0,0" VerticalAlignment="Top" Width="165" Click="ContractWindow" RenderTransformOrigin="0.524,0.523" FontSize="20" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform AngleX="20.854"/>
                     <RotateTransform/>
-                    <TranslateTransform X="-11.619"/>
+                    <TranslateTransform X="-11.084"/>
                 </TransformGroup>
             </Button.RenderTransform>
         </Button>
-        <TextBlock HorizontalAlignment="Left" Height="56" Margin="180,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="40" RenderTransformOrigin="0.5,0.5">
+        <TextBlock HorizontalAlignment="Left" Height="91" Margin="97,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="441" FontWeight="Bold" FontStyle="Italic" TextDecorations="Underline" FontFamily="Sitka Display" FontSize="72" RenderTransformOrigin="0.224,0.43">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="-0.58"/>
-                    <TranslateTransform/>
+                    <TranslateTransform X="-0.036" Y="0.695"/>
                 </TransformGroup>
             </TextBlock.RenderTransform><Run Text="who are"/><Run FlowDirection="RightToLeft" Text=" "/><Run Text="you?"/></TextBlock>
-        <Button Content="DATA LINQ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="431" Margin="123,357,0,0" Height="84" RenderTransformOrigin="0.5,0.5" FontSize="36" FontWeight="Bold" FontStyle="Italic" Click="LIMQwindow">
+        <Button Content="DATA LINQ" HorizontalAlignment="Left" VerticalAlignment="Top" Width="431" Margin="124,533,0,0" Height="84" RenderTransformOrigin="0.5,0.5" FontSize="36" FontWeight="Bold" FontStyle="Italic" Click="LIMQwindow">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

@@ -8,6 +8,14 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:BE="clr-namespace:BE;assembly=BE" 
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Validation.Error="validation_Error"
         Title="UPDATENANNY" Height="729.891" Width="771.484">
     <Window.Resources>
@@ -101,24 +109,24 @@
 
 
         <Grid x:Name="time" HorizontalAlignment="Left" Height="500" Margin="320,136,0,0" VerticalAlignment="Top" Width="402">
-            <xctk:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}"/>
-            <xctk:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}"/>
-            <xctk:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}"/>
-            <xctk:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}"/>
-            <xctk:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}"/>
-            <xctk:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}"/>
+            <materialDesign:TimePicker x:Name="sunTimeStart" HorizontalAlignment="Left" Margin="166,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="monTimeStart" HorizontalAlignment="Left" Margin="166,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="tueTimeStart" HorizontalAlignment="Left" Margin="166,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="wedTimeStart" HorizontalAlignment="Left" Margin="166,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="thoTimeStart" HorizontalAlignment="Left" Margin="166,142,0,328" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="friTimeStart" HorizontalAlignment="Left" Margin="166,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}" Is24Hours="True"/>
 
-            <xctk:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}"/>
-            <xctk:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}"/>
-            <xctk:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}"/>
-            <xctk:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}"/>
-            <xctk:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}"/>
-            <xctk:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}"/>
+            <materialDesign:TimePicker x:Name="sunTimeEnd" HorizontalAlignment="Left" Margin="278,0,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=sun}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="monTimeEnd" HorizontalAlignment="Left" Margin="278,34,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=mon}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="tueTimeEnd" HorizontalAlignment="Left" Margin="280,70,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=tus}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="wedTimeEnd" HorizontalAlignment="Left" Margin="280,106,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=wed}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="thoTimeEnd" HorizontalAlignment="Left" Margin="280,142,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=thu}" Is24Hours="True"/>
+            <materialDesign:TimePicker x:Name="friTimeEnd" HorizontalAlignment="Left" Margin="280,177,0,0" VerticalAlignment="Top" Width="100" Height="30" IsEnabled="{Binding IsChecked, ElementName=fri}" Is24Hours="True"/>
         </Grid>
 
         <Button Content="update" HorizontalAlignment="Left" Margin="447,442,0,158" Width="178" Click="Button_Click" FontSize="30" FontFamily="MS Office Symbol Bold" FontWeight="SemiBold" TextOptions.TextHintingMode="Fixed" AutomationProperties.IsOffscreenBehavior="Offscreen" BorderThickness="1" Height="Auto" RenderTransformOrigin="0.5,0.5">
             <Button.Style>
-                <Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MaterialDesignRaisedButton}">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding ElementName=UpdateNannyComboBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="false"/>
