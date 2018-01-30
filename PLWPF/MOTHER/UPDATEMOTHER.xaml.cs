@@ -30,7 +30,7 @@ namespace PLWPF
             if (bl == null)
                 bl = new BL_imp();
             mother = new Mother();
-            foreach (var mo in bl.getMotherList())
+            foreach (var mo in bl.getMotherList()) //show the mothers
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
@@ -43,6 +43,7 @@ namespace PLWPF
             string id = (string)((ComboBoxItem)UpdateMotherComboBox.SelectedItem).Content;
             mother = MyFunctions.FindMotherById(id.Substring(4, 9));
             grid1.DataContext = mother;
+            #region אתחולים ידנית
             addressTextBox.Text = mother.Address;
             addressNannyTextBox.Text = mother.AreaNanny;
             sun.IsChecked = mother.NeedNanny[0];
@@ -82,6 +83,7 @@ namespace PLWPF
                 friTimeStart.Text = new DateTime(mother.WorkHours[5, 0].Ticks).ToShortTimeString();
                 friTimeEnd.Text = new DateTime(mother.WorkHours[5, 1].Ticks).ToShortTimeString();
             }
+            #endregion
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -95,6 +97,7 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
+                #region אתחולים ידנית
                 mother.Address = addressTextBox.Text;
                 mother.AreaNanny = addressNannyTextBox.Text;
                 mother.NeedNanny[0] = sun.IsChecked.Value;
@@ -108,7 +111,7 @@ namespace PLWPF
                     mother.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
                     mother.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
                 }
-                else
+                else //reset the time
                 {
                     mother.WorkHours[0, 0] = TimeSpan.Zero;
                     mother.WorkHours[0, 1] = TimeSpan.Zero;
@@ -163,6 +166,7 @@ namespace PLWPF
                     mother.WorkHours[5, 0] = TimeSpan.Zero;
                     mother.WorkHours[5, 1] = TimeSpan.Zero;
                 }
+                #endregion
                 bl.updateMother(mother);
                 Close();
             }

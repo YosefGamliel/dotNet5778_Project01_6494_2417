@@ -29,13 +29,12 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            foreach (var mo in bl.getMotherList())
+            foreach (var mo in bl.getMotherList()) //show the mothers
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
                 Mothersname.Items.Add(item);
             }
-                //.Select(x=> "ID: "+x.Id+"  Name: "+x.FirstName+" "+x.LastName);
         }
 
        

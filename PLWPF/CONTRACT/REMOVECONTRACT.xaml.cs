@@ -28,7 +28,7 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            foreach (var co in bl.getContractList())
+            foreach (var co in bl.getContractList()) //show the contracts
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "Contract ID: " + co.ContractID;

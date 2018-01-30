@@ -31,17 +31,19 @@ namespace PLWPF.CHILD
             KeyID();
             keyMother();
         }
-        void keyMother()
+        private void keyMother()
         {
             ChildGroupMother = MyFunctions.ChildByMother();
-            foreach (var item in ChildGroupMother)
+            Mother mom;
+            foreach (var item in ChildGroupMother) //show the mothers
             {
-                keyByMother.Items.Add(item.Key);
+                mom = MyFunctions.FindMotherById(item.Key);
+                ComboBoxItem combo = new ComboBoxItem();
+                combo.Content = "ID: " + mom.Id + ", First Name: " + mom.FirstName + ", Last Name: " + mom.LastName;
+                keyByMother.Items.Add(combo);
             }
-
-
         }
-        void KeyID()
+        private void KeyID()
         {
             ChildGroupId = MyFunctions.ChildByAge();
             
@@ -61,11 +63,12 @@ namespace PLWPF.CHILD
         }
         private void keyByMother_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            string id = null;
             foreach (var item in ChildGroupMother)
             {
-                if (item.Key == keyByMother.SelectedItem.ToString())
+                id = ((string)((ComboBoxItem)keyByMother.SelectedItem).Content).Substring(4,9);
+                if (item.Key == id)
                     ByMother.ItemsSource = item;
-
             }
         }
     }

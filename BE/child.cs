@@ -66,6 +66,15 @@ namespace BE
         #endregion
 
         #region functions:
+        /// <summary>
+        /// constructor
+        /// </summary>
+        /// <param name="ID"> child's id</param>
+        /// <param name="FN">child's first name</param>
+        /// <param name="MID">child's mother id</param>
+        /// <param name="birth">child's birthday</param>
+        /// <param name="SN">child's special needs (yes/no)</param>
+        /// <param name="ISN">child's information about the special needs</param>
         public Child(string ID, string FN, string MID, DateTime birth, bool SN, string ISN)
         {
             if (!MyFunctions.CheckID(ID))
@@ -84,7 +93,9 @@ namespace BE
             infoSpecialNeeds = ISN;
 
         }
-
+        /// <summary>
+        /// default constractor
+        /// </summary>
         public Child()
         {
             //initialization

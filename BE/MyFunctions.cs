@@ -6,12 +6,12 @@ namespace BE
 {
     class MyFunctions
     {
-    /// <summary>
-    /// check if the ID is valid
-    /// (dont Include char and 9 digits)
-    /// </summary>
-    /// <param name="strID"></param>
-    /// <returns></returns>
+        /// <summary>
+        /// check if the ID is valid
+        /// (doesn't include char ,but only 9 digits)
+        /// </summary>
+        /// <param name="strID">id</param>
+        /// <returns></returns>
         public static bool CheckID(string strID)
         {
             bool flag = true;
@@ -26,13 +26,12 @@ namespace BE
         }
         /// <summary>
         /// Algorithm that check if the ID valid in Israel
-        /// From the Internet
         /// </summary>
-        /// <param name="strID"></param>
+        /// <param name="strID">id</param>
         /// <returns></returns>
         private static bool CheckIDNo(String strID)
         {
-           
+
             int[] id_12_digits = { 1, 2, 1, 2, 1, 2, 1, 2, 1 };
             int count = 0;
             if (strID == null)
@@ -48,9 +47,9 @@ namespace BE
             return (count % 10 == 0);
         }
         /// <summary>
-        /// check if the name is valid
+        /// check if the name is valid (includes only letters or space)
         /// </summary>
-        /// <param name="Name"></param>
+        /// <param name="Name">name</param>
         /// <returns></returns>
         public static bool CheckName(string Name)
         {
@@ -67,18 +66,17 @@ namespace BE
         /// <summary>
         /// Checks whether this is a date from the past
         /// </summary>
-        /// <param name="date"></param>
+        /// <param name="date">date</param>
         /// <returns></returns>
         public static bool CheckDatePast(DateTime date)
         {
             return (date < DateTime.Now);
         }
         /// <summary>
-        /// check if the end of the Contract is After
-        /// the Start. 
+        /// check if the end of the Contract is After the Start. 
         /// </summary>
-        /// <param name="end"></param>
-        /// <param name="start"></param>
+        /// <param name="end">end working date</param>
+        /// <param name="start">start working date</param>
         /// <returns></returns>
         public static bool CheckContract(DateTime end, DateTime start)
         {
@@ -88,7 +86,7 @@ namespace BE
         /// Check if the Phone Number is Valid 
         /// (10 digits,only Numbers)
         /// </summary>
-        /// <param name="phoneNumber"></param>
+        /// <param name="phoneNumber">phone number</param>
         /// <returns></returns>
         public static bool CheckPhoneNumber(string phoneNumber)
         {
@@ -104,9 +102,9 @@ namespace BE
         }
         /// <summary>
         /// check that the Format of the address suitable to 
-        /// Google Maps Format (three ',')
+        /// Google Maps Format (two ',')
         /// </summary>
-        /// <param name="address"></param>
+        /// <param name="address">address</param>
         /// <returns></returns>
         public static bool CheckAddress(string address)
         {
@@ -119,24 +117,34 @@ namespace BE
             return (count == 2);
         }
         /// <summary>
-        /// check that ist only six day of work
+        /// check that it's only six days of work
         /// </summary>
-        /// <param name="workDays"></param>
+        /// <param name="workDays">array of work days</param>
         /// <returns></returns>
         public static bool CheckArraySize1(bool[] workDays)
         {
             return (workDays.GetLength(0) == 6);
         }
+        /// <summary>
+        /// check that it's only six days of work and have start time and end time
+        /// </summary>
+        /// <param name="workHours">array of work hours</param>
+        /// <returns></returns>
         public static bool CheckArraySize2(TimeSpan[,] workHours)
         {
             return (workHours.GetLength(0) == 6 && workHours.GetLength(1) == 2);
         }
+        /// <summary>
+        /// check that maximun of kids is bigger than 0
+        /// </summary>
+        /// <param name="maxKids">maximun of kids</param>
+        /// <returns></returns>
         public static bool CheckMaxKids(int maxKids)
         {
             return !(maxKids < 1);
         }
         /// <summary>
-        /// check that the min Age three month
+        /// check that the minimun Age is bigger than three month
         /// </summary>
         /// <param name="minAge"></param>
         /// <returns></returns>
@@ -144,10 +152,20 @@ namespace BE
         {
             return !(minAge < 3);
         }
+        /// <summary>
+        /// check if the salary per hour is bigger than 0
+        /// </summary>
+        /// <param name="hourSalary">salary per hour</param>
+        /// <returns></returns>
         public static bool CheckHourSalary(float hourSalary)
         {
             return !(hourSalary < 0);
         }
+        /// <summary>
+        /// check if the salary per month is bigger than 0
+        /// </summary>
+        /// <param name="monthSalary">salary per month</param>
+        /// <returns></returns>
         public static bool CheckMonthSalary(float monthSalary)
         {
             return !(monthSalary < 0);

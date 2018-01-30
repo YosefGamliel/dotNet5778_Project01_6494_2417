@@ -29,7 +29,7 @@ namespace PLWPF
             if (bl == null)
                 bl = new BL_imp();
             nanny = new Nanny();
-            foreach (var nan in bl.getNannyList())
+            foreach (var nan in bl.getNannyList()) //show the nannies
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + nan.Id + ", First Name: " + nan.FirstName + ", Last Name: " + nan.LastName;
@@ -47,6 +47,7 @@ namespace PLWPF
             string id = (string)((ComboBoxItem)UpdateNannyComboBox.SelectedItem).Content;
             nanny = MyFunctions.getNannyById(id.Substring(4, 9));
             grid1.DataContext = nanny;
+            #region אתחולים ידנית
             addressTextBox.Text = nanny.Address;
             sun.IsChecked = nanny.WorkDays[0];
             mon.IsChecked = nanny.WorkDays[1];
@@ -85,7 +86,7 @@ namespace PLWPF
                 friTimeStart.Text = new DateTime(nanny.WorkHours[5, 0].Ticks).ToShortTimeString();
                 friTimeEnd.Text = new DateTime(nanny.WorkHours[5, 1].Ticks).ToShortTimeString();
             }
-            //nanny.Address = addressTextBox.Text;
+            #endregion
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -100,6 +101,7 @@ namespace PLWPF
                     MessageBox.Show(err);
                     return;
                 }
+                #region אתחולים ידנית
                 nanny.Address = addressTextBox.Text;
                 nanny.WorkDays[0] = sun.IsChecked.Value;
                 nanny.WorkDays[1] = mon.IsChecked.Value;
@@ -112,7 +114,7 @@ namespace PLWPF
                     nanny.WorkHours[0, 0] = TimeSpan.Parse(sunTimeStart.Text);
                     nanny.WorkHours[0, 1] = TimeSpan.Parse(sunTimeEnd.Text);
                 }
-                else
+                else //reset the time
                 {
                     nanny.WorkHours[0, 0] = TimeSpan.Zero;
                     nanny.WorkHours[0, 1] = TimeSpan.Zero;
@@ -167,6 +169,7 @@ namespace PLWPF
                     nanny.WorkHours[5, 0] = TimeSpan.Zero;
                     nanny.WorkHours[5, 1] = TimeSpan.Zero;
                 }
+                #endregion
                 bl.updateNanny(nanny);
                 Close();
             }

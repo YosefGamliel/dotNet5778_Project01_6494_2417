@@ -35,7 +35,7 @@ namespace PLWPF
             list1 = MyFunctions.NannyByTAMAT();
             ChildwithoutContract.ItemsSource = list;
             NannyByTMT.ItemsSource = list1;
-            foreach (var mo in bl.getMotherList())
+            foreach (var mo in bl.getMotherList()) //show the mothers
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;

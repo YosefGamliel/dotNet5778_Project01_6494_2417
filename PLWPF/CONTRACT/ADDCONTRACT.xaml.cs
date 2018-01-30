@@ -32,23 +32,15 @@ namespace PLWPF
             contract = new Contract();
             if (bl == null)
                 bl = new BL_imp();
-            foreach (var mo in bl.getMotherList())
+            foreach (var mo in bl.getMotherList()) //show the mothers
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;
                 motherIDComboBox.Items.Add(item);
             }
-            ////List<Child> chList = bl.getChildList(MyFunctions.FindMotherById(((string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content).Substring(4, 9)));
-            //foreach (var ch in chList)
-            //{
-            //    ComboBoxItem item = new ComboBoxItem();
-            //    item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
-            //    childIDComboBox.Items.Add(item);
-            //}
-            //List<Nanny> nanList=BL.MyFunctions.
             this.grid1.DataContext = contract;
-            endDatePicker.SelectedDate = DateTime.Now;
-            startDatePicker.SelectedDate = DateTime.Now;
+            endDatePicker.SelectedDate = DateTime.Now; //reset to now
+            startDatePicker.SelectedDate = DateTime.Now; //reset to now
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -97,14 +89,14 @@ namespace PLWPF
         {
             childIDComboBox.Items.Clear();
             string id = (string)((ComboBoxItem)motherIDComboBox.SelectedItem).Content;
-            foreach (var ch in bl.getChildList(MyFunctions.FindMotherById(id.Substring(4, 9))))
+            foreach (var ch in bl.getChildList(MyFunctions.FindMotherById(id.Substring(4, 9)))) //show the childs by the mother id
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + ch.Id + " Name: " + ch.FirstName;
                 childIDComboBox.Items.Add(item);
             }
             babySitterIDComboBox.Items.Clear();
-            foreach (var nan in MyFunctions.NanniesToMother(MyFunctions.FindMotherById(id.Substring(4, 9))))
+            foreach (var nan in MyFunctions.NanniesToMother(MyFunctions.FindMotherById(id.Substring(4, 9)))) //show the nannies by the mother id
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + nan.Id + ", First Name: " + nan.FirstName + ", Last Name: " + nan.LastName;
@@ -112,7 +104,7 @@ namespace PLWPF
             }
         }
     }
-    public class TrueToFalseConverter : IValueConverter
+    public class TrueToFalseConverter : IValueConverter //converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -124,7 +116,7 @@ namespace PLWPF
             throw new NotImplementedException();
         }
     }
-    public class ComboBoxItemToBoolConverter : IValueConverter
+    public class ComboBoxItemToBoolConverter : IValueConverter //converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

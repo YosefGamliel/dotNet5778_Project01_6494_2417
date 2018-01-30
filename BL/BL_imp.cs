@@ -14,7 +14,7 @@ namespace BL
     /// </summary>
     public class BL_imp : IBL
     {
-        Idal dal = FactoryDal.GetDal();//
+        Idal dal = FactoryDal.GetDal();
         #region MOTHER
         public void addMother(Mother mom)
         {
@@ -22,7 +22,7 @@ namespace BL
         }
         public void removeMother(Mother mom)
         {
-            //delete the mother's children
+            //delete the mother's childrens
             foreach (Child item in dal.getChildList(mom))
                 removeChild(item);
             dal.removeMother(mom);
@@ -45,10 +45,10 @@ namespace BL
             double[] sumOfHourinWeek = new double[6];
             double sumOfHourinMonth = 0;
             TimeSpan[,] NannyWorkHour = new TimeSpan[6, 2];//save the Nanny working hours
-            TimeSpan[,] MotherWorkHour = new TimeSpan[6, 2];////save the Mother working hours
-            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];////save the Common working hours
+            TimeSpan[,] MotherWorkHour = new TimeSpan[6, 2];//save the Mother working hours
+            TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//save the Common working hours
             int sumOfChild = 0, childAge = 0;
-            //check  if the child is older than 3 month
+            //check  if the child is older than 3 months
             foreach (Child item in getChildList())
             {
                 if (item.Id == contract.ChildID)
@@ -60,7 +60,7 @@ namespace BL
             }
             foreach (Nanny item in getNannyList())
             {
-                //check max kids,if OK-add one to Nanny numOfkIDS.
+                //check max kids,if OK-add one to Nanny's NumOfKids.
                 if (item.Id == contract.BabySitterID)
                 {
                     if (item.NumOfKids + 1 > item.MaxKids)
@@ -92,7 +92,7 @@ namespace BL
                     sumOfChild = MyFunctions.numOfChildInBabySitter(getChildList(item), contract.BabySitterID);
                 }
             }
-            contract.Discount = (float)(0.02 * (sumOfChild - 1));
+            contract.Discount = (float)(0.02 * (sumOfChild - 1));//nanny's discaunt according to sumOfChild
             if (contract.SalaryType) //per hour
             {
                 foreach (var item in getNannyList())
@@ -102,12 +102,13 @@ namespace BL
                         NannyWorkHour = item.WorkHours;//Find The requested Nanny
                     }
                 }
+                //calculating the common hours
                 for (int i = 0; i < 6; i++)
                 {
                     commonWorkHour[i, 0] = MyFunctions.max(MotherWorkHour[i, 0], NannyWorkHour[i, 0]);
                     commonWorkHour[i, 1] = MyFunctions.min(MotherWorkHour[i, 1], NannyWorkHour[i, 1]);
                     sumOfHourinWeek[i] = MyFunctions.dif(commonWorkHour[i, 0], commonWorkHour[i, 1]);
-                }//calculating the common hour
+                }
                 for (int i = 0; i < 6; i++) //calculating how much hour in week 
                     sumOfHourinMonth = MyFunctions.sum(sumOfHourinMonth, sumOfHourinWeek[i]);
                 if (sumOfChild == 1)//no brothers-no discount
@@ -115,7 +116,7 @@ namespace BL
                 else
                     contract.Payment = sumOfHourinMonth * 4 * contract.SalaryPerHour * (1 - contract.Discount);
             }
-            else
+            else //per month
                 contract.Payment = contract.SalaryPerMonth * (1 - contract.Discount);
             #endregion
             dal.addContract(contract);//all right, add the contract
@@ -146,7 +147,7 @@ namespace BL
         }
         public void updateContract(Contract contract)
         {
-            //like Mother Update
+            //as like as Mother Update
             removeContract(contract);
             addContract(contract);
         }
@@ -170,7 +171,7 @@ namespace BL
         }
         public void removeNanny(Nanny nanny)
         {
-            //delete all Contract that this Nanny sign on
+            //delete all Contracts that this Nanny sign on
             foreach (Contract item in getContractList())
             {
                 if (item.BabySitterID == nanny.Id)
@@ -180,6 +181,7 @@ namespace BL
         }
         public void updateNanny(Nanny nanny)
         {
+            //as like as Mother Update
             dal.removeNanny(nanny);
             addNanny(nanny);
             //if the new max kids is little than the current amount of her kids
@@ -200,7 +202,7 @@ namespace BL
         {
             bool flag = false;
             Contract toDelete = new Contract();
-            //delete the contract the]at child sign on
+            //delete the contracts that child sign on
             foreach (Contract item in getContractList())
             {
                 if (item.ChildID == child.Id)
@@ -215,13 +217,16 @@ namespace BL
         }
         public void updateChild(Child child)
         {
+            //as like as Mother Update
             dal.removeChild(child);
             addChild(child);
         }
+        //get childs of specific mother
         public List<Child> getChildList(Mother mother)
         {
             return dal.getChildList(mother);
         }
+        //get all childs
         public List<Child> getChildList()
         {
             return dal.getChildList();

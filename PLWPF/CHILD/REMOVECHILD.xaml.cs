@@ -28,7 +28,7 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            foreach (var ch in bl.getChildList())
+            foreach (var ch in bl.getChildList()) //show the childs
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + ch.Id + ", Name: " + ch.FirstName;

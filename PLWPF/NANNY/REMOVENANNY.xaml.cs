@@ -32,7 +32,7 @@ namespace PLWPF
             InitializeComponent();
             if (bl == null)
                 bl = new BL_imp();
-            foreach (var nan in bl.getNannyList())
+            foreach (var nan in bl.getNannyList()) //show the nannies
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + nan.Id + ", First Name: " + nan.FirstName + ", Last Name: " + nan.LastName;

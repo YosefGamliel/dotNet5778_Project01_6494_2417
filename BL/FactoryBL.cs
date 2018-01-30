@@ -10,8 +10,6 @@ namespace BL
     class FactoryBL
     {
         static IBL ibl;
-
-        
         public static IBL GetBL()
         {
             //singltone

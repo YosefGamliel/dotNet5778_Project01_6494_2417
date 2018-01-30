@@ -35,7 +35,7 @@ namespace PLWPF
             this.grid1.DataContext = nanny;
             this.workDay.DataContext = nanny;
             this.time.DataContext = nanny;
-            birthdayDatePicker.DataContext = DateTime.Now;
+            birthdayDatePicker.DataContext = DateTime.Now; //reset to now
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

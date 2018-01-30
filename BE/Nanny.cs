@@ -141,7 +141,7 @@ namespace BE
                 monthSalary = value;
             }
         }
-        //when I use in Xml Move to the other Constractor
+        //when I use in Xml Move to the other property
         //WorkDaysXml
         [XmlIgnore]
         public bool[] WorkDays
@@ -154,7 +154,7 @@ namespace BE
                 workDays = value;
             }
         }
-        //when I use in Xml Move to the other Constractor
+        //when I use in Xml Move to the other property
         //workHourxml
         [XmlIgnore]
         public TimeSpan[,] WorkHours
@@ -196,10 +196,6 @@ namespace BE
                         WorkDays[i] = bool.Parse(values[index++]);
                     }
                 }
-
-
-
-
             }
         }
         public string workHourxml
@@ -243,6 +239,28 @@ namespace BE
         #endregion
 
         #region functions:
+        /// <summary>
+        /// constractor
+        /// </summary>
+        /// <param name="ID">nanny's id</param>
+        /// <param name="LN">nanny's first name</param>
+        /// <param name="FN">nanny's last name</param>
+        /// <param name="PN">nanny's phone number</param>
+        /// <param name="addr">nanny's address</param>
+        /// <param name="birth">nanny's birthday</param>
+        /// <param name="elev">is there elevator?</param>
+        /// <param name="FB">nanny's floor building</param>
+        /// <param name="EY">nanny's experience years</param>
+        /// <param name="MK">nanny's maximun of kids</param>
+        /// <param name="MinA">nanny's minimum age of child</param>
+        /// <param name="MaxA">nanny's maximum age of child</param>
+        /// <param name="HR">is nanny gets per hour?</param>
+        /// <param name="HS">nanny's salary per hour</param>
+        /// <param name="MS">nanny's salary per month</param>
+        /// <param name="WD">nanny's work days</param>
+        /// <param name="WH">nanny's work hours</param>
+        /// <param name="VD">nanny's vecation days</param>
+        /// <param name="recomm">nanny's recommendations</param>
         public Nanny(string ID, string LN, string FN, string PN, string addr, DateTime birth, bool elev, int FB, int EY, int MK,
             int MinA, int MaxA, bool HR, float HS, float MS, bool[] WD, TimeSpan[,] WH, bool VD, string recomm)
         {
@@ -293,6 +311,9 @@ namespace BE
             recommendations = recomm;
             numOfKids = 0;
         }
+        /// <summary>
+        /// default constractor
+        /// </summary>
         public Nanny()
         {
             workDays = new bool[6];

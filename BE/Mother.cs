@@ -82,7 +82,7 @@ namespace BE
                 areaNanny = value;
             }
         }
-        //when I use in Xml Move to the other Constractor
+        //when I use in Xml Move to the other property
         //NeedNannyXml
         [XmlIgnore]
         public bool[] NeedNanny
@@ -97,7 +97,7 @@ namespace BE
         }
         public string Notes { get { return notes; } set { notes = value; } }
 
-        //when I use in Xml Move to the other Constractor
+        //when I use in Xml Move to the other property
         //workHourxml
         [XmlIgnore]
         public TimeSpan[,] WorkHours
@@ -177,6 +177,18 @@ namespace BE
         #endregion
 
         #region functions:
+        /// <summary>
+        /// constractor
+        /// </summary>
+        /// <param name="ID">mother's id</param>
+        /// <param name="LN">mother's last name</param>
+        /// <param name="FN">mother's first name</param>
+        /// <param name="PN">mother's phone number</param>
+        /// <param name="addr">mother's address</param>
+        /// <param name="area">mother's area of nanny</param>
+        /// <param name="need">what days mother needs the nanny?</param>
+        /// <param name="hours">what hours in the days mother needs the nanny?</param>
+        /// <param name="nt">mother's notes</param>
         public Mother(string ID, string LN, string FN, string PN, string addr, string area, bool[] need,
             TimeSpan[,] hours, string nt)
         {
@@ -208,7 +220,9 @@ namespace BE
             workHours = hours;
             notes = nt;
         }
-
+        /// <summary>
+        /// default constractor
+        /// </summary>
         public Mother()
         {
             needNanny = new bool[6];

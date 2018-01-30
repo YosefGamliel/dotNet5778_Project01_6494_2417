@@ -19,8 +19,8 @@ namespace BL
         /// <summary>
         /// Find Mother By Child ID.
         /// </summary>
-        /// <param name="childID"></param>
-        /// <returns></returns>
+        /// <param name="childID">child id</param>
+        /// <returns>mother of the child</returns>
         public static Mother FindMother(string childID)
         {
             string motherID = null;
@@ -39,8 +39,8 @@ namespace BL
         /// <summary>
         /// find Mother by her ID
         /// </summary>
-        /// <param name="MotherID"></param>
-        /// <returns></returns>
+        /// <param name="MotherID">mother id</param>
+        /// <returns>the mother herself</returns>
         public static Mother FindMotherById(string MotherID)
         {
             foreach (var item in bl.getMotherList())
@@ -51,10 +51,10 @@ namespace BL
             return null;
         }
         /// <summary>
-        /// find the Babby sitter of specific child
+        /// find the nanny of specific child
         /// </summary>
-        /// <param name="child"></param>
-        /// <returns></returns>
+        /// <param name="child">child</param>
+        /// <returns>the child's nanny</returns>
         private static string getNannyByChild(Child child)
         {
             foreach (var item in bl.getContractList())
@@ -65,12 +65,11 @@ namespace BL
             return null;
         }
         /// <summary>
-        /// check how much brother Signed in same Babby sitter
-        /// to calculating the discount
+        /// check how much brother Signed in same nanny in order to calculating the discount
         /// </summary>
-        /// <param name="brothers"></param>
-        /// <param name="BabySitterId"></param>
-        /// <returns></returns>
+        /// <param name="brothers">list of all brothers</param>
+        /// <param name="BabySitterId">nanny's id</param>
+        /// <returns>sum of brothers who have the nanny</returns>
         public static int numOfChildInBabySitter(List<Child> brothers, string BabySitterId)
         {
             int sum = 1;
@@ -110,7 +109,7 @@ namespace BL
         /// <summary>
         /// Performs a schema operation of hours
         /// its meaninig that 1.3 its one hour and 30 minute
-        /// and if I add 1.3+1.3 its meaning that i want=>3
+        /// and if I add 1.3+1.3 its meaning that i want=>3 hours
         /// </summary>
         /// <param name="beg"></param>
         /// <param name="end"></param>
@@ -131,7 +130,7 @@ namespace BL
         /// <summary>
         /// Performs a schema operation of hours
         /// its meaninig that 1.3 its one hour and 30 minute
-        /// and if I add 1.3-1.2 its meaning that i want=>0.1
+        /// and if I add 1.3-1.2 its meaning that i want=>0.1 hours=>10 minutes
         /// </summary>
         /// <param name="beg"></param>
         /// <param name="end"></param>
@@ -142,9 +141,9 @@ namespace BL
             return common.TotalHours;
         }
         /// <summary>
-        /// find Contact By condition
+        /// find Contacts By condition (using linq)
         /// </summary>
-        /// <param name="cond"></param>
+        /// <param name="cond">the condition</param>
         /// <returns></returns>
         public static List<Contract> GetContractsBy(Func<Contract, bool> cond)
         {
@@ -157,9 +156,9 @@ namespace BL
             return list;
         }
         /// <summary>
-        /// Find the Number Of Contract by Condition 
+        /// Find the Number Of Contracts by Condition (using linq)
         /// </summary>
-        /// <param name="cond"></param>
+        /// <param name="cond">the condition</param>
         /// <returns></returns>
         public static int NumOfContractsBy(Func<Contract, bool> cond)
         {
@@ -175,8 +174,8 @@ namespace BL
         /// <summary>
         /// find NANNY by her ID
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">nanny's id</param>
+        /// <returns>the nanny herself</returns>
         public static Nanny getNannyById(string id)
         {
             foreach (var item in bl.getNannyList())
@@ -190,9 +189,9 @@ namespace BL
         /// <summary>
         /// google maps function
         /// </summary>
-        /// <param name="source"></param>
-        /// <param name="dest"></param>
-        /// <returns></returns>
+        /// <param name="source">source</param>
+        /// <param name="dest">destination</param>
+        /// <returns>the distance</returns>
         public static int CalculateDistance(string source, string dest)
         {
             var drivingDirectionRequest = new DirectionsRequest
@@ -207,19 +206,19 @@ namespace BL
             return leg.Distance.Value;
         }
         /// <summary>
-        /// give garde to Nanny by her Common Work HOUR with
-        /// Mother The more hours Common, thenanny get higher score
+        /// give garde to Nanny by her Common Work hours with
+        /// Mother, The more hours Common, the nanny get higher score
         /// </summary>
-        /// <param name="nanny"></param>
-        /// <param name="mom"></param>
-        /// <returns></returns>
+        /// <param name="nanny">nanny</param>
+        /// <param name="mom">mother</param>
+        /// <returns>the nanny's grade</returns>
         private static double grade(Nanny nanny, Mother mom)
         {
             TimeSpan[,] commonWorkHour = new TimeSpan[6, 2];//לשמור את השעות עבודה המשותפות
             double[] sumOfHourinWeek = new double[6];
             double TotalCommonHour = 0;
 
-            //calculatin the sum of the Common hour
+            //calculatin the sum of the Common hours
             for (int i = 0; i < 6; i++)
             {
                 commonWorkHour[i, 0] = max(mom.WorkHours[i, 0], nanny.WorkHours[i, 0]);
@@ -231,10 +230,10 @@ namespace BL
         }
 
         /// <summary>
-        /// nanny with Precise match during work hours
+        /// nanny with Precise match according to work hours
         /// </summary>
-        /// <param name="mother"></param>
-        /// <returns></returns>
+        /// <param name="mother">mother</param>
+        /// <returns>list of the match nannies</returns>
         private static List<Nanny> InitialCoordination(Mother mother)
         {
             bool flag = true;
@@ -301,7 +300,7 @@ namespace BL
         }
 
         /// <summary>
-        /// return List of Chikd without Contract
+        /// return List of childs without Contract
         /// </summary>
         /// <returns></returns>
         public static List<Child> ChildWhithoutContract()
@@ -323,19 +322,19 @@ namespace BL
             return ChildWithoutContract;
         }
         /// <summary>
-        /// return List Of Nanny that wirkung By TMT
+        /// return List Of Nannies that working By TMT
         /// </summary>
         /// <returns></returns>
         public static List<Nanny> NannyByTAMAT()
         {
             List<Nanny> nannyL = new List<Nanny>();
-            nannyL = GetNannyBy(x => x.VacationDaysITE == true);
+            nannyL = GetNannyBy(x => x.VacationDaysITE == true);//lambda
             return nannyL;
         }
         /// <summary>
-        /// return List Of NANNY BY condition
+        /// return List Of nannies by condition (using linq)
         /// </summary>
-        /// <param name="cond"></param>
+        /// <param name="cond">condition</param>
         /// <returns></returns>
         public static List<Nanny> GetNannyBy(Func<Nanny, bool> cond)
         {
@@ -348,9 +347,9 @@ namespace BL
             return list;
         }
         /// <summary>
-        /// return List Of Child BY condition
+        /// return List Of Childs by condition (using linq)
         /// </summary>
-        /// <param name="cond"></param>
+        /// <param name="cond">condition</param>
         /// <returns></returns>
         public static List<Child> GetChildBy(Func<Child, bool> cond)
         {
@@ -367,7 +366,7 @@ namespace BL
         /// Find the best result of nanny that 
         /// match to  Specific Mother
         /// </summary>
-        /// <param name="mom"></param>
+        /// <param name="mom">mother</param>
         /// <returns></returns>
         public static List<Nanny> NanniesToMother(Mother mom)
         {
@@ -381,21 +380,20 @@ namespace BL
 
         #region IEnumerable
         /// <summary>
-        /// return Group OF nanny by age group
+        /// return Group OF nannies by minimum child age (using grouping)
         /// </summary>
         /// <param name="order"></param>
         /// <returns></returns>
-        public static IEnumerable<IGrouping<int, Nanny>> NannyByAge(bool order = false)
+        public static IEnumerable<IGrouping<int, Nanny>> NannyByAge()
         {
             IEnumerable<IGrouping<int, Nanny>> check = from n in bl.getNannyList()
-                                                           //max Age = true, MinAge = FALSE
                                                        let kidsAge = n.MinAge
-                                                       orderby (order) ? kidsAge : 0 //they want the list sorted
+                                                       orderby  kidsAge //they want the list sorted
                                                        group n by kidsAge;
             return check;
         }
         /// <summary>
-        /// return Group OF child by age group
+        /// return Group OF childs by age (using grouping)
         /// </summary>
         /// <param name="MaxOrMin"></param>
         /// <returns></returns>
@@ -410,13 +408,12 @@ namespace BL
             return check;
         }
         /// <summary>
-        /// return Group OF child by age same mother
+        /// return Group OF childs with same mother
         /// </summary>
         /// <param name="MaxOrMin"></param>
         /// <returns></returns>
         public static IEnumerable<IGrouping<string, Child>> ChildByMother(bool MaxOrMin = true)
         {
-            //List<Child> ChildL = new List<Child>();
             IEnumerable<IGrouping<string, Child>> check = from n in bl.getChildList()
                                                               //big to little=False, Little to big=True
                                                           let MotherID = n.MotherId
@@ -424,13 +421,13 @@ namespace BL
             return check;
         }
         /// <summary>
-        /// return Group OF nanny by distace group
+        /// return Group OF nannies by distace (using grouping)
         /// </summary>
         /// <param name="mother"></param>
         /// <returns></returns>
         public static IEnumerable<IGrouping<int, Nanny>> NannyByDistance(Mother mother)
         {
-       
+
             var closest = from n in bl.getNannyList()
                           let distance = (int)(CalculateDistance(mother.AreaNanny, n.Address) / 5)
                           orderby distance

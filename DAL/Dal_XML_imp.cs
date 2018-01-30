@@ -291,7 +291,6 @@ namespace DAL
             addContract(contract);//insert the update mother
         }
         #endregion
-
         #region Child
 
         public void addChild(Child Child)

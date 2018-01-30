@@ -31,8 +31,8 @@ namespace PLWPF
             if (bl == null)
                 bl = new BL_imp();
             this.grid1.DataContext = child;
-            birthdayDatePicker.SelectedDate = DateTime.Now;
-            foreach (var mo in bl.getMotherList())
+            birthdayDatePicker.SelectedDate = DateTime.Now; //reset the date to now
+            foreach (var mo in bl.getMotherList()) //show the mothers
             {
                 ComboBoxItem item = new ComboBoxItem();
                 item.Content = "ID: " + mo.Id + ", First Name: " + mo.FirstName + ", Last Name: " + mo.LastName;

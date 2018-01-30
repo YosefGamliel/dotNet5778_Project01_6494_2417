@@ -60,7 +60,16 @@ namespace BE
         public float Discount { get { return discount; } set { discount = value; } }
         #endregion
 
-        #region finction:
+        #region function:
+        /// <summary>
+        /// constractor
+        /// </summary>
+        /// <param name="BID">nanny's id</param>
+        /// <param name="ChID">child's id</param>
+        /// <param name="FM">was a first meeting? (yes/no)</param>
+        /// <param name="T">type of salary (true - per hour, false - per month)</param>
+        /// <param name="St">start date of working</param>
+        /// <param name="E">end date of working</param>
         public Contract(string BID, string ChID, bool FM, bool T, DateTime St, DateTime E)
         {
             if (!MyFunctions.CheckContract(E, St))
@@ -79,7 +88,9 @@ namespace BE
             discount = 0;
 
         }
-
+        /// <summary>
+        /// default constractor
+        /// </summary>
         public Contract()
         {
         }

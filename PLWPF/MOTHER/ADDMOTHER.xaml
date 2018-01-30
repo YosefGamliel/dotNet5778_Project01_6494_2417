@@ -53,7 +53,7 @@
             <TextBox x:Name="phoneNumberTextBox" Width="120" VerticalAlignment="Center" Text="{Binding PhoneNumber, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" Grid.Row="6" Margin="3" Height="23" HorizontalAlignment="Left" Grid.Column="1"/>
         </Grid>
         <Grid x:Name="workDay" HorizontalAlignment="Left" Height="220" Margin="233,43,0,-7" VerticalAlignment="Top" Width="162">
-            <TextBlock x:Name="workDays" HorizontalAlignment="Left" Margin="10,0,0,181" TextWrapping="Wrap" Width="62"><Run Text="When need"/><LineBreak/><Run Text="    nanny?"/></TextBlock>
+            <TextBlock x:Name="workDays" HorizontalAlignment="Left" Margin="15,-12,0,168" TextWrapping="Wrap" Width="67"><Run Text="When need"/><LineBreak/><Run Text="    nanny?"/></TextBlock>
             <CheckBox x:Name="sun" Content="sunday" HorizontalAlignment="Left"  Margin="82,1,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[0], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29"/>
             <CheckBox x:Name="mon" Content="monday" HorizontalAlignment="Left" Margin="82,35,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[1], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29" />
             <CheckBox x:Name="tus" Content="tuseday" HorizontalAlignment="Left" Margin="82,71,0,0" VerticalAlignment="Top" IsChecked="{Binding NeedNanny[2], Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnDataErrors=True, ValidatesOnExceptions=true}" Height="29" />
